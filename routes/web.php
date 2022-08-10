@@ -47,8 +47,14 @@ Route::get('/operation_commercial', function () {
 Route::get('/Sign', function () {
     return view('Sign');
 });
+Route::post('/Sign','UserController@connexion' )->name('connexion.auth');
 
-Route::post('/Sign','UserController@inscription' )->name('inscription.auth');
+Route::get('/Sign_Up', function () {
+    return view('/Sign_Up');
+});
+Route::post('/Sign_Up','UserController@inscription' )->name('inscription.auth');
+
+
 
 
 
