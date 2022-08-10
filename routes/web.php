@@ -48,3 +48,7 @@ Route::get('/Sign', function () {
     return view('Sign');
 });
 
+Route::post('/Sign','UserController@inscription' )->name('inscription.auth');
+
+
+

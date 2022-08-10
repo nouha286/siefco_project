@@ -2,10 +2,13 @@
 @section('content')
     <div class="row" id="home">
         <div class="col-6 d-md-flex d-none justify-content-center align-items-center" id="home-logo">
-            <img src="../Assets/logo.png">
+            <img src="{{ asset('/logo.png') }}">
         </div>
         <div class="col-md-6 p-3" id="home-text">
-            <div class="h4">English <i class="bi bi-caret-down-fill"></i></div>
+            <select class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);">
+                <option value="English">English</option>
+                <option value="Arabe">Arabe</option>
+            </select>
             <div id="home-text-text">
                 <div>
                     <h1>! مرحبًا</h1>
