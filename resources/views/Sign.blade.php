@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
-    
+
     <title>SIEFCO</title>
 </head>
 <body>
@@ -239,6 +239,17 @@ btn_signup.addEventListener('click', () => {
 });
 
 
+function n_identif_on() {
+    const n_identif = document.getElementById('n_identif');
+    n_identif.classList.remove('d-none');
+    n_identif.classList.add('d-block');
+}
+function n_identif_off() {
+    const n_identif = document.getElementById('n_identif');
+    n_identif.classList.remove('d-block');
+    n_identif.classList.add('d-none');
+}
+
 
 // Validation Form Sign In
 const form_signin = document.getElementById('form_signin');
@@ -266,7 +277,7 @@ form_signin.addEventListener('submit', (e)=> {
         else if(!pattern_email.test(email_signin.value)){
             e.preventDefault();
             error_email.innerText = "البريد الإلكتروني غير صالح";
-        } 
+        }
 
         if(password_signin.value == ""){
             e.preventDefault();
@@ -334,7 +345,7 @@ form_signup.addEventListener('submit', (e)=> {
         else if(!pattern_email.test(email_signup.value)){
             e.preventDefault();
             error_email_signup.innerText = "البريد الإلكتروني غير صالح";
-        } 
+        }
 
         if(phone_signup.value == ""){
             e.preventDefault();
@@ -346,7 +357,7 @@ form_signup.addEventListener('submit', (e)=> {
         else if(!pattern_phone.test(phone_signup.value) || (phone_signup.value.length != 10)){
             e.preventDefault();
             error_phone_signup.innerText = " رقم الهاتف غير صالح";
-        } 
+        }
 
         if(password_signup.value == ""){
             e.preventDefault();
@@ -370,7 +381,7 @@ form_signup.addEventListener('submit', (e)=> {
                 error_conf_password_signup.innerText = "";
             }
         }
-        
+
         if((error_name.textContent == "") && (error_email_signup.textContent == "") && (error_phone_signup.textContent == "") && (error_password_signup.textContent == "") && (error_conf_password_signup.textContent == "")){
             form_signup.submit();
         }
