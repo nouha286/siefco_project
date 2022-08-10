@@ -2,7 +2,7 @@
 @section('content')
     <div class="row" id="home">
         <div class="col-6 d-md-flex d-none justify-content-center align-items-center" id="home-logo">
-            <img src="{{ asset('/logo.png') }}">
+            <img src="../resources/views/Asset/logo.png">
         </div>
         <div class="col-md-6 p-3" id="home-text">
             <select class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);">

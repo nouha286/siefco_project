@@ -150,7 +150,7 @@ body #sign p{
     </style>
     <div class="row" id="sign">
         <div class="col-6 d-md-flex d-none justify-content-center align-items-center" id="home-logo">
-            <img src="../Assets/logo.png">
+            <img src="../resources/views/Asset/logo.png">
         </div>
         <div class="col-md-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
@@ -159,7 +159,7 @@ body #sign p{
                 <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin">تسجيل الدخول</a>
             </div>
             <!---------------------- Sign In ---------------------->
-           
+
             <!---------------------- Sign Up ---------------------->
             <div id="signup">
                 <div class="d-flex flex-column justify-content-center" style="width: 80%; height: 85vh; margin-left: 10%;">
