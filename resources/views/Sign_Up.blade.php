@@ -150,7 +150,7 @@ body #sign p{
     </style>
     <div class="row" id="sign">
         <div class="col-6 d-md-flex d-none justify-content-center align-items-center" id="home-logo">
-            <img src="../resources/views/Asset/logo.png">
+            <img src="../Assets/logo.png">
         </div>
         <div class="col-md-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
@@ -159,57 +159,52 @@ body #sign p{
                 <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin">تسجيل الدخول</a>
             </div>
             <!---------------------- Sign In ---------------------->
-            <div id="signin">
-                <div class="d-flex flex-column justify-content-center gap-2" style="width: 80%; height: 85vh; margin-left: 10%;">
-                    <h1 class="text-center">تسجيل الدخول</h1>
-                    <p class="text-center" id="error_signin">ادخل بريدك الالكتروني و القن السري لتسجيل الدخول</p>
-                    <p id="error_signin"></p>
-                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('connexion.auth') }}" id="form_signin">
-                        @csrf
-                        <input type="text" name="email" id="email_signin" placeholder="البريد الالكتروني" class="border-0 col-form-label">
-                        <p class="text-danger float-end me-4" id="error_email"></p>
-                        <input type="password" name="password" id="password_signin" placeholder="القن السري" class="border-0 col-form-label">
-                        <p class="text-danger float-end me-4" id="error_password"></p>
-                        <div>
-                            <label for="checked" class="h6">تذكرني</label>
-                            <input type="checkbox" class="mx-1" name="checked" id="checked">
+           
+            <!---------------------- Sign Up ---------------------->
+            <div id="signup">
+                <div class="d-flex flex-column justify-content-center" style="width: 80%; height: 85vh; margin-left: 10%;">
+                    <h1 class="text-center">انشاء حساب</h1>
+                    <p class="text-center" id="error_signup">املأ معلوماتك لانشاء حسابك</p>
+                    <p id="error_signup"></p>
+                    <form class="d-flex flex-column gap-1" method="POST" action="{{ route('inscription.auth') }}"  id="form_signup">
+                    @csrf
+                    <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
+                            <input type="text" name="Last_Name" id="last_name" placeholder="الاسم" class="border-0 col-form-label" style="width: 48%;">
+                            <input type="text" name="First_Name" id="first_name" placeholder="النسب" class="border-0 col-form-label" style="width: 48%;">
                         </div>
-                        <input type="submit" name="signin" value="تسجيل الدخول">
+                        <p class="text-danger float-end me-4" id="error_name"></p>
+                        <input type="text" name="email" id="email_signup" placeholder="البريد الالكتروني" class="border-0 col-form-label">
+                        <p class="text-danger float-end me-4" id="error_email_signup"></p>
+                        <input type="text" name="phone" id="phone_signup" placeholder="رقم الهاتف" class="border-0 col-form-label">
+                        <p class="text-danger float-end me-4" id="error_phone_signup"></p>
+                        <input type="password" name="password" id="password_signup" placeholder="القن السري" class="border-0 col-form-label">
+                        <p class="text-danger float-end me-4" id="error_password_signup"></p>
+                        <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-0 col-form-label">
+                        <p class="text-danger float-end me-4" id="error_conf_password_signup"></p>
+                        <div class="d-flex flex-row-reverse justify-content-between align-items-center gap-3">
+                            <div>
+                                <label for="client" class="h6">زبون</label>
+                                <input id="client" name="role" value="client" type="radio" onclick="n_identif_off()" required>
+                            </div>
+                            <div class="d-flex">
+                                <label for="employee" class="h6">مستخدم</label>
+                                <input id="employee" name="role" value="emp" type="radio" onclick="n_identif_on()" required>
+                            </div>
+                            <div>
+                                <input type="text" name="" id="n_identif" placeholder="رقم التسجيل" class="border-0 col-form-label d-none" style="height: 35px;">
+                            </div>
+                        </div>
+                        <input class="mt-3" type="submit" name="signin" value="انشاء حساب">
                     </form>
                 </div>
             </div>
-            <!---------------------- Sign Up ---------------------->
-
         </div>
     </div>
 </body>
 </html>
 <!-- index.js -->
 <script >// Sign in && Sign up
-const btn_signin = document.getElementById('btn_signin');
-const btn_signup = document.getElementById('btn_signup');
-const signin = document.getElementById('signin');
-const signup = document.getElementById('signup');
-// Loading Page Defoalt
-signin.style.display = "block";
-signup.style.display = "none";
-btn_signup.classList.remove('active');
-btn_signin.classList.add('active');
 
-btn_signin.addEventListener('click', () => {
-    console.log('btn_signin');
-    signup.style.display = "none";
-    signin.style.display = "block";
-    btn_signup.classList.remove('active');
-    btn_signin.classList.add('active');
-});
-btn_signup.addEventListener('click', () => {
-    console.log('btn_signup');
-    signin.style.display = "none";
-    signup.style.display = "block";
-    btn_signup.classList.add('active');
-    btn_signin.classList.remove('active');
-});
 
 
 function n_identif_on() {
