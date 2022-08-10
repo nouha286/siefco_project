@@ -150,7 +150,7 @@ body #sign p{
     </style>
     <div class="row" id="sign">
         <div class="col-6 d-md-flex d-none justify-content-center align-items-center" id="home-logo">
-            <img src="../Assets/logo.png">
+            <img src="../resources/views/Asset/logo.png">
         </div>
         <div class="col-md-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
