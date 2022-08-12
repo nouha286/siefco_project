@@ -233,70 +233,7 @@ body #sign p{
 </body>
 </html>
 <!-- index.js -->
-<script >// Sign in && Sign up
-
-
-
-function n_identif_on() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-none');
-    n_identif.classList.add('d-block');
-}
-function n_identif_off() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-block');
-    n_identif.classList.add('d-none');
-}
-
-
-// Validation Form Sign In
-const form_signin = document.getElementById('form_signin');
-const email_signin = document.getElementById('email_signin');
-const password_signin = document.getElementById('password_signin');
-const error_email = document.getElementById('error_email');
-const error_password = document.getElementById('error_password');
-const error_signin = document.getElementById('error_signin');
-const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-
-form_signin.addEventListener('submit', (e)=> {
-    if((email_signin.value == "") && (password_signin.value == "")){
-        e.preventDefault();
-        error_signin.innerHTML = "<p class='text-danger'>المرجوا ادخل بريدك الالكتروني و القن السري لتسجيل الدخول</p>";
-    }
-    else{
-        error_signin.innerText = "ادخل بريدك الالكتروني و القن السري لتسجيل الدخول";
-        if(email_signin.value == ""){
-            e.preventDefault();
-            error_email.innerText = "املأ حقل البريد الإلكتروني";
-        }
-        else if(pattern_email.test(email_signin.value)){
-            error_email.innerText = "";
-        }
-        else if(!pattern_email.test(email_signin.value)){
-            e.preventDefault();
-            error_email.innerText = "البريد الإلكتروني غير صالح";
-        }
-
-        if(password_signin.value == ""){
-            e.preventDefault();
-            error_password.innerText = "املأ حقل كلمة المرور";
-        }
-        else if(password_signin.value.length < 6){
-            e.preventDefault();
-            error_password.innerText = "يجب أن تتكون كلمة المرور من ستة أحرف على الأقل.";
-        }
-        else if(password_signin.value.length >= 6){
-            error_password.innerText = "";
-        }
-
-        if((pattern_email.test(email_signin.value))&&(password_signin.value.length >= 6)){
-            form_signin.submit();
-        }
-    }
-});
-
-
-// Validation Form Sign Up
+<script >// Validation Form Sign Up
 const form_signup = document.getElementById('form_signup');
 const first_name = document.getElementById('first_name');
 const last_name = document.getElementById('last_name');
