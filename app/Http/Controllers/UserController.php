@@ -70,7 +70,7 @@ class UserController extends Controller
            
             
     }
-
+// for connexion
     public function connexion(Request $request)
     {
        $resultat=auth()->attempt([
