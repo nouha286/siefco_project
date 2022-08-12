@@ -166,6 +166,21 @@ body #sign p{
                     <p id="error_signin"></p>
                     <form class="d-flex flex-column gap-2" method="POST" action="{{ route('connexion.auth') }}" id="form_signin">
                         @csrf
+                        @if (session('error'))
+
+                            <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                      @endif
+
+                      @if (session('success'))
+
+                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                      @endif
                         <input type="text" name="email" id="email_signin" placeholder="البريد الالكتروني" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_email"></p>
                         <input type="password" name="password" id="password_signin" placeholder="القن السري" class="border-0 col-form-label">
