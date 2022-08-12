@@ -59,7 +59,7 @@ class UserController extends Controller
                 $User->save();
                 FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
                      
-                return redirect('/Sign')->with('success','تم اظافة الحساب بنجاح');
+                return redirect('/Sign')->with('success',' تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل');
             }
        }
            
@@ -70,7 +70,7 @@ class UserController extends Controller
            
             
     }
-
+// for connexion
     public function connexion(Request $request)
     {
        $resultat=auth()->attempt([
