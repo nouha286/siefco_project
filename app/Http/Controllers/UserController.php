@@ -131,7 +131,7 @@ class UserController extends Controller
        }
     }
 
-
+//for logout
     public function logout(Request $request)
     {
         $request->session()->forget('role');
