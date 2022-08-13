@@ -224,17 +224,7 @@
 </html>
 <!-- index.js -->
 <script>
-    function n_identif_on() {
-        const n_identif = document.getElementById('n_identif');
-        n_identif.classList.remove('d-none');
-        n_identif.classList.add('d-block');
-    }
-
-    function n_identif_off() {
-        const n_identif = document.getElementById('n_identif');
-        n_identif.classList.remove('d-block');
-        n_identif.classList.add('d-none');
-    }
+    
 
 
     // Validation Form Sign In

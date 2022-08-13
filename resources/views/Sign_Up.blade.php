@@ -172,7 +172,7 @@
     </style>
     <div class="row" id="sign">
         <div class="col-6 d-md-flex d-none justify-content-center align-items-center" id="home-logo">
-            <img src="../Assets/logo.png">
+        <img src="../resources/views/Asset/logo.png">
         </div>
         <div class="col-md-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
@@ -257,6 +257,17 @@
 </html>
 <!-- index.js -->
 <script>
+    function n_identif_on() {
+        const n_identif = document.getElementById('n_identif');
+        n_identif.classList.remove('d-none');
+        n_identif.classList.add('d-block');
+    }
+
+    function n_identif_off() {
+        const n_identif = document.getElementById('n_identif');
+        n_identif.classList.remove('d-block');
+        n_identif.classList.add('d-none');
+    }
     // Validation Form Sign Up
     const form_signup = document.getElementById('form_signup');
     const first_name = document.getElementById('first_name');
