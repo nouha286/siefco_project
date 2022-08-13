@@ -23,7 +23,7 @@ class AdminController extends Controller
     }
     public function addAdmin(Request $request)
     {
-        
+
 
         $User=User::where('email',request('Email'))->first();
        if ($User) {
@@ -39,25 +39,25 @@ class AdminController extends Controller
             $User->Last_Name=request('Last_Name');
             $User->email=request('Email');
             $User->Phone=request('Phone');
-            $User->Role='admin';
+            $User->Role='Admin';
             $User->password=bcrypt(request('Password'));
             $User->Activation=1;
 
             $User->save();
         $Admin->save();
         FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));
-        
+
         return redirect('/Administrateur');
        }
-        
+
     }
 
     public function deleteAdmin($id)
     {
         $Admin = Admin::where('id', $id)->first();
         $email=Admin::where('id', $id)->first(['Email'])->Email;
-        
-        
+
+
         $User=User::where('email',$email)->first();
         if ($User) {
             $User->Activation=0;
@@ -65,9 +65,7 @@ class AdminController extends Controller
         $Admin->delete();
         return redirect('/Administrateur')->with('success_delete','تم حذف المسؤول بنجاح');
         }else {
-            return redirect('/Administrateur')->with('failed_delete','حدث خطا ما قد فشل الحذف   ');
+            return redirect('/Administrateur')->with('failed_delete','حدث خطا ما قد فشل الحذف ');
         }
-       
-     ;
     }
 }

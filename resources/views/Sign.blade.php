@@ -142,7 +142,7 @@
             color: var(--white-color) !important;
         }
     </style>
-    <div class="row" id="sign">
+    <div id="sign">
         <div class="col-6 d-lg-flex d-none justify-content-center align-items-center" id="home-logo">
             <img src="../resources/views/Asset/logo.png">
         </div>

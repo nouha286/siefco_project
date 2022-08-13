@@ -168,7 +168,7 @@
             color: var(--white-color) !important;
         }
     </style>
-    <div class="row" id="sign">
+    <div id="sign">
         <div class="col-6 d-lg-flex d-none justify-content-center align-items-center" id="home-logo">
             <img src="../resources/views/Asset/logo.png">
         </div>
@@ -228,11 +228,11 @@
                         <div class="d-flex flex-row-reverse justify-content-between align-items-center gap-3">
                             <div>
                                 <label for="client" class="h6">زبون</label>
-                                <input id="client" name="role" value="client" type="radio" onclick="n_identif_off()" required>
+                                <input id="client" name="role" value="Client" type="radio" onclick="n_identif_off()" required>
                             </div>
                             <div class="d-flex">
                                 <label for="employee" class="h6">مستخدم</label>
-                                <input id="employee" name="role" value="employe" type="radio" onclick="n_identif_on()" required>
+                                <input id="employee" name="role" value="Employe" type="radio" onclick="n_identif_on()" required>
                             </div>
                             <div>
                                 <input type="text" name="n_identif" id="n_identif" placeholder="رقم التسجيل" class="border-0 col-form-label d-none" style="height: 35px;">
