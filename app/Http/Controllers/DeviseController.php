@@ -11,7 +11,6 @@ class DeviseController extends Controller
     public function index()
     {
         $devise = Devise::all();
-
         if (session()->has('role')) {
             return view('/devise')->with(['devise' => $devise]);
         } else {
@@ -38,11 +37,11 @@ class DeviseController extends Controller
     {
         if ($devise = Devise::where('id', 3)->first()) {
             $devise->Name=request('Name');
-        $devise->Name=request('Value');
-        $devise->save();
+            $devise->Name=request('Value');
+            $devise->save();
 
-        return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
+            return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
         } ;
-       
+
     }
 }

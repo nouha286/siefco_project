@@ -71,9 +71,9 @@
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
                                 </form>
-                                
-                                
-                                   
+
+
+
                                     <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pen-fill"></i></button>
 
                                 </form>
