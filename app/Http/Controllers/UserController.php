@@ -31,7 +31,7 @@ class UserController extends Controller
             $User->password=bcrypt(request('password'));
             $User->Activation=0;
             $identificateur=Identificateur::where('id',1)->first();
-            if (request('role')=='emp') {
+            if (request('role')=='employe') {
                
               
                 
@@ -87,14 +87,17 @@ class UserController extends Controller
        
        
  if ($resultat && $Role=='client' ) 
- {
+ {    $name=User::where('email',$email)->first('First_Name')->First_Name;
     $request->session()->put('role_client', $Role);
+    $request->session()->put('name',$name);
     return redirect('/interface_client');
     
  }
- if ($resultat && ($Role=='emp'|| $Role=='admin') ) 
+ if ($resultat && ($Role=='employe'|| $Role=='admin') ) 
  { 
     $request->session()->put('role', $Role);
+    $name = User::where('email', $email )->first(['First_Name'])->First_Name;
+    $request->session()->put('name',$name);
     return redirect('/Dashboard');
  }
  if (!$resultat ) {

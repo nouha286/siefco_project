@@ -8,8 +8,8 @@
         <!-- Info Profile -->
         <div class="d-flex flex-column justify-content-center align-items-center py-2 gap-1">
             <img src="../resources/views/Asset/avatar.png" style="width: 65%;" alt="logo">
-            <span class="">اسم المستخدم</span>
-            <span class="">الدور</span>
+            <span class="fs-5" style="color:#3498DB;">  @if (session()->has('name')) {{{session('name')}}}@endif </span>
+            <span class="">@if (session()->has('role')) {{{session('role')}}}@endif</span>
         </div>
         <hr class="w-75 m-0 p-0">
         <!-- Pages -->
