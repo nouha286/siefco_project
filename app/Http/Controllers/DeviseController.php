@@ -19,12 +19,23 @@ class DeviseController extends Controller
         }
     }
     public function addDevise(Request $request)
-    {
-        $Devise = new devise();
-        $Devise->Name = request('Name');
-        $Devise->Dollar_value = request('Value');
-        $Devise->save();
+    { $edit=request('edit_add');
+        if ($edit) {
+            $devise = Devise::where('id', $edit)->first();
+            $devise->Name=request('Name');
+        $devise->Dollar_Value=request('Value');
+        $devise->save();
+
         return redirect('/devise');
+      
+        }else {
+            $Devise = new devise();
+            $Devise->Name = request('Name');
+            $Devise->Dollar_value = request('Value');
+            $Devise->save();
+            return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح'.request('edit_add')) ;
+        }
+        
     }
 
     public function deleteDevise($id)
@@ -34,15 +45,9 @@ class DeviseController extends Controller
         return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
     }
 
-    public function editDevise(Request $request)
+    public function editDevise()
     {
-        if ($devise = Devise::where('id', 3)->first()) {
-            $devise->Name=request('Name');
-        $devise->Name=request('Value');
-        $devise->save();
-
-        return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
-        } ;
+         
        
     }
 }
