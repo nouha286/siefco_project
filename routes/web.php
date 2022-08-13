@@ -34,15 +34,9 @@ Route::get('/client', function () {
         return redirect('/Sign');
     }
 });
-Route::get('/Dashboard', function () {
-    
-    if (session()->has('role')) {
-        return view('Dashboard');
-    }else
-    {
-        return redirect('Sign');
-    }
-});
+
+Route::get('/Dashboard','DashboardController@index');
+
 Route::get('/devise', 'DeviseController@index');
 
 Route::post('/devise','DeviseController@addDevise')->name('add.devise');
@@ -83,7 +77,7 @@ Route::get('/operation_commercial', function () {
 Route::get('/Sign', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
-    }elseif (session()->has('role_client')) 
+    }elseif (session()->has('role_client'))
     {
         return redirect('interface_client');
     }else{
@@ -95,7 +89,7 @@ Route::post('/Sign','UserController@connexion' )->name('connexion.auth');
 Route::get('/Sign_Up', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
-    }elseif (session()->has('role_client')) 
+    }elseif (session()->has('role_client'))
     {
         return redirect('interface_client');
     }else{

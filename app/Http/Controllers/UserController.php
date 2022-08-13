@@ -14,7 +14,7 @@ use App\Mail\EmailVerificationMail;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class UserController extends Controller
-{  
+{
     public function inscription(Request $request)
     {
        $User=User::where('email',request('email'))->first();
@@ -31,44 +31,25 @@ class UserController extends Controller
             $User->password=bcrypt(request('password'));
             $User->Activation=0;
             $identificateur=Identificateur::where('id',1)->first();
-            if (request('role')=='employe') {
-               
-              
-                
-                
-                $N=Identificateur::where('id', 1 )->first(['Numéro'])->Numéro; 
-                
-
+            if (request('role')=='Employe') {
+                $N=Identificateur::where('id', 1 )->first(['Numéro'])->Numéro;
                 if ($N==request('n_identif')) {
-                    
                      $identificateur->Numéro=$N+5;
-                     
-             
                      $identificateur->save();
-                     
                      $User->save();
-                    
                      FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
-                     
                     return redirect('/Sign')->with('success','تم اظافة الحساب بنجاح');
                 }else {
                     return redirect('/Sign_Up')->with('failed','المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح');
                 }
             }
-            if (request('role')=='client') {
+            if (request('role')=='Client') {
                 $User->save();
                 FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
-                     
+
                 return redirect('/Sign')->with('success',' تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل');
             }
        }
-           
-            
-           
-           
-            
-           
-            
     }
 // for connexion
     public function connexion(Request $request)
@@ -77,42 +58,42 @@ class UserController extends Controller
         'email'=>request('email'),
         'password'=>request('password'),
         'Activation'=> 1
-
        ]);
-
        $email=request('email');
        if ($Role = User::where('email', $email )->exists()) {
         $Role = User::where('email', $email )->first(['Role'])->Role;
        }else $Role='';
-       
-       
- if ($resultat && $Role=='client' ) 
- {    $name=User::where('email',$email)->first('First_Name')->First_Name;
-    $request->session()->put('role_client', $Role);
-    $request->session()->put('name',$name);
-    return redirect('/interface_client');
-    
- }
- if ($resultat && ($Role=='employe'|| $Role=='admin') ) 
- { 
-    $request->session()->put('role', $Role);
-    $name = User::where('email', $email )->first(['First_Name'])->First_Name;
-    $request->session()->put('name',$name);
-    return redirect('/Dashboard');
- }
- if (!$resultat ) {
-    return redirect('/Sign')->with('error','البريد الالكتروني او القن السري خاطئ');
- }
- 
-      
+
+    if ($resultat && $Role=='Client' )
+    {
+        $Last_Name=User::where('email',$email)->first('Last_Name')->Last_Name;
+        $First_Name=User::where('email',$email)->first('First_Name')->First_Name;
+        $request->session()->put('role_client', $Role);
+        $request->session()->put('First_Name',$First_Name);
+        $request->session()->put('Last_Name',$Last_Name);
+        return redirect('/interface_client');
+    }
+
+    if ($resultat && ($Role=='Employe'|| $Role=='Admin') )
+    {
+        $Last_Name=User::where('email',$email)->first('Last_Name')->Last_Name;
+        $First_Name=User::where('email',$email)->first('First_Name')->First_Name;
+        $request->session()->put('role', $Role);
+        $request->session()->put('First_Name',$First_Name);
+        $request->session()->put('Last_Name',$Last_Name);
+        return redirect('/Dashboard');
+    }
+    if (!$resultat ) {
+        return redirect('/Sign')->with('error','البريد الالكتروني او القن السري خاطئ');
+    }
     }
 
 
     public function verify_email($id)
     {
-       
-       $User=User::where('id', $id)->first(); 
-   
+
+       $User=User::where('id', $id)->first();
+
        if (!$User)
        {
         return redirect('/Sign_Up')->with('error','Invalid URL');
@@ -120,15 +101,15 @@ class UserController extends Controller
        {
         if ($User->email_verified_at) {
             return Redirect('/Sign_Up')->with('warning','Email already verified');
-      
+
         }else{
             $User->email_verified_at=\Carbon\Carbon::now();
             $User->save();
-               
-            
+
+
 
             return redirect('/Sign_Up')->with('success','Email successfully verified');
-      
+
         }
 
        }
@@ -139,8 +120,10 @@ class UserController extends Controller
     {
         $request->session()->forget('role');
         $request->session()->forget('role_client');
+        $request->session()->forget('First_Name');
+        $request->session()->forget('Last_Name');
         return Redirect('/Sign');
     }
 
-    
+
 }
