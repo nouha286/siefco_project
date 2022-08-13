@@ -56,7 +56,7 @@
             padding-right: 15px;
             border-radius: 16px;
         }
-        
+
 
         input[type="submit"],
         #btn {
@@ -80,10 +80,10 @@
 
 
         /* Home Page */
-        body #home,
-        #sign {
-            width: 100%;
+        body #home,#sign {
+            width: 98%;
             height: 100vh;
+            margin: 0 1%;
             display: flex;
             justify-content: center;
             align-items: center;

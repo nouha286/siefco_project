@@ -22,7 +22,7 @@ class EmployeController extends Controller
     }
     public function addEmploye(Request $request)
     {
-        
+
 
         $User=User::where('email',request('Email'))->first();
        if ($User) {
@@ -38,25 +38,25 @@ class EmployeController extends Controller
             $User->Last_Name=request('Last_Name');
             $User->email=request('Email');
             $User->Phone=request('Phone');
-            $User->Role='employe';
+            $User->Role='Employe';
             $User->password=bcrypt(request('Password'));
             $User->Activation=1;
 
             $User->save();
         $Employee->save();
         FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));
-        
+
         return redirect('/Employees');
        }
-        
+
     }
 
     public function deleteEmploye($id)
     {
         $Employee = Employees::where('id', $id)->first();
         $email=Employees::where('id', $id)->first(['Email'])->Email;
-        
-        
+
+
         $User=User::where('email',$email)->first();
         if ($User) {
             $User->Activation=0;
@@ -66,7 +66,7 @@ class EmployeController extends Controller
         }else {
             return redirect('/Employees')->with('failed_delete','حدث خطا ما قد فشل الحذف   ');
         }
-       
+
      ;
     }
 }
