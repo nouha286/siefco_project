@@ -50,7 +50,7 @@
         <!-- Logout -->
         <hr class="w-75 m-0 p-0">
         <div>
-            <a class="nav-link" href="Sign">
+            <a class="nav-link" href="logout">
                 <span class="text-dark">تسجيل الخروج</span>
             </a>
         </div>
