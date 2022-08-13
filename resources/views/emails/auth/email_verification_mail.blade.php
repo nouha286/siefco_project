@@ -8,7 +8,7 @@ Click here to verify your email address
 @endcomponent
 <p>Or copy paste the following link on your web browser to verify your email address </p>
 
-<p><a href="{{route('verify_email',$User->id)}}"></a></p>
+<p><a href="{{route('verify_email',$User->id)}}">{{route('verify_email',$User->id)}}</a></p>
 
 
 Thanks,<br>
