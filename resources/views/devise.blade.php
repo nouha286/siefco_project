@@ -74,18 +74,18 @@
                                 
                                 
                                    
-                                    <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pen-fill"></i></button>
+                                    <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
 
-                                </form>
+                              
 
 
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
-                                            <form method="Post" action="{{ route('edit.devise') }}" >
+                                            <form method="Post" action="{{ route('add.devise') }}" >
                                                 @csrf
-                                                @method('PUT')
+                                              
                                                 <div class="modal-header ">
                                                     <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -93,7 +93,10 @@
                                                 <div class="modal-body">
                                                     <input type="text" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
                                                     <input type="text" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                                    <input type="hidden" name="edit_add" class="form-control" value="3" >
                                                 </div>
+     
+
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
                                                     <button type="submit" class="btn btn-primary">حفظ</button>

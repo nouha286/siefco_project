@@ -41,7 +41,7 @@ Route::get('/devise', 'DeviseController@index');
 
 Route::post('/devise','DeviseController@addDevise')->name('add.devise');
 Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
-Route::put('devise','DeviseController@editDevise')->name('edit.devise');
+
 
 Route::get('/Employees', 'EmployeController@index');
 Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');
