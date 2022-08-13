@@ -22,14 +22,10 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/Administrateur', function () {
-    if (session()->has('role')) {
-        return view('/Administrateur');
-    }else
-    {
-        return redirect('/Sign');
-    }
-});
+Route::get('/Administrateur','AdminController@index');
+Route::post('/Administrateur','AdminController@addAdmin')->name('add.Admin');
+Route::delete('/Administrateur/{id}','AdminController@deleteAdmin')->name('delete.Admin');
+
 Route::get('/client', function () {
     if (session()->has('role')) {
         return view('/client');
@@ -47,23 +43,15 @@ Route::get('/Dashboard', function () {
         return redirect('Sign');
     }
 });
-Route::get('/devise', function () {
-    if (session()->has('role')) {
-        return view('/devise');
-    }else
-    {
-        return redirect('/Sign');
-    }
-});
+Route::get('/devise', 'DeviseController@index');
 
-Route::get('/Employees', function () {
-    if (session()->has('role')) {
-        return view('/Employees');
-    }else
-    {
-        return redirect('/Sign');
-    }
-});
+Route::post('/devise','DeviseController@addDevise')->name('add.devise');
+Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
+Route::put('devise','DeviseController@editDevise')->name('edit.devise');
+
+Route::get('/Employees', 'EmployeController@index');
+Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');
+Route::delete('Employees/{id}','EmployeController@deleteEmploye')->name('delete.Employe');
 
 Route::get('/home', function () {
     if (session()->has('role')) {
