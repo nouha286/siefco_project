@@ -34,7 +34,7 @@ class DeviseController extends Controller
         return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
     }
 
-    public function editDevise(Request $request)
+    public function editDevise()
     {
         if ($devise = Devise::where('id', 3)->first()) {
             $devise->Name=request('Name');
