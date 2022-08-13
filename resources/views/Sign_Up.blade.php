@@ -168,9 +168,11 @@
             color: var(--white-color) !important;
         }
     </style>
+
     <div id="sign">
         <div class="col-6 d-lg-flex d-none justify-content-center align-items-center" id="home-logo">
             <img src="../resources/views/Asset/logo.png">
+
         </div>
         <div class="col-lg-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
@@ -251,6 +253,7 @@
 <!-- index.js -->
 <script>
 
+
 function n_identif_on() {
     const n_identif = document.getElementById('n_identif');
     n_identif.classList.remove('d-none');
@@ -262,6 +265,7 @@ function n_identif_off() {
     n_identif.classList.remove('d-block');
     n_identif.classList.add('d-none');
 }
+
 
 
     // Validation Form Sign Up

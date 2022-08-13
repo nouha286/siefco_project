@@ -36,11 +36,13 @@ class DeviseController extends Controller
 
     public function editDevise(Request $request)
     {
-        $devise = Devise::where('id', Request('id'))->first();
-        $devise->Name=request('Name');
+        if ($devise = Devise::where('id', 3)->first()) {
+            $devise->Name=request('Name');
         $devise->Name=request('Value');
         $devise->save();
 
         return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
+        } ;
+       
     }
 }
