@@ -13,7 +13,7 @@
 </head>
 <body>
 <style>
-        :root {
+:root {
     /* Colors */
     --base-color      : #3498DB;
     --second-color    : #69A8E7;
@@ -73,8 +73,9 @@ body {
 
 /* Home Page */
 body #home,#sign{
-    width: 100%;
+    width: 98%;
     height: 100vh;
+    margin: 0 1%;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -73,8 +73,9 @@ body {
 
 /* Home Page */
 body #home,#sign{
-    width: 100%;
+    width: 98%;
     height: 100vh;
+    margin: 0 1%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +156,7 @@ body #sign p{
         <div class="col-md-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
             <div class="w-100 d-flex" id="menu-sign">
-                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signup">انشاء حساب</a>
+                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center active" id="btn_signup">انشاء حساب</a>
                 <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin">تسجيل الدخول</a>
             </div>
             <!---------------------- Sign In ---------------------->
@@ -167,38 +168,33 @@ body #sign p{
                     <p class="text-center" id="error_signup">املأ معلوماتك لانشاء حسابك</p>
                     <p id="error_signup"></p>
                     <form class="d-flex flex-column gap-1" method="POST" action="{{ route('inscription.auth') }}"  id="form_signup">
-                    @csrf
-                    @if (session('failed'))
+                        @csrf
+                        @if (session('failed'))
+                            <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                            {{ session('failed') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        @if (session('error'))
 
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                    {{ session('failed') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    @endif
-                    @if (session('error'))
-                      
-                        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                    @endif
-
-                    @if (session('warning'))
-
-<div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
-{{ session('warning') }}
-<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
-@endif
-
-                    @if (session('success'))
-
-                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-                        {{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
-                 @endif
-                    <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
+                            <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        @if (session('warning'))
+                            <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
+                            {{ session('warning') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        @endif
+                        <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
                             <input type="text" name="Last_Name" id="last_name" placeholder="الاسم" class="border-0 col-form-label" style="width: 48%;">
                             <input type="text" name="First_Name" id="first_name" placeholder="النسب" class="border-0 col-form-label" style="width: 48%;">
                         </div>
@@ -214,11 +210,11 @@ body #sign p{
                         <div class="d-flex flex-row-reverse justify-content-between align-items-center gap-3">
                             <div>
                                 <label for="client" class="h6">زبون</label>
-                                <input id="client" name="role" value="client" type="radio" onclick="n_identif_off()" required>
+                                <input id="client" name="role" value="client" type="radio" onclick="n_identif_off()">
                             </div>
                             <div class="d-flex">
                                 <label for="employee" class="h6">مستخدم</label>
-                                <input id="employee" name="role" value="emp" type="radio" onclick="n_identif_on()" required>
+                                <input id="employee" name="role" value="emp" type="radio" onclick="n_identif_on()">
                             </div>
                             <div>
                                 <input type="text" name="n_identif" id="n_identif" placeholder="رقم التسجيل" class="border-0 col-form-label d-none" style="height: 35px;">
@@ -232,22 +228,9 @@ body #sign p{
     </div>
 </body>
 </html>
+
 <!-- index.js -->
-<script >// Sign in && Sign up
-
-
-
-function n_identif_on() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-none');
-    n_identif.classList.add('d-block');
-}
-function n_identif_off() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-block');
-    n_identif.classList.add('d-none');
-}
-
+<script >
 
 // Validation Form Sign In
 const form_signin = document.getElementById('form_signin');

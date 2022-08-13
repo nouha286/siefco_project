@@ -73,8 +73,9 @@ body {
 
 /* Home Page */
 body #home,#sign{
-    width: 100%;
+    width: 98%;
     height: 100vh;
+    margin: 0 1%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -156,7 +157,7 @@ body #sign p{
             <!---------------------- Menu Sign ---------------------->
             <div class="w-100 d-flex" id="menu-sign">
                 <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signup">انشاء حساب</a>
-                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin">تسجيل الدخول</a>
+                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center active" id="btn_signin">تسجيل الدخول</a>
             </div>
             <!---------------------- Sign In ---------------------->
             <div id="signin">
@@ -193,51 +194,13 @@ body #sign p{
                     </form>
                 </div>
             </div>
-            <!---------------------- Sign Up ---------------------->
-
         </div>
     </div>
 </body>
 </html>
+
 <!-- index.js -->
-<script >// Sign in && Sign up
-const btn_signin = document.getElementById('btn_signin');
-const btn_signup = document.getElementById('btn_signup');
-const signin = document.getElementById('signin');
-const signup = document.getElementById('signup');
-// Loading Page Defoalt
-signin.style.display = "block";
-signup.style.display = "none";
-btn_signup.classList.remove('active');
-btn_signin.classList.add('active');
-
-btn_signin.addEventListener('click', () => {
-    console.log('btn_signin');
-    signup.style.display = "none";
-    signin.style.display = "block";
-    btn_signup.classList.remove('active');
-    btn_signin.classList.add('active');
-});
-btn_signup.addEventListener('click', () => {
-    console.log('btn_signup');
-    signin.style.display = "none";
-    signup.style.display = "block";
-    btn_signup.classList.add('active');
-    btn_signin.classList.remove('active');
-});
-
-
-function n_identif_on() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-none');
-    n_identif.classList.add('d-block');
-}
-function n_identif_off() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-block');
-    n_identif.classList.add('d-none');
-}
-
+<script >
 
 // Validation Form Sign In
 const form_signin = document.getElementById('form_signin');
