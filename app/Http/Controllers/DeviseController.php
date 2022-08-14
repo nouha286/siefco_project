@@ -21,11 +21,6 @@ class DeviseController extends Controller
 
     public function addDevise(Request $request)
     {
-        $selectDevise = request('selectDevise');
-        if($selectDevise){
-            return $selectDevise;
-        }
-
         $edit = request('edit_add');
         if($edit){
             $devise = Devise::where('id', $edit)->first();
