@@ -21,7 +21,29 @@
                 </div>
                 @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-                    <h4>العملات</h4>
+                    <div>
+                        <select class="form-select text-center fs-5 fw-bold" id="selectDevise" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
+                            <option value="devise">العملات</option>
+                            <option value="devise_deleted">العملات المحذوفين</option>
+                        </select>
+                    </div>
+
+                    <script>
+                        const selectDevise = document.querySelector('#selectDevise');
+                        selectDevise.addEventListener('change', (event) => {
+                            $.ajax({
+                                url:{{ route('add.devise') }},
+                                method:'POST',
+                                data:{
+                                    selectDevise:selectDevise.value
+                                },
+                                success:function(data){
+                                    alert(data);
+                                }
+                            })
+                        });
+                    </script>
+
                     <div class="input-group me-3" style="width: 25%;">
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
@@ -30,7 +52,7 @@
                         <i class="bi bi-plus-circle-fill h1"></i>
                     </button>
 
-                    <!-- Modal -->
+                    <!-- Modal Add Devise -->
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -53,6 +75,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Modal Add Devise -->
                 </div>
                 <table class="table mb-0 text-center">
                     <thead>
@@ -64,53 +87,63 @@
                     </thead>
                     <tbody>
                         @foreach($devise as $devise)
-                        <tr>
-                            <td class="col-2 d-flex  gap-3 ">
+                        <tr class="item">
+                            <td class="col-2 d-flex gap-3">
                                 <form action="{{ route('delete.devise',$devise->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
                                 </form>
-
-
-
-                                    <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-pen-fill"></i></button>
-
-                                </form>
-
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <form method="Post" action="{{ route('edit.devise') }}" >
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="modal-header ">
-                                                    <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <input type="text" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                                                    <input type="text" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                                    <button type="submit" class="btn btn-primary">حفظ</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
                             </td>
-                            <td class="col-5">{{$devise->Dollar_value}}</td>
-                            <td class="col-5">{{$devise->Name}}</td>
+                            <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
+                            <td class="name_devise col-5">{{$devise->Name}}</td>
+                            <td class="id_devise d-none">{{$devise->id}}</td>
                         </tr>
                         @endforeach
                     </tbody>
+                    <!-- Modal Edit Devise -->
+                    <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form method="Post" action="{{ route('add.devise') }}" >
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column gap-4">
+                                        <input type="hidden" class="id_devise" name="Id" class="form-control">
+                                        <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                                        <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Edit Devise -->
                 </table>
             </div>
         </div>
+
+        <script>
+            document.querySelectorAll('.btn-edit').forEach(function(btn){
+                btn.addEventListener('click',function(event){
+                    let select = event.target.closest('.item');
+                    let id_devise = select.querySelector('.id_devise').innerHTML;
+                    let name_devise = select.querySelector('.name_devise').innerHTML;
+                    let value_devise = select.querySelector('.value_devise').innerHTML;
+
+                    document.querySelector('#exampleModaledit .id_devise').value = id_devise;
+                    document.querySelector('#exampleModaledit .name_devise').value = name_devise;
+                    document.querySelector('#exampleModaledit .value_devise').value = value_devise;
+                })
+            })
+        </script>
 
         <!-- Copyright -->
         <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>

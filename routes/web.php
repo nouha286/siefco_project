@@ -38,10 +38,9 @@ Route::get('/client', function () {
 Route::get('/Dashboard','DashboardController@index');
 
 Route::get('/devise', 'DeviseController@index');
-
 Route::post('/devise','DeviseController@addDevise')->name('add.devise');
 Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
-Route::put('devise','DeviseController@editDevise')->name('edit.devise');
+
 
 Route::get('/Employees', 'EmployeController@index');
 Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');
@@ -50,8 +49,8 @@ Route::delete('Employees/{id}','EmployeController@deleteEmploye')->name('delete.
 Route::get('/home', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
-    }else
-    {
+    }
+    else{
         return view('/home');
     }
 });
@@ -59,8 +58,8 @@ Route::get('/home', function () {
 Route::get('/interface_client', function () {
     if (session()->has('role_client')) {
         return view('/interface_client');
-    }else
-    {
+    }
+    else{
         return redirect('/Sign');
     }
 });
@@ -68,8 +67,8 @@ Route::get('/interface_client', function () {
 Route::get('/operation_commercial', function () {
     if (session()->has('role')) {
         return view('/operation_commercial');
-    }else
-    {
+    }
+    else{
         return redirect('/Sign');
     }
 });
@@ -77,10 +76,11 @@ Route::get('/operation_commercial', function () {
 Route::get('/Sign', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
-    }elseif (session()->has('role_client'))
-    {
+    }
+    elseif (session()->has('role_client')){
         return redirect('interface_client');
-    }else{
+    }
+    else{
         return view('/Sign');
     }
 });
@@ -89,10 +89,11 @@ Route::post('/Sign','UserController@connexion' )->name('connexion.auth');
 Route::get('/Sign_Up', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
-    }elseif (session()->has('role_client'))
-    {
+    }
+    elseif (session()->has('role_client')){
         return redirect('interface_client');
-    }else{
+    }
+    else{
         return view('/Sign_Up');
     }
 });
