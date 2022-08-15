@@ -20,15 +20,17 @@ return new class extends Migration
             $table->string('Last_Name');
             $table->string('Email');
             $table->string('Balance');
-            
+
             $table->double('Debtor');
             $table->double('Creditor');
             $table->string('Currency');
-           
+
             $table->string('Statement');
             $table->integer('Activation');
+            $table->foreignId('currency_id')->constrained('devises');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
