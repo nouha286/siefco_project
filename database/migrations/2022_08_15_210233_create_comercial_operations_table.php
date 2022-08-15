@@ -15,27 +15,23 @@ return new class extends Migration
     {
         Schema::create('comercial__operations', function (Blueprint $table) {
             $table->id();
-       
+
             $table->double('Client_Name');
-            $table->foreignId('Client_id')->constrained('clients')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
-            
+            $table->foreignId('Client_id')->constrained('clients');
+
             $table->double('Debtor');
             $table->double('Creditor');
             $table->string('Balance');
             $table->string('Statement');
             $table->date('Date');
             $table->string('Currency');
-            $table->foreignId('currency_id')->constrained('devises')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+            $table->foreignId('currency_id')->constrained('devises');
             $table->string('Emloyee_Name');
-            
-           
 
-           
-           
+
+
+
+
             $table->timestamps();
         });
     }
