@@ -26,21 +26,20 @@ Route::get('/Administrateur','AdminController@index');
 Route::post('/Administrateur','AdminController@addAdmin')->name('add.Admin');
 Route::delete('/Administrateur/{id}','AdminController@deleteAdmin')->name('delete.Admin');
 
-Route::get('/client', function () {
-    if (session()->has('role')) {
-        return view('/client');
-    }else
-    {
-        return redirect('/Sign');
-    }
-});
+
+
+Route::get('/client', 'ClientController@index');
+
+
 
 Route::get('/Dashboard','DashboardController@index');
+
 
 Route::get('/devise', 'DeviseController@index');
 Route::post('/devise','DeviseController@addDevise')->name('add.devise');
 Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
-
+//
+//
 
 Route::get('/Employees', 'EmployeController@index');
 Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');

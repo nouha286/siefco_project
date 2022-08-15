@@ -4,11 +4,11 @@
 <div class="position-absolute w-100" style="height: 40vh; background-color: var(--second-color);"></div>
 <div class="d-flex flex-row-reverse gap-3 mx-3" style="height: 100vh;">
     <!-- AssidBar -->
-    @include('master.AssidBar');
+    @include('master.AssidBar')
 
     <div class="position-relative w-100">
         <!-- Navbar -->
-        @include('master.Navbar');
+        @include('master.Navbar')
 
         <!-- Statistiques -->
         <div class="container-fluid py-4">
@@ -23,27 +23,10 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="selectDevise" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            <option value="devise">العملات</option>
+                            <option value="devise" selected>العملات</option>
                             <option value="devise_deleted">العملات المحذوفين</option>
                         </select>
                     </div>
-
-                    <script>
-                        const selectDevise = document.querySelector('#selectDevise');
-                        selectDevise.addEventListener('change', (event) => {
-                            $.ajax({
-                                url:{{ route('add.devise') }},
-                                method:'POST',
-                                data:{
-                                    selectDevise:selectDevise.value
-                                },
-                                success:function(data){
-                                    alert(data);
-                                }
-                            })
-                        });
-                    </script>
-
                     <div class="input-group me-3" style="width: 25%;">
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
@@ -87,21 +70,43 @@
                     </thead>
                     <tbody>
                         @foreach($devise as $devise)
-                        <tr class="item">
-                            <td class="col-2 d-flex gap-3">
-                                <form action="{{ route('delete.devise',$devise->id) }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
-                                </form>
-                                <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-                            </td>
-                            <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
-                            <td class="name_devise col-5">{{$devise->Name}}</td>
-                            <td class="id_devise d-none">{{$devise->id}}</td>
-                        </tr>
+                            {{-- Activation --}}
+                            <div id="devise">
+                                <tr class="item activation">
+                                    @if($devise->Activation == 1)
+                                        <td class="col-2 d-flex gap-3">
+                                            <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                            </form>
+                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                        </td>
+                                        <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
+                                        <td class="name_devise col-5">{{$devise->Name}}</td>
+                                        <td class="id_devise d-none">{{$devise->id}}</td>
+                                    @endif
+                                </tr>
+                            </div>
+                            {{-- Desactivation --}}
+                                <tr class="item d-none desactivation">
+                                    @if($devise->Activation == 0)
+                                        <td class="col-2 d-flex gap-3">
+                                            <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                            </form>
+                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                        </td>
+                                        <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
+                                        <td class="name_devise col-5">{{$devise->Name}}</td>
+                                        <td class="id_devise d-none">{{$devise->id}}</td>
+                                    @endif
+                                </tr>
                         @endforeach
                     </tbody>
+
                     <!-- Modal Edit Devise -->
                     <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -131,6 +136,7 @@
         </div>
 
         <script>
+            // Update Of Devise
             document.querySelectorAll('.btn-edit').forEach(function(btn){
                 btn.addEventListener('click',function(event){
                     let select = event.target.closest('.item');
@@ -142,6 +148,22 @@
                     document.querySelector('#exampleModaledit .name_devise').value = name_devise;
                     document.querySelector('#exampleModaledit .value_devise').value = value_devise;
                 })
+            })
+
+            // Switch To Active AndDesctive Of Devise
+            var selectDevise = document.getElementById('selectDevise');
+            selectDevise.addEventListener('change', (event) =>{
+                var Activation = document.querySelector('.activation');
+                var Desactivation = document.querySelector('.desactivation');
+                var devise = document.querySelector('.devise');
+                if(selectDevise.value == "devise"){
+                    Activation.classList.remove("d-none");
+                    Desactivation.classList.add("d-none");
+                }
+                if(selectDevise.value == "devise_deleted"){
+                    Desactivation.classList.remove("d-none");
+                    Activation.classList.add("d-none");
+                }
             })
         </script>
 

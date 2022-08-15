@@ -37,17 +37,14 @@
             border-radius: 4px;
             background: var(--white-color) no-repeat center center;
         }
-
         input[type="radio"] {
             border-radius: 50%;
         }
-
         input[type="radio"]:where(:active:not(:disabled), :focus) {
             border-color: var(--base-color);
             background-color: var(--base-color);
             outline: none;
         }
-
         input[type="text"],
         [type="password"], [type="email"] {
             width: 100%;
@@ -56,10 +53,7 @@
             padding-right: 15px;
             border-radius: 16px;
         }
-
-
-        input[type="submit"],
-        #btn {
+        input[type="submit"],#btn {
             width: 50%;
             height: 50px;
             margin-left: 25%;
@@ -69,7 +63,6 @@
             font-weight: bold;
         }
 
-
         body {
             margin: 0;
             padding: 0;
@@ -77,7 +70,6 @@
             overflow-x: hidden;
             background-color: var(--cyan-Blue-color);
         }
-
 
         /* Home Page */
         body #home,#sign {
@@ -88,19 +80,15 @@
             justify-content: center;
             align-items: center;
         }
-
         body #home #home-logo {
             height: 95vh;
         }
-
-        body #home #home-text,
-        #sign-form {
+        body #home #home-text,#sign-form {
             height: 95vh;
             background-color: var(--second-color);
             border-radius: 16px;
             text-align: right;
         }
-
         body #home #home-text-text {
             height: 80%;
             display: flex;
@@ -108,39 +96,31 @@
             justify-content: center;
             align-items: center;
         }
-
         body #home #home-text-text a {
             color: var(--base-color);
         }
-
 
         /* Sign Page */
         body #sign #sign-form #menu-sign {
             height: 10vh;
         }
-
         body #sign #sign-form #menu-sign a {
             display: flex;
             justify-content: center;
             align-items: center;
             border-radius: 16px 16px 0px 0px;
         }
-
         body #sign #sign-form #menu-sign .active {
             background-color: var(--base-color);
         }
-
-        body #sign #signin,
-        #signup {
+        body #sign #signin,#signup {
             width: 80%;
             height: 85vh;
             margin-left: 10%;
         }
-
         body #sign p {
             color: var(--grey-color);
         }
-
 
         /* Assidbar */
         @media screen and (max-width: 1200px) {
@@ -150,23 +130,19 @@
                 z-index: 999;
                 display: none !important;
             }
-
             body #btn_assidBar {
                 display: block !important;
             }
         }
 
         /* Tables */
-        th,
-        td {
+        th,td {
             height: 50px;
         }
-
         tbody tr:hover {
             background-color: var(--second-color) !important;
             color: var(--white-color) !important;
         }
-
         tbody tr:hover a {
             color: var(--white-color) !important;
         }
@@ -196,7 +172,7 @@
             assidBar.style.removeProperty('display');
             assidBar.setAttribute("style", "display: none !important;");
         }
-    };
+    }
 </script>
 @yield('script')
 

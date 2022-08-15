@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('Name');
             $table->float('Dollar_value');
+            $table->integer('Activation');
             $table->timestamps();
-          
+
 
         });
     }
