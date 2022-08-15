@@ -24,7 +24,9 @@ return new class extends Migration
             $table->double('Debtor');
             $table->double('Creditor');
             $table->string('Currency');
+           
             $table->string('Statement');
+            $table->integer('Activation');
             $table->timestamps();
         });
     }

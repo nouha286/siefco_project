@@ -178,8 +178,7 @@
                         <input type="password" name="password" id="password_signin" placeholder="القن السري" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_password"></p>
                         <div>
-                            <label for="checked" class="h6">تذكرني</label>
-                            <input type="checkbox" class="mx-1" name="checked" id="checked">
+                            
                         </div>
                         <input type="submit" name="signin" value="تسجيل الدخول">
                     </form>

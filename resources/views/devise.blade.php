@@ -12,7 +12,7 @@
 
         <!-- Statistiques -->
         <div class="container-fluid py-4">
-            <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
+            <div class="card border-0 shadow-sm overflow-auto" style="min-height:350px; max-height:  350px; border-radius: 16px;">
                 @if (session('success_delete'))
 
                 <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
@@ -24,7 +24,7 @@
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="selectDevise" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
                             <option value="devise" selected>العملات</option>
-                            <option value="devise_deleted">العملات المحذوفين</option>
+                           
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
@@ -88,22 +88,89 @@
                                     @endif
                                 </tr>
                             </div>
-                            {{-- Desactivation --}}
-                                <tr class="item d-none desactivation">
+                       
+                        @endforeach
+                    </tbody>
+
+                    <!-- Modal Edit Devise -->
+                    <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form method="Post" action="{{ route('add.devise') }}" >
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column gap-4">
+                                        <input type="hidden" class="id_devise" name="Id" class="form-control">
+                                        <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                                        <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Edit Devise -->
+                </table>
+            </div>
+        </div>
+
+        <div class="container-fluid py-4 ">
+            <div class="card border-0 shadow-sm overflow-auto" style="min-height: 350px; max-height: 350px; border-radius: 16px;">
+                @if (session('success_restore'))
+
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                    {{ session('success_restore') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
+                    <div>
+                        <select class="form-select text-center fs-5 fw-bold" id="selectDevise" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
+                            
+                            <option value="devise_deleted">العملات المحذوفين</option>
+                        </select>
+                    </div>
+                    <div class="input-group me-3" style="width: 25%;">
+                        <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
+                        <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
+                    </div>
+                    
+
+                </div>
+                <table class="table mb-0 text-center">
+                    <thead>
+                        <tr>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">القيمة مقابل الدولار</th>
+                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(   $devise_deleted as $devise)
+                            {{-- Activation --}}
+                            <div id="devise">
+                                <tr class="item activation">
                                     @if($devise->Activation == 0)
-                                        <td class="col-2 d-flex gap-3">
+                                        <td class="col-2">
                                             <form action="{{ route('delete.devise',$devise->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
                                             </form>
-                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-                                        </td>
+                                             </td>
                                         <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
                                         <td class="name_devise col-5">{{$devise->Name}}</td>
                                         <td class="id_devise d-none">{{$devise->id}}</td>
                                     @endif
                                 </tr>
+                            </div>
+                       
                         @endforeach
                     </tbody>
 
@@ -150,21 +217,21 @@
                 })
             })
 
-            // Switch To Active AndDesctive Of Devise
-            var selectDevise = document.getElementById('selectDevise');
-            selectDevise.addEventListener('change', (event) =>{
-                var Activation = document.querySelector('.activation');
-                var Desactivation = document.querySelector('.desactivation');
-                var devise = document.querySelector('.devise');
-                if(selectDevise.value == "devise"){
-                    Activation.classList.remove("d-none");
-                    Desactivation.classList.add("d-none");
-                }
-                if(selectDevise.value == "devise_deleted"){
-                    Desactivation.classList.remove("d-none");
-                    Activation.classList.add("d-none");
-                }
-            })
+            // // Switch To Active AndDesctive Of Devise
+            // var selectDevise = document.getElementById('selectDevise');
+            // selectDevise.addEventListener('change', (event) =>{
+            //     var Activation = document.querySelector('.activation');
+            //     var Desactivation = document.querySelector('.desactivation');
+            //     var devise = document.querySelector('.devise');
+            //     if(selectDevise.value == "devise"){
+            //         Activation.classList.remove("d-none");
+            //         Desactivation.classList.add("d-none");
+            //     }
+            //     if(selectDevise.value == "devise_deleted"){
+            //         Desactivation.classList.remove("d-none");
+            //         Activation.classList.add("d-none");
+            //     }
+            // })
         </script>
 
         <!-- Copyright -->
