@@ -228,13 +228,13 @@
                         <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_conf_password_signup"></p>
                         <div class="d-flex flex-row-reverse justify-content-between align-items-center gap-3">
-                            <div>
+                            <div onsubmit="return (checkForm())" name="userForm">
                                 <label for="client" class="h6">زبون</label>
-                                <input id="client" name="role" value="Client" type="radio" onclick="n_identif_off()" required>
+                                <input id="client" name="role" value="Client" type="radio" onclick="n_identif_off()">
                             </div>
                             <div class="d-flex">
                                 <label for="employee" class="h6">مستخدم</label>
-                                <input id="employee" name="role" value="Employe" type="radio" onclick="n_identif_on()" required>
+                                <input id="employee" name="role" value="Employe" type="radio" onclick="n_identif_on()">
                             </div>
                             <div>
                                 <input type="text" name="n_identif" id="n_identif" placeholder="رقم التسجيل" class="border-0 col-form-label d-none" style="height: 35px;">
@@ -247,26 +247,24 @@
         </div>
     </div>
 </body>
-
 </html>
+
 
 <!-- index.js -->
 <script>
 
+    // Number Of Identification
+    function n_identif_on() {
+        const n_identif = document.getElementById('n_identif');
+        n_identif.classList.remove('d-none');
+        n_identif.classList.add('d-block');
+    }
 
-function n_identif_on() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-none');
-    n_identif.classList.add('d-block');
-}
-
-function n_identif_off() {
-    const n_identif = document.getElementById('n_identif');
-    n_identif.classList.remove('d-block');
-    n_identif.classList.add('d-none');
-}
-
-
+    function n_identif_off() {
+        const n_identif = document.getElementById('n_identif');
+        n_identif.classList.remove('d-block');
+        n_identif.classList.add('d-none');
+    }
 
     // Validation Form Sign Up
     const form_signup = document.getElementById('form_signup');

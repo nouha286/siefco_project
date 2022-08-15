@@ -4,11 +4,11 @@
 <div class="position-absolute w-100" style="height: 40vh; background-color: var(--second-color);"></div>
 <div class="d-flex flex-row-reverse gap-3 mx-3" style="height: 100vh;">
     <!-- AssidBar -->
-    @include('master.AssidBar');
+    @include('master.AssidBar')
 
     <div class="position-relative w-100">
         <!-- Navbar -->
-        @include('master.Navbar');
+        @include('master.Navbar')
 
         <!-- Statistiques -->
         <div class="container-fluid py-4">

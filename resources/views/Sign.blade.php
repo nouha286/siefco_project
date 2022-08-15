@@ -188,12 +188,11 @@
         </div>
     </div>
 </body>
-
 </html>
+
 
 <!-- index.js -->
 <script>
-
     // Validation Form Sign In
     const form_signin = document.getElementById('form_signin');
     const email_signin = document.getElementById('email_signin');
