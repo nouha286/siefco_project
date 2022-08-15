@@ -33,7 +33,7 @@
                 @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
-                        <select class="form-select text-center fs-4 fw-bold" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
+                        <select class="form-select text-center fs-5 fw-bold" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
                             <option value="">المستخدمون</option>
                             <option value="">المستخدمون الجدد</option>
                             <option value="">المستخدمون المحذوفين</option>

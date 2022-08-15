@@ -19,7 +19,7 @@ return new class extends Migration
             $table->float('Dollar_value');
             $table->integer('Activation');
             $table->timestamps();
-          
+
 
         });
     }

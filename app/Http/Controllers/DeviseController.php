@@ -11,32 +11,33 @@ class DeviseController extends Controller
     public function index()
     {
         $devise = Devise::all();
-
-        if (session()->has('role')) {
+        if(session()->has('role')) {
             return view('/devise')->with(['devise' => $devise]);
-        } else {
+        }
+        else{
             return redirect('/Sign');
         }
     }
+
     public function addDevise(Request $request)
-    { $edit=request('edit_add');
-        if ($edit) {
+    {
+        $edit = request('edit_add');
+        if($edit){
             $devise = Devise::where('id', $edit)->first();
             $devise->Name=request('Name');
         $devise->Dollar_Value=request('Value');
         $devise->save();
 
-        return redirect('/devise')->with('success_delete','تم تعديل العملة بنجاح');
+        return redirect('/devise');
       
         }else {
             $Devise = new devise();
             $Devise->Name = request('Name');
             $Devise->Dollar_value = request('Value');
-            $Devise->Activation=1;
             $Devise->save();
             return redirect('/devise')->with('success_delete','تم اظافةالعملة بنجاح') ;
         }
-        
+
     }
 
     public function deleteDevise($id)
@@ -47,9 +48,5 @@ class DeviseController extends Controller
         return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
     }
 
-    public function editDevise()
-    {
-         
-       
-    }
+    public function editDevise() {}
 }

@@ -4,11 +4,11 @@
 <div class="position-absolute w-100" style="height: 40vh; background-color: var(--second-color);"></div>
 <div class="d-flex flex-row-reverse gap-3 mx-3" style="height: 100vh;">
   <!-- AssidBar -->
-  @include('master.AssidBar');
+  @include('master.AssidBar')
 
   <div class="position-relative w-100">
     <!-- Navbar -->
-    @include('master.Navbar');
+    @include('master.Navbar')
 
     <!-- Statistiques -->
     <div class="container-fluid py-4">
@@ -69,22 +69,22 @@
             </tr>
           </thead>
           <tbody>
-            <?php for ($i = 0; $i < 8; $i++) : ?>
+            @foreach($client as $client)
               <tr>
                 <td class="col-1">
                   <a class="text-dark me-1" href=""><i class="bi bi-pen-fill"></i></a>
                   <a class="text-dark ms-1" href=""><i class="bi bi-trash3-fill"></i></a>
                 </td>
-                <td class="col-2"><?php echo "ابت"; ?></td>
-                <td class="col-1"><?php echo "ابت"; ?></td>
-                <td class="col-1"><?php echo "ابت"; ?></td>
-                <td class="col-1"><?php echo "ابت"; ?></td>
-                <td class="col-1"><?php echo "ابت"; ?></td>
-                <td class="col-2"><?php echo "ابت"; ?></td>
-                <td class="col-1"><?php echo "ابت"; ?></td>
-                <td class="col-1"><?php echo "ابت"; ?></td>
+                <td class="col-2">{{ $client->Statement }}</td>
+                <td class="col-1">{{ $client->Currency }}</td>
+                <td class="col-1">{{ $client->Creditor }}</td>
+                <td class="col-1">{{ $client->Debtor }}</td>
+                <td class="col-1">{{ $client->Blance }}</td>
+                <td class="col-2">{{ $client->Email }}</td>
+                <td class="col-1">{{ $client->Last_Name }}</td>
+                <td class="col-1">{{ $client->First_Name }}</td>
               </tr>
-            <?php endfor; ?>
+              @endforeach
           </tbody>
         </table>
       </div>
