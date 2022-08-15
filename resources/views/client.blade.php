@@ -14,46 +14,51 @@
     <div class="container-fluid py-4">
       <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
         <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-          <h4>الزبناء</h4>
-          <div class="input-group me-3" style="width: 25%;">
-            <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
-            <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
-          </div>
-         <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <i class="bi bi-plus-circle-fill h1"></i>
-                    </button>
+            <h4>الزبناء</h4>
+            <div class="input-group me-3" style="width: 25%;">
+                <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
+                <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
+            </div>
+            <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="bi bi-plus-circle-fill h1"></i>
+            </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form method="Post" action="{{ route('add.devise') }}">
-                                    @csrf
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body d-flex flex-column gap-4">
-                                    <input type="text" name="First_Name" class="form- " placeholder="*الاسم">
-                                        <input type="text" name="Last_Name" class="form-control " placeholder="*النسب">
-                                        <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                                        <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                                        <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
-                                        <input type="text" name="Password" class="form-control " placeholder="* الرصيد" style="height: 45px;">
-                                        <input type="text" name="Name" class="form-control" placeholder="*العملة" style="height: 45px;">
-                                        
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                        <button type="submit" class="btn btn-primary">حفظ</button>
-                                    </div>
-                                </form>
-
+            <!-- Modal Add Client -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <form method="Post" action="{{ route('add.devise') }}">
+                            @csrf
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                        </div>
+                            <div class="modal-body d-flex flex-column gap-4">
+                                <input type="text" name="First_Name" class="form- " placeholder="*الاسم">
+                                <input type="text" name="Last_Name" class="form-control " placeholder="*النسب">
+                                <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                                <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
+                                <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
+                                <input type="text" name="Password" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                                <div class="search_select_box w-100">
+                                    <select class="selectpicker w-100" name="devise" data-live-search="true">
+                                        @foreach ($devise as $devise) :
+                                            <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                <button type="submit" class="btn btn-primary">حفظ</button>
+                            </div>
+                        </form>
                     </div>
-
+                </div>
+            </div>
+            <!-- Modal Add Client -->
         </div>
+
         <table class="table mb-0 text-center">
           <thead>
             <tr>

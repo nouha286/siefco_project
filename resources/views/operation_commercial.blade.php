@@ -19,12 +19,57 @@
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
-                    <i class="bi bi-plus-circle-fill h1"></i>
+
+                    <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <i class="bi bi-plus-circle-fill h1"></i>
+                    </button>
+
+                    <!-- Modal Add Client -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form method="Post" action="{{ route('add.devise') }}">
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column gap-4">
+                                        <div class="search_select_box w-100">
+                                            <select class="selectpicker w-100" name="devise" data-live-search="true">
+                                                @foreach ($client as $client):
+                                                    <option value="{{ $client->id }}">{{ $client->First_Name }} {{ $client->Last_Name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                                        <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
+                                        <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
+                                        <input type="text" name="Password" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                                        <div class="search_select_box w-100">
+                                            <select class="selectpicker w-100" name="devise" data-live-search="true">
+                                                @foreach ($devise as $devise) :
+                                                    <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Modal Add Client -->
+
                 </div>
                 <table class="table mb-0 text-center">
                     <thead>
                         <tr>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
@@ -36,19 +81,23 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php for ($i = 0; $i < 8; $i++) : ?>
+                        @foreach($comercial_Operation as $comercial_Operation)
                             <tr>
-                                <td class="col-2"><?php echo "ابت"; ?></td>
-                                <td class="col-1"><?php echo "ابت"; ?></td>
-                                <td class="col-1"><?php echo "ابت"; ?></td>
-                                <td class="col-2"><?php echo "ابت"; ?></td>
-                                <td class="col-1"><?php echo "ابت"; ?></td>
-                                <td class="col-1"><?php echo "ابت"; ?></td>
-                                <td class="col-1"><?php echo "ابت"; ?></td>
-                                <td class="col-2"><?php echo "ابت"; ?></td>
-                                <td class="col-1"><?php echo "ابت"; ?></td>
+                                <td class="col-1">
+                                    <a class="text-dark me-1" href=""><i class="bi bi-pen-fill"></i></a>
+                                    <a class="text-dark ms-1" href=""><i class="bi bi-trash3-fill"></i></a>
+                                  </td>
+                                <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
+                                <td class="col-1">{{ $comercial_Operation->Currency }}</td>
+                                <td class="col-2">{{ $comercial_Operation->Date }}</td>
+                                <td class="col-1">{{ $comercial_Operation->Statement }}</td>
+                                <td class="col-1">{{ $comercial_Operation->Balance }}</td>
+                                <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
+                                <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
+                                <td class="col-2">{{ $comercial_Operation->Client_Name }}</td>
+                                <td class="col-1">{{ $comercial_Operation->id }}</td>
                             </tr>
-                        <?php endfor; ?>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
