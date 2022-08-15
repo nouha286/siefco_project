@@ -14,9 +14,10 @@ class AdminController extends Controller
     public function index()
     {
         $Admin = Admin::all();
+        $Admin_deleted = Admin::all();
 
         if (session()->has('role')) {
-            return view('/Administrateur')->with(['Admin' => $Admin]);
+            return view('/Administrateur')->with(['Admin' => $Admin, 'Admin_deleted' => $Admin_deleted]);
         } else {
             return redirect('/Sign');
         }
@@ -24,8 +25,8 @@ class AdminController extends Controller
     public function addAdmin(Request $request)
     {
 
-        
-        $edit = request('edit_add');
+
+        $edit = request('Id');
         if (Admin::where('email', request('Email'))->exists()) {
             $id = Admin::where('email', request('Email'))->first(['id'])->id;
         } else {
@@ -55,7 +56,7 @@ class AdminController extends Controller
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
                 $User->Phone = request('Phone');
-               
+
                 $User->password = bcrypt(request('Password'));
                 $User->save();
                 $Admin->save();
@@ -77,7 +78,7 @@ class AdminController extends Controller
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
                 $User->Phone = request('Phone');
-                
+
                 $User->password = bcrypt(request('Password'));
                 $User->save();
                 $Admin->save();
@@ -87,47 +88,62 @@ class AdminController extends Controller
             }
         } else {
 
-        $User=User::where('email',request('Email'))->first();
-       if ($User) {
-        return redirect('/Administrateur')->with('error','هذا الحساب سبق استعماله');
-       }else{
-        $Admin = new Admin();
-        $Admin->First_Name = request('First_Name');
-        $Admin->Last_Name = request('Last_Name');
-        $Admin->Number_phone = request('Phone');
-        $Admin->Email = request('Email');
-        $User=new User();
-        $User->First_Name=request('First_Name');
-            $User->Last_Name=request('Last_Name');
-            $User->email=request('Email');
-            $User->Phone=request('Phone');
-            $User->Role='Admin';
-            $User->password=bcrypt(request('Password'));
-            $User->Activation=1;
+            $User = User::where('email', request('Email'))->first();
+            if ($User) {
+                return redirect('/Administrateur')->with('error', 'هذا الحساب سبق استعماله');
+            } else {
+                $Admin = new Admin();
+                $Admin->First_Name = request('First_Name');
+                $Admin->Last_Name = request('Last_Name');
+                $Admin->Number_phone = request('Phone');
+                $Admin->Email = request('Email');
+                $Admin->Activation = 1;
+                $User = new User();
+                $User->First_Name = request('First_Name');
+                $User->Last_Name = request('Last_Name');
+                $User->email = request('Email');
+                $User->Phone = request('Phone');
+                $User->Role = 'Admin';
+                $User->password = bcrypt(request('Password'));
+                $User->Activation = 1;
 
-            $User->save();
-        $Admin->save();
-        FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));
+                $User->save();
+                $Admin->save();
+                FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));
 
-        return redirect('/Administrateur');
-       }}
-
+                return redirect('/Administrateur');
+            }
+        }
     }
 
     public function deleteAdmin($id)
     {
         $Admin = Admin::where('id', $id)->first();
-        $email=Admin::where('id', $id)->first(['Email'])->Email;
+        $email = Admin::where('id', $id)->first(['Email'])->Email;
 
+        if ($Admin->Activation == 1) {
+            $Admin->Activation = 0;
+            $Admin->save();
+        } elseif ($Admin->Activation == 0) {
+            $Admin->Activation = 1;
+            $Admin->save();
+        }
 
-        $User=User::where('email',$email)->first();
+        $User = User::where('email', $email)->first();
         if ($User) {
-            $User->Activation=0;
-        $User->Save();
-        $Admin->delete();
-        return redirect('/Administrateur')->with('success_delete','تم حذف المسؤول بنجاح');
-        }else {
-            return redirect('/Administrateur')->with('failed_delete','حدث خطا ما قد فشل الحذف ');
+            if ($User->Activation == 1) {
+                $User->Activation = 0;
+                $User->Save();
+                return redirect('/Administrateur')->with('success_restore', 'تم حذف المسؤول بنجاح');
+                }
+            if ($User->Activation == 0) {
+                $User->Activation = 1;
+                $User->Save();
+                return redirect('/Administrateur')->with('success_delete', 'تم استعادة المسؤول بنجاح');
+           
+            }
+        } else {
+            return redirect('/Administrateur')->with('failed_delete', 'حدث خطا ما قد فشل الحذف ');
         }
     }
 }

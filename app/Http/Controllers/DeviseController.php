@@ -11,21 +11,22 @@ class DeviseController extends Controller
     public function index()
     {
         $devise = Devise::all();
-        if(session()->has('role')) {
-            return view('/devise')->with(['devise' => $devise]);
-        }
-        else{
+        $devise_deleted = Devise::all();
+
+        if (session()->has('role')) {
+            return view('/devise')->with(['devise' => $devise,'devise_deleted' => $devise_deleted]);
+        } else {
             return redirect('/Sign');
         }
     }
-
     public function addDevise(Request $request)
-    {
-        $edit = request('edit_add');
-        if($edit){
+    { $edit=request('Id');
+        if ($edit) {
             $devise = Devise::where('id', $edit)->first();
             $devise->Name=request('Name');
         $devise->Dollar_Value=request('Value');
+       
+        
         $devise->save();
 
         return redirect('/devise');
@@ -34,19 +35,36 @@ class DeviseController extends Controller
             $Devise = new devise();
             $Devise->Name = request('Name');
             $Devise->Dollar_value = request('Value');
+            $Devise->Activation=1;
             $Devise->save();
-            return redirect('/devise')->with('success_delete','تم اظافةالعملة بنجاح') ;
+            return redirect('/devise')->with('success_delete','تم اظافة العملة بنجاح'.request('edit_add')) ;
         }
-
+        
     }
 
     public function deleteDevise($id)
     {
-        $devise = Devise::where('id', $id)->first();
-        $devise->Activation=0;
-        $devise->save();
-        return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
+        $devise = Devise::where('id', $id)->first(); 
+        if($devise->Activation==1)
+        {
+            $devise->Activation=0;
+            $devise->save();
+            return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
+        }
+
+        elseif($devise->Activation==0)
+        {
+            $devise->Activation=1;
+            $devise->save();
+            return redirect('/devise')->with('success_restore','تم استرجاع العملة بنجاح');
+        }
+        
+        
     }
 
-    public function editDevise() {}
+    public function editDevise()
+    {
+         
+       
+    }
 }

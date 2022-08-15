@@ -14,9 +14,10 @@ class EmployeController extends Controller
     public function index()
     {
         $Employee = Employees::all();
+        $Employee_deleted = Employees::all();
 
         if (session()->has('role')) {
-            return view('/Employees')->with(['Employee' => $Employee]);
+            return view('/Employees')->with(['Employee' => $Employee, 'Employee_deleted'=> $Employee_deleted]);
         } else {
             return redirect('/Sign');
         }
@@ -26,7 +27,7 @@ class EmployeController extends Controller
 
     public function addEmploye(Request $request)
     {
-        $edit = request('edit_add');
+        $edit = request('Id');
         if (Employees::where('email', request('Email'))->exists()) {
             $id = Employees::where('email', request('Email'))->first(['id'])->id;
         } else {
@@ -123,15 +124,29 @@ class EmployeController extends Controller
         $Employee = Employees::where('id', $id)->first();
         $email = Employees::where('id', $id)->first(['Email'])->Email;
 
-
+        if ($Employee->Activation == 1) {
+            $Employee->Activation = 0;
+            $Employee->save();
+        } elseif ($Employee->Activation == 0) {
+            $Employee->Activation = 1;
+            $Employee->save();
+        }
         $User = User::where('email', $email)->first();
         if ($User) {
-            $User->Activation = 0;
-            $User->Save();
-            $Employee->delete();
-            return redirect('/Employees')->with('success_delete', 'تم حذف المسؤول بنجاح');
+            if ($User->Activation == 1) {
+                $User->Activation = 0;
+                $User->Save();
+                return redirect('/Employees')->with('success_delete', 'تم حذف المستخدم بنجاح');
+           
+                }
+            if ($User->Activation == 0) {
+                $User->Activation = 1;
+                $User->Save();
+                return redirect('/Employees')->with('success_restore', 'تم استعادة المستخدم بنجاح');
+               
+            }
         } else {
-            return redirect('/Employees')->with('failed_delete', 'حدث خطا ما قد فشل الحذف   ');
-        };
+            return redirect('/Employees')->with('failed_delete', 'حدث خطا ما قد فشل الحذف ');
+        }
     }
 }

@@ -172,7 +172,7 @@
             assidBar.style.removeProperty('display');
             assidBar.setAttribute("style", "display: none !important;");
         }
-    };
+    }
 </script>
 @yield('script')
 
