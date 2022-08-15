@@ -63,14 +63,7 @@ Route::get('/interface_client', function () {
     }
 });
 
-Route::get('/operation_commercial', function () {
-    if (session()->has('role')) {
-        return view('/operation_commercial');
-    }
-    else{
-        return redirect('/Sign');
-    }
-});
+Route::get('/operation_commercial', 'OperationCommercialController@index');
 
 Route::get('/Sign', function () {
     if (session()->has('role')) {
