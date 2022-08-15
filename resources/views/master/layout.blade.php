@@ -196,7 +196,30 @@
             assidBar.style.removeProperty('display');
             assidBar.setAttribute("style", "display: none !important;");
         }
+
+        
     };
+    
+
+    var selectDevise = document.getElementById('selectDevise');
+            selectDevise.addEventListener('change', (event) =>{
+                alert(selectDevise.value);
+                if(selectDevise.value == "devise"){
+                    var Activation = document.getElementById('activation');
+                    var Desactivation = document.getElementById('desactivation');
+                    Activation.style.display='block';
+                    Desactivation.style.display='none';
+                }
+                else if(selectDevise.value == "devise_deleted"){
+                    var Activation = document.getElementById('activation');
+                    var Desactivation = document.getElementById('desactivation');
+                    Activation.style.display='none';
+                    Desactivation.style.display='block';
+                }
+                else{
+                    alert('ok');
+                }
+            })
 </script>
 @yield('script')
 

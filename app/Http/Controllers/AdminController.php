@@ -24,6 +24,68 @@ class AdminController extends Controller
     public function addAdmin(Request $request)
     {
 
+        
+        $edit = request('edit_add');
+        if (Admin::where('email', request('Email'))->exists()) {
+            $id = Admin::where('email', request('Email'))->first(['id'])->id;
+        } else {
+            $id = '';
+        }
+
+
+
+        if ($edit) {
+
+
+            $User = User::where('email', request('Email'))->first();
+            if ($User && $id != $edit) {
+                return redirect('/Administrateur')->with('error', 'هذا الحساب سبق استعماله');
+            } elseif ($User && $id == $edit) {
+
+
+                $Admin = Admin::where('id', $edit)->first();
+
+                $Admin->Last_Name = request('Last_Name');
+                $Admin->Email = request('Email');
+                $Admin->First_Name = request('First_Name');
+                $Admin->Number_phone = request('Phone');
+
+                $User = User::where('id', $edit)->first();
+                $User->First_Name = request('First_Name');
+                $User->Last_Name = request('Last_Name');
+                $User->email = request('Email');
+                $User->Phone = request('Phone');
+               
+                $User->password = bcrypt(request('Password'));
+                $User->save();
+                $Admin->save();
+
+
+                return redirect('/Administrateur')->with('success_delete', 'تم تعديل المسؤول بنجاح');
+            } elseif (!$User && $id != $edit) {
+
+
+                $Admin = Admin::where('id', $edit)->first();
+
+                $Admin->Last_Name = request('Last_Name');
+                $Admin->Email = request('Email');
+                $Admin->First_Name = request('First_Name');
+                $Admin->Number_phone = request('Phone');
+
+                $User = User::where('id', $edit)->first();
+                $User->First_Name = request('First_Name');
+                $User->Last_Name = request('Last_Name');
+                $User->email = request('Email');
+                $User->Phone = request('Phone');
+                
+                $User->password = bcrypt(request('Password'));
+                $User->save();
+                $Admin->save();
+
+
+                return redirect('/Administrateur')->with('success_delete', 'تم تعديل المسؤول بنجاح');
+            }
+        } else {
 
         $User=User::where('email',request('Email'))->first();
        if ($User) {
@@ -48,7 +110,7 @@ class AdminController extends Controller
         FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));
 
         return redirect('/Administrateur');
-       }
+       }}
 
     }
 

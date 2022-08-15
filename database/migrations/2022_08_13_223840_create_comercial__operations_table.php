@@ -13,16 +13,28 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('operation_commercials', function (Blueprint $table) {
+        Schema::create('comercial__operations', function (Blueprint $table) {
             $table->id();
-            $table->string('Client_Name');
+       
+            $table->double('Client_Name');
+            $table->foreignId('Client_id')->constrained('clients')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            
             $table->double('Debtor');
             $table->double('Creditor');
             $table->string('Balance');
             $table->string('Statement');
             $table->date('Date');
             $table->string('Currency');
-            $table->string('Employee_Name');
+            $table->foreignId('currency_id')->constrained('devises')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->string('Emloyee_Name');
+            
+           
+
+           
            
             $table->timestamps();
         });
@@ -35,6 +47,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('operation_commercials');
+        Schema::dropIfExists('comercial__operations');
     }
 };

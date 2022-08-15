@@ -15,22 +15,22 @@
         <div class="container-fluid py-4">
             <div class="card  border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
                 @if (session('success_delete'))
-                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-                        {{ session('success_delete') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                    {{ session('success_delete') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 @endif
                 @if (session('error'))
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 @endif
                 @if (session('failed_delete'))
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('failed_delete') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                    {{ session('failed_delete') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
                 @endif
                 <div class=" d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <h4>المسؤولين</h4>
@@ -83,21 +83,53 @@
                     </thead>
                     <tbody>
                         @foreach($Admin as $Admin)
-                            <tr class="mx-2">
-                                <td class="col-1">
-                                    <form action="{{ route('delete.Admin',$Admin->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-pen-fill"></i> </button>
-                                        <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
-                                    </form>
-                                </td>
-                                <td class="col-3">{{$Admin->Number_phone}}</td>
-                                <td class="col-4">{{$Admin->Email}}</td>
-                                <td class="col-2">{{$Admin->Last_Name}}</td>
-                                <td class="col-2">{{$Admin->First_Name}}</td>
-                            </tr>
+                        <tr class="mx-2">
+                            <td class="col-1 d-flex  gap-3">
+                                <form action="{{ route('delete.Admin',$Admin->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
+                                </form>
+                                <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+
+                            </td>
+                            <td class="col-3">{{$Admin->Number_phone}}</td>
+                            <td class="col-4">{{$Admin->Email}}</td>
+                            <td class="col-2">{{$Admin->Last_Name}}</td>
+                            <td class="col-2">{{$Admin->First_Name}}</td>
+                        </tr>
                         @endforeach
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form method="Post" action="{{ route('add.Admin') }}">
+                                        @csrf
+
+                                        <div class="modal-header ">
+                                            <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                        <input type="text" name="First_Name" class="form- mb-3" placeholder="*الاسم">
+                                        <input type="text" name="Last_Name" class="form-control mb-3" placeholder="*النسب">
+                                        <input type="email" name="Email" class="form-control mb-3" placeholder="*البريد الالكتروني">
+                                        <input type="text" name="Phone" class="form-control mb-3" placeholder="*رقم الهاتف">
+                                        
+                                            <input type="hidden" name="edit_add" class="form-control" value="2">
+                                        </div>
+
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                            <button type="submit" class="btn btn-primary">حفظ</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </tbody>
                 </table>
             </div>

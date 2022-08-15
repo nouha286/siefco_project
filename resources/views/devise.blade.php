@@ -14,7 +14,7 @@
         <div class="container-fluid py-4">
             <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
                 @if (session('success_delete'))
-
+      
                 <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
                     {{ session('success_delete') }}
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -22,6 +22,10 @@
                 @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <h4>العملات</h4>
+                    <select name="" id="selectDevise" >
+                        <option value="devise">devise_activé</option>
+                        <option selected value="devise_deleted">devise_desactivé</option>
+                    </select>
                     <div class="input-group me-3" style="width: 25%;">
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
@@ -64,8 +68,33 @@
                     </thead>
                     <tbody>
                         @foreach($devise as $devise)
-                        <tr>
+                        
+                        @if($devise->Activation==1)
+                        <tr id="activation">
                             <td class="col-2 d-flex  gap-3 ">
+                                <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                </form>
+                                
+                                    <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+
+                               
+                            </td>
+                            
+                            <td class="col-5">{{$devise->Dollar_value}}</td>
+                            <td class="col-5">{{$devise->Name}}</td>
+                            </tr> 
+                           @endif
+                          
+                           
+
+                     
+                      
+                        @if($devise->Activation==0)
+                        <tr class="bg-danger " id="desactivation">
+                        <td class="col-2 d-flex   gap-3 ">
                                 <form action="{{ route('delete.devise',$devise->id) }}" method="post">
                                     @csrf
                                     @method('DELETE')
@@ -76,11 +105,18 @@
                                    
                                     <button type="submit" class="btn " style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
 
-                              
+                               
+                            </td>
+                            
+                            <td class="col-5">{{$devise->Dollar_value}}</td>
+                            <td class="col-5">{{$devise->Name}}</td>
+                            </tr>
+                           @endif
+                      
+                        @endforeach
 
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                         <!-- Modal -->
+                         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <form method="Post" action="{{ route('add.devise') }}" >
@@ -105,16 +141,16 @@
                                         </div>
                                     </div>
                                 </div>
-                            </td>
-                            <td class="col-5">{{$devise->Dollar_value}}</td>
-                            <td class="col-5">{{$devise->Name}}</td>
-                        </tr>
-                        @endforeach
                     </tbody>
                 </table>
+                
+
             </div>
         </div>
 
+        <script>
+         
+        </script>
         <!-- Copyright -->
         <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
     </div>

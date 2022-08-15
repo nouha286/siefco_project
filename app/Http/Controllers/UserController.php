@@ -31,7 +31,8 @@ class UserController extends Controller
             $User->password=bcrypt(request('password'));
             $User->Activation=0;
             $identificateur=Identificateur::where('id',1)->first();
-            if (request('role')=='Employe') {
+            if (request('role')=='Employe') 
+            {
                 $N=Identificateur::where('id', 1 )->first(['Numéro'])->Numéro;
                 if ($N==request('n_identif')) {
                      $identificateur->Numéro=$N+5;

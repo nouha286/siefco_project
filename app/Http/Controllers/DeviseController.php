@@ -26,14 +26,15 @@ class DeviseController extends Controller
         $devise->Dollar_Value=request('Value');
         $devise->save();
 
-        return redirect('/devise');
+        return redirect('/devise')->with('success_delete','تم تعديل العملة بنجاح');
       
         }else {
             $Devise = new devise();
             $Devise->Name = request('Name');
             $Devise->Dollar_value = request('Value');
+            $Devise->Activation=1;
             $Devise->save();
-            return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح'.request('edit_add')) ;
+            return redirect('/devise')->with('success_delete','تم اظافةالعملة بنجاح') ;
         }
         
     }
@@ -41,7 +42,8 @@ class DeviseController extends Controller
     public function deleteDevise($id)
     {
         $devise = Devise::where('id', $id)->first();
-        $devise->delete();
+        $devise->Activation=0;
+        $devise->save();
         return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
     }
 
