@@ -36,6 +36,8 @@ Route::delete('/client/{id}','ClientController@deleteClient')->name('delete.Clie
 
 
 Route::get('/Dashboard','DashboardController@index');
+Route::post('/Dashboard/{id}','DashboardController@Activer')->name('Activer');
+Route::delete('Dashboard/{id}','DeviseController@Supprimer')->name('Supprimer');
 
 
 Route::get('/devise', 'DeviseController@index');

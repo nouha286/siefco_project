@@ -52,7 +52,7 @@ class ClientController extends Controller
                 $Client->Email = request('Email');
                 $Client->First_Name = request('First_Name');
                 $Client->Number_phone = request('Phone');
-                $Client->Number_phone = request('Balance');
+                $Client->Balance = request('Balance');
                 $id_devise=request('devise'); 
                 $devise = devise::where('id' , $id_devise)->first(['Name'])->Name;
                 $Client->Currency = $devise;
@@ -85,7 +85,7 @@ class ClientController extends Controller
                 $Client->Email = request('Email');
                 $Client->First_Name = request('First_Name');
                 $Client->Number_phone = request('Phone');
-                $Client->Number_phone = request('Balance');
+                $Client->Balance = request('Balance');
                 $id_devise=request('devise'); 
                 $devise = devise::where('id' , $id_devise)->first(['Name'])->Name;
                 $Client->Currency = $devise;
