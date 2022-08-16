@@ -25,11 +25,7 @@
                         <span class="{{ basename(URL::current()) == 'operation_commercial' ? 'text-light' : 'text-dark' }}">العمليات التجارية</span>
                     </a>
                 </li>
-                <li class="nav-item text-center {{ basename(URL::current()) == 'Administrateur' ? 'active' : '' }}">
-                    <a class="nav-link" href="Administrateur">
-                        <span class="{{ basename(URL::current()) == 'Administrateur' ? 'text-light' : 'text-dark' }}">المسؤولين</span>
-                    </a>
-                </li>
+              
                 <li class="nav-item text-center {{ basename(URL::current()) == 'Employees' ? 'active' : '' }}">
                     <a class="nav-link" href="Employees">
                         <span class="{{ basename(URL::current()) == 'Employees' ? 'text-light' : 'text-dark' }}">المستخدمون</span>

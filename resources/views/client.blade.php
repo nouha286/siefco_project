@@ -56,14 +56,15 @@
                     <input type="text" name="Last_Name" class="form-control " placeholder="*النسب">
                     <input type="text" name="Email" class="form-control " placeholder="*البريد الالكتروني">
                     <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                    <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
                     <input type="text" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                    <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
+                    <input type="text" name="Password_verif" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
                     <div class="search_select_box w-100">
-                      <select class="selectpicker w-100" name="devise" data-live-search="true">
-                        @foreach ($devise as $devise) :
-                        <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
-                        @endforeach
-                      </select>
+                        <select class="selectpicker w-100" name="devise" data-live-search="true">
+                            @foreach ($devise as $devise) :
+                                <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -174,30 +175,23 @@
 
     <div class="container-fluid py-4">
       <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
-        @if (session('success_delete'))
+        @if (session('success_restore'))
         <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-          {{ session('success_delete') }}
+          {{ session('success_restore') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        @if (session('error'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('error') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session('failed_delete'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('failed_delete') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
+
         <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
           <h4>الزبناء المحذوفين</h4>
           <div class="input-group me-3" style="width: 25%;">
             <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
             <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
           </div>
+          <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-plus-circle-fill h1"></i>
+          </button>
+
         </div>
 
         <table class="table mb-0 text-center">

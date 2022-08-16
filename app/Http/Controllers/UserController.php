@@ -7,10 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
 use App\Models\User;
+
+use App\Models\client;
 use Illuminate\Validation\Validator;
 use phpDocumentor\Reflection\Types\Null_;
 use Mail;
 use App\Mail\EmailVerificationMail;
+
 use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class UserController extends Controller
@@ -39,7 +42,7 @@ class UserController extends Controller
                      $identificateur->save();
                      $User->save();
                      FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
-                    return redirect('/Sign')->with('success','تم اظافة الحساب بنجاح');
+                    return redirect('/Sign')->with('success','   تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل ');
                 }else {
                     return redirect('/Sign_Up')->with('failed','المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح');
                 }
@@ -65,6 +68,7 @@ class UserController extends Controller
         $Role = User::where('email', $email )->first(['Role'])->Role;
        }else $Role='';
 
+       
     if ($resultat && $Role=='Client' )
     {
         $Last_Name=User::where('email',$email)->first('Last_Name')->Last_Name;
@@ -72,6 +76,8 @@ class UserController extends Controller
         $request->session()->put('role_client', $Role);
         $request->session()->put('First_Name',$First_Name);
         $request->session()->put('Last_Name',$Last_Name);
+        $User=Client::where('email',$email)->first('id')->id;
+        $request->session()->put('id',$User);
         return redirect('/interface_client');
     }
 
@@ -79,9 +85,12 @@ class UserController extends Controller
     {
         $Last_Name=User::where('email',$email)->first('Last_Name')->Last_Name;
         $First_Name=User::where('email',$email)->first('First_Name')->First_Name;
+    
         $request->session()->put('role', $Role);
         $request->session()->put('First_Name',$First_Name);
-        $request->session()->put('Last_Name',$Last_Name);
+        $request->session()->put('Last_Name',$Last_Name); 
+        $id = User::where('email', $email )->first(['id'])->id;
+       
         return redirect('/Dashboard');
     }
     if (!$resultat ) {
@@ -120,9 +129,12 @@ class UserController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('role');
+        $request->session()->forget('vérification');
+        $request->session()->forget('non_vérification');
         $request->session()->forget('role_client');
         $request->session()->forget('First_Name');
         $request->session()->forget('Last_Name');
+        $request->session()->forget('id');
         return Redirect('/Sign');
     }
 

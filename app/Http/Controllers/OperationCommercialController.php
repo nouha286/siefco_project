@@ -51,7 +51,7 @@ class OperationCommercialController extends Controller
             $Comercial_Operation->Creditor=request('Creditor');
             $client_Balance=client::where('id',$id)->first(['Balance'])->Balance;
             $Comercial_Operation->Balance=$client_Balance+request('Debtor')-request('Creditor');
-            $Comercial_Operation->Statement='Fait par '.session('First_Name').session('Last_Name').'pour Monsieur'.$client_First_Name.$client_Last_Name;
+            $Comercial_Operation->Statement='سجل   '.session('First_Name').' '.session('Last_Name').' عملية لاجل الزبون: السيد(ة) '.$client_First_Name.' '.$client_Last_Name;
             $id_devise=request('devise'); 
             $devise = devise::where('id' , $id_devise)->first(['Name'])->Name;
             $Comercial_Operation->Currency = $devise;
@@ -62,7 +62,7 @@ class OperationCommercialController extends Controller
             $client->Balance=$client_Balance+request('Debtor')-request('Creditor');
             $client->save();
             $Comercial_Operation->save();
-            return redirect('/operation_commercial')->with('success_delete','تم اظافة العملة بنجاح'.request('edit_add')) ;
+            return redirect('/operation_commercial')->with('success_delete','تم اظافة العملية بنجاح'.request('edit_add')) ;
         }
         
     }
@@ -74,14 +74,14 @@ class OperationCommercialController extends Controller
         {
             $Comercial_Operation->Activation=0;
             $Comercial_Operation->save();
-            return redirect('/operation_commercial')->with('success_delete','تم حذف العملة بنجاح');
+            return redirect('/operation_commercial')->with('success_delete','تم حذف العملية بنجاح');
         }
 
         elseif($Comercial_Operation->Activation==0)
         {
             $Comercial_Operation->Activation=1;
             $Comercial_Operation->save();
-            return redirect('/devise')->with('success_restore','تم استرجاع العملة بنجاح');
+            return redirect('/devise')->with('success_restore','تم استرجاع العملية بنجاح');
         }
         
         
