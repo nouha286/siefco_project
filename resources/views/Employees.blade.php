@@ -62,10 +62,9 @@
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <input type="text" name="First_Name" class="form-control" placeholder="*الاسم" style="height: 45px;">
                                         <input type="text" name="Last_Name" class="form-control" placeholder="*النسب" style="height: 45px;">
-                                        <input type="email" name="Email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
+                                        <input type="text" name="Email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
                                         <input type="text" name="Phone" class="form-control" placeholder="*رقم الهاتف" style="height: 45px;">
                                         <input type="text" name="Password" class="form-control" placeholder="*القن السري" style="height: 45px;">
-
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -85,7 +84,6 @@
                             <th class="col-4 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -100,10 +98,7 @@
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
                                 </form>
-
                                 <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-
-
                             </td>
                             @endif
                             <td class="id_devise d-none  col-2 ">{{$Employee->id}}</td>
@@ -111,8 +106,6 @@
                             <td class="Email col-4 ">{{$Employee->Email}}</td>
                             <td class="Last_Name col-2 ">{{$Employee->Last_Name}}</td>
                             <td class="First_Name col-2 First_Name">{{$Employee->First_Name}}</td>
-
-
                         </tr>
                         @endif
                         @endforeach
@@ -133,12 +126,9 @@
                                         <input type="hidden" class="id_devise" name="Id" >
                                             <input type="text" class="First_Name" name="First_Name" class="form-control mb-3 " placeholder="*الاسم" style="height: 45px;">
                                             <input type="text" class="Last_Name" name="Last_Name" class="form-control mb-3 " placeholder="*النسب" style="height: 45px;">
-                                            <input type="email" class="Email" name="Email" class="form-control mb-3 " placeholder="*البريد الالكتروني" style="height: 45px;">
+                                            <input type="text" class="Email" name="Email" class="form-control mb-3 " placeholder="*البريد الالكتروني" style="height: 45px;">
                                             <input type="text" class="Phone" name="Phone" class="form-control mb-3 " placeholder="*رقم الهاتف" style="height: 45px;">
-
                                         </div>
-
-
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
                                             <button type="submit" class="btn btn-primary">حفظ</button>
@@ -189,10 +179,6 @@
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
-
-
-
-
                 </div>
                 <table class="table mb-0 text-center" id="myTable">
                     <thead>
@@ -214,10 +200,7 @@
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i></button>
                                 </form>
-
-
                             </td>
-
                             <td class="Phone col-3 ">{{$Employee->Number_phone}}</td>
                             <td class="Email col-4 ">{{$Employee->Email}}</td>
                             <td class="Last_Name col-2 ">{{$Employee->Last_Name}}</td>
@@ -254,22 +237,6 @@
                     document.querySelector('#exampleModaledit .Phone').value = Phone;
                 })
             })
-
-            // // Switch To Active AndDesctive Of Devise
-            // var selectDevise = document.getElementById('selectDevise');
-            // selectDevise.addEventListener('change', (event) =>{
-            //     var Activation = document.querySelector('.activation');
-            //     var Desactivation = document.querySelector('.desactivation');
-            //     var devise = document.querySelector('.devise');
-            //     if(selectDevise.value == "devise"){
-            //         Activation.classList.remove("d-none");
-            //         Desactivation.classList.add("d-none");
-            //     }
-            //     if(selectDevise.value == "devise_deleted"){
-            //         Desactivation.classList.remove("d-none");
-            //         Activation.classList.add("d-none");
-            //     }
-            // })
         </script>
 
         <!-- Copyright -->

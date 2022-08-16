@@ -56,7 +56,7 @@
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <input type="text" name="First_Name" class="form-control" placeholder="*الاسم">
                                         <input type="text" name="Last_Name" class="form-control" placeholder="*النسب">
-                                        <input type="email" name="Email" class="form-control" placeholder="*البريد الالكتروني">
+                                        <input type="text" name="Email" class="form-control" placeholder="*البريد الالكتروني">
                                         <input type="text" name="Phone" class="form-control" placeholder="*رقم الهاتف">
                                         <input type="text" name="Password" class="form-control" placeholder="*القن السري">
                                     </div>
@@ -120,7 +120,7 @@
                                             <input type="hidden" class="id_devise" name="Id" >
                                             <input type="text" class="First_Name" name="First_Name" class="form- mb-3" placeholder="*الاسم">
                                             <input type="text" class="Last_Name" name="Last_Name" class="form-control mb-3" placeholder="*النسب">
-                                            <input type="email" class="Email" name="Email" class="form-control mb-3" placeholder="*البريد الالكتروني">
+                                            <input type="text" class="Email" name="Email" class="form-control mb-3" placeholder="*البريد الالكتروني">
                                             <input type="text" class="Phone" name="Phone" class="form-control mb-3" placeholder="*رقم الهاتف">
                                             <input type="hidden" name="edit_add" class="form-control" value="2">
                                         </div>
@@ -219,22 +219,6 @@
                     document.querySelector('#exampleModaledit .Phone').value = Phone;
                 })
             })
-
-            // // Switch To Active AndDesctive Of Devise
-            // var selectDevise = document.getElementById('selectDevise');
-            // selectDevise.addEventListener('change', (event) =>{
-            //     var Activation = document.querySelector('.activation');
-            //     var Desactivation = document.querySelector('.desactivation');
-            //     var devise = document.querySelector('.devise');
-            //     if(selectDevise.value == "devise"){
-            //         Activation.classList.remove("d-none");
-            //         Desactivation.classList.add("d-none");
-            //     }
-            //     if(selectDevise.value == "devise_deleted"){
-            //         Desactivation.classList.remove("d-none");
-            //         Activation.classList.add("d-none");
-            //     }
-            // })
         </script>
         <!-- Copyright -->
         <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>

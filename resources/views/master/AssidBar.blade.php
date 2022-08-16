@@ -56,3 +56,12 @@
         </div>
     </aside>
 </div>
+
+<style>
+    body .active{
+        background-color: var(--second-color);
+        border-radius: 50px 0 0 50px;
+        width: 226px;
+        padding: 6px 0px;
+    }
+</style>

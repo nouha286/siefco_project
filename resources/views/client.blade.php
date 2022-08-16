@@ -54,7 +54,7 @@
                   <div class="modal-body d-flex flex-column gap-4">
                     <input type="text" name="First_Name" class="form- " placeholder="*الاسم">
                     <input type="text" name="Last_Name" class="form-control " placeholder="*النسب">
-                    <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                    <input type="text" name="Email" class="form-control " placeholder="*البريد الالكتروني">
                     <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
                     <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
                     <input type="text" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
@@ -93,6 +93,23 @@
             </tr>
           </thead>
           <tbody>
+            <script>
+                // Switch To Active AndDesctive Of Devise
+                // var selectDevise = document.getElementById('selectDevise');
+                // selectDevise.addEventListener('change', (event) =>{
+                //     var Activation = document.querySelector('.activation');
+                //     var Desactivation = document.querySelector('.desactivation');
+                //     var devise = document.querySelector('.devise');
+                //     if(selectDevise.value == "devise"){
+                //         Activation.classList.remove("d-none");
+                //         Desactivation.classList.add("d-none");
+                //     }
+                //     if(selectDevise.value == "devise_deleted"){
+                //         Desactivation.classList.remove("d-none");
+                //         Activation.classList.add("d-none");
+                //     }
+                // })
+            </script>
             @foreach($client as $client)
             @if($client->Activation==1)
             <tr class="item">
@@ -133,7 +150,7 @@
                   <input type="hidden" class="id_devise" name="Id">
                   <input type="text" class="First_Name" name="First_Name" class="form- " placeholder="*الاسم">
                   <input type="text" class="Last_Name" name="Last_Name" class="form-control " placeholder="*النسب">
-                  <input type="email"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                  <input type="text"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
                   <input type="text" class="Phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
                   <input type="text" class="Balance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
                   <select class="devise" class="selectpicker w-100" name="devise" data-live-search="true">
@@ -249,22 +266,6 @@
                     document.querySelector('#exampleModaledit .Devise').value = Devise;
                 })
             })
-
-            // // Switch To Active AndDesctive Of Devise
-            // var selectDevise = document.getElementById('selectDevise');
-            // selectDevise.addEventListener('change', (event) =>{
-            //     var Activation = document.querySelector('.activation');
-            //     var Desactivation = document.querySelector('.desactivation');
-            //     var devise = document.querySelector('.devise');
-            //     if(selectDevise.value == "devise"){
-            //         Activation.classList.remove("d-none");
-            //         Desactivation.classList.add("d-none");
-            //     }
-            //     if(selectDevise.value == "devise_deleted"){
-            //         Desactivation.classList.remove("d-none");
-            //         Activation.classList.add("d-none");
-            //     }
-            // })
         </script>
     <!-- Copyright -->
     <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
