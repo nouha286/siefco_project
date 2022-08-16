@@ -134,16 +134,25 @@
         }
 
         /* Assidbar */
+        body #assidBar{
+            width: 270px;
+        }
         @media screen and (max-width: 1200px) {
-            body #assidBar {
-                width: 250px;
+            body #assidBar{
                 position: absolute !important;
                 z-index: 999;
                 display: none !important;
             }
-            body #btn_assidBar {
+            body #btn_assidBar{
                 display: block !important;
             }
+        }
+
+        body .active{
+            background-color: var(--second-color);
+            border-radius: 50px 0 0 50px;
+            width: 226px;
+            padding: 6px 0px;
         }
 
         /* Tables */
