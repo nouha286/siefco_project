@@ -2,7 +2,7 @@
 # Introduction
 
 Hello {{$User->First_Name}},
-
+<img src="../resources/views/Asset/logo.png">
 @component('mail::button', ['url' => route('verify_email',$User->id)])
 Click here to verify your email address
 @endcomponent

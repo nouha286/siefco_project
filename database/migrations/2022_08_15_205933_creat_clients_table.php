@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('Last_Name');
             $table->string('Email');
             $table->string('Balance');
-
+            $table->string('Number_phone');
             $table->double('Debtor');
             $table->double('Creditor');
             $table->string('Currency');

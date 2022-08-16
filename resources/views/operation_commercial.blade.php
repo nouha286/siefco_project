@@ -28,7 +28,7 @@
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" action="{{ route('add.devise') }}">
+                                <form method="Post" action="{{ route('add.Operation') }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
@@ -36,17 +36,15 @@
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <div class="search_select_box w-100">
-                                            <select class="selectpicker w-100" name="devise" data-live-search="true">
+                                            <select class="selectpicker w-100" name="Client_id" data-live-search="true">
                                                 @foreach ($client as $client):
                                                     <option value="{{ $client->id }}">{{ $client->First_Name }} {{ $client->Last_Name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                                        <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                                        <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
-                                        <input type="text" name="Password" class="form-control " placeholder="* الرصيد" style="height: 45px;">
-                                        <div class="search_select_box w-100">
+                                        <input type="text" name="Creditor" class="form-control " placeholder="مدين">
+                                        <input type="text" name="Debtor" class="form-control " placeholder="* دائن">
+                                      <div class="search_select_box w-100">
                                             <select class="selectpicker w-100" name="devise" data-live-search="true">
                                                 @foreach ($devise as $devise) :
                                                     <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
@@ -68,14 +66,15 @@
                 <table class="table mb-0 text-center">
                     <thead>
                         <tr>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
+                           
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">اسم الزبون</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم العمليات</th>
                         </tr>
@@ -83,13 +82,10 @@
                     <tbody>
                         @foreach($comercial_Operation as $comercial_Operation)
                             <tr>
-                                <td class="col-1">
-                                    <a class="text-dark me-1" href=""><i class="bi bi-pen-fill"></i></a>
-                                    <a class="text-dark ms-1" href=""><i class="bi bi-trash3-fill"></i></a>
-                                  </td>
+                               
                                 <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
                                 <td class="col-1">{{ $comercial_Operation->Currency }}</td>
-                                <td class="col-2">{{ $comercial_Operation->Date }}</td>
+                                <td class="col-2">{{ $comercial_Operation->created_at}}</td>
                                 <td class="col-1">{{ $comercial_Operation->Statement }}</td>
                                 <td class="col-1">{{ $comercial_Operation->Balance }}</td>
                                 <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
