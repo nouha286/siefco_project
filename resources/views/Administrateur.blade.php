@@ -105,28 +105,25 @@
                         </tr>
                         @endif
                         @endforeach
-                        <!-- Modal -->
+
+                        <!-- Modal Edit Admin -->
                         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <form method="Post" action="{{ route('add.Admin') }}">
                                         @csrf
-
                                         <div class="modal-header ">
                                             <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body d-flex flex-column gap-4">
-                                        <input type="hidden" class="id_devise" name="Id" >
-                                        <input type="text" class="First_Name" name="First_Name" class="form- mb-3" placeholder="*الاسم">
-                                        <input type="text" class="Last_Name" name="Last_Name" class="form-control mb-3" placeholder="*النسب">
-                                        <input type="email" class="Email" name="Email" class="form-control mb-3" placeholder="*البريد الالكتروني">
-                                        <input type="text" class="Phone" name="Phone" class="form-control mb-3" placeholder="*رقم الهاتف">
-                                        
+                                            <input type="hidden" class="id_devise" name="Id" >
+                                            <input type="text" class="First_Name" name="First_Name" class="form- mb-3" placeholder="*الاسم">
+                                            <input type="text" class="Last_Name" name="Last_Name" class="form-control mb-3" placeholder="*النسب">
+                                            <input type="email" class="Email" name="Email" class="form-control mb-3" placeholder="*البريد الالكتروني">
+                                            <input type="text" class="Phone" name="Phone" class="form-control mb-3" placeholder="*رقم الهاتف">
                                             <input type="hidden" name="edit_add" class="form-control" value="2">
                                         </div>
-
-
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
                                             <button type="submit" class="btn btn-primary">حفظ</button>
@@ -135,15 +132,14 @@
                                 </div>
                             </div>
                         </div>
-
-
+                        <!-- Modal Edit Admin -->
                     </tbody>
                 </table>
             </div>
         </div>
-        @if(session('role')=='Admin')
 
-        <!-- AdminSupprimé -->
+        @if(session('role')=='Admin')
+        <!-- Admin Supprimé -->
         <div class="container-fluid py-4">
             <div class="card  border-0 shadow-sm overflow-auto" style="min-height: 350px; max-height: 350px; border-radius: 16px;">
                 @if (session('success_restore'))
@@ -170,8 +166,6 @@
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
-                 
-
                 </div>
                 <table class="table  mb-0 text-center">
                     <thead>
@@ -193,8 +187,6 @@
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
                                 </form>
-                 
-
                             </td>
                             <td class="col-3">{{$Admin->Number_phone}}</td>
                             <td class="col-4">{{$Admin->Email}}</td>
@@ -203,9 +195,6 @@
                         </tr>
                         @endif
                         @endforeach
-                     
-
-
                     </tbody>
                 </table>
             </div>

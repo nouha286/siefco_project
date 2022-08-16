@@ -48,7 +48,7 @@
                 <form method="Post" action="{{ route('add.Client') }}">
                   @csrf
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">اظافة زبون</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body d-flex flex-column gap-4">
@@ -102,14 +102,8 @@
                   @method('DELETE')
                   <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
                 </form>
-
                 <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-
-
               </td>
-
-
-
               <td class="col-2">{{ $client->Statement }}</td>
               <td class="col-1 Devise">{{ $client->Currency }}</td>
               <td class="col-1">{{ $client->Creditor }}</td>
@@ -131,9 +125,8 @@
             <div class="modal-content">
               <form method="Post" action="{{ route('add.Client') }}">
                 @csrf
-
                 <div class="modal-header ">
-                  <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                  <h5 class="modal-title " id="exampleModalLabel">اظافة زبون</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body  d-flex flex-column gap-4 ">
@@ -149,8 +142,6 @@
                         @endforeach
                       </select>
                 </div>
-
-
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
                   <button type="submit" class="btn btn-primary">حفظ</button>
@@ -185,15 +176,11 @@
         </div>
         @endif
         <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-          <h4>الزبناء</h4>
+          <h4>الزبناء المحذوفين</h4>
           <div class="input-group me-3" style="width: 25%;">
             <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
             <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
           </div>
-          <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-plus-circle-fill h1"></i>
-          </button>
-
         </div>
 
         <table class="table mb-0 text-center">
@@ -221,12 +208,7 @@
                   @method('DELETE')
                   <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
                 </form>
-
-                
               </td>
-
-
-
               <td class="col-2">{{ $client->Statement }}</td>
               <td class="col-1 Devise">{{ $client->Currency }}</td>
               <td class="col-1">{{ $client->Creditor }}</td>
@@ -242,7 +224,7 @@
             @endforeach
           </tbody>
         </table>
-      
+
       </div>
     </div>
     <script>

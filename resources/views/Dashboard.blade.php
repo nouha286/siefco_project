@@ -49,32 +49,26 @@
             </div>
         </div>
 
-        <div class="container-fluid py-4">
+        <div class="container-fluid">
             <div class="card border-0 shadow-sm overflow-auto" style="min-height: 350px; max-height: 350px; border-radius: 16px;">
                 @if (session('success_delete'))
-                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-                    {{ session('success_delete') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                        {{ session('success_delete') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endif
                 @if (session('error'))
-                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
+                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                        {{ session('error') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 @endif
                 @if (session('failed_delete'))
-                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                    {{ session('failed_delete') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
-                <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-                    <div>
-                        
+                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                        {{ session('failed_delete') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
-                   
-                
+                @endif
                 <table class="table mb-0 text-center" id="myTable">
                     <thead>
                         <tr>
@@ -84,19 +78,14 @@
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الدور</th>
-                            
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($User as $User)
-                        
-                       
                         <tr class="item">
-                    
                             <td class="  col-1 d-flex gap-2">
                                 <form action="{{route('Activer',$User->id)}}" method="post">
                                     @csrf
-                                    
                                     <button class="btn bg-success" style="border:none; color:white; background-color:white;" type="submit">Activer </button>
                                 </form>
                                 <form action="{{route('Supprimer',$User->id)}}" method="post">
@@ -104,26 +93,15 @@
                                     @method('DELETE')
                                     <button type="submit" class="btn bg-danger btn-edit" style="background-color:white; color:white; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit">Supprimer</button>
                                 </form>
-                                  
-
                             </td>
-                         
-                           
                             <td class="Phone col-3 ">{{$User->Phone}}</td>
                             <td class="email col-4 ">{{$User->email}}</td>
                             <td class="Last_Name col-2 ">{{$User->Last_Name}}</td>
                             <td class="First_Name col-2 First_Name">{{$User->First_Name}}</td>
                             <td class="First_Name col-2 First_Name">{{$User->Role}}</td>
-                            
-                           
-                            
                         </tr>
-                        
                         @endforeach
-                       
                     </tbody>
-              
-
         <!-- Copyright -->
         <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
     </div>

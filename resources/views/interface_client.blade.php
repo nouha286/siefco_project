@@ -15,7 +15,7 @@
             <div class="d-flex flex-column justify-content-center align-items-center py-5 gap-4">
                 <img src="../resources/views/Asset/avatar.png" style="width: 90%;" alt="logo">
                 <span>@if (session()->has('name')) {{{session('name')}}}@endif </span>
-                <span>الرصي د</span>
+                <span>الرصيد</span>
                 <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">0</span></span>
                 <span>البريد الالكتروني</span>
                 <span>رقم الهاتف</span>
@@ -32,7 +32,7 @@
 
     <div class="position-relative w-100">
         <!-- Navbar -->
-        @include('master.Navbar');
+        @include('master.Navbar')
 
         <!-- Statistiques -->
         <div class="container-fluid py-4">

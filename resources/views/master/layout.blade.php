@@ -135,7 +135,7 @@
 
         /* Assidbar */
         body #assidBar{
-            width: 270px;
+            width: 280px;
         }
         @media screen and (max-width: 1200px) {
             body #assidBar{

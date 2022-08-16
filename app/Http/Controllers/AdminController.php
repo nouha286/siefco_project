@@ -36,19 +36,14 @@ class AdminController extends Controller
 
 
         if ($edit) {
-
-
             $User = User::where('email', request('Email'))->first();
             if ($User && $id != $edit) {
                 return redirect('/Administrateur')->with('error', 'هذا الحساب سبق استعماله');
             } elseif ($User && $id == $edit) {
-
-
                 $Admin = Admin::where('id', $edit)->first();
-
+                $Admin->First_Name = request('First_Name');
                 $Admin->Last_Name = request('Last_Name');
                 $Admin->Email = request('Email');
-                $Admin->First_Name = request('First_Name');
                 $Admin->Number_phone = request('Phone');
 
                 $User = User::where('id', $edit)->first();
@@ -60,17 +55,13 @@ class AdminController extends Controller
                 $User->password = bcrypt(request('Password'));
                 $User->save();
                 $Admin->save();
-
 
                 return redirect('/Administrateur')->with('success_delete', 'تم تعديل المسؤول بنجاح');
             } elseif (!$User && $id != $edit) {
-
-
                 $Admin = Admin::where('id', $edit)->first();
-
+                $Admin->First_Name = request('First_Name');
                 $Admin->Last_Name = request('Last_Name');
                 $Admin->Email = request('Email');
-                $Admin->First_Name = request('First_Name');
                 $Admin->Number_phone = request('Phone');
 
                 $User = User::where('id', $edit)->first();
@@ -82,8 +73,6 @@ class AdminController extends Controller
                 $User->password = bcrypt(request('Password'));
                 $User->save();
                 $Admin->save();
-
-
                 return redirect('/Administrateur')->with('success_delete', 'تم تعديل المسؤول بنجاح');
             }
         } else {
@@ -140,7 +129,7 @@ class AdminController extends Controller
                 $User->Activation = 1;
                 $User->Save();
                 return redirect('/Administrateur')->with('success_delete', 'تم استعادة المسؤول بنجاح');
-           
+
             }
         } else {
             return redirect('/Administrateur')->with('failed_delete', 'حدث خطا ما قد فشل الحذف ');
