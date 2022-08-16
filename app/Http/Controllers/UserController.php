@@ -29,7 +29,7 @@ class UserController extends Controller
             $User->Phone=request('phone');
             $User->Role=request('role');
             $User->password=bcrypt(request('password'));
-            $User->Activation=0;
+            $User->Activation=2;
             $identificateur=Identificateur::where('id',1)->first();
             if (request('role')=='Employe') 
             {
