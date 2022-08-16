@@ -22,34 +22,35 @@ Route::get('/', function () {
     }
 });
 
-Route::get('/Administrateur','AdminController@index');
-Route::post('/Administrateur','AdminController@addAdmin')->name('add.Admin');
-Route::delete('/Administrateur/{id}','AdminController@deleteAdmin')->name('delete.Admin');
+// Route::get('/Administrateur','AdminController@index');
+// Route::post('/Administrateur','AdminController@addAdmin')->name('add.Admin');
+// Route::delete('/Administrateur/{id}','AdminController@deleteAdmin')->name('delete.Admin');
 
 
-
+//routes for client
 Route::get('/client', 'ClientController@index');
 Route::post('/client','ClientController@addClient')->name('add.Client');
 Route::delete('/client/{id}','ClientController@deleteClient')->name('delete.Client');
 
 
-
+//for dashboard
 
 Route::get('/Dashboard','DashboardController@index');
 Route::post('/Dashboard/{id}','DashboardController@Activer')->name('Activer');
-Route::delete('Dashboard/{id}','DeviseController@Supprimer')->name('Supprimer');
+Route::delete('Dashboard/{id}','DashboardController@Supprimer')->name('Supprimer');
 
-
+//for devise
 Route::get('/devise', 'DeviseController@index');
 Route::post('/devise','DeviseController@addDevise')->name('add.devise');
 Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
 //
 //
-
+//for Employee
 Route::get('/Employees', 'EmployeController@index');
 Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');
 Route::delete('Employees/{id}','EmployeController@deleteEmploye')->name('delete.Employe');
 
+//for home
 Route::get('/home', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
@@ -59,19 +60,18 @@ Route::get('/home', function () {
     }
 });
 
-Route::get('/interface_client', function () {
-    if (session()->has('role_client')) {
-        return view('/interface_client');
-    }
-    else{
-        return redirect('/Sign');
-    }
-});
 
+//for interface
+Route::get('/interface_client', 'interface_clientController@index');
+
+//for  operation
 Route::get('/operation_commercial', 'OperationCommercialController@index');
 Route::post('/operation_commercial','OperationCommercialController@addOperation')->name('add.Operation');
-Route::delete('Employees/{id}','EmployeController@deleteOperation')->name('delete.Operation');
+Route::delete('operation_commercial/{id}','OperationCommercialController@deleteOperation')->name('delete.Operation');
 
+
+
+//for sign
 Route::get('/Sign', function () {
     if (session()->has('role')) {
         return redirect('Dashboard');
@@ -84,6 +84,9 @@ Route::get('/Sign', function () {
     }
 });
 Route::post('/Sign','UserController@connexion' )->name('connexion.auth');
+
+
+//for sign up
 
 Route::get('/Sign_Up', function () {
     if (session()->has('role')) {

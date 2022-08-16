@@ -65,7 +65,7 @@
                                         <input type="email" name="Email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
                                         <input type="text" name="Phone" class="form-control" placeholder="*رقم الهاتف" style="height: 45px;">
                                         <input type="text" name="Password" class="form-control" placeholder="*القن السري" style="height: 45px;">
-
+                                        <input type="text" name="Password_verif" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -118,7 +118,7 @@
                         @endforeach
                        
                     </tbody>
-                     <!-- Modal -->
+                     <!-- Modal edit -->
                      <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
@@ -165,25 +165,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
-                @if (session('error'))
-                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                    {{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
-                @if (session('failed_delete'))
-                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                    {{ session('failed_delete') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                @endif
+              
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
-                        <select class="form-select text-center fs-5 fw-bold" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            <option value="">المستخدمون</option>
-                            <option value="">المستخدمون الجدد</option>
-                            <option value="">المستخدمون المحذوفين</option>
-                        </select>
+                       <h4> المستخدمون</h4>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">

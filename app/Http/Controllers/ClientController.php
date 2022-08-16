@@ -60,9 +60,11 @@ class ClientController extends Controller
                 $Client->Debtor=0;
                 $Client->Creditor=0;
                 $Client->Statement='Crée par'.session('role');
+                $email = client::where('id', $edit)->first(['Email'])->Email;
+             
+                $User=User::where('email',$email)->first();
 
-
-                $User = User::where('id', $edit)->first();
+              
                 $User->First_Name = request('First_Name');
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
@@ -73,11 +75,9 @@ class ClientController extends Controller
                 $Client->save();
 
 
-                return redirect('/client')->with('success_delete', 'تم تعديل المسؤول بنجاح');
+                return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
             } elseif (!$User && $id != $edit) {
 
-
-                $Client = client::where('id', $edit)->first();
 
                 $Client = client::where('id', $edit)->first();
 
@@ -92,7 +92,10 @@ class ClientController extends Controller
                 $Client->Debtor=0;
                 $Client->Creditor=0;
                 $Client->Statement='Crée par'.session('role');
-                $User = User::where('id', $edit)->first();
+               
+                 $email = client::where('id', $edit)->first(['Email'])->Email;
+                 
+                $User=User::where('email',$email)->first();
                 $User->First_Name = request('First_Name');
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
@@ -103,7 +106,7 @@ class ClientController extends Controller
                 $Client->save();
 
 
-                return redirect('/client')->with('success_delete', 'تم تعديل المسؤول بنجاح');
+                return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
             }
         } else {
 
@@ -163,14 +166,14 @@ class ClientController extends Controller
         if ($User) {
             if ($User->Activation == 1) {
                 $User->Activation = 0;
-                $User->Save();
-                return redirect('/client')->with('success_delete', 'تم حذف المستخدم بنجاح');
+                $User->save();
+                return redirect('/client')->with('success_delete', 'تم حذف الزبون بنجاح');
            
                 }
             if ($User->Activation == 0) {
                 $User->Activation = 1;
-                $User->Save();
-                return redirect('/client')->with('success_restore', 'تم استعادة المستخدم بنجاح');
+                $User->save();
+                return redirect('/client')->with('success_restore', 'تم استعادة الزبون بنجاح');
                
             }
         } else {
