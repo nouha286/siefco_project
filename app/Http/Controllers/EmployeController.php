@@ -40,6 +40,7 @@ class EmployeController extends Controller
 
 
             $User = User::where('email', request('Email'))->first();
+            
             if ($User && $id != $edit) {
                 return redirect('/Employees')->with('error', 'هذا الحساب سبق استعماله');
             } elseif ($User && $id == $edit) {
@@ -52,7 +53,9 @@ class EmployeController extends Controller
                 $Employee->First_Name = request('First_Name');
                 $Employee->Number_phone = request('Phone');
 
-                $User = User::where('id', $edit)->first();
+                $email = Employees::where('id', $edit)->first(['Email'])->Email;
+               
+                $User=User::where('email',$email)->first();
                 $User->First_Name = request('First_Name');
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
@@ -63,7 +66,7 @@ class EmployeController extends Controller
                 $Employee->save();
 
 
-                return redirect('/Employees')->with('success_delete', 'تم تعديل المسؤول بنجاح');
+                return redirect('/Employees')->with('success_delete', 'تم تعديل المستخدم بنجاح');
             } elseif (!$User && $id != $edit) {
 
 
@@ -74,7 +77,9 @@ class EmployeController extends Controller
                 $Employee->First_Name = request('First_Name');
                 $Employee->Number_phone = request('Phone');
 
-                $User = User::where('id', $edit)->first();
+                $email = Employees::where('id', $edit)->first(['Email'])->Email;
+              
+                $User=User::where('email',$email)->first();
                 $User->First_Name = request('First_Name');
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
@@ -85,7 +90,7 @@ class EmployeController extends Controller
                 $Employee->save();
 
 
-                return redirect('/Employees')->with('success_delete', 'تم تعديل المسؤول بنجاح');
+                return redirect('/Employees')->with('success_delete', 'تم تعديل المستخدم بنجاح');
             }
         } else {
 
@@ -101,6 +106,7 @@ class EmployeController extends Controller
                 $Employee->Number_phone = request('Phone');
                 $Employee->Email = request('Email');
                 $Employee->Activation = 1;
+
                 $User = new User();
                 $User->First_Name = request('First_Name');
                 $User->Last_Name = request('Last_Name');
