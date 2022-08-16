@@ -94,23 +94,6 @@
             </tr>
           </thead>
           <tbody>
-            <script>
-                // Switch To Active AndDesctive Of Devise
-                // var selectDevise = document.getElementById('selectDevise');
-                // selectDevise.addEventListener('change', (event) =>{
-                //     var Activation = document.querySelector('.activation');
-                //     var Desactivation = document.querySelector('.desactivation');
-                //     var devise = document.querySelector('.devise');
-                //     if(selectDevise.value == "devise"){
-                //         Activation.classList.remove("d-none");
-                //         Desactivation.classList.add("d-none");
-                //     }
-                //     if(selectDevise.value == "devise_deleted"){
-                //         Desactivation.classList.remove("d-none");
-                //         Activation.classList.add("d-none");
-                //     }
-                // })
-            </script>
             @foreach($client as $client)
             @if($client->Activation==1)
             <tr class="item">
@@ -148,17 +131,19 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body  d-flex flex-column gap-4 ">
-                  <input type="hidden" class="id_devise" name="Id">
-                  <input type="text" class="First_Name" name="First_Name" class="form- " placeholder="*الاسم">
-                  <input type="text" class="Last_Name" name="Last_Name" class="form-control " placeholder="*النسب">
-                  <input type="text"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                  <input type="text" class="Phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                  <input type="text" class="Balance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
-                  <select class="devise" class="selectpicker w-100" name="devise" data-live-search="true">
-                        @foreach ($devise_edit as $devise) :
-                        <option  value="{{ $devise->id }}">{{ $devise->Name }}</option>
-                        @endforeach
-                      </select>
+                    <input type="hidden" class="id_devise" name="Id">
+                    <input type="text" class="First_Name" name="First_Name" class="form- " placeholder="*الاسم">
+                    <input type="text" class="Last_Name" name="Last_Name" class="form-control " placeholder="*النسب">
+                    <input type="text"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                    <input type="text" class="Phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
+                    <input type="text" class="Balance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                    <div class="search_select_box w-100">
+                        <select class="selectpicker w-100 devise" name="devise" data-live-search="true">
+                            @foreach ($devise_edit as $devise) :
+                            <option  value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
