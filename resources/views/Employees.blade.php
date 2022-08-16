@@ -85,13 +85,13 @@
                             <th class="col-4 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
-                            
+
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($Employee as $Employee)
                         @if( $Employee->Activation==1)
-                       
+
                         <tr class="item">
                         @if(session('role')=='Admin')
                             <td class="  col-1 d-flex gap-2">
@@ -100,23 +100,23 @@
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
                                 </form>
-                                
+
                                 <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-                                   
+
 
                             </td>
-                            @endif  
+                            @endif
                             <td class="id_devise d-none  col-2 ">{{$Employee->id}}</td>
                             <td class="Phone col-3 ">{{$Employee->Number_phone}}</td>
                             <td class="Email col-4 ">{{$Employee->Email}}</td>
                             <td class="Last_Name col-2 ">{{$Employee->Last_Name}}</td>
                             <td class="First_Name col-2 First_Name">{{$Employee->First_Name}}</td>
-                           
-                            
+
+
                         </tr>
                         @endif
                         @endforeach
-                       
+
                     </tbody>
                      <!-- Modal -->
                      <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,7 +135,7 @@
                                             <input type="text" class="Last_Name" name="Last_Name" class="form-control mb-3 " placeholder="*النسب" style="height: 45px;">
                                             <input type="email" class="Email" name="Email" class="form-control mb-3 " placeholder="*البريد الالكتروني" style="height: 45px;">
                                             <input type="text" class="Phone" name="Phone" class="form-control mb-3 " placeholder="*رقم الهاتف" style="height: 45px;">
-                                           
+
                                         </div>
 
 
@@ -189,9 +189,9 @@
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
-                   
 
-                 
+
+
 
                 </div>
                 <table class="table mb-0 text-center" id="myTable">
@@ -214,28 +214,28 @@
                                     @method('DELETE')
                                     <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i></button>
                                 </form>
-                                     
+
 
                             </td>
-                   
+
                             <td class="Phone col-3 ">{{$Employee->Number_phone}}</td>
                             <td class="Email col-4 ">{{$Employee->Email}}</td>
                             <td class="Last_Name col-2 ">{{$Employee->Last_Name}}</td>
                             <td class="First_Name col-2 First_Name">{{$Employee->First_Name}}</td>
                             <td class="id_devise col-2  ">{{$Employee->id}}</td>
-                            
+
                         </tr>
                         @endif
                         @endforeach
-                       
+
                     </tbody>
-                     
+
                 </table>
             </div>
         </div>
         @endif
 
-     
+
 <script>
             // Update Of Devise
             document.querySelectorAll('.btn-edit').forEach(function(btn){

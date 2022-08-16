@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,7 +16,6 @@
     <div id="sign">
         <div class="col-6 d-lg-flex d-none justify-content-center align-items-center" id="home-logo">
             <img src="{{asset('image/logo.png')}}">
-
         </div>
         <div class="col-lg-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
@@ -45,14 +43,12 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-
                         @if (session('warning'))
                             <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
                                 {{ session('warning') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-
                         @if (session('success'))
                             <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
@@ -75,16 +71,17 @@
                         <div class="d-flex flex-row-reverse justify-content-between align-items-center gap-3">
                             <div onsubmit="return (checkForm())" name="userForm">
                                 <label for="client" class="h6">زبون</label>
-                                <input id="client" name="role" value="Client" type="radio" onclick="n_identif_off()">
+                                <input id="client" name="role" type="radio" onclick="n_identif_off()" value="">
                             </div>
                             <div class="d-flex">
                                 <label for="employee" class="h6">مستخدم</label>
-                                <input id="employee" name="role" value="Employe" type="radio" onclick="n_identif_on()">
+                                <input id="employee" name="role" type="radio" onclick="n_identif_on()" value="">
                             </div>
                             <div>
                                 <input type="text" name="n_identif" id="n_identif" placeholder="رقم التسجيل" class="border-0 col-form-label d-none" style="height: 35px;">
                             </div>
                         </div>
+                        <p class="text-danger float-end me-4" id="error_role_signup"></p>
                         <input class="mt-3" type="submit" name="signin" value="انشاء حساب">
                     </form>
                 </div>
@@ -124,12 +121,27 @@
     const error_password_signup = document.getElementById('error_password_signup');
     const conf_password_signup = document.getElementById('conf_password_signup');
     const error_conf_password_signup = document.getElementById('error_conf_password_signup');
+    const client = document.getElementById('client');
+    const employee = document.getElementById('employee');
+    const n_identif = document.getElementById('n_identif');
+    const role_signup = document.getElementById('error_role_signup');
     const error_signup = document.getElementById('error_signup');
+    const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     const pattern_name = /[a-zA-Z]/;
     const pattern_phone = /[0-9]/;
 
+    client.addEventListener('click' , () => {
+        employee.value = '';
+        client.value = 'Client';
+    })
+    employee.addEventListener('click' , () => {
+        client.value = '';
+        employee.value = 'Employe';
+    })
+
+
     form_signup.addEventListener('submit', (e) => {
-        if ((first_name.value == "") && (last_name.value == "") && (email_signup.value == "") && (phone_signup.value == "") && (password_signup.value == "") && (conf_password_signup.value == "")) {
+        if ((first_name.value == "") && (last_name.value == "") && (email_signup.value == "") && (phone_signup.value == "") && (password_signup.value == "") && (conf_password_signup.value == "") && client.value == "" && employee.value == "") {
             e.preventDefault();
             error_signup.innerHTML = "<p class='text-danger'>المرجوا ملأ معلوماتك لانشاء حسابك</p>";
         } else {
@@ -137,21 +149,25 @@
             if ((first_name.value == "") || (last_name.value == "")) {
                 e.preventDefault();
                 error_name.innerText = "املأ حقل الاسم و النسب";
-            } else if ((pattern_name.test(first_name.value)) && (first_name.value.length >= 3) && (pattern_name.test(last_name.value)) && (last_name.value.length >= 3)) {
-                error_name.innerText = "";
-            } else if ((!pattern_name.test(first_name.value)) || (first_name.value.length < 3) || (!pattern_name.test(last_name.value)) || (last_name.value.length < 3)) {
-                e.preventDefault();
-                error_name.innerText = "يجب أن يتكون الاسم و النسب من ثلاثة أحرف على الأقل";
+            }else{
+                if ((pattern_name.test(first_name.value)) && (first_name.value.length >= 3) && (pattern_name.test(last_name.value)) && (last_name.value.length >= 3)) {
+                    error_name.innerText = "";
+                } else if ((!pattern_name.test(first_name.value)) || (first_name.value.length < 3) || (!pattern_name.test(last_name.value)) || (last_name.value.length < 3)) {
+                    e.preventDefault();
+                    error_name.innerText = "يجب أن يتكون الاسم و النسب من ثلاثة أحرف على الأقل";
+                }
             }
 
             if (email_signup.value == "") {
                 e.preventDefault();
                 error_email_signup.innerText = "املأ حقل البريد الإلكتروني";
-            } else if (pattern_email.test(email_signup.value)) {
-                error_email_signup.innerText = "";
-            } else if (!pattern_email.test(email_signup.value)) {
-                e.preventDefault();
-                error_email_signup.innerText = "البريد الإلكتروني غير صالح";
+            }else{
+                if (pattern_email.test(email_signup.value)) {
+                    error_email_signup.innerText = "";
+                } else if (!pattern_email.test(email_signup.value)) {
+                    e.preventDefault();
+                    error_email_signup.innerText = "البريد الإلكتروني غير صالح";
+                }
             }
 
             if (phone_signup.value == "") {
@@ -184,7 +200,17 @@
                 }
             }
 
-            if ((error_name.textContent == "") && (error_email_signup.textContent == "") && (error_phone_signup.textContent == "") && (error_password_signup.textContent == "") && (error_conf_password_signup.textContent == "")) {
+            if (client.value == "" && employee.value == "") {
+                e.preventDefault();
+                role_signup.innerText = "اختر دورك";
+            }else if(employee.value != "" && n_identif.value == ""){
+                e.preventDefault();
+                role_signup.innerText = "ادخل رقم التسجيل";
+            }else{
+                role_signup.innerText="";
+            }
+
+            if ((error_name.textContent == "") && (error_email_signup.textContent == "") && (error_phone_signup.textContent == "") && (error_password_signup.textContent == "") && (error_conf_password_signup.textContent == "") && (role_signup.textContent == "")) {
                 form_signup.submit();
             }
         }
