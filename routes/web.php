@@ -29,6 +29,9 @@ Route::delete('/Administrateur/{id}','AdminController@deleteAdmin')->name('delet
 
 
 Route::get('/client', 'ClientController@index');
+Route::post('/client','ClientController@addClient')->name('add.Client');
+Route::delete('/client/{id}','ClientController@deleteClient')->name('delete.Client');
+
 
 
 
@@ -64,6 +67,8 @@ Route::get('/interface_client', function () {
 });
 
 Route::get('/operation_commercial', 'OperationCommercialController@index');
+Route::post('/operation_commercial','OperationCommercialController@addOperation')->name('add.Operation');
+Route::delete('Employees/{id}','EmployeController@deleteOperation')->name('delete.Operation');
 
 Route::get('/Sign', function () {
     if (session()->has('role')) {
