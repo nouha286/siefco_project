@@ -31,7 +31,7 @@
                                 <form method="Post" action="{{ route('add.devise') }}">
                                     @csrf
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">اظافة عملية تجارية</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
@@ -42,10 +42,10 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                                        <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                                        <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
+                                        <input type="email" name="Email" class="form-control " placeholder="*مدين">
+                                        <input type="text" name="Phone" class="form-control " placeholder="*دائن">
                                         <input type="text" name="Password" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                                        <input type="text" name="Phone" class="form-control " placeholder="*البيان">
                                         <div class="search_select_box w-100">
                                             <select class="selectpicker w-100" name="devise" data-live-search="true">
                                                 @foreach ($devise as $devise) :
