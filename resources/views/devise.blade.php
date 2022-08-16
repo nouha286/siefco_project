@@ -35,7 +35,7 @@
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="selectDevise" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
                             <option value="devise" selected>العملات</option>
-                           
+
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
@@ -99,7 +99,7 @@
                                     @endif
                                 </tr>
                             </div>
-                       
+
                         @endforeach
                     </tbody>
 
@@ -143,7 +143,7 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="selectDevise" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            
+
                             <option value="devise_deleted">العملات المحذوفين</option>
                         </select>
                     </div>
@@ -151,7 +151,7 @@
                         <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
-                    
+
 
                 </div>
                 <table class="table mb-0 text-center">
@@ -181,7 +181,7 @@
                                     @endif
                                 </tr>
                             </div>
-                       
+
                         @endforeach
                     </tbody>
 

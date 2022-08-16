@@ -14,8 +14,7 @@
             <!-- Info Profile -->
             <div class="d-flex flex-column justify-content-center align-items-center py-5 gap-4">
                 <img src="../resources/views/Asset/avatar.png" style="width: 90%;" alt="logo">
-                @if (session()->has('First_Name')) {{session('First_Name')}}@endif @if (session()->has('Last_Name')) {{session('Last_Name')}}@endif </span>
-            <span class="">@if (session()->has('role')) {{{session('role')}}}@endif</span>
+                <span>@if (session()->has('name')) {{{session('name')}}}@endif </span>
                 <span>الرصي د</span>
                 <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">0</span></span>
                 <span>البريد الالكتروني</span>
@@ -33,7 +32,7 @@
 
     <div class="position-relative w-100">
         <!-- Navbar -->
-        @include('master.Navbar');
+        @include('master.Navbar')
 
         <!-- Statistiques -->
         <div class="container-fluid py-4">
@@ -53,7 +52,7 @@
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                           
+
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">اسم الزبون</th>
@@ -62,11 +61,11 @@
                     </thead>
                     <tbody>
                     @foreach($operation as $comercial_Operation)
-                    
-                   
+
+
             @if($comercial_Operation->Client_id==session('id'))
             <tr>
-                               
+
                                <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
                                <td class="col-1">{{ $comercial_Operation->Currency }}</td>
                                <td class="col-2">{{ $comercial_Operation->created_at}}</td>

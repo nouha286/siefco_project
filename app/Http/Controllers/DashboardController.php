@@ -33,10 +33,10 @@ class DashboardController extends Controller
 
     public function Activer($id)
     { $devises=devise::where('Activation',1)->first();
-    
+
         if($devises){
-            $User=User::where('id', $id)->first(); 
-       
+            $User=User::where('id', $id)->first();
+
             $User->save();
             if ( $User->Role=='Client') {
                 $User->Activation=1;
@@ -56,7 +56,7 @@ class DashboardController extends Controller
                $Client->Statement='Activer par'.session('role');
                $Client->save();
                $User->save();
-               
+
                return redirect('/Dashboard')->with('success_Activation','تم تفعيل الحساب بنجاح');
             }
             if ( $User->Role=='Employe') {
@@ -66,28 +66,28 @@ class DashboardController extends Controller
                 $Client->Email =User::where('id', $id)->first(['email'])->email;
                 $Client->First_Name = User::where('id', $id)->first(['First_Name'])->First_Name;
                 $Client->Number_phone = User::where('id', $id)->first(['Phone'])->Phone;
-              
+
                 $Client->Activation=1;
-              
+
                 $Client->save();
                 $User->save();
                 return redirect('/Dashboard')->with('success_Activation','تم تفعيل الحساب بنجاح');
              }
-        }else return redirect('/Dashboard')->with('failed_Activation','المرجو اظافة عملة   '); 
-      
+        }else return redirect('/Dashboard')->with('failed_Activation','المرجو اظافة عملة   ');
+
     }
 
     public function Supprimer($id)
     {
-        $User=User::where('id', $id)->first(['Role'])->Role; 
-       
+        $User=User::where('id', $id)->first(['Role'])->Role;
+
         if ( $User=='Client') {
-            $User=User::where('id', $id)->first(); 
+            $User=User::where('id', $id)->first();
         $User->delete();
         return redirect('/Dashboard')->with('success_delete','تم حذف الحساب بنجاح');
     }
     if ( $User=='Employe') {
-        $User=User::where('id', $id)->first(); 
+        $User=User::where('id', $id)->first();
     $User->delete();
     return redirect('/Dashboard')->with('success_delete','تم حذف الحساب بنجاح');
 }

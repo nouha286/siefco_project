@@ -84,13 +84,13 @@
                 <table class="table mb-0 text-center">
                     <thead>
                         <tr>
-                
+
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                           
+
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">اسم الزبون</th>
@@ -100,7 +100,7 @@
                     <tbody>
                         @foreach($comercial_Operation as $comercial_Operation)
                             <tr>
-                               
+
                                 <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
                                 <td class="col-1">{{ $comercial_Operation->Currency }}</td>
                                 <td class="col-2">{{ $comercial_Operation->created_at}}</td>

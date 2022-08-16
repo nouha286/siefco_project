@@ -54,19 +54,17 @@
                   <div class="modal-body d-flex flex-column gap-4">
                     <input type="text" name="First_Name" class="form- " placeholder="*الاسم">
                     <input type="text" name="Last_Name" class="form-control " placeholder="*النسب">
-                    <input type="email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                    <input type="text" name="Email" class="form-control " placeholder="*البريد الالكتروني">
                     <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
                     <input type="text" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
                     <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
                     <input type="text" name="Password_verif" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
-                                   
-                 
                     <div class="search_select_box w-100">
-                      <select class="selectpicker w-100" name="devise" data-live-search="true">
-                        @foreach ($devise as $devise) :
-                        <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
-                        @endforeach
-                      </select>
+                        <select class="selectpicker w-100" name="devise" data-live-search="true">
+                            @foreach ($devise as $devise) :
+                                <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                   </div>
                   <div class="modal-footer">
@@ -105,14 +103,8 @@
                   @method('DELETE')
                   <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
                 </form>
-
                 <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-
-
               </td>
-
-
-
               <td class="col-2">{{ $client->Statement }}</td>
               <td class="col-1 Devise">{{ $client->Currency }}</td>
               <td class="col-1">{{ $client->Creditor }}</td>
@@ -134,26 +126,25 @@
             <div class="modal-content">
               <form method="Post" action="{{ route('add.Client') }}">
                 @csrf
-
                 <div class="modal-header ">
-                  <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                  <h5 class="modal-title " id="exampleModalLabel">اظافة زبون</h5>
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body  d-flex flex-column gap-4 ">
-                  <input type="hidden" class="id_devise" name="Id">
-                  <input type="text" class="First_Name" name="First_Name" class="form- " placeholder="*الاسم">
-                  <input type="text" class="Last_Name" name="Last_Name" class="form-control " placeholder="*النسب">
-                  <input type="email"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                  <input type="text" class="Phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                  <input type="text" class="Balance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
-                  <select class="devise" class="selectpicker w-100" name="devise" data-live-search="true">
-                        @foreach ($devise_edit as $devise) :
-                        <option  value="{{ $devise->id }}">{{ $devise->Name }}</option>
-                        @endforeach
-                      </select>
+                    <input type="hidden" class="id_devise" name="Id">
+                    <input type="text" class="First_Name" name="First_Name" class="form- " placeholder="*الاسم">
+                    <input type="text" class="Last_Name" name="Last_Name" class="form-control " placeholder="*النسب">
+                    <input type="text"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                    <input type="text" class="Phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
+                    <input type="text" class="Balance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                    <div class="search_select_box w-100">
+                        <select class="selectpicker w-100 devise" name="devise" data-live-search="true">
+                            @foreach ($devise_edit as $devise) :
+                            <option  value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-
-
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
                   <button type="submit" class="btn btn-primary">حفظ</button>
@@ -175,14 +166,16 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-      
+
         <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-          <h4>الزبناء</h4>
+          <h4>الزبناء المحذوفين</h4>
           <div class="input-group me-3" style="width: 25%;">
             <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
             <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
           </div>
-         
+          <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <i class="bi bi-plus-circle-fill h1"></i>
+          </button>
 
         </div>
 
@@ -211,12 +204,7 @@
                   @method('DELETE')
                   <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
                 </form>
-
-                
               </td>
-
-
-
               <td class="col-2">{{ $client->Statement }}</td>
               <td class="col-1 Devise">{{ $client->Currency }}</td>
               <td class="col-1">{{ $client->Creditor }}</td>
@@ -232,7 +220,7 @@
             @endforeach
           </tbody>
         </table>
-      
+
       </div>
     </div>
     <script>
@@ -257,22 +245,6 @@
                     document.querySelector('#exampleModaledit .Devise').value = Devise;
                 })
             })
-
-            // // Switch To Active AndDesctive Of Devise
-            // var selectDevise = document.getElementById('selectDevise');
-            // selectDevise.addEventListener('change', (event) =>{
-            //     var Activation = document.querySelector('.activation');
-            //     var Desactivation = document.querySelector('.desactivation');
-            //     var devise = document.querySelector('.devise');
-            //     if(selectDevise.value == "devise"){
-            //         Activation.classList.remove("d-none");
-            //         Desactivation.classList.add("d-none");
-            //     }
-            //     if(selectDevise.value == "devise_deleted"){
-            //         Desactivation.classList.remove("d-none");
-            //         Activation.classList.add("d-none");
-            //     }
-            // })
         </script>
     <!-- Copyright -->
     <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
