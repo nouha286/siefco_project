@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +9,6 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
     <title>SIEFCO</title>
 </head>
 
@@ -39,7 +37,6 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-
                         @if (session('success'))
                             <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
                                 {{ session('success') }}
@@ -50,9 +47,6 @@
                         <p class="text-danger float-end me-4" id="error_email"></p>
                         <input type="password" name="password" id="password_signin" placeholder="القن السري" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_password"></p>
-                        <div>
-
-                        </div>
                         <input type="submit" name="signin" value="تسجيل الدخول">
                     </form>
                 </div>
