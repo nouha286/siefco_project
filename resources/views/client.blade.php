@@ -224,28 +224,28 @@
       </div>
     </div>
     <script>
-            // Update Of Devise
-            document.querySelectorAll('.btn-edit').forEach(function(btn){
-                btn.addEventListener('click',function(event){
-                    let select = event.target.closest('.item');
-                    let id_devise = select.querySelector('.id_devise').innerHTML;
-                    let First_Name = select.querySelector('.First_Name').innerHTML;
-                    let Last_Name = select.querySelector('.Last_Name').innerHTML;
-                    let Email = select.querySelector('.Email').innerHTML;
-                    let Phone = select.querySelector('.Phone').innerHTML;
-                    let Balance = select.querySelector('.Balance').innerHTML;
-                    let Devise = select.querySelector('.Devise').innerHTML;
+        // Update Of Devise
+        document.querySelectorAll('.btn-edit').forEach(function(btn){
+            btn.addEventListener('click',function(event){
+                let select = event.target.closest('.item');
+                let id_devise = select.querySelector('.id_devise').innerHTML;
+                let First_Name = select.querySelector('.First_Name').innerHTML;
+                let Last_Name = select.querySelector('.Last_Name').innerHTML;
+                let Email = select.querySelector('.Email').innerHTML;
+                let Phone = select.querySelector('.Phone').innerHTML;
+                let Balance = select.querySelector('.Balance').innerHTML;
+                let Devise = select.querySelector('.Devise').innerHTML;
 
-                    document.querySelector('#exampleModaledit .id_devise').value = id_devise;
-                    document.querySelector('#exampleModaledit .First_Name').value = First_Name;
-                    document.querySelector('#exampleModaledit .Last_Name').value = Last_Name;
-                    document.querySelector('#exampleModaledit .Email').value = Email;
-                    document.querySelector('#exampleModaledit .Phone').value = Phone;
-                    document.querySelector('#exampleModaledit .Balance').value = Balance;
-                    document.querySelector('#exampleModaledit .Devise').value = Devise;
-                })
+                document.querySelector('#exampleModaledit .id_devise').value = id_devise;
+                document.querySelector('#exampleModaledit .First_Name').value = First_Name;
+                document.querySelector('#exampleModaledit .Last_Name').value = Last_Name;
+                document.querySelector('#exampleModaledit .Email').value = Email;
+                document.querySelector('#exampleModaledit .Phone').value = Phone;
+                document.querySelector('#exampleModaledit .Balance').value = Balance;
+                document.querySelector('#exampleModaledit .Devise').value = Devise;
             })
-        </script>
+        })
+    </script>
     <!-- Copyright -->
     <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
   </div>
