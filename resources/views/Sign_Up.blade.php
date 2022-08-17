@@ -17,7 +17,7 @@
         <div class="col-6 d-lg-flex d-none justify-content-center align-items-center" id="home-logo">
             <img src="{{asset('image/logo.png')}}">
         </div>
-        <div class="col-lg-6 p-0" id="sign-form">
+        <div class="col-lg-6 p-0 overflow-auto" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
             <div class="w-100 d-flex" id="menu-sign">
                 <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center active" id="btn_signup">انشاء حساب</a>
@@ -28,8 +28,7 @@
                 <div class="d-flex flex-column justify-content-center" style="width: 80%; height: 85vh; margin-left: 10%;">
                     <h1 class="text-center">انشاء حساب</h1>
                     <p class="text-center" id="error_signup">املأ معلوماتك لانشاء حسابك</p>
-                    <p id="error_signup"></p>
-                    <form class="d-flex flex-column gap-1" method="POST" action="{{ route('inscription.auth') }}" id="form_signup">
+                    <form class="d-flex flex-column" method="POST" action="{{ route('inscription.auth') }}" id="form_signup">
                         @csrf
                         @if (session('failed'))
                             <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
@@ -82,7 +81,7 @@
                             </div>
                         </div>
                         <p class="text-danger float-end me-4" id="error_role_signup"></p>
-                        <input class="mt-3" type="submit" name="signin" value="انشاء حساب">
+                        <input class="mb-3" type="submit" name="signin" value="انشاء حساب">
                     </form>
                 </div>
             </div>

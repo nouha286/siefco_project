@@ -72,7 +72,7 @@
                     <!-- Modal Add Admin -->
 
                 </div>
-                <table class="table  mb-0 text-center">
+                <table class="table mb-0 text-center">
                     <thead>
                         <tr>
                         @if(session('role')=='Admin') <th></th>@endif
