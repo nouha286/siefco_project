@@ -11,11 +11,13 @@ class interface_clientController extends Controller
     public function index()
     {
         $operation=Comercial_Operation::all();
-        $Client=Client::all();
+        $Client=Client::where('id',session('id'))->first();
+        $comptOperation=Comercial_Operation::where('Client_id',session('id'))->get();
+        $comptOperation=count($comptOperation);
 
     
             if (session()->has('role_client')) {
-                return view('/interface_client')->with(['operation'=>$operation]);
+                return view('/interface_client')->with(['operation'=>$operation,'Client'=>$Client,'comptOperation'=>$comptOperation]);
             }
             else{
                 return redirect('/Sign');

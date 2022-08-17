@@ -14,11 +14,11 @@
             <!-- Info Profile -->
             <div class="d-flex flex-column justify-content-center align-items-center py-5 gap-4">
                 <img src="../resources/views/Asset/avatar.png" style="width: 90%;" alt="logo">
-                <span>@if (session()->has('name')) {{{session('name')}}}@endif </span>
-                <span>الرصي د</span>
-                <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">0</span></span>
-                <span>البريد الالكتروني</span>
-                <span>رقم الهاتف</span>
+                <span>@if (session()->has('First_Name')) {{{session('First_Name') .' '. session('Last_Name')}}}@endif </span>
+                <span> {{ $Client->Balance }}</span>
+                <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">{{$comptOperation }}</span></span>
+                <span> {{ $Client->Email }}</span>
+                <span>{{ $Client->Number_phone }}</span>
             </div>
             <!-- Logout -->
             <hr class="w-75 m-0 p-0">

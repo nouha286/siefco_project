@@ -7,7 +7,7 @@
         <hr class="w-75 m-0 p-0">
         <!-- Info Profile -->
         <div class="d-flex flex-column justify-content-center align-items-center py-2 gap-1">
-            <img src="{{asset('image/avatar.png')}}" style="width: 65%;" alt="logo">
+            <img src="{{asset('image/avatar.png')}}" style="width: 65%;" alt="avatar">
             <span class="fs-5 test-center" style="color:#3498DB;">  @if (session()->has('First_Name')) {{session('First_Name')}}@endif @if (session()->has('Last_Name')) {{session('Last_Name')}}@endif </span>
             <span class="">@if (session()->has('role')) {{{session('role')}}}@endif</span>
         </div>
