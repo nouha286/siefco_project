@@ -153,19 +153,10 @@
                             @if (!$User->email_verified_at)
                             <td style="color:red;" class="First_Name col-2 First_Name">non vérifié</td>
                             @endif
-
-
-
-
                         </tr>
-
                         @endforeach
                        @endif
                     </tbody>
-
-
-
-
         <!-- Copyright -->
         <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
     </div>
