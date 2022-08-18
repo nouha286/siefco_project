@@ -129,13 +129,22 @@
                         @foreach($Employee as $Employee)
                             <tr class="item tr_employe">
                                 @if(session('role')=='Admin')
-                                    <td class="  col-1 d-flex gap-2">
-                                        <form action="{{ route('delete.Employe',$Employee->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
-                                        </form>
-                                        <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                    <td class="col-1 d-flex gap-2">
+                                        @if ($Employee->Activation == 1)
+                                            <form action="{{ route('delete.Employe',$Employee->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
+                                            </form>
+                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                        @endif
+                                        @if ($Employee->Activation == 0)
+                                            <form action="{{ route('delete.Employe',$client->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
+                                            </form>
+                                        @endif
                                     </td>
                                 @endif
                                 <td class="id_devise d-none col-2">{{$Employee->id}}</td>

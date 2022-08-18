@@ -95,12 +95,21 @@
                         @foreach($devise as $devise)
                             <tr class="item tr_devise">
                                 <td class="col-2 d-flex gap-3">
-                                    <form action="{{ route('delete.devise',$devise->id) }}" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
-                                    </form>
-                                    <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                    @if ($devise->Activation == 1)
+                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                        </form>
+                                        <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                    @endif
+                                    @if ($devise->Activation == 0)
+                                        <form action="{{ route('delete.devise',$client->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
+                                        </form>
+                                    @endif
                                 </td>
                                 <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
                                 <td class="d-none">{{$devise->Activation}}</td>
