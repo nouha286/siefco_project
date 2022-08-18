@@ -34,10 +34,9 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <h4>العمليات التجارية</h4>
                     <div class="input-group me-3" style="width: 25%;">
-                        <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
+                        <input type="text" id="input_search" class="form-control" placeholder="الاسم" style="height: 45px;" onkeyup="searchOperation()">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
-
                     <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="bi bi-plus-circle-fill h1"></i>
                     </button>
@@ -62,7 +61,7 @@
                                         </div>
                                         <input type="text" name="Creditor" class="form-control " placeholder="مدين">
                                         <input type="text" name="Debtor" class="form-control " placeholder="* دائن">
-                                      <div class="search_select_box w-100">
+                                        <div class="search_select_box w-100">
                                             <select class="selectpicker w-100" name="devise" data-live-search="true">
                                                 @foreach ($devise as $devise) :
                                                     <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
@@ -81,16 +80,14 @@
                     <!-- Modal Add Client -->
 
                 </div>
-                <table class="table mb-0 text-center">
+                <table class="table mb-0 text-center" id="table_operation">
                     <thead>
                         <tr>
-
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">اسم الزبون</th>
@@ -99,8 +96,7 @@
                     </thead>
                     <tbody>
                         @foreach($comercial_Operation as $comercial_Operation)
-                            <tr>
-
+                            <tr class="tr_operation">
                                 <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
                                 <td class="col-1">{{ $comercial_Operation->Currency }}</td>
                                 <td class="col-2">{{ $comercial_Operation->created_at}}</td>
@@ -122,3 +118,23 @@
     </div>
 </div>
 @endsection
+<script>
+    function searchOperation() {
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("input_search");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("table_operation");
+    tr = table.querySelectorAll('.tr_operation');
+    for (i = 0; i < tr.length; i++) {
+        td = tr[i].getElementsByTagName("td")[7];
+        if (td) {
+        txtValue = td.textContent || td.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            tr[i].style.display = "";
+        } else {
+            tr[i].style.display = "none";
+        }
+        }
+    }
+}
+</script>
