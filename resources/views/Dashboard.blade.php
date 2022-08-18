@@ -57,6 +57,18 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
+                @if (session('success_delete'))
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                    {{ session('success_delete') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
+                @if (session('error'))
+                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
 

@@ -14,12 +14,14 @@ class ClientController extends Controller
     public function index()
     {
         $client = client::all();
+       
         $client_delete = client::all();
         $devise = devise::where('Activation' , 1)->get();
+        $User=User::where('id',session('id'))->first();
        
         $devise_edit = devise::where('Activation' , 1)->get();
         if(session()->has('role')) {
-            return view('/client')->with(['client' => $client , 'devise' => $devise,'devise_edit' => $devise_edit,'client_delete'=>$client_delete ]);
+            return view('/client')->with(['client' => $client , 'devise' => $devise,'devise_edit' => $devise_edit,'client_delete'=>$client_delete, 'User'=>$User ]);
         }
         else{
             return redirect('/Sign');
@@ -45,7 +47,14 @@ class ClientController extends Controller
                 return redirect('/client')->with('error', 'هذا الحساب سبق استعماله');
             } elseif ($User && $id == $edit) {
 
-
+                $request->validate([
+                    'Email' => 'required|max:255|email',
+                    'Last_Name' => 'required',
+                    'First_Name' => 'required',
+                    'Phone' => 'required|numeric',
+                    'Balance' => 'required|numeric',
+                    'devise' => 'required',
+                ]);
                 $Client = client::where('id', $edit)->first();
 
                 $Client->Last_Name = request('Last_Name');
@@ -77,7 +86,15 @@ class ClientController extends Controller
 
                 return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
             } elseif (!$User && $id != $edit) {
-
+                $request->validate([
+                    'Email' => 'required|max:255|email',
+                    'Last_Name' => 'required',
+                    'First_Name' => 'required',
+                    'Phone' => 'required',
+                    'Balance' => 'required|numeric',
+                    'devise' => 'required',
+                    
+                ]);
 
                 $Client = client::where('id', $edit)->first();
 
@@ -109,6 +126,17 @@ class ClientController extends Controller
                 return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
             }
         } else {
+            $request->validate([
+                'Email' => 'required|max:255|email',
+                'Last_Name' => 'required',
+                'First_Name' => 'required',
+                'Password' => 'required|min:6|max:255',
+                'Password_verif' =>'required|min:6|max:255|same:Password',
+                'Phone' => 'required|numeric',
+                'Balance' => 'required|numeric',
+                'devise' => 'required',
+                
+            ]);
 
             $User = User::where('email', request('Email'))->first();
             if ($User) {
@@ -118,7 +146,7 @@ class ClientController extends Controller
 
                 $Client = new client();
                 $Client->Last_Name = request('Last_Name');
-                $Client->image = '.';
+              
                 $Client->Email = request('Email');
                 $Client->First_Name = request('First_Name');
                 $Client->Number_phone = request('Phone');
@@ -140,6 +168,7 @@ class ClientController extends Controller
                 $User->Role = 'Client';
                 $User->password = bcrypt(request('Password'));
                 $User->Activation = 1;
+                $User->image = 'avatar.png';
 
                 $User->save();
                 $Client->save();

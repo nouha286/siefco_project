@@ -31,6 +31,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
           <h4>الزبناء</h4>
           <div class="input-group me-3" style="width: 25%;">
@@ -159,7 +168,7 @@
 <!-- client supprimés -->
 
     <div class="container-fluid py-4">
-      <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
+      <div class="card border-0 shadow-sm overflow-auto " style="min-height: 200px; max-height: 560px; border-radius: 16px;">
         @if (session('success_restore'))
         <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
           {{ session('success_restore') }}
@@ -167,15 +176,13 @@
         </div>
         @endif
 
-        <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
+        <div class="d-flex  flex-row-reverse justify-content-between align-items-center m-4">
           <h4>الزبناء المحذوفين</h4>
-          <div class="input-group me-3" style="width: 25%;">
+          <div class="input-group  me-3" style="width: 25%;">
             <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
             <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
           </div>
-          <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-plus-circle-fill h1"></i>
-          </button>
+         
 
         </div>
 
