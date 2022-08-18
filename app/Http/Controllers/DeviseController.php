@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\devise;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DeviseController extends Controller
@@ -12,15 +13,25 @@ class DeviseController extends Controller
     {
         $devise = Devise::all();
         $devise_deleted = Devise::all();
+        $User=User::where('id',session('id'))->first();
 
         if (session()->has('role')) {
-            return view('/devise')->with(['devise' => $devise,'devise_deleted' => $devise_deleted]);
+            return view('/devise')->with(['devise' => $devise,'devise_deleted' => $devise_deleted,'User'=>$User]);
         } else {
             return redirect('/Sign');
         }
     }
     public function addDevise(Request $request)
-    { $edit=request('Id');
+    { 
+        $request->validate([
+            'Name' => 'required|max:255',
+            'Value' => 'required',
+            
+           
+            
+        ]);
+        
+        $edit=request('Id');
         if ($edit) {
             $devise = Devise::where('id', $edit)->first();
             $devise->Name=request('Name');

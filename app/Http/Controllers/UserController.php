@@ -13,18 +13,28 @@ use Illuminate\Validation\Validator;
 use phpDocumentor\Reflection\Types\Null_;
 use Mail;
 use App\Mail\EmailVerificationMail;
-
+use App\Models\Employees;
 use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class UserController extends Controller
 {
     public function inscription(Request $request)
     {
+        
        $User=User::where('email',request('email'))->first();
        if ($User) {
         return redirect('/Sign_Up')->with('error','هذا الحساب سبق استعماله');
        }else{
 
+        $request->validate([
+            'email' => 'required|max:255|email',
+            'Last_Name' => 'required',
+            'First_Name' => 'required',
+          'password'=>'required|min:6',
+          'conf_password'=>'required|min:6|same:password',
+            'phone' => 'required|numeric',
+            
+        ]);
         $User=new User();
             $User->First_Name=request('First_Name');
             $User->Last_Name=request('Last_Name');
@@ -33,9 +43,20 @@ class UserController extends Controller
             $User->Role=request('role');
             $User->password=bcrypt(request('password'));
             $User->Activation=2;
+            $User->image = 'avatar.png';
             $identificateur=Identificateur::where('id',1)->first();
             if (request('role')=='Employe') 
             {
+                $request->validate([
+                    'email' => 'required|max:255|email',
+                    'Last_Name' => 'required',
+                    'First_Name' => 'required',
+                  'password'=>'required|min:6',
+                  'conf_password'=>'required|min:6|same:password',
+                    'phone' => 'required|numeric',
+                    'n_identif'=>'required|numeric'
+                    
+                ]);
                 $N=Identificateur::where('id', 1 )->first(['Numéro'])->Numéro;
                 if ($N==request('n_identif')) {
                      $identificateur->Numéro=$N+5;
@@ -58,6 +79,15 @@ class UserController extends Controller
 // for connexion
     public function connexion(Request $request)
     {
+        //validation backend
+        $request->validate([
+            'email' => 'required|max:255|email',
+         
+          'password'=>'required|min:6',
+       
+       
+            
+        ]);
        $resultat=auth()->attempt([
         'email'=>request('email'),
         'password'=>request('password'),
@@ -76,8 +106,10 @@ class UserController extends Controller
         $request->session()->put('role_client', $Role);
         $request->session()->put('First_Name',$First_Name);
         $request->session()->put('Last_Name',$Last_Name);
-        $User=Client::where('email',$email)->first('id')->id;
+        $User=User::where('email',$email)->first('id')->id;
+        $Client=Client::where('email',$email)->first('id')->id;
         $request->session()->put('id',$User);
+        $request->session()->put('id_Client',$Client);
         return redirect('/interface_client');
     }
 
@@ -89,7 +121,15 @@ class UserController extends Controller
         $request->session()->put('role', $Role);
         $request->session()->put('First_Name',$First_Name);
         $request->session()->put('Last_Name',$Last_Name); 
-        $id = User::where('email', $email )->first(['id'])->id;
+        if($Role=='Admin'){
+            $id = User::where('email', $email )->first(['id'])->id;
+            $request->session()->put('id',$id);
+        }
+        if($Role=='Employe'){
+            $id = User::where('email', $email )->first(['id'])->id;
+            $request->session()->put('id',$id);
+        }
+      
        
         return redirect('/Dashboard');
     }
@@ -135,6 +175,7 @@ class UserController extends Controller
         $request->session()->forget('First_Name');
         $request->session()->forget('Last_Name');
         $request->session()->forget('id');
+        $request->session()->forget('id_Client');
         return Redirect('/Sign');
     }
 

@@ -105,5 +105,12 @@ Route::get('/verify-email/{id}','UserController@verify_email' )->name('verify_em
 
 Route::get('/logout','UserController@logout');
 
+//for profile
 
+Route::get('/Profile','ProfileController@index');
+Route::post('/Profile','ProfileController@editUser' )->name('edit');
+
+//for profile client
+Route::get('/Profile_Client','Profile_ClientController@index');
+Route::post('/Profile_Client','Profile_ClientController@editUser' )->name('editClient');
 

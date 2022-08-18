@@ -31,6 +31,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
         <div>
             <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectClient()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
@@ -157,11 +166,74 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Edit Client -->
-
       </div>
     </div>
 
+<!-- client supprimés -->
+
+    <div class="container-fluid py-4">
+      <div class="card border-0 shadow-sm overflow-auto " style="min-height: 200px; max-height: 560px; border-radius: 16px;">
+        @if (session('success_restore'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_restore') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
+        <div class="d-flex  flex-row-reverse justify-content-between align-items-center m-4">
+          <h4>الزبناء المحذوفين</h4>
+          <div class="input-group  me-3" style="width: 25%;">
+            <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
+            <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
+          </div>
+
+
+        </div>
+
+        <table class="table mb-0 text-center">
+          <thead>
+            <tr>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+              <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم الهاتف</th>
+              <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
+              <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach($client_delete as $client)
+            <tr class="item">
+              @if($client->Activation==0)
+              <td class="  col-1 d-flex  gap-2">
+                <form action="{{ route('delete.Client',$client->id) }}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
+                </form>
+              </td>
+              <td class="col-2">{{ $client->Statement }}</td>
+              <td class="col-1 Devise">{{ $client->Currency }}</td>
+              <td class="col-1">{{ $client->Creditor }}</td>
+              <td class="col-1">{{ $client->Debtor }}</td>
+              <td class="col-1 Balance">{{ $client->Balance }}</td>
+              <td class="col-1 Phone">{{ $client->Number_phone }}</td>
+              <td class="col-2 Email">{{ $client->Email }}</td>
+              <td class="col-1 Last_Name">{{ $client->Last_Name }}</td>
+              <td class="col-1 First_Name">{{ $client->First_Name }}</td>
+              <td class="col-1 id_devise d-none">{{ $client->id }}</td>
+              @endif
+            </tr>
+            @endforeach
+          </tbody>
+        </table>
+
+      </div>
+    </div>
     <script>
         // Search Employee
         function searchClient() {
