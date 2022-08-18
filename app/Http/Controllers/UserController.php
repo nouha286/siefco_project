@@ -79,6 +79,7 @@ class UserController extends Controller
 // for connexion
     public function connexion(Request $request)
     {
+        //validation backend
         $request->validate([
             'email' => 'required|max:255|email',
          

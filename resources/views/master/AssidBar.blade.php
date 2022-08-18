@@ -2,6 +2,7 @@
     <aside class="d-flex flex-column align-items-center" id="assidbar" style="width: 100%; height: 95vh; margin-top: 2.5vh; background-color: var(--white-color); border-radius: 16px;">
         <!-- Logo -->
         <div class="d-flex justify-content-center align-items-center">
+<<<<<<< HEAD
             <img src="{{asset('/assets/logo.png')}}" style="width: 38%;" alt="logo">
         </div>
         <hr class="w-75 m-0 p-0">
@@ -10,6 +11,15 @@
             <a href="Profile" class=""><img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 65%;" alt="avatar"></a>
             
             <span class="fs-5 test-center" style="color:#3498DB;">  {{$User->First_Name.' '.$User->Last_Name}}</span>
+=======
+            <img src="http://localhost/siefco_project/public/assets/image/logo.png" style="width: 38%;" alt="logo">
+        </div>
+        <hr class="w-75 m-0 p-0">
+        <!-- Info Profile -->
+        <div class="d-flex flex-column justify-content-center align-items-center py-2 gap-1">
+            <img src="http://localhost/siefco_project/public/assets/image/avatar.png" style="width: 65%;" alt="logo">
+            <span class="fs-5 test-center" style="color:#3498DB;">  @if (session()->has('First_Name')) {{session('First_Name')}}@endif @if (session()->has('Last_Name')) {{session('Last_Name')}}@endif </span>
+>>>>>>> 917a019ca58571fdffd4e407b0a9c9551b320755
             <span class="">@if (session()->has('role')) {{{session('role')}}}@endif</span>
         </div>
         <hr class="w-75 m-0 p-0">

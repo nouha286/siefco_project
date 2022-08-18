@@ -109,11 +109,6 @@ body #sign #sign-form #menu-sign a {
 body #sign #sign-form #menu-sign .active {
     background-color: var(--base-color);
 }
-body #sign #signin,#signup {
-    width: 80%;
-    height: 85vh;
-    margin-left: 10%;
-}
 body #sign p {
     color: var(--grey-color);
 }
