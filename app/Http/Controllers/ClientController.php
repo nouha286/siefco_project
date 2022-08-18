@@ -68,7 +68,7 @@ class ClientController extends Controller
                 
                 $Client->Debtor=0;
                 $Client->Creditor=0;
-                $Client->Statement='Crée par'.session('role');
+                $Client->Statement='انشئ من طرف '.': '.session('First_Name').' '.session('Last_Name');
                 $email = client::where('id', $edit)->first(['Email'])->Email;
              
                 $User=User::where('email',$email)->first();
@@ -108,7 +108,7 @@ class ClientController extends Controller
                 $Client->Currency = $devise;
                 $Client->Debtor=0;
                 $Client->Creditor=0;
-                $Client->Statement='Crée par'.session('role');
+                $Client->Statement='انشئ من طرف '.': '.session('First_Name').' '.session('Last_Name');
                
                  $email = client::where('id', $edit)->first(['Email'])->Email;
                  
@@ -158,7 +158,7 @@ class ClientController extends Controller
                 $Client->Debtor=0;
                 $Client->Creditor=0;
 
-                $Client->Statement='Crée par: '.session('First_Name').session(('Last_Name'));
+                $Client->Statement='انشئ من طرف '.': '.session('First_Name').' '.session('Last_Name');
                 $Client->Activation = 1;
                 $User = new User();
                 $User->First_Name = request('First_Name');
