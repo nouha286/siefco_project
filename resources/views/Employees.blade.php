@@ -39,7 +39,7 @@
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
-                        <input type="text" class="form-control" placeholder="الاسم" style="height: 45px;">
+                        <input type="text" class="form-control" id="input_search" onkeyup="searchEmployee()" placeholder="الاسم" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
                     @if(session('role')=='Admin')
@@ -117,26 +117,24 @@
                     </thead>
                     <tbody>
                         @foreach($Employee as $Employee)
-                            {{-- @if( $Employee->Activation==1) --}}
-                                <tr class="item tr_employe">
-                                    @if(session('role')=='Admin')
-                                        <td class="  col-1 d-flex gap-2">
-                                            <form action="{{ route('delete.Employe',$Employee->id) }}" method="post">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
-                                            </form>
-                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-                                        </td>
-                                    @endif
-                                    <td class="id_devise d-none col-2">{{$Employee->id}}</td>
-                                    <td class="d-none">{{$Employee->Activation}}</td>
-                                    <td class="Phone col-3">{{$Employee->Number_phone}}</td>
-                                    <td class="Email col-4">{{$Employee->Email}}</td>
-                                    <td class="Last_Name col-2">{{$Employee->Last_Name}}</td>
-                                    <td class="First_Name col-2 First_Name">{{$Employee->First_Name}}</td>
-                                </tr>
-                            {{-- @endif --}}
+                            <tr class="item tr_employe">
+                                @if(session('role')=='Admin')
+                                    <td class="  col-1 d-flex gap-2">
+                                        <form action="{{ route('delete.Employe',$Employee->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
+                                        </form>
+                                        <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                    </td>
+                                @endif
+                                <td class="id_devise d-none col-2">{{$Employee->id}}</td>
+                                <td class="d-none">{{$Employee->Activation}}</td>
+                                <td class="Phone col-3">{{$Employee->Number_phone}}</td>
+                                <td class="Email col-4">{{$Employee->Email}}</td>
+                                <td class="Last_Name col-2">{{$Employee->Last_Name}}</td>
+                                <td class="First_Name col-2 First_Name">{{$Employee->First_Name}}</td>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -144,6 +142,29 @@
         </div>
 
 <script>
+
+</script>
+
+<script>
+    // Search Employee
+    function searchEmployee() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("input_search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table_employe");
+        tr = table.querySelectorAll('.tr_employe');
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[5];
+            if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
     // Select Employee
     selectEmploye();
     function selectEmploye() {
