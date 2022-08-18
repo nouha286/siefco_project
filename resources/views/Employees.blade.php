@@ -142,10 +142,6 @@
         </div>
 
 <script>
-
-</script>
-
-<script>
     // Search Employee
     function searchEmployee() {
         var input, filter, table, tr, td, i, txtValue;
