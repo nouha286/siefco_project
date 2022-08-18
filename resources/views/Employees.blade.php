@@ -31,6 +31,15 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
+                @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
@@ -55,6 +64,8 @@
                             <div class="modal-content">
                                 <form method="Post" action="{{route('add.Employe')}}">
                                     @csrf
+
+                                    
                                     <div class="modal-header ">
                                         <h5 class="modal-title " id="exampleModalLabel">اظافة مستخدم</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -65,6 +76,8 @@
                                         <input type="text" name="Email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
                                         <input type="text" name="Phone" class="form-control" placeholder="*رقم الهاتف" style="height: 45px;">
                                         <input type="text" name="Password" class="form-control" placeholder="*القن السري" style="height: 45px;">
+                                        <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-1 border-primary col-form-label">
+                    
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>

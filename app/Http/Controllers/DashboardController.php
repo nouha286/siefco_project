@@ -22,9 +22,10 @@ class DashboardController extends Controller
             $Client = count(Client::All());
             $Activ_Employe=User::where('Activation',2)->get();
             $Activ_Client=User::where('Activation',2)->where('Role','Client')->get();
+            $User=User::where('id',session('id'))->first();
 
             $Operation_commercial = count(Comercial_Operation::All());
-            return view('Dashboard')->with(['Admin' => $Admin , 'Employee' => $Employee , 'Client' => $Client , 'Operation_commercial' => $Operation_commercial,'Activ_Employe'=>$Activ_Employe,'Activ_Client'=>$Activ_Client]);
+            return view('Dashboard')->with(['Admin' => $Admin , 'Employee' => $Employee , 'Client' => $Client , 'Operation_commercial' => $Operation_commercial,'Activ_Employe'=>$Activ_Employe,'Activ_Client'=>$Activ_Client,'User'=>$User]);
         }else
         {
             return redirect('Sign');

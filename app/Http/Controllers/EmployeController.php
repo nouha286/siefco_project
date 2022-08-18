@@ -15,9 +15,10 @@ class EmployeController extends Controller
     {
         $Employee = Employees::all();
         $Employee_deleted = Employees::all();
+        $User=User::where('id',session('id'))->first();
 
         if (session()->has('role')) {
-            return view('/Employees')->with(['Employee' => $Employee, 'Employee_deleted'=> $Employee_deleted]);
+            return view('/Employees')->with(['Employee' => $Employee, 'Employee_deleted'=> $Employee_deleted,'User'=>$User]);
         } else {
             return redirect('/Sign');
         }
@@ -27,6 +28,7 @@ class EmployeController extends Controller
 
     public function addEmploye(Request $request)
     {
+       
         $edit = request('Id');
         if (Employees::where('email', request('Email'))->exists()) {
             $id = Employees::where('email', request('Email'))->first(['id'])->id;
@@ -42,10 +44,27 @@ class EmployeController extends Controller
             $User = User::where('email', request('Email'))->first();
             
             if ($User && $id != $edit) {
+                  $request->validate([
+            'Email' => 'required|max:255|email',
+            'Last_Name' => 'required',
+            'First_Name' => 'required',
+       
+          
+            'Phone' => 'required',
+            
+        ]);
                 return redirect('/Employees')->with('error', 'هذا الحساب سبق استعماله');
             } elseif ($User && $id == $edit) {
 
-
+                $request->validate([
+                    'Email' => 'required|max:255|email',
+                    'Last_Name' => 'required',
+                    'First_Name' => 'required',
+                   
+                  
+                    'Phone' => 'required',
+                    
+                ]);
                 $Employee = Employees::where('id', $edit)->first();
 
                 $Employee->Last_Name = request('Last_Name');
@@ -60,6 +79,7 @@ class EmployeController extends Controller
                 $User->Last_Name = request('Last_Name');
                 $User->email = request('Email');
                 $User->Phone = request('Phone');
+                
             
                 $User->password = bcrypt(request('Password'));
                 $User->save();
@@ -69,6 +89,15 @@ class EmployeController extends Controller
                 return redirect('/Employees')->with('success_delete', 'تم تعديل المستخدم بنجاح');
             } elseif (!$User && $id != $edit) {
 
+                $request->validate([
+                    'Email' => 'required|max:255|email',
+                    'Last_Name' => 'required',
+                    'First_Name' => 'required',
+                  
+                  
+                    'Phone' => 'required',
+                    
+                ]);
 
                 $Employee = Employees::where('id', $edit)->first();
 
@@ -93,6 +122,15 @@ class EmployeController extends Controller
                 return redirect('/Employees')->with('success_delete', 'تم تعديل المستخدم بنجاح');
             }
         } else {
+            $request->validate([
+                'Email' => 'required|max:255|email',
+                'Last_Name' => 'required',
+                'First_Name' => 'required',
+                'Password' => 'required|min:6|max:255',
+                'conf_password' =>'required|min:6|max:255|same:Password',
+                'Phone' => 'required',
+                
+            ]);
 
             $User = User::where('email', request('Email'))->first();
             if ($User) {
@@ -115,7 +153,7 @@ class EmployeController extends Controller
                 $User->Role = 'Employe';
                 $User->password = bcrypt(request('Password'));
                 $User->Activation = 1;
-
+                $User->image = 'avatar.png';
                 $User->save();
                 $Employee->save();
                 FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));

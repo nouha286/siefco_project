@@ -19,8 +19,9 @@ class OperationCommercialController extends Controller
         $comercial_Operation = Comercial_Operation::all();
         $Comercial_Operation = Comercial_Operation::where('Activation' , 1)->get();
         $client = client::where('Activation' , 1)->get();
+        $User=User::where('id',session('id'))->first();
         if(session()->has('role')) {
-            return view('/operation_commercial')->with(['comercial_Operation' => $comercial_Operation , 'Comercial_Operation' => $Comercial_Operation , 'client' => $client,'devise'=>$devise]);
+            return view('/operation_commercial')->with(['comercial_Operation' => $comercial_Operation , 'Comercial_Operation' => $Comercial_Operation , 'client' => $client,'devise'=>$devise,'User'=>$User]);
         }
         else{
             return redirect('/Sign');
@@ -40,6 +41,15 @@ class OperationCommercialController extends Controller
         return redirect('/Comercial_Operation');
       
         }else {
+
+            $request->validate([
+                
+                'Client_id' => 'required',
+                'Creditor' => 'required|numeric',
+                'Debtor' => 'required|numeric',
+                'devise' => 'required',
+                
+            ]);
             $Comercial_Operation = new Comercial_Operation();
            
             $id=request('Client_id');
