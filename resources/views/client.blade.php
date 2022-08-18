@@ -181,6 +181,9 @@
                     }
                 }
             }
+            if(filter == ''){
+                selectEmploye();
+            }
         }
         // Select Employee
         selectClient();

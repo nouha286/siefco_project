@@ -172,6 +172,9 @@
                         }
                     }
                 }
+                if(filter == ''){
+                    selectEmploye();
+                }
             }
             // Select Devise
             selectDevise();

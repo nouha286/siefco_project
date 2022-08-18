@@ -160,7 +160,11 @@
                 }
             }
         }
+        if(filter == ''){
+            selectEmploye();
+        }
     }
+
     // Select Employee
     selectEmploye();
     function selectEmploye() {
