@@ -10,7 +10,7 @@
     <!-- Navbar -->
     @include('master.Navbar')
 
-    <!-- Statistiques -->
+    <!-- Statistiques , -->
     <div class="container-fluid py-4">
         <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
             @if (session('success_delete'))

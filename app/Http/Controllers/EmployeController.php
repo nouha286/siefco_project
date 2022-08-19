@@ -81,7 +81,7 @@ class EmployeController extends Controller
                 $User->Phone = request('Phone');
                 
             
-                $User->password = bcrypt(request('Password'));
+              
                 $User->save();
                 $Employee->save();
 
@@ -114,7 +114,7 @@ class EmployeController extends Controller
                 $User->email = request('Email');
                 $User->Phone = request('Phone');
                
-                $User->password = bcrypt(request('Password'));
+               
                 $User->save();
                 $Employee->save();
 

@@ -79,7 +79,7 @@ class ClientController extends Controller
                 $User->email = request('Email');
                 $User->Phone = request('Phone');
             
-                $User->password = bcrypt(request('Password'));
+             
                 $User->save();
                 $Client->save();
 
@@ -118,7 +118,7 @@ class ClientController extends Controller
                 $User->email = request('Email');
                 $User->Phone = request('Phone');
                
-                $User->password = bcrypt(request('Password'));
+              
                 $User->save();
                 $Client->save();
 

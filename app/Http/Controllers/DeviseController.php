@@ -25,7 +25,7 @@ class DeviseController extends Controller
     { 
         $request->validate([
             'Name' => 'required|max:255',
-            'Value' => 'required',
+            'Value' => 'required|numeric',
             
            
             
