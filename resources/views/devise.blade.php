@@ -94,20 +94,20 @@
                     <tbody>
                         @foreach($devise as $devise)
                             <tr class="item tr_devise">
-                                <td class="col-2 d-flex gap-3">
+                                <td class="col-2 d-flex justify-content-between align-items-center gap-3">
                                     @if ($devise->Activation == 1)
                                         <form action="{{ route('delete.devise',$devise->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                            <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-trash3-fill text-white"></i> </button>
                                         </form>
-                                        <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                        <button type="submit" class="btn btn-edit" style="background-color:var(--grey-color); border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill text-white"></i></button>
                                     @endif
                                     @if ($devise->Activation == 0)
-                                        <form action="{{ route('delete.devise',$client->id) }}" method="post">
+                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
+                                            <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-arrow-clockwise text-white"></i> </button>
                                         </form>
                                     @endif
                                 </td>
