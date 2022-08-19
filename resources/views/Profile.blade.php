@@ -39,7 +39,7 @@
                 <form class="d-flex flex-column gap-1 m-5" method="POST" action="{{ route('edit') }}" enctype="multipart/form-data" id="form_signup">
                     @csrf
                     <div class="mb-3">
-                        
+
                         <input class="form-control border-1 border-primary form-control-lg" name="image"  id="formFileLg" type="file">
                     </div>
                     <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
@@ -52,7 +52,7 @@
                     <input type="text" name="Phone" id="phone_signup" value="{{$User->Phone}}" placeholder="رقم الهاتف" class="border-1 border-primary col-form-label">
                     <p class="text-danger float-end me-4" id="error_phone_signup"></p>
                     <input type="password" name="old_password" id="password_signup"  placeholder="القن السري  الحالي" class="border-1 border-primary col-form-label">
-                   
+
                     <input type="password" name="password" id="password_signup"  placeholder="القن السري" class="border-1 border-primary col-form-label">
                     <p class="text-danger float-end me-4" id="error_password_signup"></p>
                     <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-1 border-primary col-form-label">
@@ -68,7 +68,7 @@
 
 
         <!-- Copyright -->
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
+        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
     </div>
 </div>
 @endsection
