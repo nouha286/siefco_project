@@ -70,8 +70,8 @@
             @endif
             <div class="card border-0 shadow-sm overflow-auto" style="min-height: 300px; max-height: 300px; border-radius: 16px;">
                 <div class="m-4">
-                    <h4 class="float-end mb-2">حسابات جديدة</h4>
-                    <table class="table mb-0 text-center" id="myTable">
+                    <h4 class="float-end mb-4">حسابات جديدة</h4>
+                    <table class="table text-center" id="myTable">
                         <thead>
                             <tr>
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
@@ -87,48 +87,48 @@
                             @if(session('role')=='Admin')
                             @foreach($Activ_Employe as $User)
                                 <tr class="item">
-                                    <td class="col-1 d-flex gap-2">
+                                    <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                         <form action="{{route('Activer',$User->id)}}" method="post">
                                             @csrf
-                                            <button class="btn bg-success" style="color:white;" type="submit"><i class="bi bi-check2"></i></button>
+                                            <button class="btn" style="background-color: var(--grey-color);" type="submit"><i class="bi bi-check2 text-white"></i></button>
                                         </form>
                                         <form action="{{route('Supprimer',$User->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn bg-danger btn-edit" style="color:white;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg"></i></button>
+                                            <button type="submit" class="btn btn-edit" style="background-color: var(--grey-color);" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg text-white"></i></button>
                                         </form>
                                     </td>
-                                    <td class="Phone col-2">{{$User->Phone}}</td>
-                                    @if ($User->email_verified_at)<td class="First_Name col-1 First_Name">مفعل</td>@endif
-                                    @if (!$User->email_verified_at)<td class="First_Name col-1 First_Name">غير مفعل</td> @endif
-                                    <td class="email col-3">{{$User->email}}</td>
-                                    <td class="Last_Name col-2">{{$User->Last_Name}}</td>
-                                    <td class="First_Name col-2 First_Name">{{$User->First_Name}}</td>
-                                    <td class="First_Name col-1 First_Name">{{$User->Role}}</td>
+                                    <td class="col-2 Phone">{{$User->Phone}}</td>
+                                    @if ($User->email_verified_at)<td class="col-1 First_Name">مفعل</td>@endif
+                                    @if (!$User->email_verified_at)<td class="col-1 First_Name">غير مفعل</td> @endif
+                                    <td class="col-3 email">{{$User->email}}</td>
+                                    <td class="col-2 Last_Name">{{$User->Last_Name}}</td>
+                                    <td class="col-2 First_Name">{{$User->First_Name}}</td>
+                                    <td class="col-1 First_Name">{{$User->Role}}</td>
                                 </tr>
                             @endforeach
                         @endif
                         @if(session('role')=='Employe')
                             @foreach($Activ_Client as $User)
                                 <tr class="item">
-                                    <td class="col-1 d-flex gap-2">
+                                    <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                         <form action="{{route('Activer',$User->id)}}" method="post">
                                             @csrf
-                                            <button class="btn bg-success" type="submit"><i class="bi bi-check2"></i></button>
+                                            <button class="btn" type="submit"><i class="bi bi-check2"></i></button>
                                         </form>
                                         <form action="{{route('Supprimer',$User->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn bg-danger btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg"></i></button>
+                                            <button type="submit" class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg"></i></button>
                                         </form>
                                     </td>
-                                    <td class="Phone col-2">{{$User->Phone}}</td>
+                                    <td class="col-2 Phone">{{$User->Phone}}</td>
                                     @if ($User->email_verified_at)<td class="col-2 First_Name">مفعل</td>@endif
                                     @if (!$User->email_verified_at)<td class="col-1 First_Name">غير مفعل</td>@endif
-                                    <td class="email col-3">{{$User->email}}</td>
-                                    <td class="Last_Name col-2">{{$User->Last_Name}}</td>
-                                    <td class="First_Name col-2 First_Name">{{$User->First_Name}}</td>
-                                    <td class="First_Name col-1 First_Name">{{$User->Role}}</td>
+                                    <td class="col-3 email">{{$User->email}}</td>
+                                    <td class="col-2 Last_Name">{{$User->Last_Name}}</td>
+                                    <td class="col-2 First_Name">{{$User->First_Name}}</td>
+                                    <td class="col-1 First_Name">{{$User->Role}}</td>
                                 </tr>
                             @endforeach
                         @endif
