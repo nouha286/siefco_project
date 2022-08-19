@@ -34,7 +34,7 @@
                         </ul>
                     </div>
                 @endif
-                <form class="d-flex flex-column gap-2" method="POST" action="{{ route('edit') }}" enctype="multipart/form-data" id="form_signup">
+                <form class="d-flex flex-column gap-2 needs-validation" novalidate method="POST" action="{{ route('edit') }}" enctype="multipart/form-data" id="form_signup">
                     <div class="text-end h4">تعديل الملف الشخصي</div>
                     <hr class="m-0 my-2 p-0">
                     @csrf

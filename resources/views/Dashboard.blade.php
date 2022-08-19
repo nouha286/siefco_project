@@ -114,12 +114,12 @@
                                     <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                         <form action="{{route('Activer',$User->id)}}" method="post">
                                             @csrf
-                                            <button class="btn" type="submit"><i class="bi bi-check2"></i></button>
+                                            <button class="btn" type="submit" style="background-color: var(--grey-color);"><i class="bi bi-check2 text-white"></i></button>
                                         </form>
                                         <form action="{{route('Supprimer',$User->id)}}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-edit" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg"></i></button>
+                                            <button type="submit" class="btn btn-edit" style="background-color: var(--grey-color);" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg text-white"></i></button>
                                         </form>
                                     </td>
                                     <td class="col-2 Phone">{{$User->Phone}}</td>

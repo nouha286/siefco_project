@@ -32,14 +32,14 @@
                 </div>
                 @endif
                 @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectEmploye()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
@@ -62,8 +62,6 @@
                             <div class="modal-content">
                                 <form method="Post" action="{{route('add.Employe')}}">
                                     @csrf
-
-
                                     <div class="modal-header ">
                                         <h5 class="modal-title " id="exampleModalLabel">اظافة مستخدم</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -74,6 +72,7 @@
                                         <input type="text" name="Email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
                                         <input type="text" name="Phone" class="form-control" placeholder="*رقم الهاتف" style="height: 45px;">
                                         <input type="text" name="Password" class="form-control" placeholder="*القن السري" style="height: 45px;">
+                                        <input type="text" name="conf_password" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -129,20 +128,20 @@
                         @foreach($Employee as $Employee)
                             <tr class="item tr_employe">
                                 @if(session('role')=='Admin')
-                                    <td class="col-1 d-flex gap-2">
+                                    <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                         @if ($Employee->Activation == 1)
                                             <form action="{{ route('delete.Employe',$Employee->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
+                                                <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi  bi-trash3-fill text-white"></i> </button>
                                             </form>
-                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
+                                            <button type="submit" class="btn btn-edit" style="background-color:var(--grey-color); border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill text-white"></i></button>
                                         @endif
                                         @if ($Employee->Activation == 0)
-                                            <form action="{{ route('delete.Employe',$client->id) }}" method="post">
+                                            <form action="{{ route('delete.Employe',$Employee->id) }}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
+                                                <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-arrow-clockwise text-white"></i> </button>
                                             </form>
                                         @endif
                                     </td>
