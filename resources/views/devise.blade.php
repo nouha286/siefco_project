@@ -104,7 +104,7 @@
                                         <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
                                     @endif
                                     @if ($devise->Activation == 0)
-                                        <form action="{{ route('delete.devise',$client->id) }}" method="post">
+                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
