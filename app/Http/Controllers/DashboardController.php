@@ -42,7 +42,7 @@ class DashboardController extends Controller
             if ( $User->Role=='Client') {
                 $User->Activation=1;
                $Client=new Client;
-               $Client->image='';
+               
                $Client->Last_Name = User::where('id', $id)->first(['Last_Name'])->Last_Name;
                $Client->Email =User::where('id', $id)->first(['email'])->email;
                $Client->First_Name = User::where('id', $id)->first(['First_Name'])->First_Name;
