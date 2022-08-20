@@ -74,6 +74,8 @@
                                         <input type="text" name="Email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
                                         <input type="text" name="Phone" class="form-control" placeholder="*رقم الهاتف" style="height: 45px;">
                                         <input type="text" name="Password" class="form-control" placeholder="*القن السري" style="height: 45px;">
+                                        <input type="password" name="conf_password"  placeholder=" تأكيد القن السري" class="border-0 col-form-label">
+                      
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>

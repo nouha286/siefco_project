@@ -60,15 +60,15 @@
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" action="{{ route('add.devise') }}">
+                                <form data-parsley-validate  method="Post" action="{{ route('add.devise') }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
-                                        <input type="text" name="Name" class="form-control" placeholder="*العملة" style="height: 45px;">
-                                        <input type="text" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                        <input required type="text" name="Name" class="form-control" placeholder="*العملة" style="height: 45px;">
+                                        <input required type="text" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -96,10 +96,10 @@
                             <tr class="item tr_devise">
                                 <td class="col-2 d-flex gap-3">
                                     @if ($devise->Activation == 1)
-                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                        <form  action="{{ route('delete.devise',$devise->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                            <button class="btn"  style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
                                         </form>
                                         <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
                                     @endif
@@ -126,16 +126,16 @@
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}" >
+                    <form method="Post" data-parsley-validate  action="{{ route('add.devise') }}" >
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
-                            <input type="hidden" class="id_devise" name="Id" class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                            <input  type="hidden" class="id_devise" name="Id" class="form-control">
+                            <input required type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                            <input required type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -151,16 +151,16 @@
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}" >
+                    <form method="Post" data-parsley-validate  action="{{ route('add.devise') }}" >
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
-                            <input type="hidden" class="id_devise" name="Id" class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                            <input  type="hidden" class="id_devise" name="Id" class="form-control">
+                            <input required type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                            <input required type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
