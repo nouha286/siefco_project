@@ -56,7 +56,11 @@
                         <p class="text-danger float-end me-4" id="error_email"></p>
                         <input type="password" name="password" id="password_signin" placeholder="القن السري" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_password"></p>
+                        
                         <input type="submit" name="signin" value="تسجيل الدخول">
+                        <div class="text-center">
+                        <a href="Forget_password">نسيت كلمة المرور</a>
+                    </div>
                     </form>
                 </div>
             </div>

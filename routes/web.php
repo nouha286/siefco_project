@@ -114,3 +114,10 @@ Route::post('/Profile','ProfileController@editUser' )->name('edit');
 Route::get('/Profile_Client','Profile_ClientController@index');
 Route::post('/Profile_Client','Profile_ClientController@editUser' )->name('editClient');
 
+
+// for forget password
+Route::get('/Forget_password','PasswordController@index');
+Route::post('/Forget_password','PasswordController@issetemail')->name('ifissetemail');
+//for reset password
+Route::get('/Reset_password/{id}','PasswordController@indexReset_password')->name('resetPassword');
+Route::post('/Reset_password/{id}','PasswordController@Reset_password')->name('reset.password');
