@@ -91,23 +91,17 @@
                     </thead>
                     <tbody>
                         @foreach($devise as $devise)
-                            <tr class="item tr_devise">
-                                <td class="col-2 d-flex gap-3">
-                                    @if ($devise->Activation == 1)
-                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
-                                        </form>
-                                        <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-                                    @endif
-                                    @if ($devise->Activation == 0)
-                                        <form action="{{ route('delete.devise',$client->id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
-                                        </form>
-                                    @endif
+                            {{-- Activation --}}
+                            <div id="devise">
+                                <tr class="item activation">
+                                    @if($devise->Activation == 1)
+                                        <td class="col-2 d-flex gap-3">
+                                            <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-trash3-fill"></i> </button>
+                                            </form>
+                                            <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
                                         </td>
                                         <td class="value_devise col-5">{{$devise->Dollar_value}}</td>
                                         <td class="name_devise col-5">{{$devise->Name}}</td>
@@ -119,30 +113,30 @@
                         @endforeach
                     </tbody>
 
-        <!-- Modal Edit Devise -->
-        <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}" >
-                        @csrf
-                        <div class="modal-header">
-                            <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- Modal Edit Devise -->
+                    <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form method="Post" action="{{ route('add.devise') }}" >
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column gap-4">
+                                        <input type="hidden" class="id_devise" name="Id" class="form-control">
+                                        <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                                        <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="modal-body d-flex flex-column gap-4">
-                            <input type="hidden" class="id_devise" name="Id" class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                            <button type="submit" class="btn btn-primary">حفظ</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Edit Devise -->
+                    </div>
+                    <!-- Modal Edit Devise -->
                 </table>
             </div>
         </div>
@@ -201,30 +195,30 @@
                         @endforeach
                     </tbody>
 
-        <!-- Modal Edit Devise -->
-        <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}" >
-                        @csrf
-                        <div class="modal-header">
-                            <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <!-- Modal Edit Devise -->
+                    <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <form method="Post" action="{{ route('add.devise') }}" >
+                                    @csrf
+                                    <div class="modal-header">
+                                        <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body d-flex flex-column gap-4">
+                                        <input type="hidden" class="id_devise" name="Id" class="form-control">
+                                        <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                                        <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
-                        <div class="modal-body d-flex flex-column gap-4">
-                            <input type="hidden" class="id_devise" name="Id" class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                            <button type="submit" class="btn btn-primary">حفظ</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Edit Devise -->
+                    </div>
+                    <!-- Modal Edit Devise -->
                 </table>
             </div>
         </div>
@@ -244,21 +238,6 @@
                 })
             })
 
-            // // Switch To Active AndDesctive Of Devise
-            // var selectDevise = document.getElementById('selectDevise');
-            // selectDevise.addEventListener('change', (event) =>{
-            //     var Activation = document.querySelector('.activation');
-            //     var Desactivation = document.querySelector('.desactivation');
-            //     var devise = document.querySelector('.devise');
-            //     if(selectDevise.value == "devise"){
-            //         Activation.classList.remove("d-none");
-            //         Desactivation.classList.add("d-none");
-            //     }
-            //     if(selectDevise.value == "devise_deleted"){
-            //         Desactivation.classList.remove("d-none");
-            //         Activation.classList.add("d-none");
-            //     }
-            // })
         </script>
 
         <!-- Copyright -->
