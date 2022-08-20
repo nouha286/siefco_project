@@ -9,6 +9,7 @@
             {{ basename(URL::current()) == 'Employees' ? 'المستخدمون' : '' }}
             {{ basename(URL::current()) == 'client' ? 'الزبناء' : '' }}
             {{ basename(URL::current()) == 'devise' ? 'العملات' : '' }}
+            {{ basename(URL::current()) == 'Profile' ? 'الملف الشخصي' : '' }}
         </span>
     </div>
     <div class="d-flex flex-row-reverse justify-content-center align-items-center gap-3">

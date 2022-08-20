@@ -93,7 +93,7 @@
         </div>
 
         <!-- Copyright -->
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
+        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
     </div>
 </div>
 @endsection

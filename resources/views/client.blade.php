@@ -12,100 +12,101 @@
 
     <!-- Statistiques , -->
     <div class="container-fluid py-4">
-      <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
-        @if (session('success_delete'))
-        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-          {{ session('success_delete') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
+            @if (session('success_delete'))
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                {{ session('success_delete') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                {{ session('error') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session('failed_delete'))
+                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                {{ session('failed_delete') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
+                <div>
+                    <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectClient()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
+                        <option value="1">الزبناء</option>
+                        <option value="0">الزبناء المحذوفين</option>
+                    </select>
+                </div>
+                <div class="input-group me-3" style="width: 25%;">
+                    <input type="text" class="form-control" id="input_search" onkeyup="searchClient()" placeholder="الاسم" style="height: 45px;">
+                    <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
+                </div>
+                <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <i class="bi bi-plus-circle-fill h1"></i>
+                </button>
+            </div>
+            <table class="table mb-0 text-center" id="table_client">
+                <thead>
+                    <tr>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
+                    <th class="d-none"></th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم الهاتف</th>
+                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($client as $client)
+                    <tr class="item tr_client">
+                        <td class="col-1 d-flex justify-content-between align-items-center gap-2">
+                            @if ($client->Activation == 1)
+                            <form action="{{ route('delete.Client',$client->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi  bi-trash3-fill text-white"></i></button>
+                            </form>
+                            <button type="submit" class="btn btn-edit" style="background-color:var(--grey-color); color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill text-white"></i></button>
+                            @endif
+                            @if ($client->Activation == 0)
+                            <form action="{{ route('delete.Client',$client->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-arrow-clockwise text-white"></i></button>
+                            </form>
+                            @endif
+                        </td>
+                        <td class="col-2">{{ $client->Statement }}</td>
+                        <td class="d-none">{{ $client->Activation }}</td>
+                        <td class="col-1 Devise">{{ $client->Currency }}</td>
+                        <td class="col-1 Creditor">{{ $client->Creditor }}</td>
+                        <td class="col-1 Debtor">{{ $client->Debtor }}</td>
+                        <td class="col-1 Balance">{{ $client->Balance }}</td>
+                        <td class="col-1 Phone">{{ $client->Number_phone }}</td>
+                        <td class="col-2 Email">{{ $client->Email }}</td>
+                        <td class="col-1 Last_Name">{{ $client->Last_Name }}</td>
+                        <td class="col-1 First_Name">{{ $client->First_Name }}</td>
+                        <td class="id_devise d-none">{{ $client->id }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        @endif
-        @if (session('error'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('error') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session('failed_delete'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('failed_delete') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-        <div>
-            <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectClient()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                <option value="1">الزبناء</option>
-                <option value="0">الزبناء المحذوفين</option>
-            </select>
-        </div>
-        <div class="input-group me-3" style="width: 25%;">
-            <input type="text" class="form-control" id="input_search" onkeyup="searchClient()" placeholder="الاسم" style="height: 45px;">
-            <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
-        </div>
-        <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="bi bi-plus-circle-fill h1"></i>
-        </button>
-        </div>
-        <table class="table mb-0 text-center" id="table_client">
-            <thead>
-                <tr>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
-                <th class="d-none"></th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم الهاتف</th>
-                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
-                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($client as $client)
-                <tr class="item tr_client">
-                    <td class="col-1 d-flex gap-2">
-                        @if ($client->Activation == 1)
-                        <form action="{{ route('delete.Client',$client->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi  bi-trash3-fill"></i> </button>
-                        </form>
-                        <button type="submit" class="btn btn-edit" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill"></i></button>
-                        @endif
-                        @if ($client->Activation == 0)
-                        <form action="{{ route('delete.Client',$client->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn" style="border:none; background-color:white;" type="submit"><i class="bi bi-arrow-clockwise"></i> </button>
-                        </form>
-                        @endif
-                    </td>
-                    <td class="col-2">{{ $client->Statement }}</td>
-                    <td class="d-none">{{ $client->Activation }}</td>
-                    <td class="col-1 Devise">{{ $client->Currency }}</td>
-                    <td class="col-1 Creditor">{{ $client->Creditor }}</td>
-                    <td class="col-1 Debtor">{{ $client->Debtor }}</td>
-                    <td class="col-1 Balance">{{ $client->Balance }}</td>
-                    <td class="col-1 Phone">{{ $client->Number_phone }}</td>
-                    <td class="col-2 Email">{{ $client->Email }}</td>
-                    <td class="col-1 Last_Name">{{ $client->Last_Name }}</td>
-                    <td class="col-1 First_Name">{{ $client->First_Name }}</td>
-                    <td class="id_devise d-none">{{ $client->id }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
 
         <!-- Modal Add Client -->
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -244,7 +245,7 @@
         })
     </script>
     <!-- Copyright -->
-    <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo 2022</div>
+    <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
   </div>
 </div>
 @endsection
