@@ -112,27 +112,27 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.Client') }}">
+                    <form method="Post" action="{{ route('add.Client') }}" id="form_add_clent">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">اظافة زبون</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
-                        <div class="modal-body d-flex flex-column gap-4">
-                            <input type="text" name="First_Name" class="form- " placeholder="*الاسم">
-                            <input type="text" name="Last_Name" class="form-control " placeholder="*النسب">
-                            <input type="text" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                            <input type="text" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                            <input type="text" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
-                            <input type="text" name="Password" class="form-control " placeholder="*القن السري" style="height: 45px;">
-                            <input type="text" name="Password_verif" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
+                        <div class="modal-body d-flex flex-column gap-3">
+                            <input type="text" name="First_Name" id="add_first_name" class="form- " placeholder="*الاسم">
+                            <input type="text" name="Last_Name" id="add_last_name" class="form-control " placeholder="*النسب">
+                            <input type="text" name="Email" id="add_email" class="form-control " placeholder="*البريد الالكتروني">
+                            <input type="text" name="Phone" id="add_phone" class="form-control " placeholder="*رقم الهاتف">
+                            <input type="text" name="Balance" id="blance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
                             <div class="search_select_box w-100">
-                                <select class="selectpicker w-100" name="devise" data-live-search="true">
+                                <select class="selectpicker w-100" id="devise" name="devise" data-live-search="true">
                                     @foreach ($devise as $devise) :
                                         <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
                                     @endforeach
                                 </select>
                             </div>
+                            <input type="text" name="Password" id="add_password" class="form-control " placeholder="*القن السري" style="height: 45px;">
+                            <input type="text" name="Password_verif" id="add_conf_password" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -142,7 +142,99 @@
                 </div>
             </div>
         </div>
+
+        <script>
+            // Validation Modal Add Employe
+            const form_add_clent = document.getElementById('form_add_clent');
+            const add_first_name = document.getElementById('add_first_name');
+            const add_last_name = document.getElementById('add_last_name');
+            const add_email = document.getElementById('add_email');
+            const add_phone = document.getElementById('add_phone');
+            const blance = document.getElementById('blance');
+            const add_password = document.getElementById('add_password');
+            const add_conf_password = document.getElementById('add_conf_password');
+            const devise = document.getElementById('devise');
+            const pattern_name = /[a-zA-Z]/;
+            const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+            form_add_clent.addEventListener('submit', (e) => {
+                if ((add_first_name.value == "") || (add_first_name.value.length < 3) || (!pattern_name.test(add_first_name.value))) {
+                    e.preventDefault();
+                    add_first_name.style.border = "1px solid red";
+                }else{
+                    add_first_name.style.border = "1px solid green";
+                }
+
+                if ((add_last_name.value == "") || (add_last_name.value.length < 3) || (!pattern_name.test(add_last_name.value))) {
+                    e.preventDefault();
+                    add_last_name.style.border = "1px solid red";
+                }else{
+                    add_last_name.style.border = "1px solid green";
+                }
+
+                if ((add_email.value == "") || (!pattern_email.test(add_email.value))) {
+                    e.preventDefault();
+                    add_email.style.border = "1px solid red";
+                }else{
+                    add_email.style.border = "1px solid green";
+                }
+
+                if ((add_phone.value == "") || (add_phone.value.length != 10) || (isNaN(add_phone.value))) {
+                    e.preventDefault();
+                    add_phone.style.border = "1px solid red";
+                }else{
+                    add_phone.style.border = "1px solid green";
+                }
+
+                if ((blance.value == "") || (isNaN(blance.value))) {
+                    e.preventDefault();
+                    blance.style.border = "1px solid red";
+                }else{
+                    blance.style.border = "1px solid green";
+                }
+
+                if (devise.value == "") {
+                    e.preventDefault();
+                    devise.style.border = "1px solid red";
+                }else{
+                    devise.style.border = "1px solid green";
+                }
+
+                if ((add_password.value == "") || (add_password.value.length < 6)) {
+                    e.preventDefault();
+                    add_password.style.border = "1px solid red";
+                }else{
+                    add_password.style.border = "1px solid green";
+                }
+
+                if ((add_conf_password.value == "") || (add_conf_password.value.length < 6)) {
+                    e.preventDefault();
+                    add_conf_password.style.border = "1px solid red";
+                }else{
+                    add_conf_password.style.border = "1px solid green";
+                }
+
+                if (!(add_conf_password.value == add_password.value)) {
+                    e.preventDefault();
+                    add_conf_password.style.border = "1px solid red";
+                }else{
+                    add_conf_password.style.border = "1px solid green";
+                }
+
+                if ((add_first_name.value != "") && (add_first_name.value.length >= 3) && (pattern_name.test(add_first_name.value)) &&
+                    (add_last_name.value != "") && (add_last_name.value.length >= 3) && (pattern_name.test(add_last_name.value)) &&
+                    (add_email.value != "") && (pattern_email.test(add_email.value)) &&
+                    (add_phone.value != "") && (add_phone.value.length = 10) && !(isNaN(add_phone.value)) &&
+                    (blance.value == "") && !(isNaN(blance.value)) &&
+                    (devise.value != "") &&
+                    (add_password.value != "") && (add_password.value.length >= 6) &&
+                    (add_conf_password.value == add_password.value)) {
+                    form_add_clent.submit();
+                }
+            });
+        </script>
+
         <!-- Modal Add Client -->
+
         <!-- Modal Edit Client -->
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">

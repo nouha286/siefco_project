@@ -139,20 +139,32 @@
         if (add_name.value == "") {
             e.preventDefault();
             add_name.style.border = "1px solid red";
+        }else{
+            e.preventDefault();
+            add_name.style.border = "1px solid green";
         }
-        else if ((add_creditor.value == "") && !(pattern_number.test(add_creditor.value))) {
+        if ((add_creditor.value == "") || (isNaN(add_creditor.value))) {
             e.preventDefault();
             add_creditor.style.border = "1px solid red";
+        }else{
+            e.preventDefault();
+            add_creditor.style.border = "1px solid green";
         }
-        else if ((add_debtor.value == "") && !(pattern_number.test(add_debtor.value))) {
+        if ((add_debtor.value == "") || (isNaN(add_debtor.value))) {
             e.preventDefault();
             add_debtor.style.border = "1px solid red";
+        }else{
+            e.preventDefault();
+            add_debtor.style.border = "1px solid green";
         }
-        else if (add_devise.value == "") {
+        if (add_devise.value == "") {
             e.preventDefault();
             add_devise.style.border = "1px solid red";
+        }else{
+            e.preventDefault();
+            add_devise.style.border = "1px solid green !important";
         }
-        if ((add_name.value != "") && (add_creditor.value != "") && (pattern_number.test(add_creditor.value)) && (add_debtor.value != "") && (pattern_number.test(add_debtor.value)) && (add_devise.value != "")) {
+        if ((add_name.value != "") && (add_creditor.value != "") && !(isNaN(add_creditor.value)) && (add_debtor.value != "") && !(isNaN(add_debtor.value)) && (add_devise.value != "")) {
             form_add_client.submit();
         }
     });

@@ -93,7 +93,6 @@
                         const add_conf_password = document.getElementById('add_conf_password');
                         const pattern_name = /[a-zA-Z]/;
                         const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-                        const pattern_phone = /[0-9]/;
                         form_add_employe.addEventListener('submit', (e) => {
                             if ((add_first_name.value == "") || (add_first_name.value.length < 3) || (!pattern_name.test(add_first_name.value))) {
                                 e.preventDefault();
@@ -116,7 +115,7 @@
                                 e.preventDefault();
                                 add_email.style.border = "1px solid green";
                             }
-                            if ((add_phone.value == "") || (add_phone.value.length != 10) || (!pattern_phone.test(add_phone.value))) {
+                            if ((add_phone.value == "") || (add_phone.value.length != 10) || (isNaN(add_phone.value))) {
                                 e.preventDefault();
                                 add_phone.style.border = "1px solid red";
                             }else{
@@ -144,7 +143,7 @@
                             if ((add_first_name.value != "") && (add_first_name.value.length >= 3) && (pattern_name.test(add_first_name.value)) &&
                                 (add_last_name.value != "") && (add_last_name.value.length >= 3) && (pattern_name.test(add_last_name.value)) &&
                                 (add_email.value != "") && (pattern_email.test(add_email.value)) &&
-                                (add_phone.value != "") && (add_phone.value.length = 10) && (pattern_phone.test(add_phone.value)) &&
+                                (add_phone.value != "") && (add_phone.value.length = 10) && !(isNaN(add_phone.value)) &&
                                 (add_password.value != "") && (add_password.value.length >= 6) &&
                                 (add_conf_password.value == add_password.value)) {
                                 form_add_employe.submit();
@@ -187,7 +186,6 @@
                         const edit_phone = document.getElementById('edit_phone');
                         const pattern_name = /[a-zA-Z]/;
                         const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-                        const pattern_phone = /[0-9]/;
                         form_edit_employe.addEventListener('submit', (e) => {
                             if ((edit_first_name.value == "") || (edit_first_name.value.length < 3) || (!pattern_name.test(edit_first_name.value))) {
                                 e.preventDefault();
@@ -210,7 +208,7 @@
                                 e.preventDefault();
                                 edit_email.style.border = "1px solid green";
                             }
-                            if ((edit_phone.value == "") || (edit_phone.value.length != 10) || (!pattern_phone.test(edit_phone.value))) {
+                            if ((edit_phone.value == "") || (edit_phone.value.length != 10) || (isNaN(edit_phone.value))) {
                                 e.preventDefault();
                                 edit_phone.style.border = "1px solid red";
                             }else{
@@ -220,7 +218,7 @@
                             if ((edit_first_name.value != "") && (edit_first_name.value.length >= 3) && (pattern_name.test(edit_first_name.value)) &&
                                 (edit_last_name.value != "") && (edit_last_name.value.length >= 3) && (pattern_name.test(edit_last_name.value)) &&
                                 (edit_email.value != "") && (pattern_email.test(edit_email.value)) &&
-                                (edit_phone.value != "") && (edit_phone.value.length = 10) && (pattern_phone.test(edit_phone.value))) {
+                                (edit_phone.value != "") && (edit_phone.value.length = 10) && !(isNaN(edit_phone.value))) {
                                     form_edit_employe.submit();
                             }
                         });
