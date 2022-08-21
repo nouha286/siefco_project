@@ -239,7 +239,7 @@
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.Client') }}">
+                    <form method="Post" action="{{ route('add.Client') }}" id="form_edit_client">
                         @csrf
                         <div class="modal-header ">
                             <h5 class="modal-title " id="exampleModalLabel">اظافة زبون</h5>
@@ -247,13 +247,13 @@
                         </div>
                         <div class="modal-body  d-flex flex-column gap-4 ">
                             <input type="hidden" class="id_devise" name="Id">
-                            <input type="text" class="First_Name" name="First_Name" class="form- " placeholder="*الاسم">
-                            <input type="text" class="Last_Name" name="Last_Name" class="form-control " placeholder="*النسب">
-                            <input type="text"class="Email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                            <input type="text" class="Phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                            <input type="text" class="Balance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                            <input type="text" class="First_Name" id="edit_first_name" name="First_Name" class="form- " placeholder="*الاسم">
+                            <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name" class="form-control " placeholder="*النسب">
+                            <input type="text"class="Email" id="edit_email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
+                            <input type="text" class="Phone" id="edit_phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
+                            <input type="text" class="Balance" id="edit_blance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
                             <div class="search_select_box w-100">
-                                <select class="selectpicker w-100 devise" name="devise" data-live-search="true">
+                                <select class="selectpicker w-100 devise" id="edite_devise" name="devise" data-live-search="true">
                                     @foreach ($devise_edit as $devise) :
                                     <option  value="{{ $devise->id }}">{{ $devise->Name }}</option>
                                     @endforeach
@@ -268,6 +268,72 @@
                 </div>
             </div>
         </div>
+        <script>
+            // Validation Modal Edit Client
+            const form_edit_client = document.getElementById('form_edit_client');
+            const edit_first_name = document.getElementById('edit_first_name');
+            const edit_last_name = document.getElementById('edit_last_name');
+            const edit_email = document.getElementById('edit_email');
+            const edit_phone = document.getElementById('edit_phone');
+            const edit_blance = document.getElementById('edit_blance');
+            const edite_devise = document.getElementById('edite_devise');
+            const pattern_name = /[a-zA-Z]/;
+            const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+            form_edit_client.addEventListener('submit', (e) => {
+                if ((edit_first_name.value == "") || (edit_first_name.value.length < 3) || (!pattern_name.test(edit_first_name.value))) {
+                    e.preventDefault();
+                    edit_first_name.style.border = "1px solid red";
+                }else{
+                    edit_first_name.style.border = "1px solid green";
+                }
+
+                if ((edit_last_name.value == "") || (edit_last_name.value.length < 3) || (!pattern_name.test(edit_last_name.value))) {
+                    e.preventDefault();
+                    edit_last_name.style.border = "1px solid red";
+                }else{
+                    edit_last_name.style.border = "1px solid green";
+                }
+
+                if ((edit_email.value == "") || (!pattern_email.test(edit_email.value))) {
+                    e.preventDefault();
+                    edit_email.style.border = "1px solid red";
+                }else{
+                    edit_email.style.border = "1px solid green";
+                }
+
+                if ((edit_phone.value == "") || (edit_phone.value.length != 10) || (isNaN(edit_phone.value))) {
+                    e.preventDefault();
+                    edit_phone.style.border = "1px solid red";
+                }else{
+                    edit_phone.style.border = "1px solid green";
+                }
+
+                if ((edit_blance.value == "") || (isNaN(edit_blance.value))) {
+                    e.preventDefault();
+                    edit_blance.style.border = "1px solid red";
+                }else{
+                    edit_blance.style.border = "1px solid green";
+                }
+
+                if (edite_devise.value == "") {
+                    e.preventDefault();
+                    edite_devise.style.border = "1px solid red";
+                }else{
+                    edite_devise.style.border = "1px solid green";
+                }
+
+                if ((edit_first_name.value != "") && (edit_first_name.value.length >= 3) && (pattern_name.test(edit_first_name.value)) &&
+                    (edit_last_name.value != "") && (edit_last_name.value.length >= 3) && (pattern_name.test(edit_last_name.value)) &&
+                    (edit_email.value != "") && (pattern_email.test(edit_email.value)) &&
+                    (edit_phone.value != "") && (edit_phone.value.length = 10) && !(isNaN(edit_phone.value)) &&
+                    (edit_blance.value == "") && !(isNaN(edit_blance.value)) &&
+                    (edit_devise.value != "")) {
+                    form_edit_client.submit();
+                }
+            });
+        </script>
+        <!-- Modal Edit Client -->
+
       </div>
     </div>
 
