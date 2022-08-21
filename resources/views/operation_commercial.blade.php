@@ -32,14 +32,14 @@
         </div>
         @endif
         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <h4>العمليات التجارية</h4>
                     <div class="input-group me-3" style="width: 25%;">
@@ -54,7 +54,7 @@
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" action="{{ route('add.Operation') }}">
+                                <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
@@ -62,16 +62,16 @@
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <div class="search_select_box w-100">
-                                            <select class="selectpicker w-100" name="Client_id" data-live-search="true">
+                                            <select class="selectpicker w-100" id="add_name" name="Client_id" data-live-search="true">
                                                 @foreach ($client as $client):
                                                     <option value="{{ $client->id }}">{{ $client->First_Name }} {{ $client->Last_Name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <input type="text" name="Creditor" class="form-control " placeholder="مدين">
-                                        <input type="text" name="Debtor" class="form-control " placeholder="* دائن">
+                                        <input type="text" id="add_creditor" name="Creditor" class="form-control " placeholder="مدين">
+                                        <input type="text" id="add_debtor" name="Debtor" class="form-control " placeholder="* دائن">
                                         <div class="search_select_box w-100">
-                                            <select class="selectpicker w-100" name="devise" data-live-search="true">
+                                            <select class="selectpicker w-100" id="add_devise" name="devise" data-live-search="true">
                                                 @foreach ($devise as $devise) :
                                                     <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
                                                 @endforeach
@@ -128,22 +128,52 @@
 </div>
 @endsection
 <script>
+    // Search Operation
     function searchOperation() {
-    var input, filter, table, tr, td, i, txtValue;
-    input = document.getElementById("input_search");
-    filter = input.value.toUpperCase();
-    table = document.getElementById("table_operation");
-    tr = table.querySelectorAll('.tr_operation');
-    for (i = 0; i < tr.length; i++) {
-        td = tr[i].getElementsByTagName("td")[7];
-        if (td) {
-        txtValue = td.textContent || td.innerText;
-        if (txtValue.toUpperCase().indexOf(filter) > -1) {
-            tr[i].style.display = "";
-        } else {
-            tr[i].style.display = "none";
-        }
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("input_search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table_operation");
+        tr = table.querySelectorAll('.tr_operation');
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
         }
     }
-}
+
+    // Validation Modal Add Client
+    const form_add_client = document.getElementById('form_add_client');
+    const add_name = document.getElementById('add_name');
+    const add_creditor = document.getElementById('add_creditor');
+    const add_debtor = document.getElementById('add_debtor');
+    const add_devise = document.getElementById('add_devise');
+    const pattern_number = /[0-9]/;
+    form_add_client.addEventListener('submit', (e) => {
+        if (add_name.value == "") {
+            e.preventDefault();
+            add_name.style.border = "1px solid red";
+        }
+        else if ((add_creditor.value == "") && !(pattern_number.test(add_creditor.value))) {
+            e.preventDefault();
+            add_creditor.style.border = "1px solid red";
+        }
+        else if ((add_debtor.value == "") && !(pattern_number.test(add_debtor.value))) {
+            e.preventDefault();
+            add_debtor.style.border = "1px solid red";
+        }
+        else if (add_devise.value == "") {
+            e.preventDefault();
+            add_devise.style.border = "1px solid red";
+        }
+        if ((add_name.value != "") && (add_creditor.value != "") && (pattern_number.test(add_creditor.value)) && (add_debtor.value != "") && (pattern_number.test(add_debtor.value)) && (add_devise.value != "")) {
+            form_add_client.submit();
+        }
+    });
 </script>
