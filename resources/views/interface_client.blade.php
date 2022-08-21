@@ -15,9 +15,9 @@
             <div class="d-flex flex-column text-center justify-content-center align-items-center py-5 gap-4">
                <a  href="Profile_Client"><img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 60%; " alt="logo"></a>
                <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
-                <span> {{ $Client->Balance }}</span>
+                <span>{{ $Client->Balance }}</span>
                 <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">{{$comptOperation }}</span></span>
-                <span> {{ $Client->Email }}</span>
+                <span>{{ $Client->Email }}</span>
                 <span>{{ $Client->Number_phone }}</span>
             </div>
             <!-- Logout -->
@@ -45,7 +45,7 @@
                 @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <h4>عملياتي التجارية</h4>
-                    <a href="SIEFCO">
+                    <a href="generatePDF">
                         <button class="px-5 py-2 fw-bold" type="button" style="background-color: var(--base-color); border: 0px; border-radius: 16px;">
                             <i class="bi bi-file-earmark-arrow-down-fill"></i>تحميل
                         </button>
