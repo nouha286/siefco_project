@@ -44,23 +44,20 @@
                             </div>
                         @endif
                         @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                         <input type="text" name="email" id="email_signin" placeholder="البريد الالكتروني" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_email"></p>
                         <input type="password" name="password" id="password_signin" placeholder="القن السري" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_password"></p>
-                        
                         <input type="submit" name="signin" value="تسجيل الدخول">
-                        <div class="text-center">
-                        <a href="Forget_password">نسيت كلمة المرور</a>
-                    </div>
+                        <a class="text-center mt-3" href="Forget_password">نسيت كلمة المرور</a>
                     </form>
                 </div>
             </div>
