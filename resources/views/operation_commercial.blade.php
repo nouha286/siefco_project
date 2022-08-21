@@ -126,28 +126,8 @@
         <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
     </div>
 </div>
-@endsection
-<script>
-    // Search Operation
-    function searchOperation() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("input_search");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("table_operation");
-        tr = table.querySelectorAll('.tr_operation');
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[7];
-            if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-            }
-        }
-    }
 
+<script>
     // Validation Modal Add Client
     const form_add_client = document.getElementById('form_add_client');
     const add_name = document.getElementById('add_name');
@@ -176,4 +156,26 @@
             form_add_client.submit();
         }
     });
+
+    // Search Operation
+    function searchOperation() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("input_search");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("table_operation");
+        tr = table.querySelectorAll('.tr_operation');
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[7];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+            }
+        }
+    }
 </script>
+
+@endsection
