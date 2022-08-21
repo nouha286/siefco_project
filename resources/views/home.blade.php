@@ -24,7 +24,7 @@
             </select>
             <div id="home-text-text">
                 <div>
-                    <h1>! مرحبًا</h1>
+                    <h1>! مرحبًا</h1> 
                     <div class="h3">
                         <div><span style="color: var(--base-color);">SIEFCO</span> قم بالتسجيل لبدء صرف العملات الدولية مع</div>
                         <div>.هل لديك <a href="Sign_Up">حساب</a>؟ تسجيل الدخول من <a href="Sign">هنا</a></div>

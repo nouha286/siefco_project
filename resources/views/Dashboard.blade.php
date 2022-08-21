@@ -68,6 +68,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+            @if (session('success_Activation'))
+                <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                    {{ session('success_Activation') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             <div class="card border-0 shadow-sm overflow-auto" style="min-height: 350px; max-height: 350px; border-radius: 16px;">
                 <div class="m-4">
                     <h4 class="float-end mb-4">حسابات جديدة</h4>
@@ -99,8 +105,8 @@
                                         </form>
                                     </td>
                                     <td class="col-2 Phone">{{$User->Phone}}</td>
-                                    @if ($User->email_verified_at)<td class="col-1 First_Name">مفعل</td>@endif
-                                    @if (!$User->email_verified_at)<td class="col-1 First_Name">غير مفعل</td> @endif
+                                    @if ($User->email_verified_at)<td style="color:green;" class="col-1 ">مفعل</td>@endif
+                                    @if (!$User->email_verified_at)<td style="color:red;" class="col-1 First_Name">غير مفعل</td> @endif
                                     <td class="col-3 email">{{$User->email}}</td>
                                     <td class="col-2 Last_Name">{{$User->Last_Name}}</td>
                                     <td class="col-2 First_Name">{{$User->First_Name}}</td>
@@ -123,8 +129,8 @@
                                         </form>
                                     </td>
                                     <td class="col-2 Phone">{{$User->Phone}}</td>
-                                    @if ($User->email_verified_at)<td class="col-2 First_Name">مفعل</td>@endif
-                                    @if (!$User->email_verified_at)<td class="col-1 First_Name">غير مفعل</td>@endif
+                                    @if ($User->email_verified_at)<td style="color:green;" class="col-2 First_Name">مفعل</td>@endif
+                                    @if (!$User->email_verified_at)<td style="color:red;" class="col-1  First_Name">غير مفعل</td>@endif
                                     <td class="col-3 email">{{$User->email}}</td>
                                     <td class="col-2 Last_Name">{{$User->Last_Name}}</td>
                                     <td class="col-2 First_Name">{{$User->First_Name}}</td>
