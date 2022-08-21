@@ -70,6 +70,10 @@ Route::post('/operation_commercial','OperationCommercialController@addOperation'
 Route::delete('operation_commercial/{id}','OperationCommercialController@deleteOperation')->name('delete.Operation');
 
 
+// Generate Pdf
+Route::get('/SIEFCO', 'PDFController@index');
+
+
 
 //for sign
 Route::get('/Sign', function () {

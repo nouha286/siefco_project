@@ -17,12 +17,11 @@ class interface_clientController extends Controller
         $comptOperation=count($comptOperation);
         $User=User::where('id',session('id'))->first();
 
-    
-            if (session()->has('role_client')) {
-                return view('/interface_client')->with(['operation'=>$operation,'Client'=>$Client,'comptOperation'=>$comptOperation,'User'=>$User]);
-            }
-            else{
-                return redirect('/Sign');
-            }
+        if (session()->has('role_client')) {
+            return view('/interface_client')->with(['operation'=>$operation,'Client'=>$Client,'comptOperation'=>$comptOperation,'User'=>$User]);
+        }
+        else{
+            return redirect('/Sign');
+        }
     }
 }
