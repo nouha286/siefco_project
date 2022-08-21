@@ -122,20 +122,19 @@
             </div>
         </div>
 
-        <!-- Modal Edit Devise -->
+        <!-- Modal Add Devise -->
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}" >
+                    <form method="Post" action="{{ route('add.devise') }}" id="form_add_devise">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
-                            <input type="hidden" class="id_devise" name="Id" class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                            <input type="text" class="name_devise" id="add_devise_name" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
+                            <input type="text" class="value_devise" id="add_devise_value" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
@@ -145,7 +144,35 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Edit Devise -->
+        <script>
+            // Validation Modal Add Devise
+            const form_add_devise = document.getElementById('form_add_devise');
+            const add_devise_name = document.getElementById('add_devise_name');
+            const add_devise_value = document.getElementById('add_devise_value');
+            const pattern_name = /[a-zA-Z]/;
+            form_add_devise.addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log('ok');
+                // if ((add_devise_name.value == "") || (!pattern_name.test(add_devise_name.value))) {
+                //     e.preventDefault();
+                //     add_devise_name.style.border = "1px solid red";
+                // }else{
+                //     add_devise_name.style.border = "1px solid green";
+                // }
+
+                // if ((add_devise_value.value == "") || isNaN(add_devise_value.value)) {
+                //     e.preventDefault();
+                //     add_devise_value.style.border = "1px solid red";
+                // }else{
+                //     add_devise_value.style.border = "1px solid green";
+                // }
+
+                // if ((add_devise_name.value != "") && (pattern_name.test(add_devise_name.value)) && (add_devise_value.value != "") && !(isNaN(add_devise_value.value))) {
+                //     form_add_devise.submit();
+                // }
+            });
+        </script>
+        <!-- Modal Add Devise -->
 
         <!-- Modal Edit Devise -->
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
