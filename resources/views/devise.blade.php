@@ -172,34 +172,6 @@
         <!-- Modal Edit Devise -->
 
         <script>
-            // Validation Modal Add Devise
-            const form_add_devise = document.getElementById('form_add_devise');
-            const add_devise_name = document.getElementById('add_devise_name');
-            const add_devise_value = document.getElementById('add_devise_value');
-            const pattern_name = /[a-zA-Z]/;
-            console.log('ok 1');
-            form_add_devise.addEventListener('submit', (e) => {
-                e.preventDefault();
-                console.log('ok 2');
-                if ((add_devise_name.value == "") || (!pattern_name.test(add_devise_name.value))) {
-                    e.preventDefault();
-                    add_devise_name.style.border = "1px solid red";
-                }else{
-                    add_devise_name.style.border = "1px solid green";
-                }
-
-                if ((add_devise_value.value == "") || isNaN(add_devise_value.value)) {
-                    e.preventDefault();
-                    add_devise_value.style.border = "1px solid red";
-                }else{
-                    add_devise_value.style.border = "1px solid green";
-                }
-
-                if ((add_devise_name.value != "") && (pattern_name.test(add_devise_name.value)) && (add_devise_value.value != "") && !(isNaN(add_devise_value.value))) {
-                    form_add_devise.submit();
-                }
-            });
-
             // Search Devise
             function searchDevise() {
                 var input, filter, table, tr, td, i, txtValue;
