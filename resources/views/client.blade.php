@@ -144,7 +144,7 @@
         </div>
 
         <script>
-            // Validation Modal Add Employe
+            // Validation Modal Add Client
             const form_add_clent = document.getElementById('form_add_clent');
             const add_first_name = document.getElementById('add_first_name');
             const add_last_name = document.getElementById('add_last_name');
