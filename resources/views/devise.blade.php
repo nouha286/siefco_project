@@ -44,12 +44,12 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectDevise()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            <option value="1" selected>العملات</option>
-                            <option value="0">العملات المحذوفين</option>
+                            <option value="1" selected>{{__('العملات')}}</option>
+                            <option value="0">{{__('العملات المحذوفين')}} </option>
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
-                        <input type="text" class="form-control" id="input_search" onkeyup="searchDevise()" placeholder="الاسم" style="height: 45px;">
+                        <input type="text" class="form-control" id="input_search" onkeyup="searchDevise()" placeholder="{{__('الاسم') }}" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
                     <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -63,16 +63,16 @@
                                 <form method="Post" action="{{ route('add.devise') }}">
                                     @csrf
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
-                                        <input type="text" name="Name" class="form-control" placeholder="*العملة" style="height: 45px;">
-                                        <input type="text" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                                        <input type="text" name="Name" class="form-control" placeholder="*{{__('العملة')}}" style="height: 45px;">
+                                        <input type="text" name="Value" class="form-control" placeholder="* {{__('القيمة مقابل الدولار') }}" style="height: 45px;">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                                     </div>
                                 </form>
 
@@ -86,8 +86,8 @@
                         <tr>
                             <th class="col-2"></th>
                             <th class="d-none"></th>
-                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">القيمة مقابل الدولار</th>
-                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
+                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">  {{__('القيمة مقابل الدولار') }}</th>
+                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الاسم') }}</th>
                             <th class="d-none"></th>
                         </tr>
                     </thead>
@@ -129,16 +129,16 @@
                     <form method="Post" action="{{ route('add.devise') }}" id="form_add_devise">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                            <h5 class="modal-title " id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
-                            <input type="text" class="name_devise" id="add_devise_name" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" id="add_devise_value" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                            <input type="text" class="name_devise" id="add_devise_name" name="Name" class="form-control mb-2" placeholder="*{{__('العملة') }}" style="height: 45px;">
+                            <input type="text" class="value_devise" id="add_devise_value" name="Value" class="form-control" placeholder="*{{__('القيمة مقابل الدولار') }}" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                            <button type="submit" class="btn btn-primary">حفظ</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                         </div>
                     </form>
                 </div>
@@ -153,17 +153,17 @@
                     <form method="Post" action="{{ route('add.devise') }}">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                            <h5 class="modal-title " id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
                             <input type="hidden" class="id_devise" name="Id" class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*العملة" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*القيمة مقابل الدولار" style="height: 45px;">
+                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*{{__('العملة') }}" style="height: 45px;">
+                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*{{__('القيمة مقابل الدولار') }}" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                            <button type="submit" class="btn btn-primary">حفظ</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                         </div>
                     </form>
                 </div>

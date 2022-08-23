@@ -17,7 +17,7 @@
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                     <div class="card border-0 shadow-sm" style="min-height: 150px; border-radius: 16px;">
                         <div class="card-body d-flex flex-column justify-content-between align-items-center p-3">
-                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">المسؤولين</h4>
+                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">{{__('المسؤولين')}}</h4>
                             <h3 class="font-weight-bolder">{{ $Admin }}</h3>
                         </div>
                     </div>
@@ -25,7 +25,7 @@
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                     <div class="card border-0 shadow-sm" style="min-height: 150px; border-radius: 16px;">
                         <div class="card-body d-flex flex-column justify-content-between align-items-center p-3">
-                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">المستخدمون</h4>
+                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">{{__('المستخدمون')}}</h4>
                             <h3 class="font-weight-bolder">{{ $Employee }}</h3>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                     <div class="card border-0 shadow-sm" style="min-height: 150px; border-radius: 16px;">
                         <div class="card-body d-flex flex-column justify-content-between align-items-center p-3">
-                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">الزبناء</h4>
+                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">{{__('الزبناء')}}</h4>
                             <h3 class="font-weight-bolder">{{ $Client }}</h3>
                         </div>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                     <div class="card border-0 shadow-sm" style="min-height: 150px; border-radius: 16px;">
                         <div class="card-body d-flex flex-column justify-content-between align-items-center p-3">
-                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">العمليات التجارية</h4>
+                            <h4 class="text-sm mb-0 text-uppercase font-weight-bold">{{__('العمليات التجارية')}}</h4>
                             <h3 class="font-weight-bolder">{{ $Operation_commercial }}</h3>
                         </div>
                     </div>
@@ -76,17 +76,17 @@
             @endif
             <div class="card border-0 shadow-sm overflow-auto" style="min-height: 350px; max-height: 350px; border-radius: 16px;">
                 <div class="m-4">
-                    <h4 class="float-end mb-4">حسابات جديدة</h4>
+                    <h4 class="float-end mb-4"> {{__('حسابات جديدة') }}</h4>
                     <table class="table text-center" id="myTable">
                         <thead>
                             <tr>
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم الهاتف</th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">تفعيل</th>
-                                <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الدور</th>
+                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم الهاتف') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('تفعيل') }}</th>
+                                <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البريد الالكتروني') }}</th>
+                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('النسب')}}</th>
+                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الاسم') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الدور') }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -105,8 +105,8 @@
                                         </form>
                                     </td>
                                     <td class="col-2 Phone">{{$User->Phone}}</td>
-                                    @if ($User->email_verified_at)<td style="color:green;" class="col-1 ">مفعل</td>@endif
-                                    @if (!$User->email_verified_at)<td style="color:red;" class="col-1 First_Name">غير مفعل</td> @endif
+                                    @if ($User->email_verified_at)<td style="color:green;" class="col-1 ">{{__('مفعل') }}</td>@endif
+                                    @if (!$User->email_verified_at)<td style="color:red;" class="col-1 First_Name">{{__('غير مفعل') }}/td> @endif
                                     <td class="col-3 email">{{$User->email}}</td>
                                     <td class="col-2 Last_Name">{{$User->Last_Name}}</td>
                                     <td class="col-2 First_Name">{{$User->First_Name}}</td>
@@ -129,8 +129,8 @@
                                         </form>
                                     </td>
                                     <td class="col-2 Phone">{{$User->Phone}}</td>
-                                    @if ($User->email_verified_at)<td style="color:green;" class="col-2 First_Name">مفعل</td>@endif
-                                    @if (!$User->email_verified_at)<td style="color:red;" class="col-1  First_Name">غير مفعل</td>@endif
+                                    @if ($User->email_verified_at)<td style="color:green;" class="col-2 First_Name">{{__('مفعل') }}</td>@endif
+                                    @if (!$User->email_verified_at)<td style="color:red;" class="col-1  First_Name"> {{__('غير مفعل') }}</td>@endif
                                     <td class="col-3 email">{{$User->email}}</td>
                                     <td class="col-2 Last_Name">{{$User->Last_Name}}</td>
                                     <td class="col-2 First_Name">{{$User->First_Name}}</td>

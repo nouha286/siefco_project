@@ -43,12 +43,12 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectEmploye()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            <option value="1">المستخدمون</option>
-                            <option value="0">المستخدمون المحذوفين</option>
+                            <option value="">{{__('المستخدمون')}}</option>
+                            <option value=""> {{__('المستخدمون المحذوفين')}}</option>
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
-                        <input type="text" class="form-control" id="input_search" onkeyup="searchEmployee()" placeholder="الاسم" style="height: 45px;">
+                        <input type="text" class="form-control" id="input_search" onkeyup="searchEmployee()" placeholder="{{__('الاسم') }}" style="height: 45px;">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
                     @if(session('role')=='Admin')
@@ -63,20 +63,20 @@
                                 <form method="Post" action="{{route('add.Employe')}}" id="form_add_employe">
                                     @csrf
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">اظافة مستخدم</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{__('اظافة مستخدم') }}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
-                                        <input type="text" name="First_Name" id="add_first_name" class="form-control" placeholder="*الاسم" style="height: 45px;">
-                                        <input type="text" name="Last_Name" id="add_last_name" class="form-control" placeholder="*النسب" style="height: 45px;">
-                                        <input type="text" name="Email" id="add_email" class="form-control" placeholder="*البريد الالكتروني" style="height: 45px;">
-                                        <input type="text" name="Phone" id="add_phone" class="form-control" placeholder="*رقم الهاتف" style="height: 45px;">
-                                        <input type="text" name="Password" id="add_password" class="form-control" placeholder="*القن السري" style="height: 45px;">
-                                        <input type="text" name="conf_password" id="add_conf_password" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
+                                        <input type="text" name="First_Name" id="add_first_name" class="form-control" placeholder="*{{__('الاسم') }}" style="height: 45px;">
+                                        <input type="text" name="Last_Name" id="add_last_name" class="form-control" placeholder="*{{__('النسب')}}" style="height: 45px;">
+                                        <input type="text" name="Email" id="add_email" class="form-control" placeholder="*{{__('البريد الالكتروني') }}" style="height: 45px;">
+                                        <input type="text" name="Phone" id="add_phone" class="form-control" placeholder="*{{__('رقم الهاتف') }}" style="height: 45px;">
+                                        <input type="text" name="Password" id="add_password" class="form-control" placeholder="*{{__('القن السري') }}" style="height: 45px;">
+                                        <input type="text" name="conf_password" id="add_conf_password" class="form-control" placeholder="{{__('تأكيد القن السري') }}" style="height: 45px;">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -159,19 +159,19 @@
                                 <form method="Post" action="{{ route('add.Employe') }}" id="form_edit_employe">
                                     @csrf
                                     <div class="modal-header ">
-                                        <h5 class="modal-title " id="exampleModalLabel">اظافة عملة</h5>
+                                        <h5 class="modal-title " id="exampleModalLabel">{{__('اظافة عملة')}}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body  d-flex flex-column gap-4 ">
                                         <input type="hidden" class="id_devise" name="Id" >
-                                        <input type="text" class="First_Name" id="edit_first_name" name="First_Name" class="form-control mb-3 " placeholder="*الاسم" style="height: 45px;">
-                                        <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name" class="form-control mb-3 " placeholder="*النسب" style="height: 45px;">
-                                        <input type="text" class="Email" id="edit_email" name="Email" class="form-control mb-3 " placeholder="*البريد الالكتروني" style="height: 45px;">
-                                        <input type="text" class="Phone" id="edit_phone" name="Phone" class="form-control mb-3 " placeholder="*رقم الهاتف" style="height: 45px;">
+                                        <input type="text" class="First_Name" id="edit_first_name" name="First_Name" class="form-control mb-3 " placeholder="*{{__('الاسم') }}" style="height: 45px;">
+                                        <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name" class="form-control mb-3 " placeholder="*{{__('النسب')}}" style="height: 45px;">
+                                        <input type="text" class="Email" id="edit_email" name="Email" class="form-control mb-3 " placeholder="*{{__('البريد الالكتروني') }}" style="height: 45px;">
+                                        <input type="text" class="Phone" id="edit_phone" name="Phone" class="form-control mb-3 " placeholder="*{{__('رقم الهاتف') }}" style="height: 45px;">
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -231,11 +231,11 @@
                             @if(session('role')=='Admin')
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
                             @endif
-                            <th class="d-none">التفعيل</th>
-                            <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم الهاتف</th>
-                            <th class="col-4 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
+                            <th class="d-none">{{__('التفعيل')}}</th>
+                            <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> {{__('رقم الهاتف') }}</th>
+                            <th class="col-4 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> {{__('البريد الالكتروني') }}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('النسب')}}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الاسم') }}</th>
                         </tr>
                     </thead>
                     <tbody>

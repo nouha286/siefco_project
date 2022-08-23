@@ -17,32 +17,32 @@
             <ul class="navbar-nav d-flex flex-column justify-content-center align-items-center my-2 gap-2">
                 <li class="nav-item text-center {{ basename(URL::current()) == 'Profile' ? 'active' : '' }}">
                     <a class="nav-link" href="Profile">
-                        <span class="{{ basename(URL::current()) == 'Profile' ? 'text-light' : 'text-dark' }}">الملف الشخصي</span>
+                        <span class="{{ basename(URL::current()) == 'Profile' ? 'text-light' : 'text-dark' }}"> {{__('الملف الشخصي')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center {{ basename(URL::current()) == 'Dashboard' ? 'active' : '' }}">
                     <a class="nav-link" href="Dashboard">
-                        <span class="{{ basename(URL::current()) == 'Dashboard' ? 'text-light' : 'text-dark' }}">لوحة التحكم</span>
+                        <span class="{{ basename(URL::current()) == 'Dashboard' ? 'text-light' : 'text-dark' }}"> {{__('لوحة التحكم')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center {{ basename(URL::current()) == 'operation_commercial' ? 'active' : '' }}">
                     <a class="nav-link" href="operation_commercial">
-                        <span class="{{ basename(URL::current()) == 'operation_commercial' ? 'text-light' : 'text-dark' }}">العمليات التجارية</span>
+                        <span class="{{ basename(URL::current()) == 'operation_commercial' ? 'text-light' : 'text-dark' }}">{{__('العمليات التجارية')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center {{ basename(URL::current()) == 'Employees' ? 'active' : '' }}">
                     <a class="nav-link" href="Employees">
-                        <span class="{{ basename(URL::current()) == 'Employees' ? 'text-light' : 'text-dark' }}">المستخدمون</span>
+                        <span class="{{ basename(URL::current()) == 'Employees' ? 'text-light' : 'text-dark' }}">{{__('المستخدمون')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center {{ basename(URL::current()) == 'client' ? 'active' : '' }}">
                     <a class="nav-link" href="client">
-                        <span class="{{ basename(URL::current()) == 'client' ? 'text-light' : 'text-dark' }}">الزبناء</span>
+                        <span class="{{ basename(URL::current()) == 'client' ? 'text-light' : 'text-dark' }}">{{__('الزبناء')}}</span>
                     </a>
                 </li>
                 <li class="nav-item text-center {{ basename(URL::current()) == 'devise' ? 'active' : '' }}">
                     <a class="nav-link" href="devise">
-                        <span class="{{ basename(URL::current()) == 'devise' ? 'text-light' : 'text-dark' }}">العملات</span>
+                        <span class="{{ basename(URL::current()) == 'devise' ? 'text-light' : 'text-dark' }}">{{__('العملات')}}</span>
                     </a>
                 </li>
             </ul>
@@ -50,7 +50,7 @@
         <!-- Logout -->
         <hr class="w-75 m-0 p-0">
         <div>
-            <a class="nav-link" href="logout"><span class="text-dark">تسجيل الخروج</span></a>
+            <a class="nav-link" href="logout"><span class="text-dark"> {{__('تسجيل الخروج') }}</span></a>
         </div>
     </aside>
 </div>

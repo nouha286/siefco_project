@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00
+class ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -17,20 +17,20 @@ class ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
-        '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         '23c18046f52bef3eea034657bafda50f' => __DIR__ . '/..' . '/symfony/polyfill-php81/bootstrap.php',
-        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        '3bd81c9b8fcc150b69d8b63b4d2ccf23' => __DIR__ . '/..' . '/spatie/flare-client-php/src/helpers.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
-        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
-        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
-        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
-        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
+        'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
         'c7a3c339e7e14b60e06a2d7fcce9476b' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Events/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
+        '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
         '320163ac6b93aebe3dc25b60a0533d56' => __DIR__ . '/..' . '/spatie/laravel-ignition/src/helpers.php',
     );
@@ -540,6 +540,10 @@ class ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00
             array (
                 0 => __DIR__ . '/..' . '/mockery/mockery/library',
             ),
+            'Mcamara\\LaravelLocalization' => 
+            array (
+                0 => __DIR__ . '/..' . '/mcamara/laravel-localization/src',
+            ),
         ),
     );
 
@@ -554,6 +558,7 @@ class ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00
         'App\\Http\\Controllers\\EmployeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\OperationCommercialController' => __DIR__ . '/../..' . '/app/Http/Controllers/OperationCommercialController.php',
+        'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
         'App\\Http\\Controllers\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/PasswordController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
         'App\\Http\\Controllers\\Profile_ClientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Profile_ClientController.php',
@@ -3174,6 +3179,24 @@ class ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00
         'Masterminds\\HTML5\\Serializer\\OutputRules' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/OutputRules.php',
         'Masterminds\\HTML5\\Serializer\\RulesInterface' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/RulesInterface.php',
         'Masterminds\\HTML5\\Serializer\\Traverser' => __DIR__ . '/..' . '/masterminds/html5/src/HTML5/Serializer/Traverser.php',
+        'Mcamara\\LaravelLocalization\\Commands\\RouteTranslationsCacheCommand' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Commands/RouteTranslationsCacheCommand.php',
+        'Mcamara\\LaravelLocalization\\Commands\\RouteTranslationsClearCommand' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Commands/RouteTranslationsClearCommand.php',
+        'Mcamara\\LaravelLocalization\\Commands\\RouteTranslationsListCommand' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Commands/RouteTranslationsListCommand.php',
+        'Mcamara\\LaravelLocalization\\Exceptions\\SupportedLocalesNotDefined' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Exceptions/SupportedLocalesNotDefined.php',
+        'Mcamara\\LaravelLocalization\\Exceptions\\UnsupportedLocaleException' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Exceptions/UnsupportedLocaleException.php',
+        'Mcamara\\LaravelLocalization\\Facades\\LaravelLocalization' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Facades/LaravelLocalization.php',
+        'Mcamara\\LaravelLocalization\\Interfaces\\LocalizedUrlRoutable' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Interfaces/LocalizedUrlRoutable.php',
+        'Mcamara\\LaravelLocalization\\LanguageNegotiator' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/LanguageNegotiator.php',
+        'Mcamara\\LaravelLocalization\\LaravelLocalization' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/LaravelLocalization.php',
+        'Mcamara\\LaravelLocalization\\LaravelLocalizationServiceProvider' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/LaravelLocalizationServiceProvider.php',
+        'Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationMiddlewareBase' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationMiddlewareBase.php',
+        'Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationRedirectFilter' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationRedirectFilter.php',
+        'Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationRoutes' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationRoutes.php',
+        'Mcamara\\LaravelLocalization\\Middleware\\LaravelLocalizationViewPath' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LaravelLocalizationViewPath.php',
+        'Mcamara\\LaravelLocalization\\Middleware\\LocaleCookieRedirect' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LocaleCookieRedirect.php',
+        'Mcamara\\LaravelLocalization\\Middleware\\LocaleSessionRedirect' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Middleware/LocaleSessionRedirect.php',
+        'Mcamara\\LaravelLocalization\\Traits\\LoadsTranslatedCachedRoutes' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Traits/LoadsTranslatedCachedRoutes.php',
+        'Mcamara\\LaravelLocalization\\Traits\\TranslatedRouteCommandContext' => __DIR__ . '/..' . '/mcamara/laravel-localization/src/Mcamara/LaravelLocalization/Traits/TranslatedRouteCommandContext.php',
         'Mockery' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
@@ -6025,10 +6048,10 @@ class ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit6aed4685f4a63e5415d88f5ee07d1a00::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$classMap;
 
         }, null, ClassLoader::class);
     }
