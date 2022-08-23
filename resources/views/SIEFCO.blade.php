@@ -1,13 +1,38 @@
-@extends('master.layout')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('content')
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
+    <!--  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+    <link rel="stylesheet" type="text/css" href="http://parsleyjs.org/src/parsley.css" />
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <title>SIEFCO</title>
+</head>
 
-    <div class="d-flex flex-column justify-content-center gap-5 py-5" style="width: 90%; margin-left: 5%;">
+<style>
+    body {
+        font-family: DejaVu Sans, sans-serif;
+        font-size: 12px;
+        }
+</style>
+
+<body>
+    <div style="width: 50%; display: flex; flex-direction: column; gap: 5px; padding: 0 5px;">
         <!-- Logo -->
+
         <div class="d-flex justify-content-around align-items-center" style="border: 2px solid var(--grey-color); border-radius: 16px;">
             <img src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo">
             <p> {{ date('Y') }} {{__(' شركة صرف العملات الدولية')}}</p>
             <div class="d-flex flex-column text-center gap-1">
+
                 <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
                 <samp>{{ $Client->Email }}</samp>
                 <span>{{ $Client->Number_phone }}</span>
@@ -55,8 +80,10 @@
                     <span>{{ date("j-m-y H:i:s"); }}</span>
                 </div>
             </div>
+
             <div class="d-flex flex-row-reverse justify-content-around align-items-center" style="width: 60%; height: 60px; border: 2px solid var(--grey-color); border-radius: 16px;">
                 <span> : {{__('المجموع')}} </span>
+
                 <span>{{ $sumDebtor }}</span>
                 <span>{{ $sumCreditor }}</span>
                 <div class="d-flex gap-4">
@@ -66,4 +93,5 @@
             </div>
         </div>
     </div>
-@endsection
+</body>
+</html>
