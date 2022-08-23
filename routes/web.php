@@ -74,7 +74,6 @@ Route::delete('operation_commercial/{id}','OperationCommercialController@deleteO
 
 
 // Generate Pdf
-// Route::get('/SIEFCO', 'PDFController@index');
 Route::get('generatePDF', 'PDFController@generatePDF');
 
 

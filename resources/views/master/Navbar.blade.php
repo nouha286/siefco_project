@@ -13,15 +13,11 @@
             {{ basename(URL::current()) == 'interface_client' ? __('عملياتي التجارية') : '' }}
         </span>
     </div>
-    <div class="d-flex flex-row-reverse justify-content-center align-items-center gap-3">
-        <ul> 
-            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                
-                    <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                        {{ $properties['native'] }}
-                    </a>
-              
-            @endforeach
-                </ul>
+    <div class="d-flex flex-row-reverse justify-content-center align-items-center">
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        @endforeach
     </div>
 </nav>

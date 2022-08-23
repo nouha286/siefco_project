@@ -9,6 +9,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png"/>
     <title>SIEFCO</title>
 </head>
 
@@ -26,15 +27,15 @@
             </div>
             <!---------------------- Sign In ---------------------->
 
-            
+
             <ul>
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                
-                    
+
+
                         <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                             {{ $properties['native'] }}
                         </a>
-               
+
                 @endforeach
             </ul>
             <div id="signin">
@@ -56,11 +57,11 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-      
-                        <input type="text" name="email" id="email_signin" placeholder="{{__('البريد الالكتروني') }}" class="border-0 col-form-label">
+
+                        <input type="text" name="email" id="email_signin" placeholder="البريد الالكتروني" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_email"></p>
-                       
-                        <input type="submit" name="signin" value="{{__('تحقق') }} ">
+
+                        <input type="submit" name="signin" value="تحقق ">
                     </form>
                 </div>
             </div>

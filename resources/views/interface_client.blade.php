@@ -13,8 +13,10 @@
             <hr class="w-75 m-0 p-0">
             <!-- Info Profile -->
             <div class="d-flex flex-column text-center justify-content-center align-items-center py-5 gap-4">
-               <a  href="Profile_Client"><img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 60%; " alt="logo"></a>
-               <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
+                <a href="Profile_Client">
+                    <img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 60%; " alt="logo">
+                </a>
+                <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
                 <span>{{ $Client->Balance }}</span>
                 <span class="d-flex gap-1"><span> {{__('عمليةالتجارية')}}</span><span class="fw-bold">{{$comptOperation }}</span></span>
                 <span>{{ $Client->Email }}</span>
