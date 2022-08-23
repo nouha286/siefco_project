@@ -23,46 +23,54 @@
         font-family: DejaVu Sans, sans-serif;
         font-size: 13px;
     }
+    #pdf{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+    body #date{
+        text-align: right;
+    }
 </style>
 <body>
-    <div class="d-flex gap-5">
-        <div style="text-align: right">{{ date('j-m-y') }}</div>
+    <div id="pdf">
+        <div id="date">{{ date('j-m-y') }}</div>
         <!-- Logo -->
-        <div style="border: 2px solid #6F6F6F; border-radius: 16px;">
-            {{-- <img class="d-none" src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo"> --}}
-            <div style="text-align: left"> {{ date('Y') }} شركة صرف العملات الدولية</div>
-            <div style="text-align: right">
-                <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
-                <span>{{ $Client->Email }}</span>
-                <span>{{ $Client->Number_phone }}</span>
-                <span>{{ $comptOperation }} : عدد العمليات التجارية</span>
+        <div id="formation" style="width: 100%; border: 2px solid #6F6F6F; border-radius: 16px;">
+            {{-- <img src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo"> --}}
+            <div> {{ date('Y') }} شركة صرف العملات الدولية</div>
+            <div>
+                <div>{{ $Client->First_Name.' '. $Client->Last_Name }}</div>
+                <div>{{ $Client->Email }}</div>
+                <div>{{ $Client->Number_phone }}</div>
+                <div>{{ $comptOperation }} : عدد العمليات التجارية</div>
             </div>
         </div>
-        <table class="table table-bordered text-center">
+        <table class="table table-bordered text-center" style="text-align: center; border-collapse: collapse;">
             <thead class="table-light">
                 <tr>
-                    <th class="col-2">{{__('المستخدم')}}</th>
-                    <th class="col-3">{{__('البيان')}}</th>
-                    <th class="col-1">{{__('العملة')}}</th>
-                    <th class="col-1">{{__('الرصيد')}}</th>
-                    <th class="col-1">{{__('مدين')}}</th>
-                    <th class="col-1">{{__('دائن')}}</th>
-                    <th class="col-2">{{__('التاريخ')}}</th>
-                    <th class="col-1">{{__('رقم العمليات')}}</th>
+                    <th style="width: 16.66%;">{{__('المستخدم')}}</th>
+                    <th style="width: 25%;">{{__('البيان')}}</th>
+                    <th style="width: 8.33%;">{{__('العملة')}}</th>
+                    <th style="width: 8.33%;">{{__('الرصيد')}}</th>
+                    <th style="width: 8.33%;">{{__('مدين')}}</th>
+                    <th style="width: 8.33%;">{{__('دائن')}}</th>
+                    <th style="width: 16.66%;">{{__('التاريخ')}}</th>
+                    <th style="width: 8.33%;">{{__('رقم العمليات')}}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($operation as $comercial_Operation)
                     @if($comercial_Operation->Client_id==session('id_Client'))
                         <tr>
-                            <td class="col-2">{{ $comercial_Operation->Emloyee_Name }}</td>
-                            <td class="col-3">{{ $comercial_Operation->Statement }}</td>
-                            <td class="col-1">{{ $comercial_Operation->Currency }}</td>
-                            <td class="col-1">{{ $comercial_Operation->Balance }}</td>
-                            <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
-                            <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
-                            <td class="col-2">{{ $comercial_Operation->created_at}}</td>
-                            <td class="col-1">{{ $comercial_Operation->id }}</td>
+                            <td style="width: 16.66%;">{{ $comercial_Operation->Emloyee_Name }}</td>
+                            <td style="width: 25%;">{{ $comercial_Operation->Statement }}</td>
+                            <td style="width: 8.33%;">{{ $comercial_Operation->Currency }}</td>
+                            <td style="width: 8.33%;">{{ $comercial_Operation->Balance }}</td>
+                            <td style="width: 8.33%;">{{ $comercial_Operation->Creditor }}</td>
+                            <td style="width: 8.33%;">{{ $comercial_Operation->Debtor }}</td>
+                            <td style="width: 16.66%;">{{ $comercial_Operation->created_at}}</td>
+                            <td style="width: 8.33%;">{{ $comercial_Operation->id }}</td>
                         </tr>
                     @endif
                 @endforeach
@@ -70,12 +78,8 @@
         </table>
         <div>
             <div>
-                <div>
-                    {{__('طبعة')}} : {{ $Client->First_Name.' '. $Client->Last_Name }}
-                </div>
-                <div>
-                    {{__('الساعة')}} : {{ date("j-m-y H:i:s") }}
-                </div>
+                <div>{{__('طبعة')}} : {{ $Client->First_Name.' '. $Client->Last_Name }}</div>
+                <div>{{__('الساعة')}} : {{ date("j-m-y H:i:s") }}</div>
             </div>
             <div style="width: 50%; border: 2px solid #6F6F6F; border-radius: 16px;">
                 <span>{{__('المجموع')}} : </span>
