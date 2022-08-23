@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 
 <head>
     <meta charset="UTF-8">
@@ -16,42 +16,39 @@
     <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png"/>
     <title>SIEFCO</title>
 </head>
-
 <style>
     body {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-        overflow-x: hidden;
         font-family: DejaVu Sans, sans-serif;
         font-size: 13px;
-        }
+    }
 </style>
-
 <body>
-    <div style="width: 50%; display: flex; flex-direction: column; gap: 5px; padding: 0 5px;">
+    <div class="d-flex gap-5">
+        <div style="text-align: right">{{ date('j-m-y') }}</div>
         <!-- Logo -->
-        <div style="display: flex; justify-content: space-around; align-items: center; border: 2px solid #6F6F6F; border-radius: 16px;">
-            <img class="d-none" src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo">
-            <p> {{ date('Y') }} شركة صرف العملات الدولية</p>
-            <div class="text-center" style="display: flex; flex-direction: column; gap: 1px;">
+        <div style="border: 2px solid #6F6F6F; border-radius: 16px;">
+            {{-- <img class="d-none" src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo"> --}}
+            <div style="text-align: left"> {{ date('Y') }} شركة صرف العملات الدولية</div>
+            <div style="text-align: right">
                 <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
-                <samp>{{ $Client->Email }}</samp>
+                <span>{{ $Client->Email }}</span>
                 <span>{{ $Client->Number_phone }}</span>
-                <div><span>{{ $comptOperation }}</span> <span>:عدد العمليات التجارية</span></div>
+                <span>{{ $comptOperation }} : عدد العمليات التجارية</span>
             </div>
         </div>
-        <table class="table table-bordered mb-0 text-center">
+        <table class="table table-bordered text-center">
             <thead class="table-light">
                 <tr>
-                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('المستخدم')}}</th>
-                    <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البيان')}}/th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('العملة')}}</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الرصيد')}}</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('مدين')}}</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('دائن')}}</th>
-                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('التاريخ')}}</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم العمليات')}}</th>
+                    <th class="col-2">{{__('المستخدم')}}</th>
+                    <th class="col-3">{{__('البيان')}}</th>
+                    <th class="col-1">{{__('العملة')}}</th>
+                    <th class="col-1">{{__('الرصيد')}}</th>
+                    <th class="col-1">{{__('مدين')}}</th>
+                    <th class="col-1">{{__('دائن')}}</th>
+                    <th class="col-2">{{__('التاريخ')}}</th>
+                    <th class="col-1">{{__('رقم العمليات')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -71,27 +68,20 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="d-flex gap-5">
-            <div class="d-flex flex-column" style="width: 40%;">
-                <div class="d-flex flex-row-reverse">
-                    <span> : {{__('طبعة')}}</span>
-                    <span><span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span></span>
+        <div>
+            <div>
+                <div>
+                    {{__('طبعة')}} : {{ $Client->First_Name.' '. $Client->Last_Name }}
                 </div>
-                <div class="d-flex flex-row-reverse">
-                    <span> : {{__('الساعة')}}/span>
-                    <span>{{ date("j-m-y H:i:s"); }}</span>
+                <div>
+                    {{__('الساعة')}} : {{ date("j-m-y H:i:s") }}
                 </div>
             </div>
-
-            <div class="d-flex flex-row-reverse justify-content-around align-items-center" style="width: 60%; height: 60px; border: 2px solid var(--grey-color); border-radius: 16px;">
-                <span> : {{__('المجموع')}} </span>
-
+            <div style="width: 50%; border: 2px solid #6F6F6F; border-radius: 16px;">
+                <span>{{__('المجموع')}} : </span>
                 <span>{{ $sumDebtor }}</span>
                 <span>{{ $sumCreditor }}</span>
-                <div class="d-flex gap-4">
-                    <span>{{ $sumBalance }}</span>
-                    <span> :  {{__('الرصيد')}}</span>
-                </div>
+                <span>{{__('الرصيد')}} : {{ $sumBalance }}</span>
             </div>
         </div>
     </div>
