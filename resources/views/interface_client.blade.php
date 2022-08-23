@@ -16,7 +16,7 @@
                <a  href="Profile_Client"><img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 60%; " alt="logo"></a>
                <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
                 <span>{{ $Client->Balance }}</span>
-                <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">{{$comptOperation }}</span></span>
+                <span class="d-flex gap-1"><span> {{__('عمليةالتجارية')}}</span><span class="fw-bold">{{$comptOperation }}</span></span>
                 <span>{{ $Client->Email }}</span>
                 <span>{{ $Client->Number_phone }}</span>
             </div>
@@ -24,7 +24,7 @@
             <hr class="w-75 m-0 p-0">
             <div>
                 <a class="nav-link" href="logout">
-                    <span class="text-dark">تسجيل الخروج</span>
+                    <span class="text-dark">{{__('تسجيل الخروج') }}</span>
                 </a>
             </div>
         </aside>
@@ -44,25 +44,26 @@
                 </div>
                 @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-                    <h4>عملياتي التجارية</h4>
+                    <h4>{{__('عملياتي التجارية')}}</h4>
                     <a href="generatePDF">
                         <button class="px-5 py-2 fw-bold" type="button" style="background-color: var(--base-color); border: 0px; border-radius: 16px;">
-                            <i class="bi bi-file-earmark-arrow-down-fill"></i>تحميل
+                            <i class="bi bi-file-earmark-arrow-down-fill"></i> {{__('تحميل') }}
                         </button>
                     </a>
                 </div>
                 <table class="table mb-0 text-center">
                     <thead>
                         <tr>
-                        <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">اسم الزبون</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم العمليات</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('المستخدم')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('العملة')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('التاريخ')}}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البيان')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الرصيد')}}</th>
+
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('مدين')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('دائن')}}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('اسم الزبون')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم العمليات')}}</th>
                          </tr>
                     </thead>
                     <tbody>

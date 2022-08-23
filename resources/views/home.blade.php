@@ -15,19 +15,27 @@
 <body>
     <div id="home">
         <div class="col-6 d-lg-flex d-none justify-content-center align-items-center" id="home-logo">
-        <img src="{{asset('assets/logo.png')}}">
+            <img src="{{asset('assets/logo.png')}}">
         </div>
+       
         <div class="col-lg-6 p-3" id="home-text">
-            <select class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);">
-                <option value="English">English</option>
-                <option value="Arabe">Arabe</option>
-            </select>
+            <ul>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                
+                    
+                        <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+               
+                @endforeach
+            </ul> 
             <div id="home-text-text">
                 <div>
-                    <h1>! مرحبًا</h1> 
-                    <div class="h3">
-                        <div><span style="color: var(--base-color);">SIEFCO</span> قم بالتسجيل لبدء صرف العملات الدولية مع</div>
-                        <div>.هل لديك <a href="Sign_Up">حساب</a>؟ تسجيل الدخول من <a href="Sign">هنا</a></div>
+                    
+                    <div class="h3  p-5">
+                        <h1 >{{__('!!مرحبا ')}}</h1>
+                        <div>{{__('قم بالتسجيل لبدء صرف العملات الدولية معنا')}} </div>
+                        <div><span>{{__('.هل لديك')}}</span><a href="Sign_Up">{{__('حساب')}}</a>{{__('؟ تسجيل الدخول من')}}<a href="Sign">{{__('هنا')}}</a></div>
                     </div>
                 </div>
             </div>
