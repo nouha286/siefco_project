@@ -9,6 +9,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png"/>
     <title>SIEFCO</title>
 </head>
 
@@ -24,7 +25,7 @@
             </select>
             <div id="home-text-text">
                 <div>
-                    <h1>! مرحبًا</h1> 
+                    <h1>! مرحبًا</h1>
                     <div class="h3">
                         <div><span style="color: var(--base-color);">SIEFCO</span> قم بالتسجيل لبدء صرف العملات الدولية مع</div>
                         <div>.هل لديك <a href="Sign_Up">حساب</a>؟ تسجيل الدخول من <a href="Sign">هنا</a></div>
