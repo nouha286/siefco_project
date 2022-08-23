@@ -1,0 +1,124 @@
+{
+    "تسجيل الدخول":"Sign in",
+    "انشاء حساب" :"Sign Up",
+    "ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Enter your email address and your password  to login",
+    "البريد الالكتروني":"Email",
+    "القن السري":"Password",
+    "املأ معلوماتك لانشاء حسابك":"Fill in your information to create your account",
+    "الاسم":"First Name",
+    "النسب":"Last Name",
+   "تأكيد القن السري":"verification of password",
+   "زبون":"customer",
+   "مستخدم" :"employee",
+   "رقم التسجيل ":"Registration number",
+   "رقم الهاتف" :"Phone Number",
+   "المرجوا ملأ معلوماتك لانشاء حسابك":"Please fill in your information to create your account",
+  "املأ حقل الاسم و النسب":"Fill in the first Name and last Name",
+  "يجب أن يتكون الاسم و النسب من ثلاثة أحرف على الأقل":"Name and last Name must consist of at least three characters",
+  "املأ حقل البريد الإلكتروني":"Fill in the email",
+  "البريد الإلكتروني غير صالح":"Email is invalid",
+  "املأ حقل رقم الهاتف":"Fill in the phone number",
+  "رقم الهاتف غير صالح":"Invalid phone number",
+  "املأ حقل كلمة المرور":"Fill in the password ",
+  "يجب أن تتكون كلمة المرور من ستة أحرف على الأقل":"The password must be at least six characters long.",
+  "املأ حقل تاكيد كلمة المرور":"Fill in the password confirmation",
+  "تاكيد من كلمة المرور":"Confirm the password",
+  "اختر دورك":"Choose your role",
+  "ادخل رقم التسجيل":"Enter the registration number",
+  "تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل":"The account has been added successfully please check the message box to receive activation mail",
+ "المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح":"Only users who can create an account please enter a valid registration number",
+ "المرجوا ادخال بريدك الالكتروني و القن السري لتسجيل الدخول":"Please enter your email address and secret code to login",
+ "قم بالتسجيل لبدء صرف العملات الدولية معنا":"Sign up to start exchanging international currencies with us",
+ "!!مرحبا ":"Welcome!!",
+ ".هل لديك":"Do you have.",
+ "حساب":"account",
+ "؟ تسجيل الدخول من":"؟ Login from",
+ "هنا":"here",
+ "المسؤولين":"Officials",
+ "المستخدمون":"employes",
+ "الزبناء":"Customers",
+ "العمليات التجارية":"Business Processes",
+ "الدور":"Role",
+ "المرجوا ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Please enter your email address and password to log in",
+ "لوحة التحكم":"Control Panel",
+ "العملات":"currencies",
+ "تسجيل الخروج":"Logout",
+ "الصفحة":"The page",
+ "اظافة عملة":"Add a coin",
+ "مدين":"Debite",
+ "دائن":"Credit",
+ "حفظ":"conservation",
+ "اغلاق":"closing",
+ "المستخدم":"User",
+ "العملة":"Currency",
+ "التاريخ":"Date",
+ "البيان":"Statement",
+ "الرصيد":"Balance",
+ "اسم الزبون":"Customer Name",
+ "رقم العمليات":"Operations Number",
+ "المستخدمون الجدد":"New Users",
+ "المستخدمون المحذوفين":"Deleted users",
+ "اظافة مستخدم":"Add a user",
+ "اظافةزبون":"Add Customer",
+ "الزبناء المحذوفين":"Deleted customers",
+ "القيمة مقابل الدولار":"Value against the dollar",
+ "العملات المحذوفين":"Deleted currencies",
+ "اظافة مسؤول":"Add an official",
+ "كلمة المرور الحالية":"Current  password",
+ "عمليةالتجارية":"Commercial Process",
+ "تحميل":"loading",
+ "الصفحة الرئيسية":"Home Page",
+ "عملياتي التجارية":"My Business Operations",
+ "The :attribute must be a valid email address.":"يجب أن تكون السمة :عنوان بريد إلكتروني صالح.",
+"The :attribute must be greater than :value.":"يجب أن تكون السمة :أكبر من :value.",
+"الحقل :سمة مطلوب.":"The :attribute field is required.",
+"السمة :و :الأخرى يجب أن تتطابق.":"The :attribute and :other must match.",
+"يجب ألا تحتوي السمة :(:max) على عناصر :max.":"The :attribute must not have more than :max items.",
+"يجب ألا تكون السمة :أكبر من :max كيلوبايت.":"The :attribute must not be greater than :max kilobytes.",
+"يجب ألا تكون السمة :أكبر من :max للأحرف.":"The :attribute must not be greater than :max characters.",
+"يجب أن تحتوي السمة :min على عناصر :min على الأقل.":"The :attribute must have at least :min items.",
+"يجب أن تكون السمة :min كيلوبايت على الأقل.":"The :attribute must be at least :min kilobytes.",
+"يجب أن تكون السمة :الأحرف :min على الأقل.":"The :attribute must be at least :min characters.",
+"هذا الحساب سبق استعماله":"Ce compte a déjà été utilisé",
+"تفعيل":"Activate",
+"حسابات جديدة":"New Accounts",
+"مفعل":"active",
+"غير مفعل":"Inactive",
+"التفعيل":"Activation",
+"تعديل الملف الشخصي":"Edit your profile",
+"نسيت كلمة المرور":"Forgot Password",
+"الملف الشخصي":"Profile",
+"عدد العمليات التجارية":"Number of business operations",
+"طبعة":"Edition",
+"الساعة":"Clock",
+"المجموع":"Total",
+" شركة صرف العملات الدولية":" International Currency Exchange Company",
+"استعادة القن السري":"Recover Password",
+"ادخل بريدك الالكتروني ":"Enter your email address ",
+"تحقق":"Check"
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+ 
+
+ 
+ 
+ 
+
+
+  
+
+
+}

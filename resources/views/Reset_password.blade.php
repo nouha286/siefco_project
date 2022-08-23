@@ -21,14 +21,14 @@
         <div class="col-lg-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
             <div class="w-100 d-flex" id="menu-sign">
-                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signup">انشاء حساب</a>
-                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center " id="btn_signin">تسجيل الدخول</a>
+                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signup">{{__('انشاء حساب') }}/a>
+                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center " id="btn_signin">{{__('تسجيل الدخول') }} </a>
             </div>
             <!---------------------- Sign In ---------------------->
             <div id="signin">
                 <div class="d-flex flex-column justify-content-center gap-2" style="width: 80%; height: 85vh; margin-left: 10%;">
-                    <h1 class="text-center">استعادة القن السري</h1>
-                    <p class="text-center" id="error_signin">ادخل بريدك الالكتروني </p>
+                    <h1 class="text-center">{{__(' استعادة القن السري') }}</h1>
+                    <p class="text-center" id="error_signin">{{__('ادخل بريدك الالكتروني ') }}</p>
                     <p id="error_signin"></p>
                     <form class="d-flex flex-column gap-2" method="POST" action="{{ route('reset.password',$id) }}" id="form_signin">
                         @csrf

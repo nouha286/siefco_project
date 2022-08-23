@@ -17,16 +17,16 @@
 
                 <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
                 <span> {{ $Client->Balance }}</span>
-                <span class="d-flex gap-1"><span>عملية تجارية</span><span class="fw-bold">{{$comptOperation }}</span></span>
+                <span class="d-flex gap-1"><span> {{__('عمليةالتجارية') }}</span><span class="fw-bold">{{$comptOperation }}</span></span>
                 <span> {{ $Client->Email }}</span>
                 <span>{{ $Client->Number_phone }}</span>
-                <a href="interface_client" class="text-center border-0 list-group-item list-group-item-action">الصفحة الرئيسية</a>
+                <a href="interface_client" class="text-center border-0 list-group-item list-group-item-action"> {{__('الصفحة الرئيسية')}}</a>
             </div>
             <!-- Logout -->
             <hr class="w-75 m-0 p-0">
             <div>
                 <a class="nav-link" href="logout">
-                    <span class="text-dark">تسجيل الخروج</span>
+                    <span class="text-dark">{{__('تسجيل الخروج') }}</span>
                 </a>
             </div>
         </aside>
@@ -69,24 +69,24 @@
                         <input class="form-control border-1 border-primary form-control-lg" name="image" id="formFileLg" type="file">
                     </div>
                     <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
-                        <input type="text" name="Last_Name" id="" value="{{$User->First_Name}}" placeholder="الاسم" class="border-1 border-primary col-form-label" style="width: 48%;">
-                        <input type="text" name="First_Name" id="" value="{{$User->Last_Name}}" placeholder="النسب" class="border-1 border-primary col-form-label" style="width: 48%;">
+                        <input type="text" name="Last_Name" id="" value="{{$User->First_Name}}" placeholder="{{__('الاسم') }}" class="border-1 border-primary col-form-label" style="width: 48%;">
+                        <input type="text" name="First_Name" id="" value="{{$User->Last_Name}}" placeholder="{{__('النسب')}}" class="border-1 border-primary col-form-label" style="width: 48%;">
                     </div>
                     <p class="text-danger float-end me-4" id="error_name"></p>
-                    <input type="text" name="Email" id="email_signup" value="{{$User->email}}" placeholder="البريد الالكتروني" class="border-1 border-primary col-form-label">
+                    <input type="text" name="Email" id="email_signup" value="{{$User->email}}" placeholder=" {{__('البريد الالكتروني') }}" class="border-1 border-primary col-form-label">
                     <p class="text-danger float-end me-4" id="error_email_signup"></p>
-                    <input type="text" name="Phone" id="phone_signup" value="{{$User->Phone}}" placeholder="رقم الهاتف" class="border-1 border-primary col-form-label">
+                    <input type="text" name="Phone" id="phone_signup" value="{{$User->Phone}}" placeholder=" {{__('رقم الهاتف') }}" class="border-1 border-primary col-form-label">
                     <p class="text-danger float-end me-4" id="error_phone_signup"></p>
-                    <input type="password" name="old_password" id="password_signup" placeholder="القن السري  الحالي" class="border-1 border-primary col-form-label">
+                    <input type="password" name="old_password" id="password_signup" placeholder="{{__('كلمة المرور الحالية') }}"  class="border-1 border-primary col-form-label">
 
-                    <input type="password" name="password" id="password_signup" placeholder="القن السري" class="border-1 border-primary col-form-label">
+                    <input type="password" name="password" id="password_signup" placeholder="{{__('القن السري') }}" class="border-1 border-primary col-form-label">
                     <p class="text-danger float-end me-4" id="error_password_signup"></p>
-                    <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-1 border-primary col-form-label">
+                    <input type="password" name="conf_password" id="conf_password_signup" placeholder="{{__('تأكيد القن السري') }}" class="border-1 border-primary col-form-label">
                     <p class="text-danger float-end me-4" id="error_conf_password_signup"></p>
 
                     <p class="text-danger float-end me-4" id="error_role_signup"></p>
                     <input type="hidden" class="id_devise" name="Id" value="{{session('id')}}">
-                    <input class="mt-3" type="submit" name="signin" value=" حفظ">
+                    <input class="mt-3" type="submit" name="signin" value=" {{__('حفظ')}}">
                 </form>
 
             </div>

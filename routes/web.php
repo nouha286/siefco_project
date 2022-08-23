@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['prefix' => LaravelLocalization::setLocale()], function()
+{
 
 Route::get('/', function () {
     if (session()->has('role')) {
@@ -126,3 +129,4 @@ Route::post('/Forget_password','PasswordController@issetemail')->name('ifissetem
 //for reset password
 Route::get('/Reset_password/{id}','PasswordController@indexReset_password')->name('resetPassword');
 Route::post('/Reset_password/{id}','PasswordController@Reset_password')->name('reset.password');
+});

@@ -41,9 +41,9 @@
             </div>
         @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-                    <h4>العمليات التجارية</h4>
+                    <h4>{{__('العمليات التجارية')}}</h4>
                     <div class="input-group me-3" style="width: 25%;">
-                        <input type="text" id="input_search" class="form-control" placeholder="الاسم" style="height: 45px;" onkeyup="searchOperation()">
+                        <input type="text" id="input_search" class="form-control" placeholder="{{__('الاسم')}}" style="height: 45px;" onkeyup="searchOperation()">
                         <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                     </div>
                     <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -57,7 +57,7 @@
                                 <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
                                     @csrf
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">اظافة عملة</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">{{__('اظافة عملة')}}</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
@@ -68,8 +68,8 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <input type="text" id="add_creditor" name="Creditor" class="form-control " placeholder="مدين">
-                                        <input type="text" id="add_debtor" name="Debtor" class="form-control " placeholder="* دائن">
+                                        <input type="text" id="add_creditor" name="Creditor" class="form-control " placeholder="{{__('مدين')}}">
+                                        <input type="text" id="add_debtor" name="Debtor" class="form-control " placeholder="*{{__('دائن')}}">
                                         <div class="search_select_box w-100">
                                             <select class="selectpicker w-100" id="add_devise" name="devise" data-live-search="true">
                                                 @foreach ($devise as $devise) :
@@ -79,8 +79,8 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                                        <button type="submit" class="btn btn-primary">حفظ</button>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}/button>
+                                        <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                                     </div>
                                 </form>
                             </div>
@@ -92,15 +92,16 @@
                 <table class="table mb-0 text-center" id="table_operation">
                     <thead>
                         <tr>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">اسم الزبون</th>
-                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم العمليات</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('المستخدم')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('العملة')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('التاريخ')}}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البيان')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الرصيد')}}</th>
+
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('مدين')}}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('دائن')}}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('اسم الزبون')}} </th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم العمليات')}} </th>
                         </tr>
                     </thead>
                     <tbody>

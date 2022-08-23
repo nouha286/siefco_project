@@ -43,12 +43,12 @@
             <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                 <div>
                     <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectClient()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                        <option value="1">الزبناء</option>
-                        <option value="0">الزبناء المحذوفين</option>
+                        <option value="1">{{__('الزبناء') }}</option>
+                        <option value="0">{{__('الزبناء المحذوفين')}}</option>
                     </select>
                 </div>
                 <div class="input-group me-3" style="width: 25%;">
-                    <input type="text" class="form-control" id="input_search" onkeyup="searchClient()" placeholder="الاسم" style="height: 45px;">
+                    <input type="text" class="form-control" id="input_search" onkeyup="searchClient()" placeholder="{{__('الاسم') }}" style="height: 45px;">
                     <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                 </div>
                 <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -59,16 +59,16 @@
                 <thead>
                     <tr>
                     <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
-                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
+                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البيان')}}</th>
                     <th class="d-none"></th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم الهاتف</th>
-                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البريد الالكتروني</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">النسب</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الاسم</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('العملة')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('دائن')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('مدين')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الرصيد')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم الهاتف') }}</th>
+                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"> {{__('البريد الالكتروني') }}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('النسب')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الاسم') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,15 +115,15 @@
                     <form method="Post" action="{{ route('add.Client') }}" id="form_add_client">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">اظافة زبون</h5>
+                            <h5 class="modal-title" id="exampleModalLabel"> {{__('اظافةزبون') }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-3">
-                            <input type="text" name="First_Name" id="add_first_name" class="form- " placeholder="*الاسم">
-                            <input type="text" name="Last_Name" id="add_last_name" class="form-control " placeholder="*النسب">
-                            <input type="text" name="Email" id="add_email" class="form-control " placeholder="*البريد الالكتروني">
-                            <input type="text" name="Phone" id="add_phone" class="form-control " placeholder="*رقم الهاتف">
-                            <input type="text" name="Balance" id="blance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                            <input type="text" name="First_Name" id="add_first_name" class="form- " placeholder="*{{__('الاسم') }}">
+                            <input type="text" name="Last_Name" id="add_last_name" class="form-control " placeholder="*{{__('النسب')}}">
+                            <input type="text" name="Email" id="add_email" class="form-control " placeholder="*{{__('البريد الالكتروني') }}">
+                            <input type="text" name="Phone" id="add_phone" class="form-control " placeholder="*{{__('رقم الهاتف') }}">
+                            <input type="text" name="Balance" id="blance" class="form-control " placeholder="* {{__(' الرصيد') }}" style="height: 45px;">
                             <div class="search_select_box w-100">
                                 <select class="selectpicker w-100" id="devise" name="devise" data-live-search="true">
                                     @foreach ($devise as $devise) :
@@ -131,12 +131,12 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <input type="text" name="Password" id="add_password" class="form-control " placeholder="*القن السري" style="height: 45px;">
-                            <input type="text" name="Password_verif" id="add_conf_password" class="form-control" placeholder="  تأكيد القن السري" style="height: 45px;">
+                            <input type="text" name="Password" id="add_password" class="form-control " placeholder="* {{__('القن السري') }}" style="height: 45px;">
+                            <input type="text" name="Password_verif" id="add_conf_password" class="form-control" placeholder="{{__('تأكيد القن السري') }}" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                            <button type="submit" class="btn btn-primary">حفظ</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                         </div>
                     </form>
                 </div>
@@ -242,16 +242,16 @@
                     <form method="Post" action="{{ route('add.Client') }}" id="form_edit_client">
                         @csrf
                         <div class="modal-header ">
-                            <h5 class="modal-title " id="exampleModalLabel">اظافة زبون</h5>
+                            <h5 class="modal-title " id="exampleModalLabel">{{__('اظافةزبون') }}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body  d-flex flex-column gap-4 ">
                             <input type="hidden" class="id_devise" name="Id">
-                            <input type="text" class="First_Name" id="edit_first_name" name="First_Name" class="form- " placeholder="*الاسم">
-                            <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name" class="form-control " placeholder="*النسب">
-                            <input type="text"class="Email" id="edit_email" name="Email" class="form-control " placeholder="*البريد الالكتروني">
-                            <input type="text" class="Phone" id="edit_phone" name="Phone" class="form-control " placeholder="*رقم الهاتف">
-                            <input type="text" class="Balance" id="edit_blance" name="Balance" class="form-control " placeholder="* الرصيد" style="height: 45px;">
+                            <input type="text" class="First_Name" id="edit_first_name" name="First_Name" class="form- " placeholder="*{{__('الاسم') }}">
+                            <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name" class="form-control " placeholder="*{{__('النسب')}}">
+                            <input type="text"class="Email" id="edit_email" name="Email" class="form-control " placeholder="* {{__('البريد الالكتروني') }}">
+                            <input type="text" class="Phone" id="edit_phone" name="Phone" class="form-control " placeholder="* {{__('رقم الهاتف') }}">
+                            <input type="text" class="Balance" id="edit_blance" name="Balance" class="form-control " placeholder="* {{__(' الرصيد') }}" style="height: 45px;">
                             <div class="search_select_box w-100">
                                 <select class="selectpicker w-100 devise" id="edite_devise" name="devise" data-live-search="true">
                                     @foreach ($devise_edit as $devise) :
@@ -261,8 +261,8 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-                        <button type="submit" class="btn btn-primary">حفظ</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                        <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
                         </div>
                     </form>
                 </div>

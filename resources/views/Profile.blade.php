@@ -35,21 +35,21 @@
                     </div>
                 @endif
                 <form class="d-flex flex-column gap-2" method="POST" action="{{ route('edit') }}" enctype="multipart/form-data" id="form_signup">
-                    <div class="text-end h4">تعديل الملف الشخصي</div>
+                    <div class="text-end h4">{{__('تعديل الملف الشخصي') }}</div>
                     <hr class="m-0 my-2 p-0">
                     @csrf
                     <input class="form-control border-1 border-primary form-control-lg" name="image" id="formFileLg" type="file" style="border-radius: 16px;">
                     <div class="w-100 d-flex flex-sm-row-reverse justify-content-between align-items-center">
-                        <input type="text" name="Last_Name" id="" value="{{$User->First_Name}}" placeholder="الاسم" class="border-1 border-primary col-form-label" style="width: 49%;">
-                        <input type="text" name="First_Name" id="" value="{{$User->Last_Name}}" placeholder="النسب" class="border-1 border-primary col-form-label" style="width: 49%;">
+                        <input type="text" name="Last_Name" id="" value="{{$User->First_Name}}" placeholder="{{__('الاسم') }}" class="border-1 border-primary col-form-label" style="width: 49%;">
+                        <input type="text" name="First_Name" id="" value="{{$User->Last_Name}}" placeholder="{{__('النسب') }}" class="border-1 border-primary col-form-label" style="width: 49%;">
                     </div>
-                    <input type="text" name="Email" id="email_signup" value="{{$User->email}}" placeholder="البريد الالكتروني" class="border-1 border-primary col-form-label">
-                    <input type="text" name="Phone" id="phone_signup" value="{{$User->Phone}}" placeholder="رقم الهاتف" class="border-1 border-primary col-form-label">
-                    <input type="password" name="old_password" id="password_signup"  placeholder="القن السري  الحالي" class="border-1 border-primary col-form-label">
-                    <input type="password" name="password" id="password_signup"  placeholder="القن السري" class="border-1 border-primary col-form-label">
-                    <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-1 border-primary col-form-label">
+                    <input type="text" name="Email" id="email_signup" value="{{$User->email}}" placeholder=" {{__('البريد الالكتروني') }}" class="border-1 border-primary col-form-label">
+                    <input type="text" name="Phone" id="phone_signup" value="{{$User->Phone}}" placeholder="{{__('رقم الهاتف') }}" class="border-1 border-primary col-form-label">
+                    <input type="password" name="old_password" id="password_signup"  placeholder="{{__('كلمة المرور الحالية') }}" class="border-1 border-primary col-form-label">
+                    <input type="password" name="password" id="password_signup"  placeholder=" {{__('القن السري') }}" class="border-1 border-primary col-form-label">
+                    <input type="password" name="conf_password" id="conf_password_signup" placeholder=" {{__('تأكيد القن السري') }}" class="border-1 border-primary col-form-label">
                     <input type="hidden" class="id_devise" name="Id" value="{{session('id')}}">
-                    <input class="mt-3" type="submit" name="signin" value=" حفظ">
+                    <input class="mt-3" type="submit" name="signin" value="{{__('حفظ')}}">
                 </form>
             </div>
         </div>

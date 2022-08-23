@@ -29,37 +29,29 @@
 </style>
 
 <body>
-    <div style="width: 70%; margin-left: 15%; display: flex; flex-direction: column; gap: 20px; padding: 20px 0px;">
-        <div style="display: flex; justify-content: space-between; align-items: center;">
-            <div style="display: none;">
-                <img src="{{asset('assets/logo.png')}}" style="width: 25%;" alt="logo">
-            </div>
-            <div style="display: flex; flex-direction: row-reverse; text-align: end;">التاريخ : {{ date("j-m-y"); }}</div>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid #6F6F6F; border-radius: 16px; padding: 15px;">
-            <div class="text-center" style="display: flex; flex-direction: column; gap: 5px;">
-                <div> {{ date('Y') }} شركة صرف العملات الدولية</div>
-                <div>0598891240 - الجوال : 0592771516</div>
-                <div>الهاتف : 082052781</div>
-            </div>
-            <div class="text-center" style="display: flex; flex-direction: column; gap: 5px;">
-                <div>{{ $Client->First_Name.' '. $Client->Last_Name }}</div>
-                <div>{{ $Client->Email }}</div>
-                <div>{{ $Client->Number_phone }}</div>
-                <div>{{ $comptOperation }} : عدد العمليات التجارية</div>
+    <div style="width: 50%; display: flex; flex-direction: column; gap: 5px; padding: 0 5px;">
+        <!-- Logo -->
+        <div style="display: flex; justify-content: space-around; align-items: center; border: 2px solid #6F6F6F; border-radius: 16px;">
+            <img class="d-none" src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo">
+            <p> {{ date('Y') }} شركة صرف العملات الدولية</p>
+            <div class="text-center" style="display: flex; flex-direction: column; gap: 1px;">
+                <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
+                <samp>{{ $Client->Email }}</samp>
+                <span>{{ $Client->Number_phone }}</span>
+                <div><span>{{ $comptOperation }}</span> <span>:عدد العمليات التجارية</span></div>
             </div>
         </div>
         <table class="table table-bordered mb-0 text-center">
             <thead class="table-light">
                 <tr>
-                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">المستخدم</th>
-                    <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">البيان</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">العملة</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">الرصيد</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">مدين</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">دائن</th>
-                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">التاريخ</th>
-                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">رقم العمليات</th>
+                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('المستخدم')}}</th>
+                    <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البيان')}}/th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('العملة')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الرصيد')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('مدين')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('دائن')}}</th>
+                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('التاريخ')}}</th>
+                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم العمليات')}}</th>
                 </tr>
             </thead>
             <tbody>
@@ -82,21 +74,23 @@
         <div class="d-flex gap-5">
             <div class="d-flex flex-column" style="width: 40%;">
                 <div class="d-flex flex-row-reverse">
-                    <span> : طبعة</span>
+                    <span> : {{__('طبعة')}}</span>
                     <span><span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span></span>
                 </div>
                 <div class="d-flex flex-row-reverse">
-                    <span> : الساعة</span>
+                    <span> : {{__('الساعة')}}/span>
                     <span>{{ date("j-m-y H:i:s"); }}</span>
                 </div>
             </div>
-            <div class="d-flex flex-row-reverse justify-content-around align-items-center" style="width: 60%; height: 60px; border: 2px solid #6F6F6F; border-radius: 16px;">
-                <span> : المجموع </span>
+
+            <div class="d-flex flex-row-reverse justify-content-around align-items-center" style="width: 60%; height: 60px; border: 2px solid var(--grey-color); border-radius: 16px;">
+                <span> : {{__('المجموع')}} </span>
+
                 <span>{{ $sumDebtor }}</span>
                 <span>{{ $sumCreditor }}</span>
                 <div class="d-flex gap-4">
                     <span>{{ $sumBalance }}</span>
-                    <span> : الرصيد</span>
+                    <span> :  {{__('الرصيد')}}</span>
                 </div>
             </div>
         </div>

@@ -21,14 +21,24 @@
         <div class="col-lg-6 p-0 overflow-auto" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
             <div class="w-100 d-flex" id="menu-sign">
-                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center active" id="btn_signup">انشاء حساب</a>
-                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin">تسجيل الدخول</a>
+                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center active" id="btn_signup">{{__('انشاء حساب') }}</a>
+                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin"> {{__('تسجيل الدخول') }}</a>
             </div>
             <!---------------------- Sign Up ---------------------->
+            <ul>
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                
+                    
+                        <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+               
+                @endforeach
+            </ul>
             <div id="signup">
                 <div class="d-flex flex-column justify-content-center" style="width: 80%; height: 85vh; margin-left: 10%;">
-                    <h1 class="text-center">انشاء حساب</h1>
-                    <p class="text-center" id="error_signup">املأ معلوماتك لانشاء حسابك</p>
+                    <h1 class="text-center">{{__('انشاء حساب') }} </h1>
+                    <p class="text-center" id="error_signup">{{__(' املأ معلوماتك لانشاء حسابك') }} </p>
                     <form class="d-flex flex-column" method="POST" action="{{ route('inscription.auth') }}" id="form_signup">
                         @csrf
                         @if (session('failed'))
@@ -65,33 +75,33 @@
     </div>
 @endif
                         <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
-                            <input type="text" name="Last_Name" id="last_name" placeholder="الاسم" class="border-0 col-form-label" style="width: 48%;">
-                            <input type="text" name="First_Name" id="first_name" placeholder="النسب" class="border-0 col-form-label" style="width: 48%;">
+                            <input type="text" name="Last_Name" id="last_name" placeholder="{{__('الاسم') }}" class="border-0 col-form-label" style="width: 48%;">
+                            <input type="text" name="First_Name" id="first_name" placeholder="{{__('النسب') }}" class="border-0 col-form-label" style="width: 48%;">
                         </div>
                         <p class="text-danger float-end me-4" id="error_name"></p>
-                        <input type="text" name="email" id="email_signup" placeholder="البريد الالكتروني" class="border-0 col-form-label">
+                        <input type="text" name="email" id="email_signup" placeholder="{{__('البريد الالكتروني') }}" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_email_signup"></p>
-                        <input type="text" name="phone" id="phone_signup" placeholder="رقم الهاتف" class="border-0 col-form-label">
+                        <input type="text" name="phone" id="phone_signup" placeholder="{{__('رقم الهاتف') }}" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_phone_signup"></p>
-                        <input type="password" name="password" id="password_signup" placeholder="القن السري" class="border-0 col-form-label">
+                        <input type="password" name="password" id="password_signup" placeholder="{{__('القن السري') }}" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_password_signup"></p>
-                        <input type="password" name="conf_password" id="conf_password_signup" placeholder=" تأكيد القن السري" class="border-0 col-form-label">
+                        <input type="password" name="conf_password" id="conf_password_signup" placeholder=" {{__('تأكيد القن السري') }}" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_conf_password_signup"></p>
                         <div class="d-flex flex-row-reverse justify-content-between align-items-center gap-3">
                             <div onsubmit="return (checkForm())" name="userForm">
-                                <label for="client" class="h6">زبون</label>
+                                <label for="client" class="h6">{{__('زبون') }}</label>
                                 <input id="client" name="role" type="radio" onclick="n_identif_off()" value="">
                             </div>
                             <div class="d-flex">
-                                <label for="employee" class="h6">مستخدم</label>
+                                <label for="employee" class="h6">{{__('مستخدم') }}</label>
                                 <input id="employee" name="role" type="radio" onclick="n_identif_on()" value="">
                             </div>
                             <div>
-                                <input type="text" name="n_identif" id="n_identif" placeholder="رقم التسجيل" class="border-0 col-form-label d-none" style="height: 35px;">
+                                <input type="text" name="n_identif" id="n_identif" placeholder="{{__('رقم التسجيل ') }}" class="border-0 col-form-label d-none" style="height: 35px;">
                             </div>
                         </div>
                         <p class="text-danger float-end me-4" id="error_role_signup"></p>
-                        <input class="mb-3" type="submit" name="signin" value="انشاء حساب">
+                        <input class="mb-3" type="submit" name="signin" value="{{__('انشاء حساب') }}">
                     </form>
                 </div>
             </div>
@@ -152,57 +162,57 @@
     form_signup.addEventListener('submit', (e) => {
         if ((first_name.value == "") && (last_name.value == "") && (email_signup.value == "") && (phone_signup.value == "") && (password_signup.value == "") && (conf_password_signup.value == "") && client.value == "" && employee.value == "") {
             e.preventDefault();
-            error_signup.innerHTML = "<p class='text-danger'>المرجوا ملأ معلوماتك لانشاء حسابك</p>";
+            error_signup.innerHTML = "<p class='text-danger'>{{__('المرجوا ملأ معلوماتك لانشاء حسابك') }}</p>";
         } else {
-            error_signup.innerText = "املأ معلوماتك لانشاء حسابك";
+            error_signup.innerText = "{{__('املأ معلوماتك لانشاء حسابك') }}";
             if ((first_name.value == "") || (last_name.value == "")) {
                 e.preventDefault();
-                error_name.innerText = "املأ حقل الاسم و النسب";
+                error_name.innerText =  "{{__('املأ حقل الاسم و النسب') }}";
             }else{
                 if ((pattern_name.test(first_name.value)) && (first_name.value.length >= 3) && (pattern_name.test(last_name.value)) && (last_name.value.length >= 3)) {
                     error_name.innerText = "";
                 } else if ((!pattern_name.test(first_name.value)) || (first_name.value.length < 3) || (!pattern_name.test(last_name.value)) || (last_name.value.length < 3)) {
                     e.preventDefault();
-                    error_name.innerText = "يجب أن يتكون الاسم و النسب من ثلاثة أحرف على الأقل";
+                    error_name.innerText = "{{__('يجب أن يتكون الاسم و النسب من ثلاثة أحرف على الأقل') }}";
                 }
             }
 
             if (email_signup.value == "") {
                 e.preventDefault();
-                error_email_signup.innerText = "املأ حقل البريد الإلكتروني";
+                error_email_signup.innerText = "{{__('املأ حقل البريد الإلكتروني') }}";
             }else{
                 if (pattern_email.test(email_signup.value)) {
                     error_email_signup.innerText = "";
                 } else if (!pattern_email.test(email_signup.value)) {
                     e.preventDefault();
-                    error_email_signup.innerText = "البريد الإلكتروني غير صالح";
+                    error_email_signup.innerText = "{{__('البريد الإلكتروني غير صالح') }}";
                 }
             }
 
             if (phone_signup.value == "") {
                 e.preventDefault();
-                error_phone_signup.innerText = "املأ حقل رقم الهاتف";
+                error_phone_signup.innerText =  "{{__('املأ حقل رقم الهاتف') }}";
             } else if (pattern_phone.test(phone_signup.value) && (phone_signup.value.length == 10)) {
                 error_phone_signup.innerText = "";
             } else if (!pattern_phone.test(phone_signup.value) || (phone_signup.value.length != 10)) {
                 e.preventDefault();
-                error_phone_signup.innerText = " رقم الهاتف غير صالح";
+                error_phone_signup.innerText = "{{__('رقم الهاتف غير صالح') }}";
             }
 
             if (password_signup.value == "") {
                 e.preventDefault();
-                error_password_signup.innerText = "املأ حقل كلمة المرور";
+                error_password_signup.innerText =  "{{__('املأ حقل كلمة المرور') }}";
             } else if (password_signup.value.length < 6) {
                 e.preventDefault();
-                error_password_signup.innerText = "يجب أن تتكون كلمة المرور من ستة أحرف على الأقل.";
+                error_password_signup.innerText =  "{{__('يجب أن تتكون كلمة المرور من ستة أحرف على الأقل') }}";
             } else if (password_signup.value.length >= 6) {
                 error_password_signup.innerText = "";
                 if (conf_password_signup.value == "") {
                     e.preventDefault();
-                    error_conf_password_signup.innerText = "املأ حقل تاكيد كلمة المرور";
+                    error_conf_password_signup.innerText = "{{__('املأ حقل تاكيد كلمة المرور') }}";
                 } else if (conf_password_signup.value != password_signup.value) {
                     e.preventDefault();
-                    error_conf_password_signup.innerText = "تاكيد من كلمة المرور";
+                    error_conf_password_signup.innerText = "{{__('تاكيد من كلمة المرور') }}";
                 } else if (conf_password_signup.value == password_signup.value) {
                     e.preventDefault();
                     error_conf_password_signup.innerText = "";
@@ -211,10 +221,10 @@
 
             if (client.value == "" && employee.value == "") {
                 e.preventDefault();
-                role_signup.innerText = "اختر دورك";
+                role_signup.innerText = "{{__('اختر دورك') }}";
             }else if(employee.value != "" && n_identif.value == ""){
                 e.preventDefault();
-                role_signup.innerText = "ادخل رقم التسجيل";
+                role_signup.innerText = "{{__('ادخل رقم التسجيل') }}";
             }else{
                 role_signup.innerText="";
             }
