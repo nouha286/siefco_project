@@ -11,6 +11,7 @@
             {{ basename(URL::current()) == 'devise' ?__('العملات') : '' }}
             {{ basename(URL::current()) == 'Profile' ?__('الملف الشخصي') : '' }}
             {{ basename(URL::current()) == 'interface_client' ? __('عملياتي التجارية') : '' }}
+            {{ basename(URL::current()) == 'Profile_Client' ?__('الملف الشخصي') : '' }}
         </span>
     </div>
     <div class="d-flex flex-row-reverse justify-content-center align-items-center">

@@ -35,7 +35,7 @@ class ProfileController extends Controller
             'old_password' => 'required|min:6|max:255',
             'conf_password' =>'required|min:6|max:255|same:password',
             'Phone' => 'required',
-            
+
         ]);
 
         if (session('role') == 'Employe') {
@@ -71,7 +71,7 @@ class ProfileController extends Controller
                     }
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
                     $email = User::where('id', $edit)->first(['Email'])->Email;
@@ -106,7 +106,7 @@ class ProfileController extends Controller
 
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
                     $email = User::where('id', $edit)->first(['Email'])->Email;
@@ -160,7 +160,7 @@ class ProfileController extends Controller
 
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
 
@@ -188,7 +188,7 @@ class ProfileController extends Controller
                     }
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
 
