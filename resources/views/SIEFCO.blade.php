@@ -29,7 +29,7 @@
         <!-- Logo -->
 
         <div class="d-flex justify-content-around align-items-center" style="border: 2px solid var(--grey-color); border-radius: 16px;">
-            <img src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo">
+            <!-- <img src="{{asset('assets/logo.png')}}" style="width: 10%;" alt="logo"> -->
             <p> {{ date('Y') }} {{__(' شركة صرف العملات الدولية')}}</p>
             <div class="d-flex flex-column text-center gap-1">
 

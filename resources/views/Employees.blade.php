@@ -43,8 +43,8 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectEmploye()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            <option value="">{{__('المستخدمون')}}</option>
-                            <option value=""> {{__('المستخدمون المحذوفين')}}</option>
+                            <option value="1">{{__('المستخدمون')}}</option>
+                            <option value="0"> {{__('المستخدمون المحذوفين')}}</option>
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
@@ -273,7 +273,7 @@
             </div>
         </div>
 
-<script>
+        <script>
     // Search Employee
     function searchEmployee() {
         var input, filter, table, tr, td, i, txtValue;
@@ -296,7 +296,6 @@
             selectEmploye();
         }
     }
-
     // Select Employee
     selectEmploye();
     function selectEmploye() {
@@ -326,7 +325,6 @@
             let Last_Name = select.querySelector('.Last_Name').innerHTML;
             let Email = select.querySelector('.Email').innerHTML;
             let Phone = select.querySelector('.Phone').innerHTML;
-
             document.querySelector('#exampleModaledit .id_devise').value = id_devise;
             document.querySelector('#exampleModaledit .First_Name').value = First_Name;
             document.querySelector('#exampleModaledit .Last_Name').value = Last_Name;

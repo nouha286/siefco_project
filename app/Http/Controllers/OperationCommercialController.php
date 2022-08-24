@@ -56,7 +56,7 @@ class OperationCommercialController extends Controller
             $Comercial_Operation->Client_id=$id;
             $client_First_Name=client::where('id',$id)->first(['First_Name'])->First_Name;
             $client_Last_Name=client::where('id',$id)->first(['Last_Name'])->Last_Name;
-            $Comercial_Operation->Client_Name=$client_First_Name.''.$client_Last_Name;
+            $Comercial_Operation->Client_Name=$client_First_Name.' '.$client_Last_Name;
             $Comercial_Operation->Debtor=request('Debtor');
             $Comercial_Operation->Creditor=request('Creditor');
             $client_Balance=client::where('id',$id)->first(['Balance'])->Balance;
