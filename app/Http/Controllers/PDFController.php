@@ -55,7 +55,7 @@ class PDFController extends Controller
 
     	$pdf = new TCPDF;
 
-        $pdf::SetTitle('Hello World');
+        $pdf::SetTitle('Facture SIEFCO');
         $pdf::AddPage();
         $pdf::writeHTML($html, true, false, true, false, '');
 
