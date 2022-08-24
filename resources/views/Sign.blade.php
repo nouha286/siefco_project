@@ -28,9 +28,12 @@
 
             <ul>
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                    <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                        {{ $properties['native'] }}
-                    </a>
+
+
+                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                            {{ $properties['native'] }}
+                        </a>
+
                 @endforeach
             </ul>
 

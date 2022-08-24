@@ -24,7 +24,7 @@
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
 
 
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                             {{ $properties['native'] }}
                         </a>
 
@@ -32,10 +32,10 @@
             </ul>
             <div id="home-text-text">
                 <div>
-                    <h1>! مرحبًا</h1>
+                    <h1>{{__('! مرحبًا') }}</h1>
                     <div class="h3">
-                        <div><span style="color: var(--base-color);">SIEFCO</span> قم بالتسجيل لبدء صرف العملات الدولية مع</div>
-                        <div>.هل لديك <a href="Sign_Up">حساب</a>؟ تسجيل الدخول من <a href="Sign">هنا</a></div>
+                        <div>{{__( 'قم بالتسجيل لبدء صرف العملات الدولية معنا') }}</div>
+                        <div> {{__(' هل لديك') }}<a href="Sign_Up">{{__(' حساب ') }}</a>{{__('تسجيل الدخول من') }}<a href="Sign">{{__(' هنا ') }}</a></div>
                     </div>
                 </div>
             </div>
