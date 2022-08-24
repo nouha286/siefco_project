@@ -28,15 +28,12 @@
 
             <ul>
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                
-                    
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-               
+                    <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
                 @endforeach
             </ul>
-            
+
             <div id="signin">
                 <div class="d-flex flex-column justify-content-center gap-2" style="width: 80%; height: 85vh; margin-left: 10%;">
                     <h1 class="text-center">{{__('تسجيل الدخول') }}</h1>

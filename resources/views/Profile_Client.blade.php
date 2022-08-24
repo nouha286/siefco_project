@@ -13,7 +13,7 @@
             <hr class="w-75 m-0 p-0">
             <!-- Info Profile -->
             <div class="d-flex flex-column justify-content-center align-items-center py-5 gap-4">
-                <img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 70%; " alt="avatar">
+                <img class="rounded-circle" src="{{asset('assets/image/'.$User->image)}}" style="width: 60%;" alt="avatar">
 
                 <span>{{ $Client->First_Name.' '. $Client->Last_Name }}</span>
                 <span> {{ $Client->Balance }}</span>
