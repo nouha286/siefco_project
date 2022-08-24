@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png"/>
     <title>SIEFCO</title>
 </head>
+
 <style>
     body {
         margin: 0;
@@ -27,6 +28,7 @@
         border: 1px solid #6F6F6F;
     }
 </style>
+
 <body>
     <div id="pdf">
         <div style="text-align: right;">{{ date('j-m-y') }}</div>
