@@ -36,7 +36,7 @@
                 @endif
                 <form class="d-flex flex-column gap-2" method="POST" action="{{ route('edit') }}" enctype="multipart/form-data" id="form_signup">
                     <div class="text-end h4">{{__('تعديل الملف الشخصي') }}</div>
-                    <hr class="m-0 my-2 p-0">
+                    <hr class="mx   -0 my-1 p-0">
                     @csrf
                     <input class="form-control border-1 border-primary form-control-lg" name="image" id="formFileLg" type="file" style="border-radius: 16px;">
                     <div class="w-100 d-flex flex-sm-row-reverse justify-content-between align-items-center">
@@ -49,14 +49,14 @@
                     <input type="password" name="password" id="password_signup"  placeholder=" {{__('القن السري') }}" class="border-1 border-primary col-form-label">
                     <input type="password" name="conf_password" id="conf_password_signup" placeholder=" {{__('تأكيد القن السري') }}" class="border-1 border-primary col-form-label">
                     <input type="hidden" class="id_devise" name="Id" value="{{session('id')}}">
-                    <input class="mt-3" type="submit" name="signin" value="{{__('حفظ')}}">
+                    <input type="submit" name="signin" value="{{__('حفظ')}}">
                 </form>
             </div>
         </div>
 
 
         <!-- Copyright -->
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
+        @include('master.Copyright')
     </div>
 </div>
 @endsection
