@@ -26,7 +26,7 @@
             </div>
             <!---------------------- Sign In ---------------------->
             <div id="signin">
-                <div class="px-5 pt-3" style="height: 5vh;">
+                <div class="px-5" style="height: 5vh;">
                     @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                         <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                             {{ $properties['native'] }}
