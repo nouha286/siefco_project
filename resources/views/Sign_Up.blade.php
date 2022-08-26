@@ -25,16 +25,11 @@
                 <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin"> {{__('تسجيل الدخول') }}</a>
             </div>
             <!---------------------- Sign Up ---------------------->
-            <ul>
                 @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-
+                    <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
                 @endforeach
-            </ul>
             <div id="signup">
                 <div class="d-flex flex-column justify-content-center" style="width: 80%; height: 85vh; margin-left: 10%;">
                     <h1 class="text-center">{{__('انشاء حساب') }} </h1>

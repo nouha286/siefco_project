@@ -20,16 +20,11 @@
         </div>
 
         <div class="col-lg-6 p-3" id="home-text">
-            <ul>
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-
-                @endforeach
-            </ul>
+            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                    {{ $properties['native'] }}
+                </a>
+            @endforeach
             <div id="home-text-text">
                 <div>
                     <h1>{{__('! مرحبًا') }}</h1>
