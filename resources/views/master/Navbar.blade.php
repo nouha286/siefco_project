@@ -15,15 +15,10 @@
         </span>
     </div>
     <div class="d-flex flex-row-reverse justify-content-center align-items-center">
-        <ul>
-            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-
-                    <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                        {{ $properties['native'] }}
-                    </a>
-
-            @endforeach
-        </ul>
+        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+            <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                {{ $properties['native'] }}
+            </a>
+        @endforeach
     </div>
 </nav>
