@@ -20,17 +20,24 @@
         </div>
 
         <div class="col-lg-6 p-3" id="home-text">
-            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                    {{ $properties['native'] }}
-                </a>
-            @endforeach
+            <div class="px-5 pt-3">
+                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                    <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                        {{ $properties['native'] }}
+                    </a>
+                @endforeach
+            </div>
             <div id="home-text-text">
-                <div>
+                <div class="w-75">
                     <h1>{{__('! مرحبًا') }}</h1>
                     <div class="h3">
-                        <div>{{__( 'قم بالتسجيل لبدء صرف العملات الدولية معنا') }}</div>
-                        <div> {{__(' هل لديك') }}<a href="Sign_Up">{{__(' حساب ') }}</a>{{__('تسجيل الدخول من') }}<a href="Sign">{{__(' هنا ') }}</a></div>
+                        <div>
+                            {{__( 'قم بالتسجيل لبدء صرف العملات الدولية معنا') }}
+                            . {{__(' هل لديك') }}
+                            <a href="Sign_Up">{{__(' حساب ') }}</a>
+                            {{__('تسجيل الدخول من') }}
+                            <a href="Sign">{{__(' هنا ') }}</a>
+                        </div>
                     </div>
                 </div>
             </div>

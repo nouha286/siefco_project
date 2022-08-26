@@ -20,7 +20,7 @@
         </div>
         <div class="col-lg-6 p-0" id="sign-form">
             <div id="signin">
-                <div class="d-flex justify-content-between align-items-center px-5 py-3">
+                <div class="d-flex justify-content-between align-items-center px-5 pt-3">
                     <a href="Sign" class="bi bi-arrow-left h4" style="color: var(--black-color);"></a>
                     <div>
                         @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
