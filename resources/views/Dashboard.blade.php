@@ -11,7 +11,7 @@
         @include('master.Navbar')
 
         <!-- Statistiques -->
-        <div class="container-fluid py-4">
+        <div class="container-fluid pb-3">
             <div style="height: 8vh;"></div>
             <div class="row d-flex flex-row-reverse">
                 <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -141,7 +141,7 @@
                         </tbody>
                     </table>
         <!-- Copyright -->
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
+        @include('master.Copyright')
     </div>
 </div>
 @endsection

@@ -43,8 +43,8 @@
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectEmploye()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
-                            <option value="">{{__('المستخدمون')}}</option>
-                            <option value=""> {{__('المستخدمون المحذوفين')}}</option>
+                            <option value="1">{{__('المستخدمون')}}</option>
+                            <option value="0"> {{__('المستخدمون المحذوفين')}}</option>
                         </select>
                     </div>
                     <div class="input-group me-3" style="width: 25%;">
@@ -337,7 +337,7 @@
 </script>
 
         <!-- Copyright -->
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
+        @include('master.Copyright')
     </div>
 </div>
 @endsection

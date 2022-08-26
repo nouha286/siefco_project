@@ -10,8 +10,8 @@
             <a href="Profile"><img class="rounded-circle" src="{{asset('assets/image/'.$User->image)}}" style="width: 60%;" alt="avatar"></a>
             <span class="fs-5 test-center" style="color:#3498DB;">  {{$User->First_Name.' '.$User->Last_Name}}</span>
             <div class="d-flex flex-column justify-content-center align-items-center py-2 gap-1">
-            <hr class="w-75 m-0 p-0">
             <span class="">@if (session()->has('role')) {{{session('role')}}}@endif</span>
+            <hr class="w-100 m-0 p-0">
         </div>
         <div>
             <ul class="navbar-nav d-flex flex-column justify-content-center align-items-center my-2 gap-2">

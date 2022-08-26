@@ -25,20 +25,15 @@
                 <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center active" id="btn_signin">{{__('تسجيل الدخول') }}</a>
             </div>
             <!---------------------- Sign In ---------------------->
-
-            <ul>
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+            <div id="signin">
+                <div class="px-5" style="height: 5vh;">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                             {{ $properties['native'] }}
                         </a>
-
-                @endforeach
-            </ul>
-
-            <div id="signin">
-                <div class="d-flex flex-column justify-content-center gap-2" style="width: 80%; height: 85vh; margin-left: 10%;">
+                    @endforeach
+                </div>
+                <div class="d-flex flex-column justify-content-center gap-2" style="width: 80%; height: 80vh; margin-left: 10%;">
                     <h1 class="text-center">{{__('تسجيل الدخول') }}</h1>
                     <p class="text-center" id="error_signin">{{__('ادخل بريدك الالكتروني و القن السري لتسجيل الدخول') }}</p>
                     <p id="error_signin"></p>

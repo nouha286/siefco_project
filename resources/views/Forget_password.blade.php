@@ -19,26 +19,17 @@
             <img src="{{asset('assets/logo.png')}}">
         </div>
         <div class="col-lg-6 p-0" id="sign-form">
-            <!---------------------- Menu Sign ---------------------->
-
-            <div class="w-100 d-flex" id="menu-sign">
-                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signup"> {{__('انشاء حساب') }}</a>
-                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center " id="btn_signin">  {{__('تسجيل الدخول') }}</a>
-            </div>
-            <!---------------------- Sign In ---------------------->
-
-
-            <ul>
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="form-select" style="max-width: 100px; border:none; background-color: var(--second-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
-                            {{ $properties['native'] }}
-                        </a>
-
-                @endforeach
-            </ul>
             <div id="signin">
+                <div class="d-flex justify-content-between align-items-center px-5 pt-3">
+                    <a href="Sign" class="bi bi-arrow-left h4" style="color: var(--black-color);"></a>
+                    <div>
+                        @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                {{ $properties['native'] }}
+                            </a>
+                        @endforeach
+                    </div>
+                </div>
                 <div class="d-flex flex-column justify-content-center gap-2" style="width: 80%; height: 85vh; margin-left: 10%;">
                     <h1 class="text-center">{{__('استعادة القن السري') }}</h1>
                     <p class="text-center" id="error_signin">  {{__('ادخل بريدك الالكتروني ') }} </p>
@@ -58,10 +49,10 @@
                             </div>
                         @endif
 
-                        <input type="text" name="email" id="email_signin" placeholder="البريد الالكتروني" class="border-0 col-form-label">
+                        <input type="text" name="email" id="email_signin" placeholder="{{__('البريد الالكتروني' )}}" class="border-0 col-form-label">
                         <p class="text-danger float-end me-4" id="error_email"></p>
 
-                        <input type="submit" name="signin" value="تحقق ">
+                        <input type="submit" name="signin" value="{{__('تحقق')}} ">
                     </form>
                 </div>
             </div>

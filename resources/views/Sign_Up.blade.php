@@ -25,18 +25,15 @@
                 <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center" id="btn_signin"> {{__('تسجيل الدخول') }}</a>
             </div>
             <!---------------------- Sign Up ---------------------->
-            <ul>
-                @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-
-
-                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn btn-primary m-2" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+            <div id="signup">
+                <div class="px-5" style="height: 5vh;">
+                    @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2" style="background-color: var(--base-color);" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
                             {{ $properties['native'] }}
                         </a>
-
-                @endforeach
-            </ul>
-            <div id="signup">
-                <div class="d-flex flex-column justify-content-center" style="width: 80%; height: 85vh; margin-left: 10%;">
+                    @endforeach
+                </div>
+                <div class="d-flex flex-column justify-content-center" style="width: 80%; min-height: 80vh; margin-left: 10%;">
                     <h1 class="text-center">{{__('انشاء حساب') }} </h1>
                     <p class="text-center" id="error_signup">{{__(' املأ معلوماتك لانشاء حسابك') }} </p>
                     <form class="d-flex flex-column" method="POST" action="{{ route('inscription.auth') }}" id="form_signup">
