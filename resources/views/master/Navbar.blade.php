@@ -21,5 +21,9 @@
                 {{ $properties['native'] }}
             </a>
         @endforeach
+        <button class="border-0 d-none" id="btn_assidBar" style="background-color: var(--second-color);">
+            <i class="bi bi-menu-button-wide-fill h4 text-white d-none"></i>
+            <i class="bi bi-list h4 text-white" id="icone_menu"></i>
+        </button>
     </div>
 </nav>
