@@ -260,8 +260,6 @@
                     })
                 })
             </script>
-            <!-- Copyright -->
-            @include('master.Copyright')
         </div>
     </div>
 @endsection

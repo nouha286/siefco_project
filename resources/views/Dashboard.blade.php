@@ -167,8 +167,6 @@
                                 @endif
                             </tbody>
                         </table>
-                        <!-- Copyright -->
-                        @include('master.Copyright')
                     </div>
                 </div>
             @endsection

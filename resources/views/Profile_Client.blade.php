@@ -91,12 +91,8 @@
                         <input type="hidden" class="id_devise" name="Id" value="{{ session('id') }}">
                         <input class="mt-3" type="submit" name="signin" value=" {{ __('حفظ') }}">
                     </form>
-
                 </div>
             </div>
-
-            <!-- Copyright -->
-            @include('master.Copyright')
         </div>
     </div>
 @endsection

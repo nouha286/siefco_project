@@ -1,5 +1,5 @@
 <div class="position-relative" id="assidBar">
-    <aside class="d-flex flex-column align-items-center" id="assidbar" style="width: 100%; height: 95vh; margin-top: 2.5vh; background-color: var(--white-color); border-radius: 16px;">
+    <aside class="d-flex flex-column align-items-center" id="assidbar" style="width: 100%; height: 93vh; margin-top: 2vh; background-color: var(--white-color); border-radius: 16px;">
         <!-- Logo -->
         <div class="d-flex justify-content-center align-items-center">
             <img src="{{asset('assets/logo.png')}}" style="width: 38%;" alt="logo">
@@ -53,6 +53,8 @@
             <a class="nav-link" href="logout"><span class="text-dark"> {{__('تسجيل الخروج') }}</span></a>
         </div>
     </aside>
+    <!-- Copyright -->
+    <div class="text-center mt-2 h6">Copyright &copy; SIEFCO {{ date('Y') }}</div>
 </div>
 
 <style>

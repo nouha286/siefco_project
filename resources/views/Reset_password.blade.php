@@ -56,13 +56,10 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-
                         <input type="password" name="password" id="password_signup" placeholder="القن السري"
                             class="border-0 col-form-label">
                         <input type="password" name="conf_password" id="conf_password_signup"
                             placeholder=" تأكيد القن السري" class="border-0 col-form-label">
-
-
                         <input type="submit" name="signin" value="تسجيل الدخول">
                     </form>
                 </div>

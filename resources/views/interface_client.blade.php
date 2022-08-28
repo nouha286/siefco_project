@@ -102,9 +102,6 @@
                     </table>
                 </div>
             </div>
-
-            <!-- Copyright -->
-            @include('master.Copyright')
         </div>
     </div>
 @endsection
