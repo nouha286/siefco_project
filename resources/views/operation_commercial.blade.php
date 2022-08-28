@@ -49,21 +49,115 @@
                             <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i
                                     class="bi bi-search"></i></span>
                         </div>
-                        <button type="button" class="btn btn-primary"
-                            style="background-color:white; color:black; border:none;" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">
-                            <i class="bi bi-plus-circle-fill h1"></i>
-                        </button>
+                        <div>
+                            <button type="button" class="btn btn-primary"
+                                style="background-color:var(--grey-color); color: var(--white-color); border:none;"
+                                data-bs-toggle="modal" data-bs-target="#modal_transfert">
+                                تحويل
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                style="background-color:var(--grey-color); color:var(--white-color); border:none;"
+                                data-bs-toggle="modal" data-bs-target="#modal_deposit">
+                                إيداع
+                            </button>
+                            <button type="button" class="btn btn-primary"
+                                style="background-color:var(--grey-color); color:var(--white-color); border:none;"
+                                data-bs-toggle="modal" data-bs-target="#modal_retrait">
+                                سحب
+                            </button>
+                        </div>
 
-                        <!-- Modal Add Client -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                            aria-hidden="true">
+                        <!-- Modal Transfert -->
+                        <div class="modal fade" id="modal_transfert" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
                                         @csrf
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملة') }}</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية تحويل') }}
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body d-flex flex-column gap-4">
+                                            <div class="search_select_box w-100">
+                                                <label class="float-end" for="Username">{{ __('المرسل') }}</label>
+                                                <select class="selectpicker w-100" id="Username" name="Client_id"
+                                                    data-live-search="true">
+                                                    {{-- @foreach ($client as $client)
+                                                        :
+                                                        <option value="{{ $client->id }}">
+                                                            {{ $client->First_Name }}
+                                                            {{ $client->Last_Name }}
+                                                        </option>
+                                                    @endforeach --}}
+                                                </select>
+                                                <label class="float-end" for="Username_client_receiver">{{ __('المتلقي') }}</label>
+                                                <select class="selectpicker w-100" id="Username_client_receiver" name="Client_id"
+                                                    data-live-search="true">
+                                                    <option value="0">{{ __('الى زبون اخر') }}</option>
+                                                    @foreach ($client as $client)
+                                                        :
+                                                        <option value="{{ $client->id }}">
+                                                            {{ $client->First_Name }}
+                                                            {{ $client->Last_Name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <input type="text" id="add_creditor" name="Creditor"
+                                                class="form-control" placeholder="{{ __('المبلغ') }}">
+                                            <div class="search_select_box w-100">
+                                                <select class="selectpicker w-100" id="add_devise" name="devise"
+                                                    data-live-search="true">
+                                                    {{-- @foreach ($devise as $devise)
+                                                        :
+                                                        <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                                                    @endforeach --}}
+                                                </select>
+                                            </div>
+                                            <div class="modal-body d-none flex-column gap-1" id="add_client_for_opperation">
+                                                <input type="text" name="Last_Name" id="last_name" placeholder="{{ __('الاسم') }}" class="col-form">
+                                                <input type="text" name="First_Name" id="first_name" placeholder="{{ __('النسب') }}" class="col-form">
+                                                <input type="text" name="email" id="email_signup" placeholder="{{ __('البريد الالكتروني') }}" class="col-form">
+                                                <input type="text" name="phone" id="phone_signup" placeholder="{{ __('رقم الهاتف') }}" class="col-form">
+                                            </div>
+                                            <script>
+                                                const add_client_for_opperation = document.getElementById('add_client_for_opperation');
+                                                const Username_client_receiver = document.getElementById('Username_client_receiver');
+                                                Username_client_receiver.addEventListener('change', (e) => {
+                                                    if(Username_client_receiver.value == 0){
+                                                        add_client_for_opperation.classList.remove("d-none");
+                                                        add_client_for_opperation.classList.add("d-flex");
+                                                    }
+                                                    else{
+                                                        add_client_for_opperation.classList.remove("d-flex");
+                                                        add_client_for_opperation.classList.add("d-none");
+                                                    }
+                                                });
+                                            </script>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal Deposit -->
+                        <div class="modal fade" id="modal_deposit" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                        @csrf
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية إيداع') }}
+                                            </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -71,37 +165,84 @@
                                             <div class="search_select_box w-100">
                                                 <select class="selectpicker w-100" id="add_name" name="Client_id"
                                                     data-live-search="true">
-                                                    @foreach ($client as $client)
+                                                    {{-- @foreach ($client as $client)
                                                         :
-                                                        <option value="{{ $client->id }}">{{ $client->First_Name }}
-                                                            {{ $client->Last_Name }}</option>
-                                                    @endforeach
+                                                        <option value="{{ $client->id }}">
+                                                            {{ $client->First_Name }}
+                                                            {{ $client->Last_Name }}
+                                                        </option>
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
-                                            <input type="text" id="add_creditor" name="Creditor" class="form-control "
-                                                placeholder="{{ __('مدين') }}">
-                                            <input type="text" id="add_debtor" name="Debtor" class="form-control "
-                                                placeholder="*{{ __('دائن') }}">
+                                            <input type="text" id="add_creditor" name="Creditor"
+                                                class="form-control " placeholder="{{ __('المبلغ') }}">
                                             <div class="search_select_box w-100">
                                                 <select class="selectpicker w-100" id="add_devise" name="devise"
                                                     data-live-search="true">
-                                                    @foreach ($devise as $devise)
+                                                    {{-- @foreach ($devise as $devise)
                                                         :
                                                         <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
-                                                    @endforeach
+                                                    @endforeach --}}
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">{{ __('اغلاق') }}/button>
-                                                <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
+                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                        <!-- Modal Add Client -->
+
+                        <!-- Modal Retrait -->
+                        <div class="modal fade" id="modal_retrait" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                        @csrf
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية سحب') }}
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body d-flex flex-column gap-4">
+                                            <div class="search_select_box w-100">
+                                                <select class="selectpicker w-100" id="add_name" name="Client_id"
+                                                    data-live-search="true">
+                                                    {{-- @foreach ($client as $client)
+                                                        :
+                                                        <option value="{{ $client->id }}">
+                                                            {{ $client->First_Name }}
+                                                            {{ $client->Last_Name }}
+                                                        </option>
+                                                    @endforeach --}}
+                                                </select>
+                                            </div>
+                                            <input type="text" id="add_creditor" name="Creditor"
+                                                class="form-control " placeholder="{{ __('المبلغ') }}">
+                                            <div class="search_select_box w-100">
+                                                <select class="selectpicker w-100" id="add_devise" name="devise"
+                                                    data-live-search="true">
+                                                    {{-- @foreach ($devise as $devise)
+                                                        :
+                                                        <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                                                    @endforeach --}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                     <table class="table mb-0 text-center" id="table_operation">
