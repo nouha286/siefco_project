@@ -105,9 +105,6 @@ body #sign #sign-form #menu-sign a {
     align-items: center;
     border-radius: 16px 16px 0px 0px;
 }
-body #sign #sign-form #menu-sign .active {
-    background-color: var(--base-color);
-}
 body #sign p {
     color: var(--grey-color);
 }

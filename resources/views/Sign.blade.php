@@ -23,10 +23,8 @@
         <div class="col-lg-6 p-0" id="sign-form">
             <!---------------------- Menu Sign ---------------------->
             <div class="w-100 d-flex" id="menu-sign">
-                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center"
-                    id="btn_signup">{{ __('انشاء حساب') }}</a>
-                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center active"
-                    id="btn_signin">{{ __('تسجيل الدخول') }}</a>
+                <a href="Sign_Up" type="button" class="nav-link w-50 h4 text-dark text-center" style="background-color: var(--base-color); border-radius: 16px 0px 0px 0px;">{{ __('انشاء حساب') }}</a>
+                <a href="Sign" type="button" class="nav-link w-50 h4 text-dark text-center">{{ __('تسجيل الدخول') }}</a>
             </div>
             <!---------------------- Sign In ---------------------->
             <div id="signin">
