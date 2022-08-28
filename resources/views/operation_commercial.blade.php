@@ -248,25 +248,15 @@
                     <table class="table mb-0 text-center" id="table_operation">
                         <thead>
                             <tr>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('المستخدم') }}</th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('العملة') }}</th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('التاريخ') }}</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('البيان') }}</th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('الرصيد') }}</th>
-
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('مدين') }}</th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('دائن') }}</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('اسم الزبون') }} </th>
-                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    {{ __('رقم العمليات') }} </th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('المستخدم') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('العملة') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('التاريخ') }}</th>
+                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('البيان') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الرصيد') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('مدين') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('دائن') }}</th>
+                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('اسم الزبون') }}</th>
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('رقم العمليات') }}</th>
                             </tr>
                         </thead>
                         <tbody>
