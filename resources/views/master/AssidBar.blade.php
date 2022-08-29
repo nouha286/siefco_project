@@ -1,19 +1,21 @@
 <div class="position-relative" id="assidBar">
-    <aside class="d-flex flex-column align-items-center" id="assidbar" style="width: 100%; height: 95vh; margin-top: 2.5vh; background-color: var(--white-color); border-radius: 16px;">
+    <aside class="d-flex flex-column align-items-center" id="assidbar" style="width: 100%; height: 93vh; margin-top: 2vh; background-color: var(--white-color); border-radius: 16px;">
         <!-- Logo -->
         <div class="d-flex justify-content-center align-items-center">
-            <img src="{{asset('assets/logo.png')}}" style="width: 38%;" alt="logo">
+            <img src="{{asset('assets/image/logo.png')}}" style="width: 38%;" alt="logo">
         </div>
         <hr class="w-75 m-0 p-0">
         <!-- Info Profile -->
         <div class="d-flex flex-column text-center justify-content-center align-items-center py-2 gap-1">
-            <a href="Profile"><img class="rounded-circle" src="{{asset('assets/'.$User->image)}}" style="width: 60%;" alt="avatar"></a>
+            <a href="Profile"><img class="rounded-circle" src="{{asset('assets/image/'.$User->image)}}" style="width: 60%;" alt="avatar"></a>
             <span class="fs-5 test-center" style="color:#3498DB;">  {{$User->First_Name.' '.$User->Last_Name}}</span>
             <div class="d-flex flex-column justify-content-center align-items-center py-2 gap-1">
-            <hr class="w-75 m-0 p-0">
             <span class="">@if (session()->has('role')) {{{session('role')}}}@endif</span>
+            <hr class="w-100 m-0 p-0">
         </div>
         <div>
+
+        
             <ul class="navbar-nav d-flex flex-column justify-content-center align-items-center my-2 gap-2">
                 <li class="nav-item text-center {{ basename(URL::current()) == 'Profile' ? 'active' : '' }}">
                     <a class="nav-link" href="Profile">
@@ -53,6 +55,8 @@
             <a class="nav-link" href="logout"><span class="text-dark"> {{__('تسجيل الخروج') }}</span></a>
         </div>
     </aside>
+    <!-- Copyright -->
+    <div class="text-center mt-2 h6">Copyright &copy; SIEFCO {{ date('Y') }}</div>
 </div>
 
 <style>

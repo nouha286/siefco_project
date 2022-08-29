@@ -10,6 +10,9 @@ use App\Models\User;
 use App\Models\devise;
 use App\Models\Comercial_Operation;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\EmailActivation;
+use Illuminate\Support\Facades\Mail as FacadesMail;
 
 class DashboardController extends Controller
 {
@@ -28,7 +31,7 @@ class DashboardController extends Controller
             return view('Dashboard')->with(['Admin' => $Admin , 'Employee' => $Employee , 'Client' => $Client , 'Operation_commercial' => $Operation_commercial,'Activ_Employe'=>$Activ_Employe,'Activ_Client'=>$Activ_Client,'User'=>$User]);
         }else
         {
-            return redirect('Sign');
+            return redirect('/Sign');
         }
     }
 
@@ -54,11 +57,12 @@ class DashboardController extends Controller
                $Client->Activation=1;
                $Client->Debtor=0;
                $Client->Creditor=0;
-               $Client->Statement='Activer par'.session('role');
+               $Client->Statement='Activer par'.': '.session('role');
                $Client->save();
                $User->save();
-
-               return redirect('/Dashboard')->with('success_Activation','تم تفعيل الحساب بنجاح');
+               $email=User::where('id', $id)->first(['email'])->email;
+               FacadesMail::to($email)->send(new EmailActivation($User));
+               return redirect('/Dashboard')->with('success_Activation',__('auth.Activation'));
             }
             if ( $User->Role=='Employe') {
                 $User->Activation=1;
@@ -72,9 +76,9 @@ class DashboardController extends Controller
 
                 $Client->save();
                 $User->save();
-                return redirect('/Dashboard')->with('success_Activation','تم تفعيل الحساب بنجاح');
+                return redirect('/Dashboard')->with('success_Activation',__('auth.Activation'));
              }
-        }else return redirect('/Dashboard')->with('failed_Activation','المرجو اظافة عملة   ');
+        }else return redirect('/Dashboard')->with('failed_Activation',__('auth.failed_Activation'));
 
     }
 
@@ -85,12 +89,12 @@ class DashboardController extends Controller
         if ( $User=='Client') {
             $User=User::where('id', $id)->first();
         $User->delete();
-        return redirect('/Dashboard')->with('success_delete','تم حذف الحساب بنجاح');
+        return redirect('/Dashboard')->with('success_delete',__('auth.deleteAccount'));
     }
     if ( $User=='Employe') {
         $User=User::where('id', $id)->first();
     $User->delete();
-    return redirect('/Dashboard')->with('success_delete','تم حذف الحساب بنجاح');
+    return redirect('/Dashboard')->with('success_delete',__('auth.deleteAccount'));
 }
 }
 }

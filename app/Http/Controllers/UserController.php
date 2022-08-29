@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Identificateur;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
-
+use Auth;
 use App\Models\User;
 
 use App\Models\client;
@@ -15,6 +15,8 @@ use Mail;
 use App\Mail\EmailVerificationMail;
 use App\Models\Employees;
 use Illuminate\Support\Facades\Mail as FacadesMail;
+use App\Http\Controllers\Redirect;
+
 
 class UserController extends Controller
 {
@@ -168,7 +170,11 @@ class UserController extends Controller
 //for logout
     public function logout(Request $request)
     {
+       
+        
         $request->session()->forget('role');
+        
+        $request->session()->forget('role_client');
         $request->session()->forget('vérification');
         $request->session()->forget('non_vérification');
         $request->session()->forget('role_client');
@@ -176,6 +182,7 @@ class UserController extends Controller
         $request->session()->forget('Last_Name');
         $request->session()->forget('id');
         $request->session()->forget('id_Client');
+       
         return Redirect('/Sign');
     }
 

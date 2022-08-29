@@ -13,6 +13,9 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
 Route::group(['prefix' => LaravelLocalization::setLocale()], function()
 {
 
@@ -31,25 +34,25 @@ Route::get('/', function () {
 
 
 //routes for client
-Route::get('/client', 'ClientController@index');
+Route::get('/client', 'ClientController@index')->name('client');
 Route::post('/client','ClientController@addClient')->name('add.Client');
 Route::delete('/client/{id}','ClientController@deleteClient')->name('delete.Client');
 
 
 //for dashboard
 
-Route::get('/Dashboard','DashboardController@index');
+Route::get('/Dashboard','DashboardController@index')->name('Dashboard');
 Route::post('/Dashboard/{id}','DashboardController@Activer')->name('Activer');
 Route::delete('Dashboard/{id}','DashboardController@Supprimer')->name('Supprimer');
 
 //for devise
-Route::get('/devise', 'DeviseController@index');
+Route::get('/devise', 'DeviseController@index')->name('devise');
 Route::post('/devise','DeviseController@addDevise')->name('add.devise');
 Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
 //
 //
 //for Employee
-Route::get('/Employees', 'EmployeController@index');
+Route::get('/Employees', 'EmployeController@index')->name('Employees');
 Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');
 Route::delete('Employees/{id}','EmployeController@deleteEmploye')->name('delete.Employe');
 
@@ -68,14 +71,13 @@ Route::get('/home', function () {
 Route::get('/interface_client', 'interface_clientController@index');
 
 //for  operation
-Route::get('/operation_commercial', 'OperationCommercialController@index');
+Route::get('/operation_commercial', 'OperationCommercialController@index')->name('operation_commercial');
 Route::post('/operation_commercial','OperationCommercialController@addOperation')->name('add.Operation');
 Route::delete('operation_commercial/{id}','OperationCommercialController@deleteOperation')->name('delete.Operation');
 
 
 // Generate Pdf
-// Route::get('/SIEFCO', 'PDFController@index');
-Route::get('generatePDF', 'PDFController@generatePDF');
+Route::get('generatePDF', 'PDFController@generatePDF')->name('generatePDF');
 
 
 
@@ -111,11 +113,11 @@ Route::post('/Sign_Up','UserController@inscription' )->name('inscription.auth');
 
 Route::get('/verify-email/{id}','UserController@verify_email' )->name('verify_email');
 
-Route::get('/logout','UserController@logout');
+Route::get('/logout','UserController@logout')->name('logout');
 
 //for profile
 
-Route::get('/Profile','ProfileController@index');
+Route::get('/Profile','ProfileController@index')->name('Profile');
 Route::post('/Profile','ProfileController@editUser' )->name('edit');
 
 //for profile client
@@ -129,4 +131,12 @@ Route::post('/Forget_password','PasswordController@issetemail')->name('ifissetem
 //for reset password
 Route::get('/Reset_password/{id}','PasswordController@indexReset_password')->name('resetPassword');
 Route::post('/Reset_password/{id}','PasswordController@Reset_password')->name('reset.password');
+
+
+//for Operation for a client
+Route::get('/Operation_for_a_client/{id}','Operation_for_a_clientController@index')->name('Operation');
+
+});
+
+
 });

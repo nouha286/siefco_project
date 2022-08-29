@@ -53,7 +53,7 @@ class EmployeController extends Controller
             'Phone' => 'required',
             
         ]);
-                return redirect('/Employees')->with('error', 'هذا الحساب سبق استعماله');
+                return redirect('/Employees')->with('error', __('auth.existAccount'));
             } elseif ($User && $id == $edit) {
 
                 $request->validate([
@@ -86,7 +86,7 @@ class EmployeController extends Controller
                 $Employee->save();
 
 
-                return redirect('/Employees')->with('success_delete', 'تم تعديل المستخدم بنجاح');
+                return redirect('/Employees')->with('success_delete',  __('auth.editEmploye'));
             } elseif (!$User && $id != $edit) {
 
                 $request->validate([
@@ -119,7 +119,7 @@ class EmployeController extends Controller
                 $Employee->save();
 
 
-                return redirect('/Employees')->with('success_delete', 'تم تعديل المستخدم بنجاح');
+                return redirect('/Employees')->with('success_delete',  __('auth.editEmploye'));
             }
         } else {
             $request->validate([
@@ -134,7 +134,7 @@ class EmployeController extends Controller
 
             $User = User::where('email', request('Email'))->first();
             if ($User) {
-                return redirect('/Employees')->with('error', 'هذا الحساب سبق استعماله');
+                return redirect('/Employees')->with('error',  __('auth.existAccount'));
             } else {
 
 
@@ -180,17 +180,17 @@ class EmployeController extends Controller
             if ($User->Activation == 1) {
                 $User->Activation = 0;
                 $User->Save();
-                return redirect('/Employees')->with('success_delete', 'تم حذف المستخدم بنجاح');
+                return redirect('/Employees')->with('success_delete',  __('auth.deleteEmploye'));
            
                 }
             if ($User->Activation == 0) {
                 $User->Activation = 1;
                 $User->Save();
-                return redirect('/Employees')->with('success_restore', 'تم استعادة المستخدم بنجاح');
+                return redirect('/Employees')->with('success_restore',  __('auth.restoreEmploye'));
                
             }
         } else {
-            return redirect('/Employees')->with('failed_delete', 'حدث خطا ما قد فشل الحذف ');
+            return redirect('/Employees')->with('failed_delete', __('auth.failed_delete'));
         }
     }
 }

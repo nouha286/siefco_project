@@ -21,7 +21,9 @@ return new class extends Migration
 
             $table->double('Debtor');
             $table->double('Creditor');
+
             $table->string('Balance');
+            $table->string('receiver');
             $table->string('Statement');
           
             $table->string('Currency');

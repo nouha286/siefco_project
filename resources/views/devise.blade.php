@@ -87,7 +87,7 @@
                             <th class="col-2"></th>
                             <th class="d-none"></th>
                             <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">  {{__('القيمة مقابل الدولار') }}</th>
-                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الاسم') }}</th>
+                            <th class="col-5 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('اسم العملة') }}</th>
                             <th class="d-none"></th>
                         </tr>
                     </thead>
@@ -122,29 +122,7 @@
             </div>
         </div>
 
-        <!-- Modal Add Devise -->
-        <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}" id="form_add_devise">
-                        @csrf
-                        <div class="modal-header">
-                            <h5 class="modal-title " id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body d-flex flex-column gap-4">
-                            <input type="text" class="name_devise" id="add_devise_name" name="Name" class="form-control mb-2" placeholder="*{{__('العملة') }}" style="height: 45px;">
-                            <input type="text" class="value_devise" id="add_devise_value" name="Value" class="form-control" placeholder="*{{__('القيمة مقابل الدولار') }}" style="height: 45px;">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
-                            <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-        <!-- Modal Add Devise -->
+     
 
         <!-- Modal Edit Devise -->
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -157,7 +135,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
-                            <input type="hidden" class="id_devise" name="Id" class="form-control">
+                            <input type="hidden" class="id_devise" name="Id"  class="form-control">
                             <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*{{__('العملة') }}" style="height: 45px;">
                             <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*{{__('القيمة مقابل الدولار') }}" style="height: 45px;">
                         </div>
@@ -229,8 +207,7 @@
             })
         </script>
 
-        <!-- Copyright -->
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
+
     </div>
 </div>
 @endsection

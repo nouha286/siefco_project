@@ -68,7 +68,9 @@ class ClientController extends Controller
                 
                 $Client->Debtor=0;
                 $Client->Creditor=0;
-                $Client->Statement='انشئ من طرف '.': '.session('First_Name').' '.session('Last_Name');
+                $User = User::where('id', session('id'))->first();
+                
+                $Client->Statement='انشئ من طرف - Created by '.$User->First_Name . ' ' . $User->Last_Name;
                 $email = client::where('id', $edit)->first(['Email'])->Email;
              
                 $User=User::where('email',$email)->first();
@@ -108,7 +110,9 @@ class ClientController extends Controller
                 $Client->Currency = $devise;
                 $Client->Debtor=0;
                 $Client->Creditor=0;
-                $Client->Statement='انشئ من طرف '.': '.session('First_Name').' '.session('Last_Name');
+                $User = User::where('id', session('id'))->first();
+                
+                $Client->Statement='انشئ من طرف - Created by '.$User->First_Name . ' ' . $User->Last_Name;
                
                  $email = client::where('id', $edit)->first(['Email'])->Email;
                  
@@ -157,8 +161,9 @@ class ClientController extends Controller
                 $Client->Currency = $devise;
                 $Client->Debtor=0;
                 $Client->Creditor=0;
-
-                $Client->Statement='انشئ من طرف '.': '.session('First_Name').' '.session('Last_Name');
+                $User = User::where('id', session('id'))->first();
+                
+                $Client->Statement='انشئ من طرف - Created by '.$User->First_Name . ' ' . $User->Last_Name;
                 $Client->Activation = 1;
                 $User = new User();
                 $User->First_Name = request('First_Name');

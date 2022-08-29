@@ -31,11 +31,9 @@ class ProfileController extends Controller
             'Email' => 'required|max:255|email',
             'Last_Name' => 'required',
             'First_Name' => 'required',
-            'password' => 'required|min:6|max:255',
-            'old_password' => 'required|min:6|max:255',
-            'conf_password' =>'required|min:6|max:255|same:password',
+
             'Phone' => 'required',
-            
+
         ]);
 
         if (session('role') == 'Employe') {
@@ -54,7 +52,7 @@ class ProfileController extends Controller
                 $User = User::where('email', request('Email'))->first();
 
                 if ($User && $id != $edit) {
-                    return redirect('/Dashboard')->with('error', 'هذا الحساب سبق استعماله');
+                    return redirect('/Dashboard')->with('error', __('auth.existAccount'));
                 } elseif ($User && $id == $edit) {
 
 
@@ -64,14 +62,24 @@ class ProfileController extends Controller
                     $Employee->email = request('Email');
                     $Employee->First_Name = request('First_Name');
                     $Employee->Phone = request('Phone');
-                    $Employee->password = bcrypt(request('password'));
-                    $Password = User::where('id', $edit)->first(['password'])->password;
-                    if (!password_verify(request('old_password'), $Password)) {
-                        return redirect('/Profile')->with('error', 'القن السري خاطئ');
+                    if (request('password')) {
+                        $request->validate([
+
+                            'password' => 'required|min:6|max:255',
+                            'old_password' => 'required|min:6|max:255',
+                            'conf_password' => 'required|min:6|max:255|same:password',
+
+
+                        ]);
+                        $Employee->password = bcrypt(request('password'));
+                        $Password = User::where('id', $edit)->first(['password'])->password;
+                        if (!password_verify(request('old_password'), $Password)) {
+                            return redirect('/Profile')->with('error',  __('auth.wrongPassword'));
+                        }
                     }
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
                     $email = User::where('id', $edit)->first(['Email'])->Email;
@@ -87,7 +95,7 @@ class ProfileController extends Controller
                     $Employee->save();
 
 
-                    return redirect('/Dashboard')->with('success_delete', 'تم تعديل معلوماتك بنجاح');
+                    return redirect('/Dashboard')->with('success_delete',  __('auth.editInfo'));
                 } elseif (!$User && $id != $edit) {
 
 
@@ -97,16 +105,25 @@ class ProfileController extends Controller
                     $Employee->email = request('Email');
                     $Employee->First_Name = request('First_Name');
                     $Employee->Phone = request('Phone');
-                    $Employee->password = bcrypt(request('password'));
+                    if (request('password')) {
+                        $request->validate([
 
-                    $Password = User::where('id', $edit)->first(['password'])->password;
-                    if (!password_verify(request('old_password'), $Password)) {
-                        return redirect('/Profile')->with('error', 'القن السري خاطئ');
+                            'password' => 'required|min:6|max:255',
+                            'old_password' => 'required|min:6|max:255',
+                            'conf_password' => 'required|min:6|max:255|same:password',
+
+
+                        ]);
+                        $Employee->password = bcrypt(request('password'));
+                        $Password = User::where('id', $edit)->first(['password'])->password;
+                        if (!password_verify(request('old_password'), $Password)) {
+                            return redirect('/Profile')->with('error',  __('auth.wrongPassword'));
+                        }
                     }
 
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
                     $email = User::where('id', $edit)->first(['Email'])->Email;
@@ -121,7 +138,7 @@ class ProfileController extends Controller
                     $Employee->save();
 
 
-                    return redirect('/Dashboard')->with('success_delete', 'تم تعديل معلوماتك بنجاح');
+                    return redirect('/Dashboard')->with('success_delete',  __('auth.editInfo'));
                 }
             }
         }
@@ -141,7 +158,7 @@ class ProfileController extends Controller
                 $User = User::where('email', request('Email'))->first();
 
                 if ($User && $id != $edit) {
-                    return redirect('/Dashboard')->with('error', 'هذا الحساب سبق استعماله');
+                    return redirect('/Dashboard')->with('error', __('auth.existAccount'));
                 } elseif ($User && $id == $edit) {
 
 
@@ -151,16 +168,24 @@ class ProfileController extends Controller
                     $Employee->email = request('Email');
                     $Employee->First_Name = request('First_Name');
                     $Employee->Phone = request('Phone');
-                    $Employee->password = bcrypt(request('password'));
+                    if (request('password')) {
+                        $request->validate([
 
-                    $Password = User::where('id', $edit)->first(['password'])->password;
-                    if (!password_verify(request('old_password'), $Password)) {
-                        return redirect('/Profile')->with('error', 'القن السري خاطئ');
+                            'password' => 'required|min:6|max:255',
+                            'old_password' => 'required|min:6|max:255',
+                            'conf_password' => 'required|min:6|max:255|same:password',
+
+
+                        ]);
+                        $Employee->password = bcrypt(request('password'));
+                        $Password = User::where('id', $edit)->first(['password'])->password;
+                        if (!password_verify(request('old_password'), $Password)) {
+                            return redirect('/Profile')->with('error',  __('auth.wrongPassword'));
+                        }
                     }
-
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
 
@@ -171,7 +196,7 @@ class ProfileController extends Controller
                     $Employee->save();
 
 
-                    return redirect('/Dashboard')->with('success_delete', 'تم تعديل معلوماتك بنجاح');
+                    return redirect('/Dashboard')->with('success_delete',  __('auth.editInfo'));
                 } elseif (!$User && $id != $edit) {
 
 
@@ -181,14 +206,24 @@ class ProfileController extends Controller
                     $Employee->email = request('Email');
                     $Employee->First_Name = request('First_Name');
                     $Employee->Phone = request('Phone');
-                    $Employee->password = bcrypt(request('password'));
-                    $Password = User::where('id', $edit)->first(['password'])->password;
-                    if (!password_verify(request('old_password'), $Password)) {
-                        return redirect('/Profile')->with('error', 'القن السري خاطئ');
+                    if (request('password')) {
+                        $request->validate([
+
+                            'password' => 'required|min:6|max:255',
+                            'old_password' => 'required|min:6|max:255',
+                            'conf_password' => 'required|min:6|max:255|same:password',
+
+
+                        ]);
+                        $Employee->password = bcrypt(request('password'));
+                        $Password = User::where('id', $edit)->first(['password'])->password;
+                        if (!password_verify(request('old_password'), $Password)) {
+                            return redirect('/Profile')->with('error',  __('auth.wrongPassword'));
+                        }
                     }
                     if (request('image')) {
                         $image_name = time() . '_' . request('image')->getClientOriginalName();
-                        request('image')->move(public_path('assets'), $image_name);
+                        request('image')->move(public_path('assets/image'), $image_name);
                         $Employee->image = $image_name;
                     }
 
@@ -196,7 +231,7 @@ class ProfileController extends Controller
                     $Employee->save();
 
 
-                    return redirect('/Dashboard')->with('success_delete', 'تم تعديل معلوماتك بنجاح');
+                    return redirect('/Dashboard')->with('success_delete',  __('auth.editInfo'));
                 }
             }
         }
