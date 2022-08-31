@@ -11,8 +11,9 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png" />
     <title>SIEFCO</title>
+    {{-- <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png"/> --}}
+    <link rel="icon" type="image/x-icon" href="http://localhost/siefco_project/public/assets/image/logo.png">
 </head>
 
 <body>
@@ -33,14 +34,14 @@
             </div>
             <div id="home-text-text">
                 <div class="w-75">
-                    <h1>{{ __('! مرحبًا') }}</h1>
+                    <h1>{{ __('!!مرحبًا') }}</h1>
                     <div class="h3">
                         <div>
                             {{ __('قم بالتسجيل لبدء صرف العملات الدولية معنا') }}
-                            . {{ __(' هل لديك') }}
-                            <a href="Sign_Up">{{ __(' حساب ') }}</a>
+                            . {{ __('هل لديك') }}
+                            <a href="Sign_Up">{{ __('حساب؟') }}</a>
                             {{ __('تسجيل الدخول من') }}
-                            <a href="Sign">{{ __(' هنا ') }}</a>
+                            <a href="Sign">{{ __('هنا') }}</a>
                         </div>
                     </div>
                 </div>

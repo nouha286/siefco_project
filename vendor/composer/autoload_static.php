@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d
+class ComposerStaticInit89e301d7b2a7576d40aeb1d9e711c2b4
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -563,7 +563,6 @@ class ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d
         'App\\Http\\Controllers\\EmployeController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmployeController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\OperationCommercialController' => __DIR__ . '/../..' . '/app/Http/Controllers/OperationCommercialController.php',
-        'App\\Http\\Controllers\\Operation_for_a_clientController' => __DIR__ . '/../..' . '/app/Http/Controllers/Operation_for_a_clientController.php',
         'App\\Http\\Controllers\\PDFController' => __DIR__ . '/../..' . '/app/Http/Controllers/PDFController.php',
         'App\\Http\\Controllers\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/PasswordController.php',
         'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
@@ -573,15 +572,12 @@ class ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
-        'App\\Http\\Middleware\\PreventBackHistory' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventBackHistory.php',
         'App\\Http\\Middleware\\PreventRequestsDuringMaintenance' => __DIR__ . '/../..' . '/app/Http/Middleware/PreventRequestsDuringMaintenance.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\Mail\\EmailActivation' => __DIR__ . '/../..' . '/app/Mail/EmailActivation.php',
-        'App\\Mail\\EmailResetPassword' => __DIR__ . '/../..' . '/app/Mail/EmailResetPassword.php',
         'App\\Mail\\EmailVerificationMail' => __DIR__ . '/../..' . '/app/Mail/EmailVerificationMail.php',
         'App\\Models\\Comercial_Operation' => __DIR__ . '/../..' . '/app/Models/Comercial_Operation.php',
         'App\\Models\\Employees' => __DIR__ . '/../..' . '/app/Models/Employees.php',
@@ -6076,10 +6072,10 @@ class ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitbfd50f08802e182ea3b3a6b67d05549d::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit89e301d7b2a7576d40aeb1d9e711c2b4::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit89e301d7b2a7576d40aeb1d9e711c2b4::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit89e301d7b2a7576d40aeb1d9e711c2b4::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit89e301d7b2a7576d40aeb1d9e711c2b4::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -49,13 +49,13 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary" style="background-color:var(--grey-color); color: var(--white-color); border:none;" data-bs-toggle="modal" data-bs-target="#modal_transfert">
-                            تحويل
+                            {{ __('تحويل') }}
                         </button>
                         <button type="button" class="btn btn-primary" style="background-color:var(--grey-color); color:var(--white-color); border:none;" data-bs-toggle="modal" data-bs-target="#modal_deposit">
-                            إيداع
+                            {{ __('إيداع') }}
                         </button>
                         <button type="button" class="btn btn-primary" style="background-color:var(--grey-color); color:var(--white-color); border:none;" data-bs-toggle="modal" data-bs-target="#modal_retrait">
-                            سحب
+                            {{ __('سحب') }}
                         </button>
                     </div>
 

@@ -29,10 +29,10 @@
  "المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح":"Only users who can create an account please enter a valid registration number",
  "المرجوا ادخال بريدك الالكتروني و القن السري لتسجيل الدخول":"Please enter your email address and secret code to login",
  "قم بالتسجيل لبدء صرف العملات الدولية معنا":"Sign up to start exchanging international currencies with us",
- "!!مرحبا ":"Welcome!!",
- ".هل لديك":"Do you have.",
- "حساب":"account",
- "؟ تسجيل الدخول من":"؟ Login from",
+ "!!مرحبًا":"Welcome!!",
+ "هل لديك":"Do you have.",
+ "حساب؟":"account ?",
+ "تسجيل الدخول من":"Login from",
  "هنا":"here",
  "المسؤولين":"Officials",
  "المستخدمون":"employes",
@@ -98,7 +98,10 @@
 "ادخل بريدك الالكتروني ":"Enter your email address ",
 "تحقق":"Check",
 "شركة صرف العملات الدولية":"International currency exchange company",
-"اسم العملة":"Name"
+"اسم العملة":"Name",
+"تحويل":"Transfer",
+"إيداع":"deposit",
+"سحب":"draw"
 
 
 

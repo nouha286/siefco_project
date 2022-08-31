@@ -34,5 +34,7 @@ return [
     'resetPassword'=>'The password has been successfully modified',
     'wrongPassword'=>'The password is wrong',
     'editInfo'=>'Your information has been successfully modified',
+    'error'=>'This account has already been used',
+
 
 ];
