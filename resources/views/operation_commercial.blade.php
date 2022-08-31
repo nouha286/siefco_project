@@ -117,7 +117,7 @@
                                             <input type="text" name="email" id="email_signup" placeholder="{{ __('البريد الالكتروني') }}" class="col-form">
                                             <input type="text" name="phone" id="phone_signup" placeholder="{{ __('رقم الهاتف') }}" class="col-form">
                                         </div>
-                                      
+
                                         <input type="hidden" name="Versement" value="Versement">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px"></textarea>
@@ -255,6 +255,7 @@
                             <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
                             <td class="col-2">{{ $comercial_Operation->receiver }}</td>
                             <td class="col-2"><a href="{{route('Operation',$comercial_Operation->Client_id)}}">{{ $comercial_Operation->Client_Name }}</a> </td>
+                            <td class="col-2 d-none">{{ $comercial_Operation->Client_Name }}</td>
                             <td class="col-1">{{ $comercial_Operation->id }}</td>
                         </tr>
                         @endforeach
@@ -316,7 +317,7 @@
         table = document.getElementById("table_operation");
         tr = table.querySelectorAll('.tr_operation');
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[7];
+            td = tr[i].getElementsByTagName("td")[8];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -328,7 +329,7 @@
         }
     }
 // for versement
-    
+
                                             const add_client_for_opperation = document.getElementById('add_client_for_opperation');
                                             const Username_client_receiver = document.getElementById('Username_client_receiver');
                                             Username_client_receiver.addEventListener('change', (e) => {
@@ -340,7 +341,7 @@
                                                     add_client_for_opperation.classList.add("d-none");
                                                 }
                                             });
-                                      
+
 
 </script>
 
