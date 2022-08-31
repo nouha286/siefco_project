@@ -35,6 +35,10 @@ return [
     'wrongPassword'=>'The password is wrong',
     'editInfo'=>'Your information has been successfully modified',
     'error'=>'This account has already been used',
+    'success'=>'The account has been added successfully. Please check the message box to receive the activation email',
+    'failed'=>'Only users can create an account. Please enter a valid registration number',
+    'success_delete'=>'The customer has been successfully deleted',
+    'success_restore'=>'The customer has been successfully restored',
 
 
 ];

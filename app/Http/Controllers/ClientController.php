@@ -44,7 +44,7 @@ class ClientController extends Controller
 
             $User = User::where('email', request('Email'))->first();
             if ($User && $id != $edit) {
-                return redirect('/client')->with('error', 'هذا الحساب سبق استعماله');
+                return redirect('/client')->with('error', __('auth.error'));
             } elseif ($User && $id == $edit) {
 
                 $request->validate([
@@ -86,7 +86,7 @@ class ClientController extends Controller
                 $Client->save();
 
 
-                return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
+                return redirect('/client')->with('success_delete',  __('auth.succes_delete'));
             } elseif (!$User && $id != $edit) {
                 $request->validate([
                     'Email' => 'required|max:255|email',
@@ -127,7 +127,7 @@ class ClientController extends Controller
                 $Client->save();
 
 
-                return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
+                return redirect('/client')->with('success_delete', __('auth.succes_delete'));
             }
         } else {
             $request->validate([
@@ -144,7 +144,7 @@ class ClientController extends Controller
 
             $User = User::where('email', request('Email'))->first();
             if ($User) {
-                return redirect('/client')->with('error', 'هذا الحساب سبق استعماله');
+                return redirect('/client')->with('error', __('auth.error'));
             } else {
 
 
@@ -201,16 +201,16 @@ class ClientController extends Controller
             if ($User->Activation == 1) {
                 $User->Activation = 0;
                 $User->save();
-                return redirect('/client')->with('success_delete', 'تم حذف الزبون بنجاح');
+                return redirect('/client')->with('success_delete', __('auth.succes_delete'));
            
                 }
             if ($User->Activation == 0) {
                 $User->Activation = 1;
                 $User->save();
-                return redirect('/client')->with('success_restore', 'تم استعادة الزبون بنجاح');
+                return redirect('/client')->with('success_restore', __('auth.succes_restore'));
                
             }
         } else {
-            return redirect('/client')->with('failed_delete', 'حدث خطا ما قد فشل الحذف ');
+            return redirect('/client')->with('failed_delete', __('auth.failed_delete'));
         }}
 }

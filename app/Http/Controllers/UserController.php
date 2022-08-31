@@ -25,15 +25,15 @@ class UserController extends Controller
         
        $User=User::where('email',request('email'))->first();
        if ($User) {
-        return redirect('/Sign_Up')->with('error','هذا الحساب سبق استعماله');
+        return redirect('/Sign_Up')->with('error', __('auth.error'));
        }else{
 
         $request->validate([
             'email' => 'required|max:255|email',
             'Last_Name' => 'required',
             'First_Name' => 'required',
-          'password'=>'required|min:6',
-          'conf_password'=>'required|min:6|same:password',
+            'password'=>'required|min:6',
+            'conf_password'=>'required|min:6|same:password',
             'phone' => 'required|numeric',
             
         ]);
@@ -65,16 +65,16 @@ class UserController extends Controller
                      $identificateur->save();
                      $User->save();
                      FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
-                    return redirect('/Sign')->with('success','   تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل ');
+                    return redirect('/Sign')->with('success', __('auth.success'));
                 }else {
-                    return redirect('/Sign_Up')->with('failed','المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح');
+                    return redirect('/Sign_Up')->with('failed', __('auth.failed'));
                 }
             }
             if (request('role')=='Client') {
                 $User->save();
                 FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
 
-                return redirect('/Sign')->with('success',' تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل');
+                return redirect('/Sign')->with('success', __('auth.success'));
             }
        }
     }
@@ -136,7 +136,7 @@ class UserController extends Controller
         return redirect('/Dashboard');
     }
     if (!$resultat ) {
-        return redirect('/Sign')->with('error','البريد الالكتروني او القن السري خاطئ');
+        return redirect('/Sign')->with('error', __('auth.error'));
     }
     }
 

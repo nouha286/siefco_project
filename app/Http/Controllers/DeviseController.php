@@ -48,7 +48,7 @@ class DeviseController extends Controller
             $Devise->Dollar_value = request('Value');
             $Devise->Activation=1;
             $Devise->save();
-            return redirect('/devise')->with('success_delete','تم اظافة العملة بنجاح'.request('edit_add')) ;
+            return redirect('/devise')->with('success_delete',__('auth.succes_delete').request('edit_add')) ;
         }
         
     }
@@ -60,14 +60,14 @@ class DeviseController extends Controller
         {
             $devise->Activation=0;
             $devise->save();
-            return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
+            return redirect('/devise')->with('success_delete',__('auth.succes_delete'));
         }
 
         elseif($devise->Activation==0)
         {
             $devise->Activation=1;
             $devise->save();
-            return redirect('/devise')->with('success_restore','تم استرجاع العملة بنجاح');
+            return redirect('/devise')->with('success_restore',__('auth.succes_restore'));
         }
         
         
