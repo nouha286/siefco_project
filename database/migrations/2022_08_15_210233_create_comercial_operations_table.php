@@ -21,11 +21,12 @@ return new class extends Migration
 
             $table->double('Debtor');
             $table->double('Creditor');
+            $table->double('Benifice');
 
             $table->string('Balance');
             $table->string('receiver');
             $table->string('Statement');
-          
+
             $table->string('Currency');
             $table->foreignId('currency_id')->constrained('devises');
             $table->string('Emloyee_Name');

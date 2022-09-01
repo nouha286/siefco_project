@@ -39,7 +39,7 @@
         <div style="text-align: right;">{{ date('j-m-y') }}</div>
         <!-- Logo -->
         <div style="width: 100%; border: 1px solid #6F6F6F; text-align: center;">
-            <!-- <img src="{{ asset('assets/logo.jpg') }}" style="width: 70px;"> -->
+            <img src="{{ asset('assets/image/logoFacture.jpg') }}" style="width: 70px;">
             <div>{{ __('شركة صرف العملات الدولية') }} {{ date('Y') }}</div>
             <div>{{ __('رقم الهاتف') }} : 06.00.00.00.00 -- 05.00.00.00.00</div>
             <div>{{ __('البريد الالكتروني') }} : siefco.contact@gmail.com</div>
@@ -63,7 +63,7 @@
                         <th style="width: 7.95%;">{{ __('مدين') }}</th>
                         <th style="width: 7.95%;">{{ __('دائن') }}</th>
                         <th style="width: 7.95%;">{{ __('المتلقي') }}</th>
-                       
+
                         <th style="width: 16.66%;">{{ __('التاريخ') }}</th>
                         <th style="width: 7.95%;">{{ __('رقم العمليات') }}</th>
                     </tr>
@@ -80,7 +80,7 @@
                                 <td style="width: 7.95%;">{{ $comercial_Operation->Debtor }}</td>
                                 <td style="width: 7.95%;">{{ $comercial_Operation->receiver }}</td>
                                 <td style="width: 16.66%;">{{ $comercial_Operation->created_at }}</td>
-                              
+
                                 <td style="width: 7.95%;">{{ $comercial_Operation->id }}</td>
                             </tr>
                         @endif

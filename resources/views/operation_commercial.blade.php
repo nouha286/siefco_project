@@ -218,7 +218,7 @@
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                    <form method="Post" id="form_retrait" action="{{ route('add.Operation') }}">
                                         @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية سحب') }}
@@ -228,7 +228,7 @@
                                         </div>
                                         <div class="modal-body d-flex flex-column gap-4">
                                             <div class="search_select_box w-100">
-                                                <select class="selectpicker w-100" id="add_name" name="Client_id"
+                                                <select class="selectpicker w-100" id="retrait_name" name="Client_id"
                                                     data-live-search="true">
                                                     @foreach ($clientForRetrait as $client)
                                                         :
@@ -239,7 +239,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <input type="text" id="add_creditor" name="Debtor" class="form-control "
+                                            <input type="text" id="retrait_solde" name="Debtor" class="form-control "
                                                 placeholder="{{ __('المبلغ') }}">
                                             <div class="search_select_box w-100">
                                                 <select class="selectpicker w-100" id="add_devise" name="devise"
@@ -250,13 +250,13 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <input type="text" id="add_creditor" name="Benifice"
+                                            <input type="text" id="retrait_benifice" name="Benifice"
                                                 class="form-control " placeholder="{{ __('الربح') }}">
                                             <input type="hidden" name="Retrait" value="Retrait">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2"
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="retrait_statement"
                                                     style="height: 100px"></textarea>
-                                                <label for="floatingTextarea2">{{ __('البيان') }}</label>
+                                                <label for="retrait_statement">{{ __('البيان') }}</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -268,6 +268,53 @@
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            // Validation Form Retrait
+                            const form_retrait = document.getElementById('form_retrait');
+                            const retrait_name = document.getElementById('retrait_name');
+                            const retrait_benifice = document.getElementById('retrait_benifice');
+                            const retrait_solde = document.getElementById('retrait_solde');
+                            const retrait_statement = document.getElementById('retrait_statement');
+                            form_retrait.addEventListener('submit', (e) => {
+                                if (retrait_name.value == "") {
+                                    e.preventDefault();
+                                    retrait_name.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    retrait_name.style.border = "1px solid green";
+                                }
+
+                                if ((retrait_benifice.value == "") || (isNaN(retrait_benifice.value))) {
+                                    e.preventDefault();
+                                    retrait_benifice.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    retrait_benifice.style.border = "1px solid green";
+                                }
+
+                                if ((retrait_solde.value == "") || (isNaN(retrait_solde.value))) {
+                                    e.preventDefault();
+                                    retrait_solde.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    retrait_solde.style.border = "1px solid green";
+                                }
+
+                                if (retrait_statement.value == "") {
+                                    e.preventDefault();
+                                    retrait_statement.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    retrait_statement.style.border = "1px solid green";
+                                }
+
+                                if((retrait_name.value != "") && (retrait_benifice.value != "") && !(isNaN(retrait_benifice.value)) && (retrait_solde.value != "") && !(isNaN(retrait_solde.value)) && (retrait_statement.value != "")) {
+                                    form_retrait.submit();
+                                }
+                            });
+
+                        </script>
 
                     </div>
                     <table class="table mb-0 text-center" id="table_operation">
