@@ -333,6 +333,9 @@
                                             const add_client_for_opperation = document.getElementById('add_client_for_opperation');
                                             const Username_client_receiver = document.getElementById('Username_client_receiver');
                                             Username_client_receiver.addEventListener('change', (e) => {
+                                                versement();
+                                            });
+                                            function versement() {
                                                 if (Username_client_receiver.value == 0) {
                                                     add_client_for_opperation.classList.remove("d-none");
                                                     add_client_for_opperation.classList.add("d-flex");
@@ -340,7 +343,7 @@
                                                     add_client_for_opperation.classList.remove("d-flex");
                                                     add_client_for_opperation.classList.add("d-none");
                                                 }
-                                            });
+                                            }
 
 
 </script>
