@@ -167,7 +167,7 @@
                                         </div>
                                         <input type="hidden" name="Depot" value="Depot">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px;"></textarea>
                                             <label for="floatingTextarea2">{{ __('البيان') }}</label>
                                         </div>
                                     </div>
@@ -184,7 +184,7 @@
                     <div class="modal fade" id="modal_retrait" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                <form method="Post" id="form_retrait" action="{{ route('add.Operation') }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية سحب') }}
@@ -193,7 +193,7 @@
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <div class="search_select_box w-100">
-                                            <select class="selectpicker w-100" id="add_name" name="Client_id" data-live-search="true">
+                                            <select class="selectpicker w-100" id="retrait_name" name="Client_id" data-live-search="true">
                                                 @foreach ($clientForRetrait as $client)
                                                 :
                                                 <option value="{{ $client->id }}">
@@ -203,7 +203,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <input type="text" id="add_creditor" name="Debtor" class="form-control " placeholder="{{ __('المبلغ') }}">
+                                        <input type="text" id="retrait_solde" name="Debtor" class="form-control " placeholder="{{ __('المبلغ') }}">
                                         <div class="search_select_box w-100">
                                             <select class="selectpicker w-100" id="add_devise" name="devise" data-live-search="true">
                                                 @foreach ($deviseForRetrait as $devise)
@@ -214,7 +214,7 @@
                                         </div>
                                         <input type="hidden" name="Retrait" value="Retrait">
                                         <div class="form-floating">
-                                            <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px"></textarea>
+                                            <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="retrait_statement" style="height: 100px"></textarea>
                                             <label for="floatingTextarea2">{{ __('البيان') }}</label>
                                         </div>
                                     </div>
