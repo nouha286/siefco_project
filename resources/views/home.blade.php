@@ -33,14 +33,14 @@
             </div>
             <div id="home-text-text">
                 <div class="w-75">
-                    <h1>{{ __('! مرحبًا') }}</h1>
+                    <h1>{{ __('!!مرحبًا') }}</h1>
                     <div class="h3">
                         <div>
                             {{ __('قم بالتسجيل لبدء صرف العملات الدولية معنا') }}
-                            . {{ __(' هل لديك') }}
-                            <a href="Sign_Up">{{ __(' حساب ') }}</a>
+                            . {{ __('هل لديك') }}
+                            <a href="Sign_Up">{{ __('حساب؟') }}</a>
                             {{ __('تسجيل الدخول من') }}
-                            <a href="Sign">{{ __(' هنا ') }}</a>
+                            <a href="Sign">{{ __('هنا') }}</a>
                         </div>
                     </div>
                 </div>
@@ -55,3 +55,12 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+<?php
+    if(explode("/", URL::current())[5] == "en") {
+        echo '<style>
+                #home-text-text{
+                    text-align: left !important;
+                }
+            </style>';
+    }
+?>

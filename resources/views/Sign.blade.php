@@ -132,3 +132,16 @@
         }
     });
 </script>
+<?php
+    if(explode("/", URL::current())[5] == "en") {
+        echo '<style>
+                input[type="text"],[type="password"], [type="email"] {
+                    text-align: left !important;
+                    padding-left: 15px !important;
+                }
+                .float-end{
+                    text-align: left !important;
+                }
+            </style>';
+    }
+?>

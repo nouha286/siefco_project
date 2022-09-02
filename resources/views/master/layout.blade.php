@@ -71,3 +71,25 @@
 </script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<?php
+    if(explode("/", URL::current())[5] == "en") {
+        echo '<style>
+                input[type="text"],[type="password"], [type="email"] {
+                    text-align: left !important;
+                    padding-left: 15px !important;
+                }
+                .active{
+                    border-radius: 0 50px 50px 0 !important;
+                }
+                .text-end{
+                    text-align: left !important;
+                }
+                .float-end{
+                    float: left !important;
+                }
+                .flex-row-reverse{
+                    flex-direction: row !important;
+                }
+            </style>';
+    }
+?>
