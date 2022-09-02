@@ -20,12 +20,12 @@ use App\Http\Controllers\Redirect;
 
 class UserController extends Controller
 {
-    public function inscription(Request $request)
+    public function inscription(Request $request, $Lang)
     {
         
        $User=User::where('email',request('email'))->first();
        if ($User) {
-        return redirect('/Sign_Up')->with('error','هذا الحساب سبق استعماله');
+        return redirect($Lang.'/Sign_Up')->with('error',__('auth.existAccount'));
        }else{
 
         $request->validate([
@@ -65,21 +65,21 @@ class UserController extends Controller
                      $identificateur->save();
                      $User->save();
                      FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
-                    return redirect('/Sign')->with('success','   تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل ');
+                    return redirect($Lang.'/Sign')->with('success',__('auth.emailVerf'));
                 }else {
-                    return redirect('/Sign_Up')->with('failed','المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح');
+                    return redirect($Lang.'/Sign_Up')->with('failed',__('auth.notEmploye'));
                 }
             }
             if (request('role')=='Client') {
                 $User->save();
                 FacadesMail::to(request('email'))->send(new EmailVerificationMail($User));
 
-                return redirect('/Sign')->with('success',' تم اظافة الحساب بنجاح المرجو التحقق من علبة الرسائل لتلقي بريد التفعيل');
+                return redirect($Lang.'/Sign')->with('success',__('auth.emailVerf'));
             }
        }
     }
 // for connexion
-    public function connexion(Request $request)
+    public function connexion(Request $request, $Lang)
     {
         //validation backend
         $request->validate([
@@ -112,7 +112,7 @@ class UserController extends Controller
         $Client=Client::where('email',$email)->first('id')->id;
         $request->session()->put('id',$User);
         $request->session()->put('id_Client',$Client);
-        return redirect('/interface_client');
+        return redirect($Lang.'/interface_client');
     }
 
     if ($resultat && ($Role=='Employe'|| $Role=='Admin') )
@@ -133,10 +133,10 @@ class UserController extends Controller
         }
       
        
-        return redirect('/Dashboard');
+        return redirect($Lang.'/Dashboard');
     }
     if (!$resultat ) {
-        return redirect('/Sign')->with('error','البريد الالكتروني او القن السري خاطئ');
+        return redirect($Lang.'/Sign')->with('error',__('auth.wrongPassword'));
     }
     }
 
@@ -148,11 +148,11 @@ class UserController extends Controller
 
        if (!$User)
        {
-        return redirect('/Sign_Up')->with('error','Invalid URL');
+        return redirect('/Sign_Up')->with('error',__('auth.UrlInvalid'));
        }else
        {
         if ($User->email_verified_at) {
-            return Redirect('/Sign_Up')->with('warning','Email already verified');
+            return Redirect('/Sign_Up')->with('warning',__('auth.AlreadyVerfied'));
 
         }else{
             $User->email_verified_at=\Carbon\Carbon::now();
@@ -160,7 +160,7 @@ class UserController extends Controller
 
 
 
-            return redirect('/Sign_Up')->with('success','Email successfully verified');
+            return redirect('/Sign_Up')->with('success',__('auth.SuccessVirification'));
 
         }
 

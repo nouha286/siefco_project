@@ -42,7 +42,7 @@
                     style="width: 80%; min-height: 80vh; margin-left: 10%;">
                     <h1 class="text-center">{{ __('انشاء حساب') }} </h1>
                     <p class="text-center" id="error_signup">{{ __(' املأ معلوماتك لانشاء حسابك') }} </p>
-                    <form class="d-flex flex-column" method="POST" action="{{ route('inscription.auth') }}"
+                    <form class="d-flex flex-column" method="POST" action="{{ route('inscription.auth',app()->getLocale() ) }}"
                         id="form_signup">
                         @csrf
                         @if (session('failed'))

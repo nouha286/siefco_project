@@ -33,18 +33,19 @@ class OperationCommercialController extends Controller
         }
     }
 
-    public function addOperation(Request $request)
+    public function addOperation(Request $request, $Lang)
     {
         if (request('Depot')) {
 
-            // $request->validate([
+            $request->validate([
 
-            //     'Client_id' => 'required',
-            //     'Creditor' => 'required|numeric',
-            //     'Debtor' => 'required|numeric',
-            //     'devise' => 'required',
+                'Client_id' => 'required',
+                'Creditor' => 'required|numeric',
+               'statement'=>'required',
+                'devise' => 'required',
+                'Benifice' => 'required|numeric',
 
-            // ]);
+            ]);
             $Comercial_Operation = new Comercial_Operation();
 
             $id = request('Client_id');
@@ -56,7 +57,7 @@ class OperationCommercialController extends Controller
             $Comercial_Operation->receiver = '__';
             $Comercial_Operation->Creditor = request('Creditor');
             $client_Balance = client::where('id', $id)->first(['Balance'])->Balance;
-            $Comercial_Operation->Balance = $client_Balance + request('Creditor');
+            $Comercial_Operation->Balance = $client_Balance + request('Creditor')-request('Benifice');
             $Comercial_Operation->Statement = request('statement');
             $id_devise = request('devise');
             $devise = devise::where('id', $id_devise)->first(['Name'])->Name;
@@ -66,10 +67,11 @@ class OperationCommercialController extends Controller
             $Comercial_Operation->Emloyee_Name = $User->First_Name . ' ' . $User->Last_Name;
             $Comercial_Operation->Activation = 1;
             $client = client::where('id', $id)->first();
-            $client->Balance = $client_Balance + request('Creditor');
+            $Comercial_Operation->Benifice=request('Benifice');
+            $client->Balance = $client_Balance + request('Creditor')-request('Benifice');
             $client->save();
             $Comercial_Operation->save();
-            return redirect('/operation_commercial')->with('success_delete', __('auth.add_operation'));
+            return redirect($Lang.'/operation_commercial')->with('success_delete', __('auth.add_operation'));
         }
 
         if (request('Retrait')) {
@@ -82,6 +84,15 @@ class OperationCommercialController extends Controller
             //     'devise' => 'required',
 
             // ]);
+            $request->validate([
+
+                'Client_id' => 'required',
+                'Debtor' => 'required|numeric',
+               'statement'=>'required',
+                'devise' => 'required',
+                'Benifice' => 'required|numeric',
+
+            ]);
             $Comercial_Operation = new Comercial_Operation();
 
             $id = request('Client_id');
@@ -93,7 +104,7 @@ class OperationCommercialController extends Controller
             $Comercial_Operation->Creditor = 0;
             $Comercial_Operation->receiver = '__';
             $client_Balance = client::where('id', $id)->first(['Balance'])->Balance;
-            $Comercial_Operation->Balance = $client_Balance - request('Debtor');
+            $Comercial_Operation->Balance = $client_Balance - request('Debtor')-request('Benifice');
             $Comercial_Operation->Statement = request('statement');
             $id_devise = request('devise');
             $devise = devise::where('id', $id_devise)->first(['Name'])->Name;
@@ -103,10 +114,11 @@ class OperationCommercialController extends Controller
             $Comercial_Operation->Emloyee_Name = $User->First_Name . ' ' . $User->Last_Name;
             $Comercial_Operation->Activation = 1;
             $client = client::where('id', $id)->first();
-            $client->Balance = $client_Balance - request('Debtor');
+            $Comercial_Operation->Benifice=request('Benifice');
+            $client->Balance = $client_Balance - request('Debtor')-request('Benifice');
             $client->save();
             $Comercial_Operation->save();
-            return redirect('/operation_commercial')->with('success_delete', __('auth.add_operation'));
+            return redirect($Lang.'/operation_commercial')->with('success_delete', __('auth.add_operation'));
         }
 
 
@@ -114,11 +126,24 @@ class OperationCommercialController extends Controller
 
            
             if (request('email')) {
+                $request->validate([
+
+                    'Client_id' => 'required',
+                    'Verse' => 'required|numeric',
+                   'statement'=>'required',
+                    'devise' => 'required',
+                    'Benifice' => 'required|numeric',
+                    'email' => 'required|max:255|email',
+                    'Last_Name' => 'required',
+                    'First_Name' => 'required',
+                    'phone' => 'required',
+    
+                ]);
 
                 $User = User::where('email', request('email'))->first();
                 if ($User) 
                 {
-                    return redirect('/operation_commercial')->with('error', 'هذا الحساب سبق استعماله');
+                    return redirect($Lang.'/operation_commercial')->with('error', __('auth.existAccount'));
                 } else 
                 {
                     $Client = new client();
@@ -158,7 +183,7 @@ class OperationCommercialController extends Controller
                     $Comercial_Operation->Creditor = 0;
                     $Comercial_Operation->receiver = $receiver_First_Name . ' ' .  $receiver_Last_Name;
                     $client_Balance = client::where('id', $id)->first(['Balance'])->Balance;
-                    $Comercial_Operation->Balance = $client_Balance - request('Verse');
+                    $Comercial_Operation->Balance = $client_Balance - request('Verse')-request('Benifice');
                     $Comercial_Operation->Statement = request('statement');
                     $id_devise = request('devise');
                     $devise = devise::where('id', $id_devise)->first(['Name'])->Name;
@@ -167,15 +192,25 @@ class OperationCommercialController extends Controller
                     $User = User::where('id', session('id'))->first();
                     $Comercial_Operation->Emloyee_Name = $User->First_Name . ' ' . $User->Last_Name;
                     $Comercial_Operation->Activation = 1;
+                    $Comercial_Operation->Benifice=request('Benifice');
                     $client = client::where('id', $id)->first();
-                    $client->Balance = $client_Balance - request('Verse');
+                    $client->Balance = $client_Balance - request('Verse')-request('Benifice');
                     $client->save();
                     $Comercial_Operation->save();
-                    return redirect('/operation_commercial')->with('success_delete', __('auth.add_operation'));
+                    return redirect($Lang.'/operation_commercial')->with('success_delete', __('auth.add_operation'));
                 }
 
             }
             else{
+                $request->validate([
+
+                    'Client_id' => 'required',
+                    'Verse' => 'required|numeric',
+                   'statement'=>'required',
+                    'devise' => 'required',
+                    'Benifice' => 'required|numeric',
+    
+                ]);
 
                 $Comercial_Operation = new Comercial_Operation();
 
@@ -191,7 +226,7 @@ class OperationCommercialController extends Controller
                 $Comercial_Operation->Creditor = 0;
                 $Comercial_Operation->receiver = $receiver_First_Name . ' ' .  $receiver_Last_Name;
                 $client_Balance = client::where('id', $id)->first(['Balance'])->Balance;
-                $Comercial_Operation->Balance = $client_Balance - request('Verse');
+                $Comercial_Operation->Balance = $client_Balance - request('Verse')-request('Benifice');
                 $Comercial_Operation->Statement = request('statement');
                 $id_devise = request('devise');
                 $devise = devise::where('id', $id_devise)->first(['Name'])->Name;
@@ -201,10 +236,11 @@ class OperationCommercialController extends Controller
                 $Comercial_Operation->Emloyee_Name = $User->First_Name . ' ' . $User->Last_Name;
                 $Comercial_Operation->Activation = 1;
                 $client = client::where('id', $id)->first();
-                $client->Balance = $client_Balance - request('Verse');
+                $Comercial_Operation->Benifice=request('Benifice');
+                $client->Balance = $client_Balance - request('Verse')-request('Benifice');
                 $client->save();
                 $Comercial_Operation->save();
-                return redirect('/operation_commercial')->with('success_delete', __('auth.add_operation'));
+                return redirect($Lang.'/operation_commercial')->with('success_delete', __('auth.add_operation'));
             }
 
 

@@ -50,32 +50,29 @@
             </div>
 
             <div class="container-fluid">
-                @if (session('failed_Activation'))
-                    <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
-                        {{ session('failed_Activation') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('success_delete'))
-                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-                        {{ session('success_delete') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('success_Activation'))
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('success_Activation') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+              
                 <div class="card border-0 shadow-sm overflow-auto"
                     style="min-height: 350px; max-height: 350px; border-radius: 16px;">
+                    @if (session('success_delete'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_delete') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        
+        @if (session('success_Activation'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_Activation') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if (session('failed_Activation'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('failed_Activation') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
                     <div class="m-4">
                         <h4 class="float-end mb-4"> {{ __('حسابات جديدة') }}</h4>
                         <table class="table text-center" id="myTable">
@@ -102,12 +99,12 @@
                                     @foreach ($Activ_Employe as $User)
                                         <tr class="item">
                                             <td class="col-1 d-flex justify-content-between align-items-center gap-2">
-                                                <form action="{{ route('Activer', $User->id) }}" method="post">
+                                                <form action="{{ route('Activer',[ $User->id , app()->getLocale()]) }}" method="post">
                                                     @csrf
                                                     <button class="btn" style="background-color: var(--grey-color);"
                                                         type="submit"><i class="bi bi-check2 text-white"></i></button>
                                                 </form>
-                                                <form action="{{ route('Supprimer', $User->id) }}" method="post">
+                                                <form action="{{ route('Supprimer',[ $User->id, app()->getLocale() ]) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-edit"
@@ -121,7 +118,7 @@
                                                 <td style="color:green;" class="col-1 ">{{ __('مفعل') }}</td>
                                             @endif
                                             @if (!$User->email_verified_at)
-                                                <td style="color:red;" class="col-1 First_Name">{{ __('غير مفعل') }}/td>
+                                                <td style="color:red;" class="col-1 First_Name">{{ __('غير مفعل') }}</td>
                                             @endif
                                             <td class="col-3 email">{{ $User->email }}</td>
                                             <td class="col-2 Last_Name">{{ $User->Last_Name }}</td>
@@ -134,13 +131,13 @@
                                     @foreach ($Activ_Client as $User)
                                         <tr class="item">
                                             <td class="col-1 d-flex justify-content-between align-items-center gap-2">
-                                                <form action="{{ route('Activer', $User->id) }}" method="post">
+                                                <form action="{{ route('Activer',[ $User->id , app()->getLocale()]) }}" method="post">
                                                     @csrf
                                                     <button class="btn" type="submit"
                                                         style="background-color: var(--grey-color);"><i
                                                             class="bi bi-check2 text-white"></i></button>
                                                 </form>
-                                                <form action="{{ route('Supprimer', $User->id) }}" method="post">
+                                                <form action="{{ route('Supprimer',[ $User->id, app()->getLocale() ]) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="btn btn-edit"
@@ -151,12 +148,11 @@
                                             </td>
                                             <td class="col-2 Phone">{{ $User->Phone }}</td>
                                             @if ($User->email_verified_at)
-                                                <td style="color:green;" class="col-2 First_Name">{{ __('مفعل') }}
-                                                </td>
+                                                <td style="color:green;" class="col-2 First_Name">{{ __('مفعل') }}</td>
                                             @endif
                                             @if (!$User->email_verified_at)
-                                                <td style="color:red;" class="col-1  First_Name"> {{ __('غير مفعل') }}
-                                                </td>
+                                                <td style="color:red;" class="col-1  First_Name"> {{ __('غير مفعل') }} </td>
+                                               
                                             @endif
                                             <td class="col-3 email">{{ $User->email }}</td>
                                             <td class="col-2 Last_Name">{{ $User->Last_Name }}</td>

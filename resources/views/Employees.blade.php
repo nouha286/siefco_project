@@ -20,6 +20,12 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
+                    @if (session('success_restore'))
+                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                            {{ session('success_restore') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
                     @if (session('error'))
                         <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
                             {{ session('error') }}
@@ -68,7 +74,7 @@
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="Post" action="{{ route('add.Employe') }}" id="form_add_employe">
+                                    <form method="Post" action="{{ route('add.Employe',app()->getLocale() ) }}" id="form_add_employe">
                                         @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة مستخدم') }}</h5>
@@ -178,7 +184,7 @@
                             aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="Post" action="{{ route('add.Employe') }}" id="form_edit_employe">
+                                    <form method="Post" action="{{ route('add.Employe',app()->getLocale() ) }}" id="form_edit_employe">
                                         @csrf
                                         <div class="modal-header ">
                                             <h5 class="modal-title " id="exampleModalLabel">{{ __('اظافة عملة') }}</h5>
@@ -285,7 +291,7 @@
                                     @if (session('role') == 'Admin')
                                         <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                             @if ($Employee->Activation == 1)
-                                                <form action="{{ route('delete.Employe', $Employee->id) }}"
+                                                <form action="{{ route('delete.Employe', [$Employee->id,app()->getLocale() ]) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
@@ -300,7 +306,7 @@
                                                         class="bi bi-pen-fill text-white"></i></button>
                                             @endif
                                             @if ($Employee->Activation == 0)
-                                                <form action="{{ route('delete.Employe', $Employee->id) }}"
+                                                <form action="{{ route('delete.Employe',[$Employee->id,app()->getLocale() ]) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')

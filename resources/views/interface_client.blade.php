@@ -9,7 +9,7 @@
                 style="width: 100%; height: 95vh; margin-top: 2.5vh; background-color: var(--white-color); border-radius: 16px;">
                 <!-- Logo -->
                 <div class="d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/logo.png') }}" style="width: 38%;" alt="logo">
+                    <img src="{{ asset('assets/image/logo.png') }}" style="width: 38%;" alt="logo">
                 </div>
                 <hr class="w-75 m-0 p-0">
                 <!-- Info Profile -->
@@ -46,6 +46,12 @@
                     @if (session('success_delete'))
                         <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
                             {{ session('success_delete') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif

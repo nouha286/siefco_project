@@ -49,21 +49,22 @@
                     </div>
                     <div>
                         <button type="button" class="btn btn-primary" style="background-color:var(--grey-color); color: var(--white-color); border:none;" data-bs-toggle="modal" data-bs-target="#modal_transfert">
-                            تحويل
+                            {{ __('تحويل') }}
                         </button>
                         <button type="button" class="btn btn-primary" style="background-color:var(--grey-color); color:var(--white-color); border:none;" data-bs-toggle="modal" data-bs-target="#modal_deposit">
-                            إيداع
+                            {{ __('إيداع') }}
                         </button>
                         <button type="button" class="btn btn-primary" style="background-color:var(--grey-color); color:var(--white-color); border:none;" data-bs-toggle="modal" data-bs-target="#modal_retrait">
-                            سحب
+                            {{ __('سحب') }}
                         </button>
                     </div>
 
+                    
                     <!-- Modal Transfert -->
                     <div class="modal fade" id="modal_transfert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post"  action="{{ route('add.Operation') }}">
+                                <form method="Post"  action="{{ route('add.Operation',app()->getLocale() ) }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية تحويل') }}
@@ -117,7 +118,7 @@
                                             <input type="text" name="email" id="email_signup" placeholder="{{ __('البريد الالكتروني') }}" class="col-form">
                                             <input type="text" name="phone" id="phone_signup" placeholder="{{ __('رقم الهاتف') }}" class="col-form">
                                         </div>
-                                      
+                                        <input type="text" id="add_benifice" name="Benifice" class="form-control " placeholder="{{ __('الربح') }}">
                                         <input type="hidden" name="Versement" value="Versement">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px"></textarea>
@@ -137,7 +138,7 @@
                     <div class="modal fade" id="modal_deposit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                <form method="Post" id="form_add_client" action="{{ route('add.Operation',app()->getLocale() ) }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية إيداع') }}
@@ -166,6 +167,7 @@
                                             </select>
                                         </div>
                                         <input type="hidden" name="Depot" value="Depot">
+                                        <input type="text" id="add_benifice" name="Benifice" class="form-control " placeholder="{{ __('الربح') }}">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px"></textarea>
                                             <label for="floatingTextarea2">{{ __('البيان') }}</label>
@@ -184,7 +186,7 @@
                     <div class="modal fade" id="modal_retrait" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                <form method="Post" id="form_add_client" action="{{ route('add.Operation',app()->getLocale() ) }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية سحب') }}
@@ -212,6 +214,7 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <input type="text" id="add_benifice" name="Benifice" class="form-control " placeholder="{{ __('الربح') }}">
                                         <input type="hidden" name="Retrait" value="Retrait">
                                         <div class="form-floating">
                                             <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2" style="height: 100px"></textarea>
@@ -230,11 +233,13 @@
                 </div>
                 <table class="table mb-0 text-center" id="table_operation">
                     <thead>
-                        <tr>
+                    <tr>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('المستخدم') }}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('العملة') }}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('التاريخ') }}</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('البيان') }}</th>
+                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الربح') }}</th>
+                            
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الرصيد') }}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('مدين') }}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('دائن') }}</th>
@@ -250,11 +255,13 @@
                             <td class="col-1">{{ $comercial_Operation->Currency }}</td>
                             <td class="col-2">{{ $comercial_Operation->created_at }}</td>
                             <td class="col-1">{{ $comercial_Operation->Statement }}</td>
+                            <td class="col-1">{{ $comercial_Operation->Benifice}}</td>
                             <td class="col-1">{{ $comercial_Operation->Balance }}</td>
                             <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
                             <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
                             <td class="col-2">{{ $comercial_Operation->receiver }}</td>
                             <td class="col-2"><a href="{{route('Operation',$comercial_Operation->Client_id)}}">{{ $comercial_Operation->Client_Name }}</a> </td>
+                            <td class="col-2 d-none">{{ $comercial_Operation->Client_Name }}</td>
                             <td class="col-1">{{ $comercial_Operation->id }}</td>
                         </tr>
                         @endforeach
@@ -266,47 +273,47 @@
 </div>
 
 <script>
-    // Validation Modal Add Client
-    const form_add_client = document.getElementById('form_add_client');
-    const add_name = document.getElementById('add_name');
-    const add_creditor = document.getElementById('add_creditor');
-    const add_debtor = document.getElementById('add_debtor');
-    const add_devise = document.getElementById('add_devise');
-    const pattern_number = /[0-9]/;
-    form_add_client.addEventListener('submit', (e) => {
-        if (add_name.value == "") {
-            e.preventDefault();
-            add_name.style.border = "1px solid red";
-        } else {
-            e.preventDefault();
-            add_name.style.border = "1px solid green";
-        }
-        if ((add_creditor.value == "") || (isNaN(add_creditor.value))) {
-            e.preventDefault();
-            add_creditor.style.border = "1px solid red";
-        } else {
-            e.preventDefault();
-            add_creditor.style.border = "1px solid green";
-        }
-        if ((add_debtor.value == "") || (isNaN(add_debtor.value))) {
-            e.preventDefault();
-            add_debtor.style.border = "1px solid red";
-        } else {
-            e.preventDefault();
-            add_debtor.style.border = "1px solid green";
-        }
-        if (add_devise.value == "") {
-            e.preventDefault();
-            add_devise.style.border = "1px solid red";
-        } else {
-            e.preventDefault();
-            add_devise.style.border = "1px solid green !important";
-        }
-        if ((add_name.value != "") && (add_creditor.value != "") && !(isNaN(add_creditor.value)) && (add_debtor
-                .value != "") && !(isNaN(add_debtor.value)) && (add_devise.value != "")) {
-            form_add_client.submit();
-        }
-    });
+    // // Validation Modal Add Client
+    // const form_add_client = document.getElementById('form_add_client');
+    // const add_name = document.getElementById('add_name');
+    // const add_creditor = document.getElementById('add_creditor');
+    // const add_debtor = document.getElementById('add_debtor');
+    // const add_devise = document.getElementById('add_devise');
+    // const pattern_number = /[0-9]/;
+    // form_add_client.addEventListener('submit', (e) => {
+    //     if (add_name.value == "") {
+    //         e.preventDefault();
+    //         add_name.style.border = "1px solid red";
+    //     } else {
+    //         e.preventDefault();
+    //         add_name.style.border = "1px solid green";
+    //     }
+    //     if ((add_creditor.value == "") || (isNaN(add_creditor.value))) {
+    //         e.preventDefault();
+    //         add_creditor.style.border = "1px solid red";
+    //     } else {
+    //         e.preventDefault();
+    //         add_creditor.style.border = "1px solid green";
+    //     }
+    //     if ((add_debtor.value == "") || (isNaN(add_debtor.value))) {
+    //         e.preventDefault();
+    //         add_debtor.style.border = "1px solid red";
+    //     } else {
+    //         e.preventDefault();
+    //         add_debtor.style.border = "1px solid green";
+    //     }
+    //     if (add_devise.value == "") {
+    //         e.preventDefault();
+    //         add_devise.style.border = "1px solid red";
+    //     } else {
+    //         e.preventDefault();
+    //         add_devise.style.border = "1px solid green !important";
+    //     }
+    //     if ((add_name.value != "") && (add_creditor.value != "") && !(isNaN(add_creditor.value)) && (add_debtor
+    //             .value != "") && !(isNaN(add_debtor.value)) && (add_devise.value != "")) {
+    //         form_add_client.submit();
+    //     }
+    // });
 
     // Search Operation
     function searchOperation() {
@@ -316,7 +323,7 @@
         table = document.getElementById("table_operation");
         tr = table.querySelectorAll('.tr_operation');
         for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[7];
+            td = tr[i].getElementsByTagName("td")[9];
             if (td) {
                 txtValue = td.textContent || td.innerText;
                 if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -328,7 +335,7 @@
         }
     }
 // for versement
-    
+
                                             const add_client_for_opperation = document.getElementById('add_client_for_opperation');
                                             const Username_client_receiver = document.getElementById('Username_client_receiver');
                                             Username_client_receiver.addEventListener('change', (e) => {
@@ -340,7 +347,7 @@
                                                     add_client_for_opperation.classList.add("d-none");
                                                 }
                                             });
-                                      
+
 
 </script>
 

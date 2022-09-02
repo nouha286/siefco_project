@@ -21,7 +21,7 @@ class DeviseController extends Controller
             return redirect('/Sign');
         }
     }
-    public function addDevise(Request $request)
+    public function addDevise(Request $request, $Lang)
     { 
         $request->validate([
             'Name' => 'required|max:255',
@@ -40,7 +40,7 @@ class DeviseController extends Controller
         
         $devise->save();
 
-        return redirect('/devise');
+        return redirect($Lang.'/devise')->with('success_delete',__('auth.edit_devise')) ;
       
         }else {
             $Devise = new devise();
@@ -48,26 +48,26 @@ class DeviseController extends Controller
             $Devise->Dollar_value = request('Value');
             $Devise->Activation=1;
             $Devise->save();
-            return redirect('/devise')->with('success_delete','تم اظافة العملة بنجاح'.request('edit_add')) ;
+            return redirect($Lang.'/devise')->with('success_delete',__('auth.add_devise')) ;
         }
         
     }
 
-    public function deleteDevise($id)
+    public function deleteDevise($id, $Lang)
     {
         $devise = Devise::where('id', $id)->first(); 
         if($devise->Activation==1)
         {
             $devise->Activation=0;
             $devise->save();
-            return redirect('/devise')->with('success_delete','تم حذف العملة بنجاح');
+            return redirect($Lang.'/devise')->with('success_delete',__('auth.delete_devise'));
         }
 
         elseif($devise->Activation==0)
         {
             $devise->Activation=1;
             $devise->save();
-            return redirect('/devise')->with('success_restore','تم استرجاع العملة بنجاح');
+            return redirect($Lang.'/devise')->with('success_restore',__('auth.restore_devise'));
         }
         
         

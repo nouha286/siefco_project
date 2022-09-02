@@ -35,7 +35,7 @@ class DashboardController extends Controller
         }
     }
 
-    public function Activer($id)
+    public function Activer($id, $Lang)
     { $devises=devise::where('Activation',1)->first();
 
         if($devises){
@@ -62,7 +62,7 @@ class DashboardController extends Controller
                $User->save();
                $email=User::where('id', $id)->first(['email'])->email;
                FacadesMail::to($email)->send(new EmailActivation($User));
-               return redirect('/Dashboard')->with('success_Activation',__('auth.Activation'));
+               return redirect($Lang.'/Dashboard')->with('success_Activation',__('auth.Activation'));
             }
             if ( $User->Role=='Employe') {
                 $User->Activation=1;
@@ -76,25 +76,25 @@ class DashboardController extends Controller
 
                 $Client->save();
                 $User->save();
-                return redirect('/Dashboard')->with('success_Activation',__('auth.Activation'));
+                return redirect($Lang.'/Dashboard')->with('success_Activation',__('auth.Activation'));
              }
-        }else return redirect('/Dashboard')->with('failed_Activation',__('auth.failed_Activation'));
+        }else return redirect($Lang.'/Dashboard')->with('failed_Activation',__('auth.failed_Activation'));
 
     }
 
-    public function Supprimer($id)
+    public function Supprimer($id,$Lang)
     {
         $User=User::where('id', $id)->first(['Role'])->Role;
 
         if ( $User=='Client') {
             $User=User::where('id', $id)->first();
         $User->delete();
-        return redirect('/Dashboard')->with('success_delete',__('auth.deleteAccount'));
+        return redirect($Lang.'/Dashboard')->with('success_delete',__('auth.deleteAccount'));
     }
     if ( $User=='Employe') {
         $User=User::where('id', $id)->first();
     $User->delete();
-    return redirect('/Dashboard')->with('success_delete',__('auth.deleteAccount'));
+    return redirect($Lang.'/Dashboard')->with('success_delete',__('auth.deleteAccount'));
 }
 }
 }

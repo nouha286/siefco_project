@@ -26,18 +26,9 @@ class Profile_ClientController extends Controller
         }
     }
 
-    public function editUser(Request $request)
+    public function editUser(Request $request, $Lang)
     {
-        $request->validate([
-            'Email' => 'required|max:255|email',
-            'Last_Name' => 'required',
-            'First_Name' => 'required',
-            'password' => 'required|min:6|max:255',
-            'old_password' => 'required|min:6|max:255',
-            'conf_password' => 'required|min:6|max:255|same:password',
-            'Phone' => 'required',
-
-        ]);
+       
 
         if (session('role_client') == 'Client') {
             $edit = request('Id');
@@ -55,7 +46,7 @@ class Profile_ClientController extends Controller
                 $User = User::where('email', request('Email'))->first();
 
                 if ($User && $id != $edit) {
-                    return redirect('/interface_client')->with('error', __('auth.existAccount'));
+                    return redirect($Lang.'/interface_client')->with('error', __('auth.existAccount'));
                 } elseif ($User && $id == $edit) {
 
 
@@ -77,7 +68,7 @@ class Profile_ClientController extends Controller
                         $Employee->password = bcrypt(request('password'));
                         $Password = User::where('id', $edit)->first(['password'])->password;
                         if (!password_verify(request('old_password'), $Password)) {
-                            return redirect('/Profile')->with('error',  __('auth.wrongPassword'));
+                            return redirect($Lang.'/Profile')->with('error',  __('auth.wPassword'));
                         }
                     }
                     if (request('image')) {
@@ -100,7 +91,7 @@ class Profile_ClientController extends Controller
                     $Employee->save();
 
 
-                    return redirect('/interface_client')->with('success_delete',  __('auth.editInfo'));
+                    return redirect($Lang.'/interface_client')->with('success_delete',  __('auth.editInfo'));
                 } elseif (!$User && $id != $edit) {
 
 
@@ -122,7 +113,7 @@ class Profile_ClientController extends Controller
                         $Employee->password = bcrypt(request('password'));
                         $Password = User::where('id', $edit)->first(['password'])->password;
                         if (!password_verify(request('old_password'), $Password)) {
-                            return redirect('/Profile')->with('error',  __('auth.wrongPassword'));
+                            return redirect($Lang.'/Profile')->with('error',  __('auth.wPassword'));
                         }
                     }
                     if (request('image')) {
@@ -144,7 +135,7 @@ class Profile_ClientController extends Controller
                     $Employee->save();
 
 
-                    return redirect('/interface_client')->with('success_delete',  __('auth.editInfo'));
+                    return redirect($Lang.'/interface_client')->with('success_delete',  __('auth.editInfo'));
                 }
             }
         }

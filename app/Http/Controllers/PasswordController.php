@@ -23,8 +23,12 @@ class PasswordController extends Controller
     }
    }
 
-   public function issetEmail(Request $request)
+   public function issetEmail(Request $request, $Lang)
    {
+    $request->validate([
+        'email' => 'required|max:255|email',
+     
+    ]);
     $email=request('email');
     if(User::where('email', $email )->exists())
     {$User=User::where('email',$email)->first();
@@ -32,18 +36,18 @@ class PasswordController extends Controller
       
        if (FacadesMail::to(request('email'))->send(new EmailResetPassword($User))) {
        
-        return redirect('/Forget_password')->with('success',__('auth.forgetPassword'));
+        return redirect($Lang.'/Forget_password')->with('success',__('auth.forgetPassword'));
         
        } else
        {
-        return redirect('/Forget_password')->with('error',__('auth.errorPassword'));
+        return redirect($Lang.'/Forget_password')->with('error',__('auth.errorPassword'));
         
        }
        
     }
     else
     {
-        return redirect('/Forget_password')-> with('error',__('auth.notExist'));
+        return redirect($Lang.'/Forget_password')-> with('error',__('auth.notExist'));
     }
    }
 
@@ -64,12 +68,20 @@ class PasswordController extends Controller
     }
    }
 
-   public function Reset_password( $id)
+   public function Reset_password( $id, Request $request, $Lang)
    {
+    $request->validate([
+      'conf_password'=>'required|min:6',
+     
+      'password'=>'required|min:6',
+   
+   
+        
+    ]);
     $User=User::where('id', $id )->first();
     $User->password=bcrypt(request('password'));
     $User->save();
   
-    return redirect('/Sign')-> with('success',__('auth.resetPassword'));
+    return redirect($Lang.'/Sign')-> with('success',__('auth.resetPassword'));
    }
 }

@@ -19,6 +19,12 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
+            @if (session('success_restore'))
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                {{ session('success_restore') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
             @if (session('error'))
                 <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
                 {{ session('error') }}
@@ -76,7 +82,7 @@
                     <tr class="item tr_client">
                         <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                             @if ($client->Activation == 1)
-                            <form action="{{ route('delete.Client',$client->id) }}" method="post">
+                            <form action="{{ route('delete.Client',[$client->id, app()->getLocale() ]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi  bi-trash3-fill text-white"></i></button>
@@ -84,7 +90,7 @@
                             <button type="submit" class="btn btn-edit" style="background-color:var(--grey-color); color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill text-white"></i></button>
                             @endif
                             @if ($client->Activation == 0)
-                            <form action="{{ route('delete.Client',$client->id) }}" method="post">
+                            <form action="{{ route('delete.Client',[$client->id, app()->getLocale() ]) }}" method="post">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-arrow-clockwise text-white"></i></button>
@@ -112,7 +118,7 @@
         <div class="modal fade" id="exampleModal"data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.Client') }}" id="form_add_client">
+                    <form method="Post" action="{{ route('add.Client',app()->getLocale() ) }}" id="form_add_client">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel"> {{__('اظافةزبون') }}</h5>
@@ -239,7 +245,7 @@
         <div class="modal fade" id="exampleModaledit"data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.Client') }}" id="form_edit_client">
+                    <form method="Post" action="{{ route('add.Client',app()->getLocale() ) }}" id="form_edit_client">
                         @csrf
                         <div class="modal-header ">
                             <h5 class="modal-title " id="exampleModalLabel">{{__('اظافةزبون') }}</h5>

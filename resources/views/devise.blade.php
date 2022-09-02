@@ -19,28 +19,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        @if (session('error'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('error') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session('failed_delete'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('failed_delete') }}
+       
+        @if (session('success_restore'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_restore') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
 
-        @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+   
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectDevise()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
@@ -60,7 +47,7 @@
                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form method="Post" action="{{ route('add.devise') }}">
+                                <form method="Post" action="{{ route('add.devise',app()->getLocale() ) }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
@@ -96,7 +83,7 @@
                             <tr class="item tr_devise">
                                 <td class="col-2 d-flex justify-content-between align-items-center gap-3">
                                     @if ($devise->Activation == 1)
-                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                        <form action="{{ route('delete.devise',[$devise->id, app()->getLocale() ]) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-trash3-fill text-white"></i> </button>
@@ -104,7 +91,7 @@
                                         <button type="submit" class="btn btn-edit" style="background-color:var(--grey-color); border:none;" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-pen-fill text-white"></i></button>
                                     @endif
                                     @if ($devise->Activation == 0)
-                                        <form action="{{ route('delete.devise',$devise->id) }}" method="post">
+                                        <form action="{{ route('delete.devise',[$devise->id,app()->getLocale() ]) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button class="btn" style="background-color:var(--grey-color); border:none;" type="submit"><i class="bi bi-arrow-clockwise text-white"></i> </button>
@@ -128,7 +115,7 @@
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise') }}">
+                    <form method="Post" action="{{ route('add.devise',app()->getLocale() ) }}">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>

@@ -1,4 +1,5 @@
 {
+    
     "تسجيل الدخول":"Sign in",
     "انشاء حساب" :"Sign Up",
     "ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Enter your email address and your password  to login",
@@ -6,6 +7,7 @@
     "القن السري":"Password",
     "املأ معلوماتك لانشاء حسابك":"Fill in your information to create your account",
     "الاسم":"First Name",
+    "اسم الزبون":"Client Name",
     "النسب":"Last Name",
    "تأكيد القن السري":"verification of password",
    "زبون":"customer",
@@ -29,10 +31,10 @@
  "المستخدمون فقط من يستطيعون انشاء حساب المرجو ادخال رقم تسجيل صالح":"Only users who can create an account please enter a valid registration number",
  "المرجوا ادخال بريدك الالكتروني و القن السري لتسجيل الدخول":"Please enter your email address and secret code to login",
  "قم بالتسجيل لبدء صرف العملات الدولية معنا":"Sign up to start exchanging international currencies with us",
- "!!مرحبا ":"Welcome!!",
- ".هل لديك":"Do you have.",
- "حساب":"account",
- "؟ تسجيل الدخول من":"؟ Login from",
+ "!!مرحبًا":"Welcome!!",
+ "هل لديك":"Do you have.",
+ "حساب؟":"account ?",
+ "تسجيل الدخول من":"Login from",
  "هنا":"here",
  "المسؤولين":"Officials",
  "المستخدمون":"employes",
@@ -55,6 +57,8 @@
  "البيان":"Statement",
  "المتلقي":"receiver",
  "الرصيد":"Balance",
+ "الربح":"Commission",
+ "المبلغ":"Amount",
  "المرسل/اسم الزبون":"Customer Name/ Sender",
  "رقم العمليات":"Operations Number",
  "المستخدمون الجدد":"New Users",
@@ -98,26 +102,17 @@
 "ادخل بريدك الالكتروني ":"Enter your email address ",
 "تحقق":"Check",
 "شركة صرف العملات الدولية":"International currency exchange company",
-"اسم العملة":"Name"
+"اسم العملة":"Name",
+"تحويل":"Transfer",
+"إيداع":"deposit",
+"سحب":"draw",
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+"الى زبون اخر":"To another customer",
+"انشئ من طرف":"Created by",
+"اظافة عملية تحويل":"Add a conversion",
+"اظافة عملية إيداع":"Add a deposit",
+"اظافة عملية سحب":"Add a withdrawal"
 
 
 

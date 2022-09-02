@@ -35,26 +35,26 @@ Route::get('/', function () {
 
 //routes for client
 Route::get('/client', 'ClientController@index')->name('client');
-Route::post('/client','ClientController@addClient')->name('add.Client');
-Route::delete('/client/{id}','ClientController@deleteClient')->name('delete.Client');
+Route::post('/client/{Lang}','ClientController@addClient')->name('add.Client');
+Route::delete('/client/{id}/{Lang}','ClientController@deleteClient')->name('delete.Client');
 
 
 //for dashboard
 
 Route::get('/Dashboard','DashboardController@index')->name('Dashboard');
-Route::post('/Dashboard/{id}','DashboardController@Activer')->name('Activer');
-Route::delete('Dashboard/{id}','DashboardController@Supprimer')->name('Supprimer');
+Route::post('/Dashboard/{id}/{Lang}','DashboardController@Activer')->name('Activer');
+Route::delete('Dashboard/{id}/{Lang}','DashboardController@Supprimer')->name('Supprimer');
 
 //for devise
 Route::get('/devise', 'DeviseController@index')->name('devise');
-Route::post('/devise','DeviseController@addDevise')->name('add.devise');
-Route::delete('devise/{id}','DeviseController@deleteDevise')->name('delete.devise');
+Route::post('/devise/{Lang}','DeviseController@addDevise')->name('add.devise');
+Route::delete('devise/{id}/{Lang}','DeviseController@deleteDevise')->name('delete.devise');
 //
 //
 //for Employee
 Route::get('/Employees', 'EmployeController@index')->name('Employees');
-Route::post('/Employees','EmployeController@addEmploye')->name('add.Employe');
-Route::delete('Employees/{id}','EmployeController@deleteEmploye')->name('delete.Employe');
+Route::post('/Employees/{Lang}','EmployeController@addEmploye')->name('add.Employe');
+Route::delete('Employees/{id}/{Lang}','EmployeController@deleteEmploye')->name('delete.Employe');
 
 //for home
 Route::get('/home', function () {
@@ -72,8 +72,8 @@ Route::get('/interface_client', 'interface_clientController@index');
 
 //for  operation
 Route::get('/operation_commercial', 'OperationCommercialController@index')->name('operation_commercial');
-Route::post('/operation_commercial','OperationCommercialController@addOperation')->name('add.Operation');
-Route::delete('operation_commercial/{id}','OperationCommercialController@deleteOperation')->name('delete.Operation');
+Route::post('/operation_commercial/{Lang}','OperationCommercialController@addOperation')->name('add.Operation');
+Route::delete('operation_commercial/{id}/{Lang}','OperationCommercialController@deleteOperation')->name('delete.Operation');
 
 
 // Generate Pdf
@@ -93,7 +93,7 @@ Route::get('/Sign', function () {
         return view('/Sign');
     }
 });
-Route::post('/Sign','UserController@connexion' )->name('connexion.auth');
+Route::post('/Sign/{Lang}','UserController@connexion' )->name('connexion.auth');
 
 
 //for sign up
@@ -109,7 +109,7 @@ Route::get('/Sign_Up', function () {
         return view('/Sign_Up');
     }
 });
-Route::post('/Sign_Up','UserController@inscription' )->name('inscription.auth');
+Route::post('/Sign_Up/{Lang}','UserController@inscription' )->name('inscription.auth');
 
 Route::get('/verify-email/{id}','UserController@verify_email' )->name('verify_email');
 
@@ -118,19 +118,19 @@ Route::get('/logout','UserController@logout')->name('logout');
 //for profile
 
 Route::get('/Profile','ProfileController@index')->name('Profile');
-Route::post('/Profile','ProfileController@editUser' )->name('edit');
+Route::post('/Profile/{Lang}','ProfileController@editUser' )->name('edit');
 
 //for profile client
 Route::get('/Profile_Client','Profile_ClientController@index');
-Route::post('/Profile_Client','Profile_ClientController@editUser' )->name('editClient');
+Route::post('/Profile_Client/{Lang}','Profile_ClientController@editUser' )->name('editClient');
 
 
 // for forget password
 Route::get('/Forget_password','PasswordController@index');
-Route::post('/Forget_password','PasswordController@issetemail')->name('ifissetemail');
+Route::post('/Forget_password/{Lang}','PasswordController@issetemail')->name('ifissetemail');
 //for reset password
 Route::get('/Reset_password/{id}','PasswordController@indexReset_password')->name('resetPassword');
-Route::post('/Reset_password/{id}','PasswordController@Reset_password')->name('reset.password');
+Route::post('/Reset_password/{id}/{Lang}','PasswordController@Reset_password')->name('reset.password');
 
 
 //for Operation for a client

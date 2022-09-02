@@ -56,9 +56,10 @@
             <table class="table table-bordered" style="text-align: center;">
                 <thead style="background-color: #6F6F6F;">
                     <tr>
-                        <th style="width: 16.66%;">{{ __('المستخدم') }}</th>
-                        <th style="width: 19%;">{{ __('البيان') }}</th>
+                        <th style="width: 12.66%;">{{ __('المستخدم') }}</th>
+                        <th style="width: 16%;">{{ __('البيان') }}</th>
                         <th style="width: 7.95%;">{{ __('العملة') }}</th>
+                        <th style="width: 7.95%;">{{ __('الربح') }}</th>
                         <th style="width: 7.95%;">{{ __('الرصيد') }}</th>
                         <th style="width: 7.95%;">{{ __('مدين') }}</th>
                         <th style="width: 7.95%;">{{ __('دائن') }}</th>
@@ -72,9 +73,10 @@
                     @foreach ($operation as $comercial_Operation)
                         @if ($comercial_Operation->Client_id == session('id_Client'))
                             <tr>
-                                <td style="width: 16.66%;">{{ $comercial_Operation->Emloyee_Name }}</td>
-                                <td style="width: 19%;">{{ $comercial_Operation->Statement }}</td>
+                                <td style="width: 12.66%;">{{ $comercial_Operation->Emloyee_Name }}</td>
+                                <td style="width: 16%;">{{ $comercial_Operation->Statement }}</td>
                                 <td style="width: 7.95%;">{{ $comercial_Operation->Currency }}</td>
+                                <td style="width: 7.95%;">{{ $comercial_Operation->Benifice}}</td>
                                 <td style="width: 7.95%;">{{ $comercial_Operation->Balance }}</td>
                                 <td style="width: 7.95%;">{{ $comercial_Operation->Creditor }}</td>
                                 <td style="width: 7.95%;">{{ $comercial_Operation->Debtor }}</td>

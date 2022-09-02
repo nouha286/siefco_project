@@ -42,8 +42,9 @@
                     <h1 class="text-center">{{ __('تسجيل الدخول') }}</h1>
                     <p class="text-center" id="error_signin">
                         {{ __('ادخل بريدك الالكتروني و القن السري لتسجيل الدخول') }}</p>
+                        {{app()->getLocale()}}
                     <p id="error_signin"></p>
-                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('connexion.auth') }}"
+                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('connexion.auth', app()->getLocale()) }}"
                         id="form_signin">
                         @csrf
                         @if (session('error'))

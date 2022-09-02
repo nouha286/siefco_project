@@ -39,7 +39,7 @@
                     <h1 class="text-center">{{ __('استعادة القن السري') }}</h1>
                     <p class="text-center" id="error_signin"> {{ __('ادخل بريدك الالكتروني ') }} </p>
                     <p id="error_signin"></p>
-                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('ifissetemail') }}"
+                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('ifissetemail', app()->getLocale() ) }}"
                         id="form_signin">
                         @csrf
                         @if (session('error'))

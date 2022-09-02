@@ -28,7 +28,7 @@ class ClientController extends Controller
         }
     }
 
-    public function addClient(Request $request)
+    public function addClient(Request $request, $Lang)
     {
         $edit = request('Id');
         if (client::where('email', request('Email'))->exists()) {
@@ -44,7 +44,7 @@ class ClientController extends Controller
 
             $User = User::where('email', request('Email'))->first();
             if ($User && $id != $edit) {
-                return redirect('/client')->with('error', 'هذا الحساب سبق استعماله');
+                return redirect($Lang.'/client')->with('error', __('auth.existAccount'));
             } elseif ($User && $id == $edit) {
 
                 $request->validate([
@@ -86,7 +86,7 @@ class ClientController extends Controller
                 $Client->save();
 
 
-                return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
+                return redirect($Lang.'/client')->with('success_delete', __('auth.editClient'));
             } elseif (!$User && $id != $edit) {
                 $request->validate([
                     'Email' => 'required|max:255|email',
@@ -127,7 +127,7 @@ class ClientController extends Controller
                 $Client->save();
 
 
-                return redirect('/client')->with('success_delete', 'تم تعديل الزبون بنجاح');
+                return redirect($Lang.'/client')->with('success_delete', __('auth.editClient'));
             }
         } else {
             $request->validate([
@@ -144,7 +144,7 @@ class ClientController extends Controller
 
             $User = User::where('email', request('Email'))->first();
             if ($User) {
-                return redirect('/client')->with('error', 'هذا الحساب سبق استعماله');
+                return redirect($Lang.'/client')->with('error', __('auth.existAccount'));
             } else {
 
 
@@ -179,12 +179,12 @@ class ClientController extends Controller
                 $Client->save();
                 FacadesMail::to(request('Email'))->send(new EmailVerificationMail($User));
 
-                return redirect('/client');
+                return redirect($Lang.'/client');
             }
         }
     }
 
-    public function deleteClient($id)
+    public function deleteClient($id, $Lang)
     {
         $Client = client::where('id', $id)->first();
         $email = client::where('id', $id)->first(['Email'])->Email;
@@ -201,16 +201,16 @@ class ClientController extends Controller
             if ($User->Activation == 1) {
                 $User->Activation = 0;
                 $User->save();
-                return redirect('/client')->with('success_delete', 'تم حذف الزبون بنجاح');
+                return redirect($Lang.'/client')->with('success_delete', __('auth.deleteClient'));
            
                 }
             if ($User->Activation == 0) {
                 $User->Activation = 1;
                 $User->save();
-                return redirect('/client')->with('success_restore', 'تم استعادة الزبون بنجاح');
+                return redirect($Lang.'/client')->with('success_restore', __('auth.restoreClient'));
                
             }
         } else {
-            return redirect('/client')->with('failed_delete', 'حدث خطا ما قد فشل الحذف ');
+            return redirect($Lang.'/client')->with('failed_delete', __('auth.failed_delete'));
         }}
 }

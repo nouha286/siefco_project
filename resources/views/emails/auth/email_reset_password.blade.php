@@ -1,9 +1,10 @@
 
 @component('mail::message')
 # Introduction
-
+<img src="https://www.bilandecompetences.pro/wp-content/uploads/2016/02/sifco.png">
+<br>
 Hello {{$User->First_Name.' '.$User->Last_Name}},
-<img src="assets/logo.png">
+
 @component('mail::button', ['url' => route('resetPassword',$User->id)])
 Click here to reset your password
 @endcomponent

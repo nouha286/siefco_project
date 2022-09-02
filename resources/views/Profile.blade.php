@@ -34,7 +34,7 @@
                             </ul>
                         </div>
                     @endif
-                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('edit') }}"
+                    <form class="d-flex flex-column gap-2" method="POST" action="{{ route('edit',app()->getLocale() ) }}"
                         enctype="multipart/form-data" id="form_signup">
                         <div class="text-end h4">{{ __('تعديل الملف الشخصي') }}</div>
                         <hr class="mx   -0 my-1 p-0">
