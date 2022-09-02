@@ -73,7 +73,7 @@
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="Post" action="{{ route('add.Operation') }}">
+                                    <form method="Post" id="form_transfert" action="{{ route('add.Operation') }}">
                                         @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية تحويل') }}
@@ -83,9 +83,8 @@
                                         </div>
                                         <div class="modal-body d-flex flex-column gap-4">
                                             <div class="search_select_box w-100">
-                                                <label class="float-end" for="Username">{{ __('المرسل') }}</label>
-                                                <select class="selectpicker w-100" id="Username" name="Client_id"
-                                                    data-live-search="true">
+                                                <label class="float-end" for="transfert_name">{{ __('المرسل') }}</label>
+                                                <select class="selectpicker w-100" id="transfert_name" name="Client_id" data-live-search="true">
                                                     @foreach ($emetteur as $client)
                                                         :
                                                         <option value="{{ $client->id }}">
@@ -95,10 +94,9 @@
                                                     @endforeach
                                                 </select>
 
-                                                <label class="float-end"
-                                                    for="Username_client_receiver">{{ __('المتلقي') }}</label>
-                                                <select class="selectpicker w-100" id="Username_client_receiver"
-                                                    name="receiver_id" data-live-search="true">
+                                                <label class="float-end" for="transfert_name_receiver">{{ __('المتلقي') }}</label>
+                                                <select class="selectpicker w-100" id="transfert_name_receiver"
+                                                    name="receiver_id" data-live-search="true" onchange="versementClient()">
                                                     <option value="0">{{ __('الى زبون اخر') }}</option>
                                                     @foreach ($destinataire as $client)
                                                         :
@@ -115,11 +113,17 @@
                                                         </option>
                                                     @endforeach
                                                 </select>
+                                                <div class="d-none flex-column gap-1" id="add_client_for_opperation">
+                                                    <input type="text" name="Last_Name" id="transfert_firstname_receiver" placeholder="{{ __('الاسم') }}" class="col-form">
+                                                    <input type="text" name="First_Name" id="transfert_lastname_receiver" placeholder="{{ __('النسب') }}" class="col-form">
+                                                    <input type="text" name="email" id="transfert_email_receiver" placeholder="{{ __('البريد الالكتروني') }}" class="col-form">
+                                                    <input type="text" name="phone" id="transfert_phone_receiver" placeholder="{{ __('رقم الهاتف') }}" class="col-form">
+                                                </div>
                                             </div>
-                                            <input type="text" id="add_creditor" name="Verse" class="form-control"
+                                            <input type="text" id="transfert_solde" name="Verse" class="form-control"
                                                 placeholder="{{ __('المبلغ') }}">
                                             <div class="search_select_box w-100">
-                                                <select class="selectpicker w-100" id="add_devise" name="devise"
+                                                <select class="selectpicker w-100" id="transfert_devise" name="devise"
                                                     data-live-search="true">
                                                     @foreach ($deviseForVersement as $devise)
                                                         :
@@ -127,24 +131,13 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <div class="modal-body d-none flex-column gap-1"
-                                                id="add_client_for_opperation">
-                                                <input type="text" name="Last_Name" id="last_name"
-                                                    placeholder="{{ __('الاسم') }}" class="col-form">
-                                                <input type="text" name="First_Name" id="first_name"
-                                                    placeholder="{{ __('النسب') }}" class="col-form">
-                                                <input type="text" name="email" id="email_signup"
-                                                    placeholder="{{ __('البريد الالكتروني') }}" class="col-form">
-                                                <input type="text" name="phone" id="phone_signup"
-                                                    placeholder="{{ __('رقم الهاتف') }}" class="col-form">
-                                            </div>
-                                            <input type="text" id="add_creditor" name="Benifice"
+                                            <input type="text" id="transfert_benifice" name="Benifice"
                                                 class="form-control " placeholder="{{ __('الربح') }}">
                                             <input type="hidden" name="Versement" value="Versement">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2"
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="transfert_statement"
                                                     style="height: 100px"></textarea>
-                                                <label for="floatingTextarea2">{{ __('البيان') }}</label>
+                                                <label for="transfert_statement">{{ __('البيان') }}</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -157,12 +150,97 @@
                             </div>
                         </div>
 
+                        <script>
+                            // Validation Form Transfert
+                            const form_transfert = document.getElementById('form_transfert');
+                            const transfert_name = document.getElementById('transfert_name');
+                            const transfert_name_receiver = document.getElementById('transfert_name_receiver');
+                            const transfert_solde = document.getElementById('transfert_solde');
+                            const transfert_devise = document.getElementById('transfert_devise');
+                            const transfert_benifice = document.getElementById('transfert_benifice');
+                            const transfert_statement = document.getElementById('transfert_statement');
+
+                            form_transfert.addEventListener('submit', (e) => {
+                                if (transfert_name.value == "") {
+                                    e.preventDefault();
+                                    transfert_name.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    transfert_name.style.border = "1px solid green";
+                                }
+
+                                if (transfert_name_receiver.value == "") {
+                                    e.preventDefault();
+                                    transfert_name_receiver.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    transfert_name_receiver.style.border = "1px solid green";
+                                }
+
+                                if ((transfert_solde.value == "") || (isNaN(transfert_solde.value))) {
+                                    e.preventDefault();
+                                    transfert_solde.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    transfert_solde.style.border = "1px solid green";
+                                }
+
+                                if (transfert_devise.value == "") {
+                                    e.preventDefault();
+                                    transfert_devise.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    transfert_devise.style.border = "1px solid green";
+                                }
+
+                                if ((transfert_benifice.value == "") || (isNaN(transfert_benifice.value))) {
+                                    e.preventDefault();
+                                    transfert_benifice.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    transfert_benifice.style.border = "1px solid green";
+                                }
+
+                                if (transfert_statement.value == "") {
+                                    e.preventDefault();
+                                    transfert_statement.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    transfert_statement.style.border = "1px solid green";
+                                }
+
+                                if((transfert_name.value != "") &&
+                                    (transfert_name_receiver.value != "") &&
+                                    (transfert_solde.value != "") && !(isNaN(transfert_solde.value)) &&
+                                    (transfert_devise.value != "") &&
+                                    (transfert_benifice.value != "") && !(isNaN(transfert_benifice.value)) &&
+                                    (transfert_statement.value != "")) {
+                                    form_transfert.submit();
+                                }
+                            });
+                        </script>
+
+                        <script>
+                            // for versement
+                            function versementClient() {
+                                const add_client_for_opperation = document.getElementById('add_client_for_opperation');
+                                const transfert_name_receiver = document.getElementById('transfert_name_receiver');
+                                if (transfert_name_receiver.value == 0) {
+                                    add_client_for_opperation.classList.remove("d-none");
+                                    add_client_for_opperation.classList.add("d-flex");
+                                } else {
+                                    add_client_for_opperation.classList.remove("d-flex");
+                                    add_client_for_opperation.classList.add("d-none");
+                                }
+                            }
+                        </script>
+
                         <!-- Modal Deposit -->
                         <div class="modal fade" id="modal_deposit" data-bs-backdrop="static" data-bs-keyboard="false"
                             tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-                                    <form method="Post" id="form_add_client" action="{{ route('add.Operation') }}">
+                                    <form method="Post" id="form_deposit" action="{{ route('add.Operation') }}">
                                         @csrf
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية إيداع') }}
@@ -172,7 +250,7 @@
                                         </div>
                                         <div class="modal-body d-flex flex-column gap-4">
                                             <div class="search_select_box w-100">
-                                                <select class="selectpicker w-100" id="add_name" name="Client_id"
+                                                <select class="selectpicker w-100" id="deposit_name" name="Client_id"
                                                     data-live-search="true">
                                                     @foreach ($clientForDepot as $client)
                                                         :
@@ -183,10 +261,10 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <input type="text" id="add_creditor" name="Creditor"
+                                            <input type="text" id="deposit_solde" name="Creditor"
                                                 class="form-control " placeholder="{{ __('المبلغ') }}">
                                             <div class="search_select_box w-100">
-                                                <select class="selectpicker w-100" id="add_devise" name="devise"
+                                                <select class="selectpicker w-100" id="deposit_devise" name="devise"
                                                     data-live-search="true">
                                                     @foreach ($deviseForDepot as $devise)
                                                         :
@@ -195,12 +273,12 @@
                                                 </select>
                                             </div>
                                             <input type="hidden" name="Depot" value="Depot">
-                                            <input type="text" id="add_creditor" name="Benifice"
+                                            <input type="text" id="deposit_benifice" name="Benifice"
                                                 class="form-control " placeholder="{{ __('الربح') }}">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="floatingTextarea2"
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="deposit_statement"
                                                     style="height: 100px"></textarea>
-                                                <label for="floatingTextarea2">{{ __('البيان') }}</label>
+                                                <label for="deposit_statement">{{ __('البيان') }}</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -212,6 +290,62 @@
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            // Validation Form Deposit
+                            const form_deposit = document.getElementById('form_deposit');
+                            const deposit_name = document.getElementById('deposit_name');
+                            const deposit_benifice = document.getElementById('deposit_benifice');
+                            const deposit_solde = document.getElementById('deposit_solde');
+                            const deposit_devise = document.getElementById('deposit_devise');
+                            const deposit_statement = document.getElementById('deposit_statement');
+                            form_deposit.addEventListener('submit', (e) => {
+                                if (deposit_name.value == "") {
+                                    e.preventDefault();
+                                    deposit_name.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_name.style.border = "1px solid green";
+                                }
+
+                                if ((deposit_benifice.value == "") || (isNaN(deposit_benifice.value))) {
+                                    e.preventDefault();
+                                    deposit_benifice.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_benifice.style.border = "1px solid green";
+                                }
+
+                                if ((deposit_solde.value == "") || (isNaN(deposit_solde.value))) {
+                                    e.preventDefault();
+                                    deposit_solde.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_solde.style.border = "1px solid green";
+                                }
+
+                                if (deposit_devise.value == "") {
+                                    e.preventDefault();
+                                    deposit_devise.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_devise.style.border = "1px solid green";
+                                }
+
+                                if (deposit_statement.value == "") {
+                                    e.preventDefault();
+                                    deposit_statement.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_statement.style.border = "1px solid green";
+                                }
+
+                                if((deposit_name.value != "") && (deposit_benifice.value != "") && !(isNaN(deposit_benifice.value)) && (deposit_solde.value != "") && !(isNaN(deposit_solde.value)) && (deposit_devise.value != "") && (deposit_statement.value != "")) {
+                                    form_deposit.submit();
+                                }
+                            });
+
+                        </script>
 
                         <!-- Modal Retrait -->
                         <div class="modal fade" id="modal_retrait" data-bs-backdrop="static" data-bs-keyboard="false"
@@ -242,7 +376,7 @@
                                             <input type="text" id="retrait_solde" name="Debtor" class="form-control "
                                                 placeholder="{{ __('المبلغ') }}">
                                             <div class="search_select_box w-100">
-                                                <select class="selectpicker w-100" id="add_devise" name="devise"
+                                                <select class="selectpicker w-100" id="retrait_devise" name="devise"
                                                     data-live-search="true">
                                                     @foreach ($deviseForRetrait as $devise)
                                                         :
@@ -275,6 +409,7 @@
                             const retrait_name = document.getElementById('retrait_name');
                             const retrait_benifice = document.getElementById('retrait_benifice');
                             const retrait_solde = document.getElementById('retrait_solde');
+                            const retrait_devise = document.getElementById('retrait_devise');
                             const retrait_statement = document.getElementById('retrait_statement');
                             form_retrait.addEventListener('submit', (e) => {
                                 if (retrait_name.value == "") {
@@ -301,6 +436,14 @@
                                     retrait_solde.style.border = "1px solid green";
                                 }
 
+                                if (retrait_devise.value == "") {
+                                    e.preventDefault();
+                                    retrait_devise.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    retrait_devise.style.border = "1px solid green";
+                                }
+
                                 if (retrait_statement.value == "") {
                                     e.preventDefault();
                                     retrait_statement.style.border = "1px solid red";
@@ -309,11 +452,10 @@
                                     retrait_statement.style.border = "1px solid green";
                                 }
 
-                                if((retrait_name.value != "") && (retrait_benifice.value != "") && !(isNaN(retrait_benifice.value)) && (retrait_solde.value != "") && !(isNaN(retrait_solde.value)) && (retrait_statement.value != "")) {
+                                if((retrait_name.value != "") && (retrait_benifice.value != "") && !(isNaN(retrait_benifice.value)) && (retrait_solde.value != "") && !(isNaN(retrait_solde.value)) && (retrait_devise.value != "") && (retrait_statement.value != "")) {
                                     form_retrait.submit();
                                 }
                             });
-
                         </script>
 
                     </div>
@@ -372,48 +514,6 @@
     </div>
 
     <script>
-        // Validation Modal Add Client
-        const form_add_client = document.getElementById('form_add_client');
-        const add_name = document.getElementById('add_name');
-        const add_creditor = document.getElementById('add_creditor');
-        const add_debtor = document.getElementById('add_debtor');
-        const add_devise = document.getElementById('add_devise');
-        const pattern_number = /[0-9]/;
-        form_add_client.addEventListener('submit', (e) => {
-            if (add_name.value == "") {
-                e.preventDefault();
-                add_name.style.border = "1px solid red";
-            } else {
-                e.preventDefault();
-                add_name.style.border = "1px solid green";
-            }
-            if ((add_creditor.value == "") || (isNaN(add_creditor.value))) {
-                e.preventDefault();
-                add_creditor.style.border = "1px solid red";
-            } else {
-                e.preventDefault();
-                add_creditor.style.border = "1px solid green";
-            }
-            if ((add_debtor.value == "") || (isNaN(add_debtor.value))) {
-                e.preventDefault();
-                add_debtor.style.border = "1px solid red";
-            } else {
-                e.preventDefault();
-                add_debtor.style.border = "1px solid green";
-            }
-            if (add_devise.value == "") {
-                e.preventDefault();
-                add_devise.style.border = "1px solid red";
-            } else {
-                e.preventDefault();
-                add_devise.style.border = "1px solid green !important";
-            }
-            if ((add_name.value != "") && (add_creditor.value != "") && !(isNaN(add_creditor.value)) && (add_debtor
-                    .value != "") && !(isNaN(add_debtor.value)) && (add_devise.value != "")) {
-                form_add_client.submit();
-            }
-        });
-
         // Search Operation
         function searchOperation() {
             var input, filter, table, tr, td, i, txtValue;
@@ -433,19 +533,6 @@
                 }
             }
         }
-        // for versement
-
-        const add_client_for_opperation = document.getElementById('add_client_for_opperation');
-        const Username_client_receiver = document.getElementById('Username_client_receiver');
-        Username_client_receiver.addEventListener('change', (e) => {
-            if (Username_client_receiver.value == 0) {
-                add_client_for_opperation.classList.remove("d-none");
-                add_client_for_opperation.classList.add("d-flex");
-            } else {
-                add_client_for_opperation.classList.remove("d-flex");
-                add_client_for_opperation.classList.add("d-none");
-            }
-        });
     </script>
 
 @endsection
