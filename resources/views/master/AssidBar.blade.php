@@ -14,8 +14,6 @@
             <hr class="w-100 m-0 p-0">
         </div>
         <div>
-
-
             <ul class="navbar-nav d-flex flex-column justify-content-center align-items-center my-2 gap-2">
                 <li class="nav-item text-center {{ basename(URL::current()) == 'Profile' ? 'active' : '' }}">
                     <a class="nav-link" href="Profile">
