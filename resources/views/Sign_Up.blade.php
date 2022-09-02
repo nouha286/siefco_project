@@ -11,7 +11,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png" />
+    <link rel="shortcut icon" href={{ asset('assets/image/logo.png') }}/>
     <title>SIEFCO</title>
 </head>
 
@@ -271,3 +271,18 @@
         }
     });
 </script>
+
+
+<?php
+    if(explode("/", URL::current())[5] == "en") {
+        echo '<style>
+                input[type="text"],[type="password"], [type="email"] {
+                    text-align: left !important;
+                    padding-left: 15px !important;
+                }
+                .float-end{
+                    text-align: left !important;
+                }
+            </style>';
+    }
+?>

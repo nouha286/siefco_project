@@ -130,8 +130,9 @@ body #assidBar{
 
 
 /* Tables */
+
 th,td {
-    height: 50px;
+    min-height: 50px;
 }
 tbody tr:hover {
     background-color: var(--second-color) !important;

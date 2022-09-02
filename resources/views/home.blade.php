@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <title>SIEFCO</title>
-    {{-- <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png"/> --}}
-    <link rel="icon" type="image/x-icon" href="http://localhost/siefco_project/public/assets/image/logo.png">
+    <link rel="icon" type="image/x-icon" href={{ asset('assets/image/logo.png') }}>
 </head>
 
 <body>
@@ -56,3 +55,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+
+
+<?php
+    if(explode("/", URL::current())[5] == "en") {
+        echo '<style>
+                #home-text-text{
+                    text-align: left !important;
+                }
+            </style>';
+    }
+?>

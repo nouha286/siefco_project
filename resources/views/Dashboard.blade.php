@@ -81,20 +81,13 @@
                         <table class="table text-center" id="myTable">
                             <thead>
                                 <tr>
-                                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                    </th>
-                                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('رقم الهاتف') }}</th>
-                                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('تفعيل') }}</th>
-                                    <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('البريد الالكتروني') }}</th>
-                                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('النسب') }}</th>
-                                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('الاسم') }}</th>
-                                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('الدور') }}</th>
+                                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></th>
+                                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('رقم الهاتف') }}</th>
+                                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('تفعيل') }}</th>
+                                    <th class="col-3 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('البريد الالكتروني') }}</th>
+                                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('النسب') }}</th>
+                                    <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الاسم') }}</th>
+                                    <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الدور') }}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -104,16 +97,12 @@
                                             <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                                 <form action="{{ route('Activer', $User->id) }}" method="post">
                                                     @csrf
-                                                    <button class="btn" style="background-color: var(--grey-color);"
-                                                        type="submit"><i class="bi bi-check2 text-white"></i></button>
+                                                    <button class="btn" style="background-color: var(--grey-color);" type="submit"><i class="bi bi-check2 text-white"></i></button>
                                                 </form>
                                                 <form action="{{ route('Supprimer', $User->id) }}" method="post">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-edit"
-                                                        style="background-color: var(--grey-color);" data-bs-toggle="modal"
-                                                        data-bs-target="#exampleModaledit"><i
-                                                            class="bi bi-x-lg text-white"></i></button>
+                                                    <button type="submit" class="btn btn-edit" style="background-color: var(--grey-color);" data-bs-toggle="modal" data-bs-target="#exampleModaledit"><i class="bi bi-x-lg text-white"></i></button>
                                                 </form>
                                             </td>
                                             <td class="col-2 Phone">{{ $User->Phone }}</td>
@@ -121,7 +110,7 @@
                                                 <td style="color:green;" class="col-1 ">{{ __('مفعل') }}</td>
                                             @endif
                                             @if (!$User->email_verified_at)
-                                                <td style="color:red;" class="col-1 First_Name">{{ __('غير مفعل') }}/td>
+                                                <td style="color:red;" class="col-1 First_Name">{{ __('غير مفعل') }}</td>
                                             @endif
                                             <td class="col-3 email">{{ $User->email }}</td>
                                             <td class="col-2 Last_Name">{{ $User->Last_Name }}</td>

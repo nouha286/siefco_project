@@ -86,7 +86,7 @@
                 </div>
                 @endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
-                    <h4>{{__('عملياتي التجارية')}}</h4>
+                    <h4>{{__('العمليات التجارية')}}</h4>
                     <a href="{{route('generatePDF')}}">
                         <button class="px-5 py-2 fw-bold" type="button" style="background-color: var(--base-color); border: 0px; border-radius: 16px;">
                             <i class="bi bi-file-earmark-arrow-down-fill"></i> {{__('تحميل') }}
@@ -96,18 +96,16 @@
                 <table class="table mb-0 text-center">
                     <thead>
                         <tr>
-
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('المستخدم')}}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('العملة')}}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('التاريخ')}}</th>
                             <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('البيان')}}</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الربح') }}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('الربح') }}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('الرصيد')}}</th>
-
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('مدين')}}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('دائن')}}</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('المتلقي') }}</th>
-                            <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('المرسل/اسم الزبون') }}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('المتلقي') }}</th>
+                            <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ __('المرسل/اسم الزبون') }}</th>
                             <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{__('رقم العمليات')}}</th>
                          </tr>
                     </thead>
@@ -116,14 +114,14 @@
                                 <tr>
                                     <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Currency }}</td>
-                                    <td class="col-2">{{ $comercial_Operation->created_at}}</td>
-                                    <td class="col-1">{{ $comercial_Operation->Statement }}</td>
+                                    <td class="col-1">{{ $comercial_Operation->created_at}}</td>
+                                    <td class="col-2">{{ $comercial_Operation->Statement }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Benifice}}</td>
                                     <td class="col-1">{{ $comercial_Operation->Balance }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
-                                    <td class="col-2">{{ $comercial_Operation->receiver }}</td>
-                                    <td class="col-2">{{ $comercial_Operation->Client_Name }}</td>
+                                    <td class="col-1">{{ $comercial_Operation->receiver }}</td>
+                                    <td class="col-1">{{ $comercial_Operation->Client_Name }}</td>
                                     <td class="col-1">{{ $comercial_Operation->id }}</td>
                                 </tr>
                         @endforeach

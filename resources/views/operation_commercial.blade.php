@@ -508,18 +508,17 @@
                                     {{ __('التاريخ') }}</th>
                                 <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('البيان') }}</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('الربح') }}</th>
-
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('الرصيد') }}</th>
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('مدين') }}</th>
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('دائن') }}</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('المتلقي') }}</th>
-                                <th class="col-2 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('المرسل/اسم الزبون') }}</th>
                                 <th class="col-1 text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                     {{ __('رقم العمليات') }}</th>
@@ -536,11 +535,11 @@
                                     <td class="col-1">{{ $comercial_Operation->Balance }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
-                                    <td class="col-2">{{ $comercial_Operation->receiver }}</td>
-                                    <td class="col-2"><a
+                                    <td class="col-1">{{ $comercial_Operation->receiver }}</td>
+                                    <td class="col-1"><a
                                             href="{{ route('Operation', $comercial_Operation->Client_id) }}">{{ $comercial_Operation->Client_Name }}</a>
                                     </td>
-                                    <td class="col-2 d-none">{{ $comercial_Operation->Client_Name }}</td>
+                                    <td class="col-1 d-none">{{ $comercial_Operation->Client_Name }}</td>
                                     <td class="col-1">{{ $comercial_Operation->id }}</td>
                                 </tr>
                             @endforeach

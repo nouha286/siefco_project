@@ -16,7 +16,7 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png" />
+    <link rel="shortcut icon" href={{ asset('assets/image/logo.png') }}/>
     <title>SIEFCO</title>
 </head>
 
