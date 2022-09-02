@@ -39,7 +39,7 @@
         <div style="text-align: right;">{{ date('j-m-y') }}</div>
         <!-- Logo -->
         <div style="width: 100%; border: 1px solid #6F6F6F; text-align: center;">
-            <!-- <img src="{{ asset('assets/logo.jpg') }}" style="width: 70px;"> -->
+            <img src="{{ asset('assets/image/logo.jpg') }}" style="width: 70px;">
             <div>{{ __('شركة صرف العملات الدولية') }} {{ date('Y') }}</div>
             <div>{{ __('رقم الهاتف') }} : 06.00.00.00.00 -- 05.00.00.00.00</div>
             <div>{{ __('البريد الالكتروني') }} : siefco.contact@gmail.com</div>
