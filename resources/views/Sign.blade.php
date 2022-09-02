@@ -11,7 +11,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png" />
+    <link rel="shortcut icon" href={{ asset('assets/image/logo.png') }}/>
     <title>SIEFCO</title>
 </head>
 
@@ -42,7 +42,6 @@
                     <h1 class="text-center">{{ __('تسجيل الدخول') }}</h1>
                     <p class="text-center" id="error_signin">
                         {{ __('ادخل بريدك الالكتروني و القن السري لتسجيل الدخول') }}</p>
-                        {{app()->getLocale()}}
                     <p id="error_signin"></p>
                     <form class="d-flex flex-column gap-2" method="POST" action="{{ route('connexion.auth', app()->getLocale()) }}"
                         id="form_signin">
@@ -132,6 +131,7 @@
         }
     });
 </script>
+
 <?php
     if(explode("/", URL::current())[5] == "en") {
         echo '<style>
@@ -145,3 +145,4 @@
             </style>';
     }
 ?>
+

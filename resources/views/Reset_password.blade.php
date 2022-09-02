@@ -11,7 +11,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/logo.png" />
+    <link rel="shortcut icon" href="{{ asset('assets/image/logo.png') }}/>
     <title>SIEFCO</title>
 </head>
 
@@ -23,7 +23,7 @@
         <div class="col-lg-6 p-0" id="sign-form">
             <div id="signin">
                 <div class="d-flex justify-content-between align-items-center px-5 pt-3">
-            
+
                     <div>
                         @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
                             <a rel="alternate" hreflang="{{ $localeCode }}" class="btn m-2"

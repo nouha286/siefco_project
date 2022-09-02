@@ -19,12 +19,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
-            @if (session('success_restore'))
-                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-                {{ session('success_restore') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            @endif
             @if (session('error'))
                 <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
                 {{ session('error') }}
@@ -162,7 +156,7 @@
             const devise = document.getElementById('devise');
             const pattern_name = /[a-zA-Z]/;
             const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-            form_add_clent.addEventListener('submit', (e) => {
+            form_add_client.addEventListener('submit', (e) => {
                 if ((add_first_name.value == "") || (add_first_name.value.length < 3) || (!pattern_name.test(add_first_name.value))) {
                     e.preventDefault();
                     add_first_name.style.border = "1px solid red";
@@ -234,7 +228,7 @@
                     (devise.value != "") &&
                     (add_password.value != "") && (add_password.value.length >= 6) &&
                     (add_conf_password.value == add_password.value)) {
-                    form_add_clent.submit();
+                    form_add_client.submit();
                 }
             });
         </script>
@@ -259,7 +253,7 @@
                             <input type="text" class="Phone" id="edit_phone" name="Phone" class="form-control " placeholder="* {{__('رقم الهاتف') }}">
                             <input type="text" class="Balance" id="edit_blance" name="Balance" class="form-control " placeholder="* {{__(' الرصيد') }}" style="height: 45px;">
                             <div class="search_select_box w-100">
-                                <select class="selectpicker w-100 devise" id="edite_devise" name="devise" data-live-search="true">
+                                <select class="selectpicker w-100 devise" id="edit_devise" name="devise" data-live-search="true">
                                     @foreach ($devise_edit as $devise) :
                                     <option  value="{{ $devise->id }}">{{ $devise->Name }}</option>
                                     @endforeach
@@ -274,6 +268,7 @@
                 </div>
             </div>
         </div>
+
         <script>
             // Validation Modal Edit Client
             const form_edit_client = document.getElementById('form_edit_client');
@@ -282,9 +277,9 @@
             const edit_email = document.getElementById('edit_email');
             const edit_phone = document.getElementById('edit_phone');
             const edit_blance = document.getElementById('edit_blance');
-            const edite_devise = document.getElementById('edite_devise');
-            const pattern_name = /[a-zA-Z]/;
-            const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+            const edit_password = document.getElementById('edit_password');
+            const edit_conf_password = document.getElementById('edit_conf_password');
+            const edit_devise = document.getElementById('edit_devise');
             form_edit_client.addEventListener('submit', (e) => {
                 if ((edit_first_name.value == "") || (edit_first_name.value.length < 3) || (!pattern_name.test(edit_first_name.value))) {
                     e.preventDefault();
@@ -321,11 +316,32 @@
                     edit_blance.style.border = "1px solid green";
                 }
 
-                if (edite_devise.value == "") {
+                if (edit_devise.value == "") {
                     e.preventDefault();
-                    edite_devise.style.border = "1px solid red";
+                    edit_devise.style.border = "1px solid red";
                 }else{
-                    edite_devise.style.border = "1px solid green";
+                    edit_devise.style.border = "1px solid green";
+                }
+
+                if ((edit_password.value == "") || (edit_password.value.length < 6)) {
+                    e.preventDefault();
+                    edit_password.style.border = "1px solid red";
+                }else{
+                    edit_password.style.border = "1px solid green";
+                }
+
+                if ((edit_conf_password.value == "") || (edit_conf_password.value.length < 6)) {
+                    e.preventDefault();
+                    edit_conf_password.style.border = "1px solid red";
+                }else{
+                    edit_conf_password.style.border = "1px solid green";
+                }
+
+                if (!(edit_conf_password.value == edit_password.value)) {
+                    e.preventDefault();
+                    edit_conf_password.style.border = "1px solid red";
+                }else{
+                    edit_conf_password.style.border = "1px solid green";
                 }
 
                 if ((edit_first_name.value != "") && (edit_first_name.value.length >= 3) && (pattern_name.test(edit_first_name.value)) &&
@@ -333,11 +349,14 @@
                     (edit_email.value != "") && (pattern_email.test(edit_email.value)) &&
                     (edit_phone.value != "") && (edit_phone.value.length = 10) && !(isNaN(edit_phone.value)) &&
                     (edit_blance.value == "") && !(isNaN(edit_blance.value)) &&
-                    (edit_devise.value != "")) {
+                    (edit_devise.value != "") &&
+                    (edit_password.value != "") && (edit_password.value.length >= 6) &&
+                    (edit_conf_password.value == edit_password.value)) {
                     form_edit_client.submit();
                 }
             });
         </script>
+
         <!-- Modal Edit Client -->
 
       </div>

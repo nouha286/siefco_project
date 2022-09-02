@@ -9,7 +9,7 @@
                 style="width: 100%; height: 95vh; margin-top: 2.5vh; background-color: var(--white-color); border-radius: 16px;">
                 <!-- Logo -->
                 <div class="d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/image/logo.png') }}" style="width: 38%;" alt="logo">
+                    <img src="{{ asset('assets/logo.png') }}" style="width: 38%;" alt="logo">
                 </div>
                 <hr class="w-75 m-0 p-0">
                 <!-- Info Profile -->

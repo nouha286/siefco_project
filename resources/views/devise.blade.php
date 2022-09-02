@@ -19,15 +19,28 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-       
-        @if (session('success_restore'))
-        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-          {{ session('success_restore') }}
+        @if (session('error'))
+        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+          {{ session('error') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if (session('failed_delete'))
+        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+          {{ session('failed_delete') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
 
-   
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
                 <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                     <div>
                         <select class="form-select text-center fs-5 fw-bold" id="input_select" onchange="selectDevise()" style="max-width: 300px; border:none; background-color: var(--second--white-color-color);">
@@ -42,31 +55,6 @@
                     <button type="button" class="btn btn-primary" style="background-color:white; color:black; border:none;" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <i class="bi bi-plus-circle-fill h1"></i>
                     </button>
-
-                    <!-- Modal Add Devise -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <form method="Post" action="{{ route('add.devise',app()->getLocale() ) }}">
-                                    @csrf
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body d-flex flex-column gap-4">
-                                        <input type="text" name="Name" class="form-control" placeholder="*{{__('العملة')}}" style="height: 45px;">
-                                        <input type="text" name="Value" class="form-control" placeholder="* {{__('القيمة مقابل الدولار') }}" style="height: 45px;">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
-                                        <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
-                                    </div>
-                                </form>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Add Devise -->
                 </div>
                 <table class="table mb-0 text-center" id="table_devise">
                     <thead>
@@ -109,13 +97,64 @@
             </div>
         </div>
 
-     
+
+        <!-- Modal Add Devise -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form method="Post" id="form_add_devise" action="{{ route('add.devise',app()->getLocale() ) }}">
+                        @csrf
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body d-flex flex-column gap-4">
+                            <input type="text" name="Name" id="add_name" class="form-control" placeholder="*{{__('العملة')}}" style="height: 45px;">
+                            <input type="text" name="Value" id="add_value" class="form-control" placeholder="* {{__('القيمة مقابل الدولار') }}" style="height: 45px;">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
+                            <button type="submit" class="btn btn-primary">{{__('حفظ')}}</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Validation Modal Add Devise
+            const form_add_devise = document.getElementById('form_add_devise');
+            const add_name = document.getElementById('add_name');
+            const add_value = document.getElementById('add_value');
+            form_add_devise.addEventListener('submit', (e) => {
+                if ((add_name.value == "")) {
+                    e.preventDefault();
+                    add_name.style.border = "1px solid red";
+                }else{
+                    e.preventDefault();
+                    add_name.style.border = "1px solid green";
+                }
+
+                if ((add_value.value == "") || (isNaN(add_value.value))) {
+                    e.preventDefault();
+                    add_value.style.border = "1px solid red";
+                }else{
+                    e.preventDefault();
+                    add_value.style.border = "1px solid green";
+                }
+
+                if ((add_name.value != "") && (add_value.value != "") && !(isNaN(add_value.value))) {
+                    form_add_devise.submit();
+                }
+            });
+        </script>
 
         <!-- Modal Edit Devise -->
         <div class="modal fade" id="exampleModaledit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="Post" action="{{ route('add.devise',app()->getLocale() ) }}">
+                    <form method="Post" id="form_edit_devise" action="{{ route('add.devise',app()->getLocale() ) }}">
                         @csrf
                         <div class="modal-header">
                             <h5 class="modal-title " id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
@@ -123,8 +162,8 @@
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">
                             <input type="hidden" class="id_devise" name="Id"  class="form-control">
-                            <input type="text" class="name_devise" name="Name" class="form-control mb-2" placeholder="*{{__('العملة') }}" style="height: 45px;">
-                            <input type="text" class="value_devise" name="Value" class="form-control" placeholder="*{{__('القيمة مقابل الدولار') }}" style="height: 45px;">
+                            <input type="text" class="name_devise" id="edit_name" name="Name" class="form-control mb-2" placeholder="*{{__('العملة') }}" style="height: 45px;">
+                            <input type="text" class="value_devise" id="edit_value" name="Value" class="form-control" placeholder="*{{__('القيمة مقابل الدولار') }}" style="height: 45px;">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{__('اغلاق')}}</button>
@@ -134,7 +173,34 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Edit Devise -->
+
+        <script>
+            // Validation Modal Edit Devise
+            const form_edit_devise = document.getElementById('form_edit_devise');
+            const edit_name = document.getElementById('edit_name');
+            const edit_value = document.getElementById('edit_value');
+            form_edit_devise.addEventListener('submit', (e) => {
+                if ((edit_name.value == "")) {
+                    e.preventDefault();
+                    edit_name.style.border = "1px solid red";
+                }else{
+                    e.preventDefault();
+                    edit_name.style.border = "1px solid green";
+                }
+
+                if ((edit_value.value == "") || (isNaN(edit_value.value))) {
+                    e.preventDefault();
+                    edit_value.style.border = "1px solid red";
+                }else{
+                    e.preventDefault();
+                    edit_value.style.border = "1px solid green";
+                }
+
+                if ((edit_name.value != "") && (edit_value.value != "") && !(isNaN(edit_value.value))) {
+                    form_edit_devise.submit();
+                }
+            });
+        </script>
 
         <script>
             // Search Devise
