@@ -114,8 +114,10 @@
                                                     @endforeach
                                                 </select>
                                                 <div class="d-none flex-column gap-1" id="add_client_for_opperation">
-                                                    <input type="text" name="Last_Name" id="transfert_firstname_receiver" placeholder="{{ __('الاسم') }}" class="col-form">
-                                                    <input type="text" name="First_Name" id="transfert_lastname_receiver" placeholder="{{ __('النسب') }}" class="col-form">
+                                                    <div class="d-flex gap-1">
+                                                        <input type="text" name="Last_Name" id="transfert_firstname_receiver" placeholder="{{ __('الاسم') }}" class="col-form w-50">
+                                                        <input type="text" name="First_Name" id="transfert_lastname_receiver" placeholder="{{ __('النسب') }}" class="col-form w-50">
+                                                    </div>
                                                     <input type="text" name="email" id="transfert_email_receiver" placeholder="{{ __('البريد الالكتروني') }}" class="col-form">
                                                     <input type="text" name="phone" id="transfert_phone_receiver" placeholder="{{ __('رقم الهاتف') }}" class="col-form">
                                                 </div>
@@ -155,6 +157,13 @@
                             const form_transfert = document.getElementById('form_transfert');
                             const transfert_name = document.getElementById('transfert_name');
                             const transfert_name_receiver = document.getElementById('transfert_name_receiver');
+
+                            const transfert_firstname_receiver = document.getElementById('transfert_firstname_receiver');
+                            const transfert_lastname_receiver = document.getElementById('transfert_lastname_receiver');
+                            const transfert_email_receiver = document.getElementById('transfert_email_receiver');
+                            const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+                            const transfert_phone_receiver = document.getElementById('transfert_phone_receiver');
+
                             const transfert_solde = document.getElementById('transfert_solde');
                             const transfert_devise = document.getElementById('transfert_devise');
                             const transfert_benifice = document.getElementById('transfert_benifice');
@@ -169,9 +178,38 @@
                                     transfert_name.style.border = "1px solid green";
                                 }
 
-                                if (transfert_name_receiver.value == "") {
+                                if ((transfert_name_receiver.value == "") || (transfert_name_receiver.value == "0")) {
                                     e.preventDefault();
                                     transfert_name_receiver.style.border = "1px solid red";
+                                    versementClient()
+                                    if (transfert_firstname_receiver.value == "") {
+                                        e.preventDefault();
+                                        transfert_firstname_receiver.style.border = "1px solid red";
+                                    }else{
+                                        e.preventDefault();
+                                        transfert_firstname_receiver.style.border = "1px solid green";
+                                    }
+                                    if (transfert_lastname_receiver.value == "") {
+                                        e.preventDefault();
+                                        transfert_lastname_receiver.style.border = "1px solid red";
+                                    }else{
+                                        e.preventDefault();
+                                        transfert_lastname_receiver.style.border = "1px solid green";
+                                    }
+                                    if ((transfert_email_receiver.value == "") || !(pattern_email.test(transfert_email_receiver.value))) {
+                                        e.preventDefault();
+                                        transfert_email_receiver.style.border = "1px solid red";
+                                    }else {
+                                        e.preventDefault();
+                                        transfert_email_receiver.style.border = "1px solid green";
+                                    }
+                                    if ((isNaN(transfert_phone_receiver.value)) || (transfert_phone_receiver.value.length != 10)) {
+                                        e.preventDefault();
+                                        transfert_phone_receiver.style.border = "1px solid red";
+                                    }else{
+                                        e.preventDefault();
+                                        transfert_phone_receiver.style.border = "1px solid green";
+                                    }
                                 }else{
                                     e.preventDefault();
                                     transfert_name_receiver.style.border = "1px solid green";
@@ -210,7 +248,7 @@
                                 }
 
                                 if((transfert_name.value != "") &&
-                                    (transfert_name_receiver.value != "") &&
+                                    (transfert_name_receiver.value != "") && ((transfert_name_receiver.value != "0") || ((transfert_name_receiver.value == "0") && (transfert_firstname_receiver.value != "") && (transfert_lastname_receiver.value != "") && (transfert_email_receiver.value != "") && (pattern_email.test(transfert_email_receiver.value)) && (transfert_phone_receiver.value != "") && !(isNaN(transfert_phone_receiver.value)) && (transfert_phone_receiver.value.length == 10))) &&
                                     (transfert_solde.value != "") && !(isNaN(transfert_solde.value)) &&
                                     (transfert_devise.value != "") &&
                                     (transfert_benifice.value != "") && !(isNaN(transfert_benifice.value)) &&
