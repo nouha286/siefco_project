@@ -92,10 +92,6 @@
                 .flex-row-reverse{
                     flex-direction: row !important;
                 }
-                tr{
-                    display: flex !important;
-                    flex-direction: row-reverse !important;
-                }
             </style>';
     }
 ?>

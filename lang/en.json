@@ -55,6 +55,8 @@
  "البيان":"Statement",
  "المتلقي":"receiver",
  "الرصيد":"Balance",
+ "الربح":"Commission",
+ "المبلغ":"Amount",
  "المرسل/اسم الزبون":"Customer Name/ Sender",
  "رقم العمليات":"Operations Number",
  "المستخدمون الجدد":"New Users",

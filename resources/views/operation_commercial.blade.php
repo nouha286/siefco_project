@@ -47,8 +47,30 @@
                         <div class="input-group me-3" style="width: 25%;">
                             <input type="text" id="input_search" class="form-control" placeholder="{{ __('الاسم') }}"
                                 style="height: 45px;" onkeyup="searchOperation()">
-                            <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i
-                                    class="bi bi-search"></i></span>
+
+                                <script>
+                                    // Search Operation
+                                    function searchOperation() {
+                                        var input, filter, table, tr, td, i, txtValue;
+                                        input = document.getElementById("input_search");
+                                        filter = input.value.toUpperCase();
+                                        table = document.getElementById("table_operation");
+                                        tr = table.querySelectorAll('.tr_operation');
+                                        for (i = 0; i < tr.length; i++) {
+                                            td = tr[i].getElementsByTagName("td")[9];
+                                            if (td) {
+                                                txtValue = td.textContent || td.innerText;
+                                                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                                    tr[i].style.display = "";
+                                                } else {
+                                                    tr[i].style.display = "none";
+                                                }
+                                            }
+                                        }
+                                    }
+                                </script>
+
+                            <span class="input-group-text" style="border-radius: 0px 16px 16px 0px;"><i class="bi bi-search"></i></span>
                         </div>
                         <div>
                             <button type="button" class="btn btn-primary"
@@ -122,29 +144,24 @@
                                                     <input type="text" name="phone" id="transfert_phone_receiver" placeholder="{{ __('رقم الهاتف') }}" class="col-form">
                                                 </div>
                                             </div>
-                                            <input type="text" id="transfert_solde" name="Verse" class="form-control"
-                                                placeholder="{{ __('المبلغ') }}">
+                                            <input type="text" id="transfert_solde" name="Verse" class="form-control" placeholder="{{ __('المبلغ') }}">
                                             <div class="search_select_box w-100">
-                                                <select class="selectpicker w-100" id="transfert_devise" name="devise"
-                                                    data-live-search="true">
+                                                <select class="selectpicker w-100" id="transfert_devise" name="devise" data-live-search="true">
                                                     @foreach ($deviseForVersement as $devise)
                                                         :
                                                         <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            <input type="text" id="transfert_benifice" name="Benifice"
-                                                class="form-control " placeholder="{{ __('الربح') }}">
+                                            <input type="text" id="transfert_benifice" name="Benifice" class="form-control " placeholder="{{ __('الربح') }}">
                                             <input type="hidden" name="Versement" value="Versement">
                                             <div class="form-floating">
-                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="transfert_statement"
-                                                    style="height: 100px"></textarea>
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="transfert_statement" style="height: 100px"></textarea>
                                                 <label for="transfert_statement">{{ __('البيان') }}</label>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
                                             <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
                                         </div>
                                     </form>
@@ -529,16 +546,14 @@
                                 <tr class="tr_operation">
                                     <td class="col-1">{{ $comercial_Operation->Emloyee_Name }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Currency }}</td>
-                                    <td class="col-2">{{ $comercial_Operation->created_at }}</td>
-                                    <td class="col-1">{{ $comercial_Operation->Statement }}</td>
+                                    <td class="col-1">{{ $comercial_Operation->created_at }}</td>
+                                    <td class="col-2">{{ $comercial_Operation->Statement }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Benifice }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Balance }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Creditor }}</td>
                                     <td class="col-1">{{ $comercial_Operation->Debtor }}</td>
                                     <td class="col-1">{{ $comercial_Operation->receiver }}</td>
-                                    <td class="col-1"><a
-                                            href="{{ route('Operation', $comercial_Operation->Client_id) }}">{{ $comercial_Operation->Client_Name }}</a>
-                                    </td>
+                                    <td class="col-1"><a href="{{ route('Operation', $comercial_Operation->Client_id) }}">{{ $comercial_Operation->Client_Name }}</a></td>
                                     <td class="col-1 d-none">{{ $comercial_Operation->Client_Name }}</td>
                                     <td class="col-1">{{ $comercial_Operation->id }}</td>
                                 </tr>
@@ -549,27 +564,5 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Search Operation
-        function searchOperation() {
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("input_search");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("table_operation");
-            tr = table.querySelectorAll('.tr_operation');
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[8];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
 
 @endsection

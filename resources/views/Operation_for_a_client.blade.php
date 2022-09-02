@@ -129,7 +129,5 @@
                 </table>
             </div>
         </div>
-        <div class="position-fixed bottom-0 start-50 text-center h6">Copyright &copy; SayfCo {{ date('Y') }}</div>
-    </div>
 </div>
 @endsection
