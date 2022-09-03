@@ -50,30 +50,25 @@
             </div>
 
             <div class="container-fluid">
-                @if (session('failed_Activation'))
-                    <div class="alert alert-warning text-center alert-dismissible fade show" role="alert">
-                        {{ session('failed_Activation') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('success_delete'))
-                    <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
-                        {{ session('success_delete') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('error'))
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-                @if (session('success_Activation'))
-                    <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-                        {{ session('success_Activation') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
+            @if (session('success_delete'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_delete') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        
+        @if (session('success_Activation'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_Activation') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+        @if (session('failed_Activation'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('failed_Activation') }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
                 <div class="card border-0 shadow-sm overflow-auto"
                     style="min-height: 350px; max-height: 350px; border-radius: 16px;">
                     <div class="m-4">

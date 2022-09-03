@@ -19,15 +19,10 @@
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif
-        @if (session('error'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('error') }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-        @if (session('failed_delete'))
-        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
-          {{ session('failed_delete') }}
+       
+        @if (session('success_restore'))
+        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+          {{ session('success_restore') }}
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         @endif

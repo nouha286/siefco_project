@@ -13,9 +13,15 @@
     <!-- Statistiques , -->
     <div class="container-fluid py-4">
         <div class="card border-0 shadow-sm overflow-auto" style="min-height: 200px; max-height: 560px; border-radius: 16px;">
-            @if (session('success_delete'))
+        @if (session('success_delete'))
                 <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
                 {{ session('success_delete') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+            @if (session('success_restore'))
+                <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
+                {{ session('success_restore') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -224,7 +230,7 @@
                     (add_last_name.value != "") && (add_last_name.value.length >= 3) && (pattern_name.test(add_last_name.value)) &&
                     (add_email.value != "") && (pattern_email.test(add_email.value)) &&
                     (add_phone.value != "") && (add_phone.value.length = 10) && !(isNaN(add_phone.value)) &&
-                    (blance.value == "") && !(isNaN(blance.value)) &&
+                    (blance.value != "") && !(isNaN(blance.value)) &&
                     (devise.value != "") &&
                     (add_password.value != "") && (add_password.value.length >= 6) &&
                     (add_conf_password.value == add_password.value)) {
