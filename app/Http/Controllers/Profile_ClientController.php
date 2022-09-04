@@ -52,10 +52,21 @@ class Profile_ClientController extends Controller
 
                     $Employee = User::where('id', $edit)->first();
 
-                    $Employee->Last_Name = request('Last_Name');
-                    $Employee->email = request('Email');
-                    $Employee->First_Name = request('First_Name');
-                    $Employee->Phone = request('Phone');
+                   
+                    $Employee = User::where('id', $edit)->first();
+                    if (request('First_Name')) {
+                        $Employee->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $Employee->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $Employee->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $Employee->Number_phone = request('Phone');
+                    }
                     if (request('password')) {
                         $request->validate([
 
@@ -81,11 +92,19 @@ class Profile_ClientController extends Controller
                     $email = User::where('id', $edit)->first(['Email'])->Email;
 
                     $User = Client::where('email', $email)->first();
-                    $User->First_Name = request('First_Name');
-                    $User->Last_Name = request('Last_Name');
-                    $User->email = request('Email');
-                    $User->Number_phone = request('Phone');
-
+                    if (request('First_Name')) {
+                        $User->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $User->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $User->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $User->Number_phone = request('Phone');
+                    }
 
                     $User->save();
                     $Employee->save();
@@ -97,10 +116,21 @@ class Profile_ClientController extends Controller
 
                     $Employee = User::where('id', $edit)->first();
 
-                    $Employee->Last_Name = request('Last_Name');
-                    $Employee->email = request('Email');
-                    $Employee->First_Name = request('First_Name');
-                    $Employee->Phone = request('Phone');
+                   
+                    $Employee = User::where('id', $edit)->first();
+                    if (request('First_Name')) {
+                        $Employee->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $Employee->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $Employee->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $Employee->Number_phone = request('Phone');
+                    }
                       if (request('password')) {
                         $request->validate([
 
@@ -126,10 +156,20 @@ class Profile_ClientController extends Controller
                     $email = User::where('id', $edit)->first(['Email'])->Email;
 
                     $User = Client::where('email', $email)->first();
-                    $User->First_Name = request('First_Name');
-                    $User->Last_Name = request('Last_Name');
-                    $User->email = request('Email');
-                    $User->Number_phone = request('Phone');
+
+                    if (request('First_Name')) {
+                        $User->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $User->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $User->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $User->Number_phone = request('Phone');
+                    }
 
                     $User->save();
                     $Employee->save();

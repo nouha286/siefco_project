@@ -14,7 +14,7 @@ class ProfileController extends Controller
     {
 
         $User = User::where('id', session('id'))->first();
-        $Password = User::where('id', session('id'))->first(['password'])->password;
+       
 
 
 
@@ -27,14 +27,7 @@ class ProfileController extends Controller
 
     public function editUser(Request $request, $Lang)
     {
-        $request->validate([
-            'Email' => 'required|max:255|email',
-            'Last_Name' => 'required',
-            'First_Name' => 'required',
-
-            'Phone' => 'required',
-
-        ]);
+       
 
         if (session('role') == 'Employe') {
             $edit = request('Id');
@@ -57,11 +50,20 @@ class ProfileController extends Controller
 
 
                     $Employee = User::where('id', $edit)->first();
+                    if (request('First_Name')) {
+                        $Employee->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $Employee->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $Employee->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $Employee->Number_phone = request('Phone');
+                    }
 
-                    $Employee->Last_Name = request('Last_Name');
-                    $Employee->email = request('Email');
-                    $Employee->First_Name = request('First_Name');
-                    $Employee->Phone = request('Phone');
                     if (request('password')) {
                         $request->validate([
 
@@ -85,10 +87,21 @@ class ProfileController extends Controller
                     $email = User::where('id', $edit)->first(['Email'])->Email;
 
                     $User = Employees::where('email', $email)->first();
-                    $User->First_Name = request('First_Name');
-                    $User->Last_Name = request('Last_Name');
-                    $User->email = request('Email');
-                    $User->Number_phone = request('Phone');
+                    if (request('First_Name')) {
+                        $User->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $User->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $User->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $User->Number_phone = request('Phone');
+                    }
+                   
+                   
 
 
                     $User->save();
@@ -129,10 +142,19 @@ class ProfileController extends Controller
                     $email = User::where('id', $edit)->first(['Email'])->Email;
 
                     $User = Employees::where('email', $email)->first();
-                    $User->First_Name = request('First_Name');
-                    $User->Last_Name = request('Last_Name');
-                    $User->email = request('Email');
-                    $User->Number_phone = request('Phone');
+                    if (request('First_Name')) {
+                        $User->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $User->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $User->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $User->Number_phone = request('Phone');
+                    }
 
                     $User->save();
                     $Employee->save();
@@ -164,10 +186,19 @@ class ProfileController extends Controller
 
                     $Employee = User::where('id', $edit)->first();
 
-                    $Employee->Last_Name = request('Last_Name');
-                    $Employee->email = request('Email');
-                    $Employee->First_Name = request('First_Name');
-                    $Employee->Phone = request('Phone');
+                    if (request('First_Name')) {
+                        $Employee->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $Employee->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $Employee->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $Employee->Number_phone = request('Phone');
+                    }
                     if (request('password')) {
                         $request->validate([
 
@@ -202,10 +233,19 @@ class ProfileController extends Controller
 
                     $Employee = User::where('id', $edit)->first();
 
-                    $Employee->Last_Name = request('Last_Name');
-                    $Employee->email = request('Email');
-                    $Employee->First_Name = request('First_Name');
-                    $Employee->Phone = request('Phone');
+                    if (request('First_Name')) {
+                        $Employee->First_Name = request('First_Name');
+                    }
+                   
+                    if (request('Last_Name')) {
+                        $Employee->Last_Name = request('Last_Name');
+                    }
+                    if (request('Email')) {
+                        $Employee->email = request('Email');
+                    }
+                    if (request('Phone')) {
+                        $Employee->Number_phone = request('Phone');
+                    }
                     if (request('password')) {
                         $request->validate([
 

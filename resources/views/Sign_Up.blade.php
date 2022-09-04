@@ -73,15 +73,7 @@
                                     aria-label="Close"></button>
                             </div>
                         @endif
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
+                      
                         <div class="d-flex flex-sm-row-reverse justify-content-between align-items-center">
                             <input type="text" name="Last_Name" id="last_name" placeholder="{{ __('الاسم') }}"
                                 class="border-0 col-form-label" style="width: 48%;">
@@ -169,7 +161,7 @@
     const error_signup = document.getElementById('error_signup');
     const pattern_email = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
     const pattern_name = /[a-zA-Z]/;
-    const pattern_phone = /[0-9]/;
+    const pattern_phone =/^\+([0-9]{6,14})$/;
 
     client.addEventListener('click', () => {
         employee.value = '';
@@ -219,9 +211,9 @@
             if (phone_signup.value == "") {
                 e.preventDefault();
                 error_phone_signup.innerText = "{{ __('املأ حقل رقم الهاتف') }}";
-            } else if (pattern_phone.test(phone_signup.value) && (phone_signup.value.length == 10)) {
+            } else if (pattern_phone.test(phone_signup.value)) {
                 error_phone_signup.innerText = "";
-            } else if (!pattern_phone.test(phone_signup.value) || (phone_signup.value.length != 10)) {
+            } else if (!pattern_phone.test(phone_signup.value)) {
                 e.preventDefault();
                 error_phone_signup.innerText = "{{ __('رقم الهاتف غير صالح') }}";
             }

@@ -39,7 +39,8 @@
         <div style="{{ explode("/", URL::current())[5] == "en" ? __('text-align: left;') : 'text-align: right;' }}">{{ date('j-m-y') }}</div>
         <!-- Logo -->
         <div style="width: 100%; border: 1px solid #6F6F6F; text-align: center;">
-            <img src="{{ asset('assets/image/logo.jpg') }}" style="width: 70px;">
+     <br>
+            <img src="{{ asset('assets/image/logo.jpg') }}"  style="width: 70px;">
             <div>{{ __('شركة صرف العملات الدولية') }} {{ date('Y') }}</div>
             <div>{{ __('رقم الهاتف') }} : 06.00.00.00.00 -- 05.00.00.00.00</div>
             <div>siefco.contact@gmail.com : {{ __('البريد الالكتروني') }}</div>
@@ -58,9 +59,9 @@
                     <tr>
                         <th style="width: 13%;">{{ __('المستخدم') }}</th>
                         <th style="width: 18%;">{{ __('البيان') }}</th>
-                        <th style="width: 7%;">{{ __('الربح') }}</th>
+                       
                         <th style="width: 6%;">{{ __('العملة') }}</th>
-                        <th style="width: 8%;">{{ __('الرصيد') }}</th>
+                        <th style="width: 15%;">{{ __('الرصيد') }}</th>
                         <th style="width: 8%;">{{ __('مدين') }}</th>
                         <th style="width: 8%;">{{ __('دائن') }}</th>
                         <th style="width: 8%;">{{ __('المتلقي') }}</th>
@@ -74,9 +75,9 @@
                             <tr>
                                 <td style="width: 13%;">{{ $comercial_Operation->Emloyee_Name }}</td>
                                 <td style="width: 18%;">{{ $comercial_Operation->Statement }}</td>
-                                <td style="width: 7%;">{{ $comercial_Operation->Benifice}}</td>
+                              
                                 <td style="width: 6%;">{{ $comercial_Operation->Currency }}</td>
-                                <td style="width: 8%;">{{ $comercial_Operation->Balance }}</td>
+                                <td style="width: 15%;">{{ $comercial_Operation->Balance }}</td>
                                 <td style="width: 8%;">{{ $comercial_Operation->Creditor }}</td>
                                 <td style="width: 8%;">{{ $comercial_Operation->Debtor }}</td>
                                 <td style="width: 8%;">{{ $comercial_Operation->receiver }}</td>
