@@ -65,7 +65,7 @@ class Profile_ClientController extends Controller
                         $Employee->email = request('Email');
                     }
                     if (request('Phone')) {
-                        $Employee->Number_phone = request('Phone');
+                        $Employee->Phone = request('Phone');
                     }
                     if (request('password')) {
                         $request->validate([
@@ -129,7 +129,7 @@ class Profile_ClientController extends Controller
                         $Employee->email = request('Email');
                     }
                     if (request('Phone')) {
-                        $Employee->Number_phone = request('Phone');
+                        $Employee->Phone = request('Phone');
                     }
                       if (request('password')) {
                         $request->validate([

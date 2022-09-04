@@ -61,7 +61,7 @@ class ProfileController extends Controller
                         $Employee->email = request('Email');
                     }
                     if (request('Phone')) {
-                        $Employee->Number_phone = request('Phone');
+                        $Employee->Phone = request('Phone');
                     }
 
                     if (request('password')) {
@@ -113,11 +113,22 @@ class ProfileController extends Controller
 
 
                     $Employee = User::where('id', $edit)->first();
-
-                    $Employee->Last_Name = request('Last_Name');
-                    $Employee->email = request('Email');
-                    $Employee->First_Name = request('First_Name');
-                    $Employee->Phone = request('Phone');
+if (request('Last_Name')) {
+    $Employee->Last_Name = request('Last_Name');
+}
+if (request('First_Name')) {
+    $Employee->First_Name = request('First_Name');
+}
+if (request('Phone')) {
+    $Employee->Phone = request('Phone');
+}
+if (request('Email')) {
+  
+    $Employee->email = request('Email');
+}
+                    
+                    
+                   
                     if (request('password')) {
                         $request->validate([
 
@@ -197,7 +208,7 @@ class ProfileController extends Controller
                         $Employee->email = request('Email');
                     }
                     if (request('Phone')) {
-                        $Employee->Number_phone = request('Phone');
+                        $Employee->Phone = request('Phone');
                     }
                     if (request('password')) {
                         $request->validate([
@@ -244,7 +255,7 @@ class ProfileController extends Controller
                         $Employee->email = request('Email');
                     }
                     if (request('Phone')) {
-                        $Employee->Number_phone = request('Phone');
+                        $Employee->Phone = request('Phone');
                     }
                     if (request('password')) {
                         $request->validate([
