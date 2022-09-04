@@ -1,20 +1,19 @@
-{
-    
-    "تسجيل الدخول":"Sign in",
-    "انشاء حساب" :"Sign Up",
-    "ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Enter your email address and your password  to login",
-    "البريد الالكتروني":"Email",
-    "القن السري":"Password",
-    "املأ معلوماتك لانشاء حسابك":"Fill in your information to create your account",
-    "الاسم":"First Name",
-    "اسم الزبون":"Client Name",
-    "النسب":"Last Name",
-   "تأكيد القن السري":"verification of password",
-   "زبون":"customer",
-   "مستخدم" :"employee",
-   "رقم التسجيل ":"Registration number",
-   "رقم الهاتف" :"Phone Number",
-   "المرجوا ملأ معلوماتك لانشاء حسابك":"Please fill in your information to create your account",
+{ 
+  "تسجيل الدخول":"Sign in",
+  "انشاء حساب" :"Sign Up",
+  "ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Enter your email address and your password  to login",
+  "البريد الالكتروني":"Email",
+  "القن السري":"Password",
+  "املأ معلوماتك لانشاء حسابك":"Fill in your information to create your account",
+  "الاسم":"First Name",
+  "اسم الزبون":"Client Name",
+  "النسب":"Last Name",
+  "تأكيد القن السري":"Verification of password",
+  "زبون":"Customer",
+  "مستخدم" :"User",
+  "رقم التسجيل ":"Registration number",
+  "رقم الهاتف" :"Phone Number",
+  "المرجوا ملأ معلوماتك لانشاء حسابك":"Please fill in your information to create your account",
   "املأ حقل الاسم و النسب":"Fill in the first Name and last Name",
   "يجب أن يتكون الاسم و النسب من ثلاثة أحرف على الأقل":"Name and last Name must consist of at least three characters",
   "املأ حقل البريد الإلكتروني":"Fill in the email",
@@ -37,13 +36,13 @@
  "تسجيل الدخول من":"Login from",
  "هنا":"here",
  "المسؤولين":"Officials",
- "المستخدمون":"employes",
+ "المستخدمون":"Users",
  "الزبناء":"Customers",
- "العمليات التجارية":"Business Processes",
+ "العمليات التجارية":"Commercial Operations",
  "الدور":"Role",
  "المرجوا ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Please enter your email address and password to log in",
  "لوحة التحكم":"Control Panel",
- "العملات":"currencies",
+ "العملات":"Currencies",
  "تسجيل الخروج":"Logout",
  "الصفحة":"The page",
  "اظافة عملة":"Add a coin",
@@ -63,7 +62,8 @@
  "رقم العمليات":"Operations Number",
  "المستخدمون الجدد":"New Users",
  "المستخدمون المحذوفين":"Deleted users",
- "اظافة مستخدم":"Add a user",
+ "اظافة مستخدم":"Add User",
+ "تعديل مستخدم":"Edit User",
  "اظافةزبون":"Add Customer",
  "الزبناء المحذوفين":"Deleted customers",
  "القيمة مقابل الدولار":"Value against the dollar",
@@ -72,9 +72,8 @@
  "كلمة المرور الحالية":"Current  password",
  "عمليةالتجارية":"Commercial Process",
  "تحميل":"Download",
- 
  "الصفحة الرئيسية":"Home Page",
- "عملياتي التجارية":"My Business Operations",
+ "عملياتي التجارية":"My Commercial Operations",
  "The :attribute must be a valid email address.":"يجب أن تكون السمة :عنوان بريد إلكتروني صالح.",
 "The :attribute must be greater than :value.":"يجب أن تكون السمة :أكبر من :value.",
 "الحقل :سمة مطلوب.":"The :attribute field is required.",
@@ -107,18 +106,13 @@
 "تحويل":"Transfer",
 "إيداع":"deposit",
 "سحب":"draw",
-
-
 "الى زبون اخر":"To another customer",
 "انشئ من طرف":"Created by",
 "اظافة عملية تحويل":"Add a conversion",
 "اظافة عملية إيداع":"Add a deposit",
 "اظافة عملية سحب":"Add a withdrawal",
-"المرسل":"Sender"
-
-
-
-
-
+"المرسل":"Sender",
+"تعديل عملة":"Edit Coin",
+"تعديل زبون":"Edit Customer"
 
 }

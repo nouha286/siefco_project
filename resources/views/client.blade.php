@@ -252,7 +252,7 @@
                         <form method="Post" action="{{ route('add.Client',app()->getLocale() ) }}" id="form_edit_client">
                             @csrf
                             <div class="modal-header ">
-                                <h5 class="modal-title " id="exampleModalLabel">{{__('اظافةزبون') }}</h5>
+                                <h5 class="modal-title " id="exampleModalLabel">{{__('تعديل زبون') }}</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body  d-flex flex-column gap-4 ">

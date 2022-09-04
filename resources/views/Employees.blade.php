@@ -181,7 +181,7 @@
                                     <form method="Post" action="{{ route('add.Employe',app()->getLocale() ) }}" id="form_edit_employe">
                                         @csrf
                                         <div class="modal-header ">
-                                            <h5 class="modal-title " id="exampleModalLabel">{{ __('اظافة عملة') }}</h5>
+                                            <h5 class="modal-title " id="exampleModalLabel">{{ __('تعديل مستخدم') }}</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>

@@ -152,7 +152,7 @@
                     <form method="Post" id="form_edit_devise" action="{{ route('add.devise',app()->getLocale() ) }}">
                         @csrf
                         <div class="modal-header">
-                            <h5 class="modal-title " id="exampleModalLabel"> {{__('اظافة عملة')}}</h5>
+                            <h5 class="modal-title " id="exampleModalLabel"> {{__('تعديل عملة')}}</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body d-flex flex-column gap-4">

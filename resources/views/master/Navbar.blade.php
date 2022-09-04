@@ -13,6 +13,7 @@
             {{ basename(URL::current()) == 'interface_client' ? __('عملياتي التجارية') : '' }}
             {{ basename(URL::current()) == 'Profile_Client' ? __('الملف الشخصي') : '' }}
             {{ basename(URL::current()) == 'Operation_for_a_client' ? __('العمليات التجارية') : '' }}
+            {{ is_numeric(basename(URL::current())) ? __('العمليات التجارية') : '' }}
         </span>
     </div>
     <div class="d-flex flex-row-reverse justify-content-center align-items-center">

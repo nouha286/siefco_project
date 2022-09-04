@@ -11,7 +11,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/image/logo.png') }}/>
+    <link rel="shortcut icon" href="http://localhost/siefco_project/public/assets/image/logo.png" />
     <title>SIEFCO</title>
 </head>
 
