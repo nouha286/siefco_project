@@ -66,9 +66,15 @@
                         </div>
                         <div>
                             <button type="button" class="btn btn-primary"
-                            style="background-color:white; color:black; border:none;"
+                            style="background-color:var(--grey-color); color:var(--white-color); border:none;"
                                 data-bs-toggle="modal" data-bs-target="#modal_transfert">
-                                <i class="bi bi-plus-circle-fill h1"></i>
+                                {{ __('اظافة عملية') }}</button>
+
+                                <button type="button" class="btn btn-primary"
+                                style="background-color:var(--grey-color); color:var(--white-color); border:none;"
+                                data-bs-toggle="modal" data-bs-target="#modal_deposit">
+                                {{ __('إيداع') }}
+                            </button>
                         </div>
 
                         <!-- Modal Transfert -->
@@ -254,6 +260,117 @@
                                     form_transfert.submit();
                                 }
                             });
+                        </script>
+  <!-- Modal Deposit -->
+  <div class="modal fade" id="modal_deposit" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form method="Post" id="form_deposit" action="{{ route('add.Operation',app()->getLocale() ) }}">
+                                        @csrf
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">{{ __('اظافة عملية إيداع') }}
+                                            </h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body d-flex flex-column gap-4">
+                                            <div class="search_select_box w-100">
+                                                <select class="selectpicker w-100" id="deposit_name" name="Client_id"
+                                                    data-live-search="true">
+                                                    @foreach ($clientForDepot as $client)
+                                                        :
+                                                        <option value="{{ $client->id }}">
+                                                            {{ $client->First_Name }}
+                                                            {{ $client->Last_Name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <input type="text" id="deposit_solde" name="Creditor"
+                                                class="form-control " placeholder="{{ __('المبلغ') }}">
+                                            <div class="search_select_box w-100">
+                                                <select class="selectpicker w-100" id="deposit_devise" name="devise"
+                                                    data-live-search="true">
+                                                    @foreach ($deviseForDepot as $devise)
+                                                        :
+                                                        <option value="{{ $devise->id }}">{{ $devise->Name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <input type="hidden" name="Depot" value="Depot">
+                                            <input type="text" id="deposit_benifice" name="Benifice"
+                                                class="form-control " placeholder="{{ __('الربح') }}">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a comment here" name="statement" id="deposit_statement"
+                                                    style="height: 100px"></textarea>
+                                                <label for="deposit_statement">{{ __('البيان') }}</label>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <script>
+                            // Validation Form Deposit
+                            const form_deposit = document.getElementById('form_deposit');
+                            const deposit_name = document.getElementById('deposit_name');
+                            const deposit_benifice = document.getElementById('deposit_benifice');
+                            const deposit_solde = document.getElementById('deposit_solde');
+                            const deposit_devise = document.getElementById('deposit_devise');
+                            const deposit_statement = document.getElementById('deposit_statement');
+                            form_deposit.addEventListener('submit', (e) => {
+                                if (deposit_name.value == "") {
+                                    e.preventDefault();
+                                    deposit_name.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_name.style.border = "1px solid green";
+                                }
+
+                                if ((deposit_benifice.value == "") || (isNaN(deposit_benifice.value))) {
+                                    e.preventDefault();
+                                    deposit_benifice.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_benifice.style.border = "1px solid green";
+                                }
+
+                                if ((deposit_solde.value == "") || (isNaN(deposit_solde.value))) {
+                                    e.preventDefault();
+                                    deposit_solde.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_solde.style.border = "1px solid green";
+                                }
+
+                                if (deposit_devise.value == "") {
+                                    e.preventDefault();
+                                    deposit_devise.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_devise.style.border = "1px solid green";
+                                }
+
+                                if (deposit_statement.value == "") {
+                                    e.preventDefault();
+                                    deposit_statement.style.border = "1px solid red";
+                                }else{
+                                    e.preventDefault();
+                                    deposit_statement.style.border = "1px solid green";
+                                }
+
+                                if((deposit_name.value != "") && (deposit_benifice.value != "") && !(isNaN(deposit_benifice.value)) && (deposit_solde.value != "") && !(isNaN(deposit_solde.value)) && (deposit_devise.value != "") && (deposit_statement.value != "")) {
+                                    form_deposit.submit();
+                                }
+                            });
+
                         </script>
 
                         <script>

@@ -118,7 +118,9 @@ Route::get('/logout','UserController@logout')->name('logout');
 //for profile
 
 Route::get('/Profile','ProfileController@index')->name('Profile');
+
 Route::post('/Profile/{Lang}','ProfileController@editUser' )->name('edit');
+
 
 //for profile client
 Route::get('/Profile_Client','Profile_ClientController@index');

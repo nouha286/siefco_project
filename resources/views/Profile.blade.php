@@ -82,7 +82,7 @@
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form id="form_password_profile" method="POST" action="">
+                                <form id="form_password_profile" method="POST"  action="{{ route('edit',app()->getLocale() ) }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">{{ __('تغيير كلمة المرور') }}</h5>
@@ -90,8 +90,9 @@
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <input type="password" name="old_password" id="old_password" placeholder="{{ __('كلمة المرور الحالية') }}" class="col-form-label">
-                                        <input type="password" name="new_password" id="new_password" placeholder=" {{ __('كلمة المرور الجديدة') }}"class="col-form-label">
-                                        <input type="password" name="conf_new_password" id="conf_new_password" placeholder=" {{ __('تأكيد كلمة المرور الجديدة') }}" class="col-form-label">
+                                        <input type="password" name="password" id="new_password" placeholder=" {{ __('كلمة المرور الجديدة') }}"class="col-form-label">
+                                        <input type="password" name="conf_password" id="conf_new_password" placeholder=" {{ __('تأكيد كلمة المرور الجديدة') }}" class="col-form-label">
+                                        <input type="hidden" class="id_profile" name="editPassword" value="{{ session('id') }}">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('اغلاق') }}</button>

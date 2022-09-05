@@ -11,7 +11,7 @@ class Operation_for_a_clientController extends Controller
     public function index($id, Request $request)
     {  
         $User=User::where('id',session('id'))->first();
-        $operation=Comercial_Operation::where('Client_id',$id)->get();
+        $operation=Comercial_Operation::where('Client_id',$id)->orderBy('id', 'desc')->get();;
         $request->session()->put('id_Client', $id);
         
         if (session()->has('role')) {

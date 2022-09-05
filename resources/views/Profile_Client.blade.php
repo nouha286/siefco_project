@@ -20,14 +20,14 @@
                         </div>
                     @endif
                     @if (session('success_delete'))
-                        <div class="alert alert-danger text-center alert-dismissible fade show" role="alert">
+                        <div class="alert alert-success text-center alert-dismissible fade show" role="alert">
                             {{ session('success_delete') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
 
                     <!-- Form Modification Profile -->
-                    <form class="d-flex flex-column gap-2" method="POST" id="form_profile" action="{{ route('edit',app()->getLocale() ) }}" enctype="multipart/form-data" id="form_signup">
+                    <form class="d-flex flex-column gap-2" method="POST" id="form_profile" action="{{ route('editClient',app()->getLocale() ) }}" enctype="multipart/form-data" id="form_signup">
                         <div class="d-flex flex-row-reverse justify-content-between align-items-center">
                             <div class="text-end h4">{{ __('تعديل الملف الشخصي') }}</div>
                             <a href="interface_client" class="bi bi-x-circle h2 fw-bold" style="color: var(--black-color);"></a>
@@ -83,7 +83,7 @@
                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
-                                <form id="form_password_profile" method="POST" action="">
+                                <form id="form_password_profile" method="POST" action="{{ route('editClient',app()->getLocale() ) }}">
                                     @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="staticBackdropLabel">{{ __('تغيير كلمة المرور') }}</h5>
@@ -91,8 +91,9 @@
                                     </div>
                                     <div class="modal-body d-flex flex-column gap-4">
                                         <input type="password" name="old_password" id="old_password" placeholder="{{ __('كلمة المرور الحالية') }}" class="col-form-label">
-                                        <input type="password" name="new_password" id="new_password" placeholder=" {{ __('كلمة المرور الجديدة') }}"class="col-form-label">
-                                        <input type="password" name="conf_new_password" id="conf_new_password" placeholder=" {{ __('تأكيد كلمة المرور الجديدة') }}" class="col-form-label">
+                                        <input type="password" name="password" id="new_password" placeholder=" {{ __('كلمة المرور الجديدة') }}"class="col-form-label">
+                                        <input type="password" name="conf_password" id="conf_new_password" placeholder=" {{ __('تأكيد كلمة المرور الجديدة') }}" class="col-form-label">
+                                        <input type="hidden" class="id_profile" name="editPassword" value="{{ session('id') }}">
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('اغلاق') }}</button>

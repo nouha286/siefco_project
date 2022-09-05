@@ -18,7 +18,7 @@ class OperationCommercialController extends Controller
         $deviseForVersement = devise::where('Activation', 1)->get();
         $deviseForRetrait = devise::where('Activation', 1)->get();
         $deviseForDepot = devise::where('Activation', 1)->get();
-        $comercial_Operation = Comercial_Operation::all();
+        $comercial_Operation = Comercial_Operation::orderBy('id', 'desc')->get();
         $Comercial_Operation = Comercial_Operation::where('Activation', 1)->get();
         $clientForDepot = client::where('Activation', 1)->get();
         $clientForRetrait = client::where('Activation', 1)->get();

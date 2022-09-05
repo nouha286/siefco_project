@@ -11,7 +11,7 @@ class interface_clientController extends Controller
 {
     public function index()
     {
-        $operation=Comercial_Operation::all();
+        $operation=Comercial_Operation::orderBy('id', 'desc')->get();
         $Client=Client::where('id',session('id_Client'))->first();
         $comptOperation=Comercial_Operation::where('Client_id',session('id_Client'))->get();
         $comptOperation=count($comptOperation);
