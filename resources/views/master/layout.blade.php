@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    
+
     @yield('content')
 
 </body>
@@ -77,7 +77,7 @@
                     text-align: left !important;
                     padding-left: 15px !important;
                 }
-                .active{
+                .active_assidBar{
                     border-radius: 0 50px 50px 0 !important;
                 }
                 .text-end{

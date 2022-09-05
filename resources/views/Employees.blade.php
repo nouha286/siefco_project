@@ -38,7 +38,7 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     @endif
-                    
+
                     <div class="d-flex flex-row-reverse justify-content-between align-items-center m-4">
                         <div>
                             <select class="form-select text-center fs-5 fw-bold" id="input_select"
@@ -89,8 +89,7 @@
                                                 style="height: 45px;">
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
                                             <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
                                         </div>
                                     </form>
@@ -216,8 +215,8 @@
                             const edit_last_name = document.getElementById('edit_last_name');
                             const edit_email = document.getElementById('edit_email');
                             const edit_phone = document.getElementById('edit_phone');
-                         
-                           
+
+
                             form_edit_employe.addEventListener('submit', (e) => {
                                 if ((edit_first_name.value == "") || (edit_first_name.value.length < 3) || (!pattern_name.test(
                                         edit_first_name.value))) {

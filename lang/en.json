@@ -1,4 +1,7 @@
-{ 
+{
+  "تغيير كلمة المرور":"Change password",
+  "كلمة المرور الجديدة":"New Password",
+  "تأكيد كلمة المرور الجديدة":"Confirm the new password",
   "تسجيل الدخول":"Sign in",
   "انشاء حساب" :"Sign Up",
   "ادخل بريدك الالكتروني و القن السري لتسجيل الدخول":"Enter your email address and your password  to login",

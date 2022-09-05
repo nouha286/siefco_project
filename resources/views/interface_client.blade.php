@@ -3,37 +3,8 @@
 @section('content')
     <div class="position-absolute w-100" style="height: 40vh; background-color: var(--second-color);"></div>
     <div class="d-flex flex-row-reverse gap-3 mx-3" style="height: 100vh;">
-        <!-- AssidBar -->
-        <div class="col-3 position-relative" id="assidBar">
-            <aside class="d-flex flex-column align-items-center" id="assidbar"
-                style="width: 100%; height: 95vh; margin-top: 2.5vh; background-color: var(--white-color); border-radius: 16px;">
-                <!-- Logo -->
-                <div class="d-flex justify-content-center align-items-center">
-                    <img src="{{ asset('assets/image/logo.png') }}" style="width: 38%;" alt="logo">
-                </div>
-                <hr class="w-75 m-0 p-0">
-                <!-- Info Profile -->
-                <div class="d-flex flex-column text-center justify-content-center align-items-center py-5 gap-4">
-                    <a href="Profile_Client">
-                        <img class="rounded-circle" src="{{ asset('assets/image/' . $User->image) }}" style="width: 60%;"
-                            alt="logo">
-                    </a>
-                    <span>{{ $Client->First_Name . ' ' . $Client->Last_Name }}</span>
-                    <span>{{ $Client->Balance }}</span>
-                    <span class="d-flex gap-1"><span> {{ __('عمليةالتجارية') }}</span><span
-                            class="fw-bold">{{ $comptOperation }}</span></span>
-                    <span>{{ $Client->Email }}</span>
-                    <span>{{ $Client->Number_phone }}</span>
-                </div>
-                <!-- Logout -->
-                <hr class="w-75 m-0 p-0">
-                <div>
-                    <a class="nav-link" href="logout">
-                        <span class="text-dark">{{ __('تسجيل الخروج') }}</span>
-                    </a>
-                </div>
-            </aside>
-        </div>
+        <!-- AssidBar Client -->
+        @include('master.AssidBar_client')
 
         <div class="position-relative w-100">
             <!-- Navbar -->

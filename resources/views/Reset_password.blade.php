@@ -74,3 +74,18 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
 </script>
+
+
+<?php
+    if(explode("/", URL::current())[5] == "en") {
+        echo '<style>
+                input[type="text"],[type="password"], [type="email"] {
+                    text-align: left !important;
+                    padding-left: 15px !important;
+                }
+                .float-end{
+                    text-align: left !important;
+                }
+            </style>';
+    }
+?>

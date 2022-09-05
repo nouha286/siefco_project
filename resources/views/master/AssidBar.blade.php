@@ -15,34 +15,34 @@
         </div>
         <div>
 
-        
+
             <ul class="navbar-nav d-flex flex-column justify-content-center align-items-center my-2 gap-2">
-                <li class="nav-item text-center {{ basename(URL::current()) == 'Profile' ? 'active' : '' }}">
+                <li class="nav-item text-center {{ basename(URL::current()) == 'Profile' ? 'active_assidBar' : '' }}">
                     <a class="nav-link" href="Profile">
                         <span class="{{ basename(URL::current()) == 'Profile' ? 'text-light' : 'text-dark' }}"> {{__('الملف الشخصي')}}</span>
                     </a>
                 </li>
-                <li class="nav-item text-center {{ basename(URL::current()) == 'Dashboard' ? 'active' : '' }}">
+                <li class="nav-item text-center {{ basename(URL::current()) == 'Dashboard' ? 'active_assidBar' : '' }}">
                     <a class="nav-link" href="Dashboard">
                         <span class="{{ basename(URL::current()) == 'Dashboard' ? 'text-light' : 'text-dark' }}"> {{__('لوحة التحكم')}}</span>
                     </a>
                 </li>
-                <li class="nav-item text-center {{ basename(URL::current()) == 'operation_commercial' ? 'active' : '' }}">
+                <li class="nav-item text-center {{ basename(URL::current()) == 'operation_commercial' ? 'active_assidBar' : '' }}">
                     <a class="nav-link" href="operation_commercial">
                         <span class="{{ basename(URL::current()) == 'operation_commercial' ? 'text-light' : 'text-dark' }}">{{__('العمليات التجارية')}}</span>
                     </a>
                 </li>
-                <li class="nav-item text-center {{ basename(URL::current()) == 'Employees' ? 'active' : '' }}">
+                <li class="nav-item text-center {{ basename(URL::current()) == 'Employees' ? 'active_assidBar' : '' }}">
                     <a class="nav-link" href="Employees">
                         <span class="{{ basename(URL::current()) == 'Employees' ? 'text-light' : 'text-dark' }}">{{__('المستخدمون')}}</span>
                     </a>
                 </li>
-                <li class="nav-item text-center {{ basename(URL::current()) == 'client' ? 'active' : '' }}">
+                <li class="nav-item text-center {{ basename(URL::current()) == 'client' ? 'active_assidBar' : '' }}">
                     <a class="nav-link" href="client">
                         <span class="{{ basename(URL::current()) == 'client' ? 'text-light' : 'text-dark' }}">{{__('الزبناء')}}</span>
                     </a>
                 </li>
-                <li class="nav-item text-center {{ basename(URL::current()) == 'devise' ? 'active' : '' }}">
+                <li class="nav-item text-center {{ basename(URL::current()) == 'devise' ? 'active_assidBar' : '' }}">
                     <a class="nav-link" href="devise">
                         <span class="{{ basename(URL::current()) == 'devise' ? 'text-light' : 'text-dark' }}">{{__('العملات')}}</span>
                     </a>
@@ -60,7 +60,7 @@
 </div>
 
 <style>
-    body .active{
+    body .active_assidBar{
         background-color: var(--second-color);
         border-radius: 50px 0 0 50px;
         width: 226px;
