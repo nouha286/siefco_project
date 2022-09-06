@@ -171,43 +171,6 @@
                             });
                         </script>
                         <!-- Modal  Add Employe -->
-
-                        <!-- Modal Edit Emplyee -->
-                        <div class="modal fade" id="exampleModaledit" data-bs-backdrop="static" data-bs-keyboard="false"
-                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <form method="Post" action="{{ route('add.Employe',app()->getLocale() ) }}" id="form_edit_employe">
-                                        @csrf
-                                        <div class="modal-header ">
-                                            <h5 class="modal-title " id="exampleModalLabel">{{ __('تعديل مستخدم') }}</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body  d-flex flex-column gap-4 ">
-                                            <input type="hidden" class="id_devise" name="Id">
-                                            <input type="text" class="First_Name" id="edit_first_name"
-                                                name="First_Name" class="form-control mb-3 "
-                                                placeholder="*{{ __('الاسم') }}" style="height: 45px;">
-                                            <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name"
-                                                class="form-control mb-3 " placeholder="*{{ __('النسب') }}"
-                                                style="height: 45px;">
-                                            <input type="text" class="Email" id="edit_email" name="Email"
-                                                class="form-control mb-3 " placeholder="*{{ __('البريد الالكتروني') }}"
-                                                style="height: 45px;">
-                                            <input type="text" class="Phone" id="edit_phone" name="Phone"
-                                                class="form-control mb-3 " placeholder="*{{ __('رقم الهاتف') }}"
-                                                style="height: 45px;">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
-                                            <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
                         <script>
                             // Validation Modal Edit Employe
                             const form_edit_employe = document.getElementById('form_edit_employe');
@@ -259,6 +222,43 @@
                             });
                         </script>
                         <!-- Modal Edit Emplyee -->
+                        <div class="modal fade" id="exampleModaledit" data-bs-backdrop="static" data-bs-keyboard="false"
+                            tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <form method="Post" action="{{ route('add.Employe',app()->getLocale() ) }}" id="form_edit_employe">
+                                        @csrf
+                                        <div class="modal-header ">
+                                            <h5 class="modal-title " id="exampleModalLabel">{{ __('تعديل مستخدم') }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body  d-flex flex-column gap-4 ">
+                                            <input type="hidden" class="id_devise" name="Id">
+                                            <input type="text" class="First_Name" id="edit_first_name"
+                                                name="First_Name" class="form-control mb-3 "
+                                                placeholder="*{{ __('الاسم') }}" style="height: 45px;">
+                                            <input type="text" class="Last_Name" id="edit_last_name" name="Last_Name"
+                                                class="form-control mb-3 " placeholder="*{{ __('النسب') }}"
+                                                style="height: 45px;">
+                                            <input type="text" class="Email" id="edit_email" name="Email"
+                                                class="form-control mb-3 " placeholder="*{{ __('البريد الالكتروني') }}"
+                                                style="height: 45px;">
+                                            <input type="text" class="Phone" id="edit_phone" name="Phone"
+                                                class="form-control mb-3 " placeholder="*{{ __('رقم الهاتف') }}"
+                                                style="height: 45px;">
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">{{ __('اغلاق') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('حفظ') }}</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                       
+                        <!-- Modal Edit Emplyee -->
                     </div>
                     <table class="table mb-0 text-center" id="table_employe">
                         <thead>
@@ -281,6 +281,7 @@
                         <tbody>
                             @foreach ($Employee as $Employee)
                                 <tr class="item tr_employe">
+                                    <td class="d-none">{{ $Employee->Activation }}</td>
                                     @if (session('role') == 'Admin')
                                         <td class="col-1 d-flex justify-content-between align-items-center gap-2">
                                             @if ($Employee->Activation == 1)
@@ -312,7 +313,6 @@
                                         </td>
                                     @endif
                                     <td class="id_devise d-none col-2">{{ $Employee->id }}</td>
-                                    <td class="d-none">{{ $Employee->Activation }}</td>
                                     <td class="Phone col-3">{{ $Employee->Number_phone }}</td>
                                     <td class="Email col-4">{{ $Employee->Email }}</td>
                                     <td class="Last_Name col-2">{{ $Employee->Last_Name }}</td>
@@ -358,7 +358,7 @@
                     table_employe = document.getElementById("table_employe");
                     tr = table_employe.querySelectorAll('.tr_employe');
                     for (i = 0; i < tr.length; i++) {
-                        td = tr[i].getElementsByTagName("td")[2];
+                        td = tr[i].getElementsByTagName("td")[0];
                         if (td) {
                             txtValue = td.textContent || td.innerText;
                             if (txtValue.toUpperCase().indexOf(filter) > -1) {

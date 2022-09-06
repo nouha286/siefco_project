@@ -154,7 +154,7 @@ class OperationCommercialController extends Controller
                     $Client->Email = request('email');
                     $Client->First_Name = request('First_Name');
                     $Client->Number_phone = request('phone');
-                    $Client->Balance = 0;
+                    $Client->Balance = 0+request('Verse');
                     $id_devise = request('devise');
                     $Client->currency_id = request('devise');
                     $devise = devise::where('id', $id_devise)->first(['Name'])->Name;
@@ -218,7 +218,12 @@ class OperationCommercialController extends Controller
                 $Comercial_Operation = new Comercial_Operation();
 
                 $id = request('Client_id');
+               
                 $id_receiver = request('receiver_id');
+                $client_receiver = client::where('id', $id_receiver)->first();
+                $client_Balance = client::where('id', $id_receiver)->first(['Balance'])->Balance;
+                $client_receiver->Balance=$client_Balance+request('Verse');
+                $client_receiver->save();
                 $Comercial_Operation->Client_id = $id;
                 $client_First_Name = client::where('id', $id)->first(['First_Name'])->First_Name;
                 $client_Last_Name = client::where('id', $id)->first(['Last_Name'])->Last_Name;
